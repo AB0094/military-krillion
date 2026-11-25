@@ -4,6 +4,10 @@ A daily military-trivia game. Everyone gets the same 7 prompts per day; you type
 
 Vite + vanilla TypeScript, Vitest, no backend. Progress lives in `localStorage`.
 
+## Live site
+
+https://ab0094.github.io/military-krillion/
+
 ## Run
 
 ```bash
