@@ -110,7 +110,7 @@ describe('summarize / resetSession / share', () => {
     const sess = s.sessions[sessionKey(date, 'Ground', false)];
     const text = buildShareText({ date, mode: 'Ground', archive: false, depth: sess.depth, answers: sess.answers });
     expect(text).toContain('Military Krillion 2026-11-25 · Ground');
-    expect(text).toMatch(/Depth [\d,]+m · \d+ pts — /);
+    expect(text).toMatch(/Distance [\d,]+m · \d+ pts — /);
     expect(text.split('\n')[2].startsWith('⬛')).toBe(true);
   });
 });

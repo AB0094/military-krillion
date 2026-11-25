@@ -1,6 +1,11 @@
-import { missileSprite } from './sprites';
+import { harmSprite, missileSprite } from './sprites';
 
-/** The mascot: a pixel-art anti-radiation missile, nose down. CSS rotates it where a horizontal one is needed. */
+/** A small vertical missile, used as the pin on the airfield ladder. */
 export function missileSvg(cls = 'missile'): string {
   return missileSprite(cls);
+}
+
+/** The mascot: a HARM anti-radiation missile in level flight. */
+export function logoSvg(cls = 'missile logo'): string {
+  return harmSprite(cls);
 }

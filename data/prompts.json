@@ -21094,5 +21094,9197 @@
         "weight": 0.7
       }
     ]
+  },
+  {
+    "id": "gnd-leopard2-users",
+    "mode": "Ground",
+    "text": "Name a country whose army operates the Leopard 2 tank.",
+    "answers": [
+      {
+        "name": "Germany",
+        "aliases": [
+          "Deutschland",
+          "Federal Republic of Germany"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "Netherlands",
+        "aliases": [
+          "Holland",
+          "The Netherlands"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Poland",
+        "aliases": [
+          "Polska"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "Spain",
+        "aliases": [
+          "España"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "Sweden",
+        "aliases": [
+          "Sverige"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Finland",
+        "aliases": [
+          "Suomi"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Denmark",
+        "aliases": [
+          "Danmark"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Canada",
+        "aliases": [],
+        "weight": 0.55
+      },
+      {
+        "name": "Norway",
+        "aliases": [
+          "Norge"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Switzerland",
+        "aliases": [
+          "Schweiz",
+          "Swiss"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Austria",
+        "aliases": [
+          "Österreich"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Greece",
+        "aliases": [
+          "Hellas"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Turkey",
+        "aliases": [
+          "Türkiye"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Chile",
+        "aliases": [],
+        "weight": 0.85
+      },
+      {
+        "name": "Portugal",
+        "aliases": [],
+        "weight": 0.85
+      },
+      {
+        "name": "Singapore",
+        "aliases": [],
+        "weight": 0.85
+      },
+      {
+        "name": "Indonesia",
+        "aliases": [],
+        "weight": 0.9
+      },
+      {
+        "name": "Hungary",
+        "aliases": [],
+        "weight": 0.85
+      },
+      {
+        "name": "Ukraine",
+        "aliases": [],
+        "weight": 0.85
+      }
+    ],
+    "detail": "Current or former operators, any variant.",
+    "fact": "The Leopard 2 has been exported to more than a dozen countries, making it Europe's most widespread main battle tank."
+  },
+  {
+    "id": "gnd-abrams-users",
+    "mode": "Ground",
+    "text": "Name a country that operates the M1 Abrams tank.",
+    "answers": [
+      {
+        "name": "United States",
+        "aliases": [
+          "USA",
+          "US",
+          "America",
+          "United States of America"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "Australia",
+        "aliases": [],
+        "weight": 0.55
+      },
+      {
+        "name": "Egypt",
+        "aliases": [],
+        "weight": 0.55
+      },
+      {
+        "name": "Iraq",
+        "aliases": [],
+        "weight": 0.7
+      },
+      {
+        "name": "Kuwait",
+        "aliases": [],
+        "weight": 0.7
+      },
+      {
+        "name": "Saudi Arabia",
+        "aliases": [
+          "Saudi"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Morocco",
+        "aliases": [],
+        "weight": 0.85
+      },
+      {
+        "name": "Poland",
+        "aliases": [
+          "Polska"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Taiwan",
+        "aliases": [],
+        "weight": 0.85
+      },
+      {
+        "name": "Ukraine",
+        "aliases": [],
+        "weight": 0.85
+      }
+    ],
+    "detail": "Any current operator, any variant.",
+    "fact": "Australia, Poland and Romania are among the newest Abrams customers."
+  },
+  {
+    "id": "gnd-t72-users",
+    "mode": "Ground",
+    "text": "Name a country that has operated the T-72 tank.",
+    "answers": [
+      {
+        "name": "Russia",
+        "aliases": [
+          "Russian Federation"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "Ukraine",
+        "aliases": [],
+        "weight": 0.3
+      },
+      {
+        "name": "Poland",
+        "aliases": [],
+        "weight": 0.7
+      },
+      {
+        "name": "India",
+        "aliases": [],
+        "weight": 0.55
+      },
+      {
+        "name": "Iran",
+        "aliases": [],
+        "weight": 0.55
+      },
+      {
+        "name": "Iraq",
+        "aliases": [],
+        "weight": 0.55
+      },
+      {
+        "name": "Syria",
+        "aliases": [],
+        "weight": 0.55
+      },
+      {
+        "name": "Algeria",
+        "aliases": [],
+        "weight": 0.85
+      },
+      {
+        "name": "Czech Republic",
+        "aliases": [
+          "Czechia",
+          "Czechoslovakia"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Slovakia",
+        "aliases": [],
+        "weight": 0.85
+      },
+      {
+        "name": "Hungary",
+        "aliases": [],
+        "weight": 0.85
+      },
+      {
+        "name": "Bulgaria",
+        "aliases": [],
+        "weight": 0.85
+      },
+      {
+        "name": "Croatia",
+        "aliases": [],
+        "weight": 0.9
+      },
+      {
+        "name": "Serbia",
+        "aliases": [],
+        "weight": 0.85
+      },
+      {
+        "name": "Armenia",
+        "aliases": [],
+        "weight": 0.85
+      },
+      {
+        "name": "Azerbaijan",
+        "aliases": [],
+        "weight": 0.85
+      },
+      {
+        "name": "Belarus",
+        "aliases": [],
+        "weight": 0.7
+      },
+      {
+        "name": "Libya",
+        "aliases": [],
+        "weight": 0.9
+      },
+      {
+        "name": "Yugoslavia",
+        "aliases": [],
+        "weight": 0.9
+      },
+      {
+        "name": "Finland",
+        "aliases": [],
+        "weight": 0.9
+      },
+      {
+        "name": "Vietnam",
+        "aliases": [],
+        "weight": 0.85
+      },
+      {
+        "name": "Georgia",
+        "aliases": [],
+        "weight": 1.0
+      }
+    ],
+    "detail": "Soviet-built, license-built or upgraded; current or former.",
+    "fact": "More than 20,000 T-72s were built, and the design was license-produced in several countries."
+  },
+  {
+    "id": "gnd-ww1-weapons",
+    "mode": "Ground",
+    "text": "Name a weapon or vehicle used in World War I.",
+    "answers": [
+      {
+        "name": "Mark I",
+        "aliases": [
+          "Mk I",
+          "Mark 1"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "Mark IV",
+        "aliases": [
+          "Mk IV",
+          "Mark 4"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Renault FT",
+        "aliases": [
+          "FT-17",
+          "FT17",
+          "Renault FT-17"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "A7V",
+        "aliases": [],
+        "weight": 0.7
+      },
+      {
+        "name": "Maxim gun",
+        "aliases": [
+          "Maxim",
+          "MG 08"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "Vickers machine gun",
+        "aliases": [
+          "Vickers"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Lewis gun",
+        "aliases": [
+          "Lewis"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Lee-Enfield",
+        "aliases": [
+          "SMLE",
+          "Lee Enfield"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "Mauser Gewehr 98",
+        "aliases": [
+          "Gewehr 98",
+          "Mauser 98",
+          "Gew 98"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "Mosin-Nagant",
+        "aliases": [
+          "Mosin"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Lebel",
+        "aliases": [
+          "Lebel Model 1886",
+          "Lebel 1886"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Big Bertha",
+        "aliases": [
+          "Dicke Bertha"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Paris Gun",
+        "aliases": [
+          "Kaiser Wilhelm Geschütz"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "French 75",
+        "aliases": [
+          "Canon de 75",
+          "Soixante-quinze",
+          "M1897"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Stokes mortar",
+        "aliases": [
+          "Stokes"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Mills bomb",
+        "aliases": [
+          "Mills grenade"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Luger P08",
+        "aliases": [
+          "P08",
+          "Luger"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Colt M1911",
+        "aliases": [
+          "M1911",
+          "1911"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Chauchat",
+        "aliases": [
+          "Chauchat M1915"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Hotchkiss machine gun",
+        "aliases": [
+          "Hotchkiss"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Whippet",
+        "aliases": [
+          "Medium A",
+          "Mark A Whippet"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Saint-Chamond",
+        "aliases": [],
+        "weight": 0.9
+      }
+    ],
+    "detail": "Any side. Tanks, guns, rifles, artillery or machine guns.",
+    "fact": "The Mark I of 1916 was the first tank used in combat."
+  },
+  {
+    "id": "gnd-ww2-rifles",
+    "mode": "Ground",
+    "text": "Name a rifle used in World War II.",
+    "answers": [
+      {
+        "name": "M1 Garand",
+        "aliases": [
+          "Garand",
+          "M1"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "Karabiner 98k",
+        "aliases": [
+          "Kar98k",
+          "K98k",
+          "Kar 98k",
+          "Mauser 98k"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "Mosin-Nagant",
+        "aliases": [
+          "Mosin",
+          "Mosin Nagant",
+          "M91/30"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "Lee-Enfield",
+        "aliases": [
+          "SMLE",
+          "No. 4",
+          "Lee Enfield"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "Springfield M1903",
+        "aliases": [
+          "M1903",
+          "Springfield"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Arisaka Type 99",
+        "aliases": [
+          "Type 99",
+          "Arisaka"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Carcano M91",
+        "aliases": [
+          "Carcano",
+          "Mannlicher-Carcano"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "SVT-40",
+        "aliases": [
+          "SVT",
+          "Tokarev SVT-40"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "StG 44",
+        "aliases": [
+          "Sturmgewehr 44",
+          "MP 44",
+          "MP44"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "M1 Carbine",
+        "aliases": [],
+        "weight": 0.3
+      },
+      {
+        "name": "Gewehr 43",
+        "aliases": [
+          "G43",
+          "Gew 43",
+          "Karabiner 43"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "FN Model 1949",
+        "aliases": [
+          "FN-49",
+          "FN 49"
+        ],
+        "weight": 1.0
+      },
+      {
+        "name": "Arisaka Type 38",
+        "aliases": [
+          "Type 38"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "MAS-36",
+        "aliases": [
+          "MAS 36"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Ross rifle",
+        "aliases": [
+          "Ross"
+        ],
+        "weight": 0.9
+      },
+      {
+        "name": "Johnson M1941",
+        "aliases": [
+          "Johnson rifle",
+          "M1941 Johnson"
+        ],
+        "weight": 0.9
+      },
+      {
+        "name": "Fallschirmjägergewehr 42",
+        "aliases": [
+          "FG 42",
+          "FG42"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Berthier",
+        "aliases": [
+          "Berthier 1907"
+        ],
+        "weight": 1.0
+      }
+    ],
+    "detail": "Any army. Bolt-action, semi-automatic or assault rifle.",
+    "fact": "The M1 Garand was the first standard-issue semi-automatic rifle of any major army."
+  },
+  {
+    "id": "gnd-ww2-artillery",
+    "mode": "Ground",
+    "text": "Name an artillery piece used in World War II.",
+    "answers": [
+      {
+        "name": "8.8 cm Flak",
+        "aliases": [
+          "88mm",
+          "88",
+          "Flak 88",
+          "Acht-Acht"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "25-pounder",
+        "aliases": [
+          "25 pounder",
+          "Ordnance QF 25-pounder"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "M101 howitzer",
+        "aliases": [
+          "M2A1",
+          "105mm howitzer",
+          "M101"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Katyusha",
+        "aliases": [
+          "BM-13",
+          "Stalin's Organ"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "17-pounder",
+        "aliases": [
+          "17 pounder",
+          "QF 17-pounder"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Pak 40",
+        "aliases": [
+          "7.5 cm Pak 40"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "M1 155mm howitzer",
+        "aliases": [
+          "M1 howitzer",
+          "155mm Long Tom",
+          "M114"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Long Tom",
+        "aliases": [
+          "M2 155mm",
+          "Long Tom gun"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Nebelwerfer",
+        "aliases": [
+          "Nebelwerfer 41",
+          "Screaming Mimi",
+          "Wurfgerät"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "ZiS-3",
+        "aliases": [
+          "76mm divisional gun",
+          "ZiS 3"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "M-30 howitzer",
+        "aliases": [
+          "M-30",
+          "122mm M-30"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Schwerer Gustav",
+        "aliases": [
+          "Gustav",
+          "Dora"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Pak 36",
+        "aliases": [
+          "3.7 cm Pak 36"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Ordnance QF 6-pounder",
+        "aliases": [
+          "6-pounder",
+          "6 pounder",
+          "QF 6-pounder"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Bofors 40 mm",
+        "aliases": [
+          "Bofors",
+          "40mm Bofors",
+          "Bofors L/60"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Leichte Feldhaubitze 18",
+        "aliases": [
+          "leFH 18",
+          "10.5 cm leFH 18"
+        ],
+        "weight": 0.85
+      }
+    ],
+    "detail": "Field guns, howitzers, anti-tank guns and rocket artillery from any army.",
+    "fact": "The German 8.8 cm Flak was so effective against tanks that crews used it on the ground in every theatre."
+  },
+  {
+    "id": "gnd-wire-atgm",
+    "mode": "Ground",
+    "text": "Name a wire-guided anti-tank missile.",
+    "answers": [
+      {
+        "name": "BGM-71 TOW",
+        "aliases": [
+          "TOW",
+          "TOW-2",
+          "TOW 2"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "MILAN",
+        "aliases": [],
+        "weight": 0.3
+      },
+      {
+        "name": "9M14 Malyutka",
+        "aliases": [
+          "Malyutka",
+          "AT-3 Sagger",
+          "Sagger"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "HOT",
+        "aliases": [
+          "HOT missile"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Dragon",
+        "aliases": [
+          "M47 Dragon",
+          "FGM-77 Dragon"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "9M111 Fagot",
+        "aliases": [
+          "Fagot",
+          "AT-4 Spigot",
+          "Spigot"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "9M113 Konkurs",
+        "aliases": [
+          "Konkurs",
+          "AT-5 Spandrel",
+          "Spandrel"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "9M131 Metis",
+        "aliases": [
+          "Metis",
+          "Metis-M",
+          "AT-7 Saxhorn"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Swingfire",
+        "aliases": [],
+        "weight": 0.85
+      },
+      {
+        "name": "Vigilant",
+        "aliases": [],
+        "weight": 0.9
+      },
+      {
+        "name": "Bantam",
+        "aliases": [
+          "RB 53"
+        ],
+        "weight": 1.0
+      },
+      {
+        "name": "ENTAC",
+        "aliases": [],
+        "weight": 1.0
+      },
+      {
+        "name": "Cobra",
+        "aliases": [
+          "Cobra 2000"
+        ],
+        "weight": 0.9
+      }
+    ],
+    "detail": "Guided to the target through a trailing wire.",
+    "fact": "The Soviet 9M14 Malyutka (AT-3 Sagger) was used heavily in the 1973 Yom Kippur War."
+  },
+  {
+    "id": "gnd-fire-forget-atgm",
+    "mode": "Ground",
+    "text": "Name a fire-and-forget or top-attack anti-tank missile.",
+    "answers": [
+      {
+        "name": "FGM-148 Javelin",
+        "aliases": [
+          "Javelin"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "Spike",
+        "aliases": [
+          "Spike-LR",
+          "Spike-MR",
+          "Spike NLOS",
+          "Spike-ER"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "NLAW",
+        "aliases": [
+          "Next Generation Light Anti-tank Weapon"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "Brimstone",
+        "aliases": [
+          "MBDA Brimstone"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Akeron MP",
+        "aliases": [
+          "MMP",
+          "Missile Moyenne Portée",
+          "Akeron"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Hellfire",
+        "aliases": [
+          "AGM-114 Hellfire"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Trigat",
+        "aliases": [
+          "Trigat LR"
+        ],
+        "weight": 1.0
+      }
+    ],
+    "detail": "No need to keep the target lit after launch.",
+    "fact": "The Javelin flies a top-attack profile and strikes the thinner roof armour."
+  },
+  {
+    "id": "gnd-chinese-small-arms",
+    "mode": "Ground",
+    "text": "Name a Chinese military small arm.",
+    "answers": [
+      {
+        "name": "Type 56",
+        "aliases": [
+          "Type 56 rifle",
+          "Type-56"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "QBZ-95",
+        "aliases": [
+          "Type 95",
+          "QBZ95"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "QBZ-191",
+        "aliases": [
+          "Type 191",
+          "QBZ191"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "QBZ-03",
+        "aliases": [
+          "Type 03",
+          "QBZ03"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Type 81",
+        "aliases": [
+          "Type-81",
+          "QBZ-81"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "QJY-88",
+        "aliases": [
+          "Type 88 LMG",
+          "QJY88"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "QBU-88",
+        "aliases": [
+          "Type 88 sniper",
+          "QBU88"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Type 79",
+        "aliases": [
+          "Type-79"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "QJB-95",
+        "aliases": [
+          "Type 95 LMG",
+          "QJB95"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Type 54 pistol",
+        "aliases": [
+          "Type 54",
+          "Tokarev Type 54"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "QSZ-92",
+        "aliases": [
+          "Type 92 pistol",
+          "QSZ92"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Type 67",
+        "aliases": [
+          "Type 67 machine gun"
+        ],
+        "weight": 0.9
+      },
+      {
+        "name": "W85",
+        "aliases": [
+          "Type 85 heavy machine gun",
+          "W-85"
+        ],
+        "weight": 1.0
+      },
+      {
+        "name": "Type 80",
+        "aliases": [
+          "Type 80 GPMG"
+        ],
+        "weight": 0.9
+      },
+      {
+        "name": "QBB-95",
+        "aliases": [
+          "Type 95 SAW",
+          "QBB95"
+        ],
+        "weight": 0.9
+      }
+    ],
+    "detail": "Rifles, machine guns, SMGs or pistols used by the PLA.",
+    "fact": "The QBZ-95 bullpup was the PLA's first rifle chambered in 5.8x42mm."
+  },
+  {
+    "id": "gnd-israeli-weapons",
+    "mode": "Ground",
+    "text": "Name a weapon or vehicle designed in Israel.",
+    "answers": [
+      {
+        "name": "Merkava",
+        "aliases": [
+          "Merkava Mk. 4",
+          "Merkava IV"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "Uzi",
+        "aliases": [
+          "IMI Uzi"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "Galil",
+        "aliases": [
+          "IMI Galil"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "Tavor",
+        "aliases": [
+          "IWI Tavor",
+          "TAR-21",
+          "X95",
+          "Tavor X95"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "Desert Eagle",
+        "aliases": [
+          "Desert Eagle .50"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "Iron Dome",
+        "aliases": [
+          "Kippat Barzel"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "Negev",
+        "aliases": [
+          "IWI Negev"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Namer",
+        "aliases": [
+          "IDF Namer"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Trophy",
+        "aliases": [
+          "Windbreaker",
+          "Trophy APS"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Spike",
+        "aliases": [
+          "Rafael Spike"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "David's Sling",
+        "aliases": [
+          "Magic Wand"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Arrow",
+        "aliases": [
+          "Arrow 3",
+          "Arrow 2",
+          "Hetz"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Jericho 941",
+        "aliases": [
+          "Jericho",
+          "IWI Jericho"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Eitan",
+        "aliases": [
+          "IDF Eitan"
+        ],
+        "weight": 0.9
+      },
+      {
+        "name": "Achzarit",
+        "aliases": [],
+        "weight": 0.85
+      },
+      {
+        "name": "Puma CEV",
+        "aliases": [
+          "Puma"
+        ],
+        "weight": 0.9
+      },
+      {
+        "name": "Barak",
+        "aliases": [
+          "Barak 8",
+          "Barak MX"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Sufa",
+        "aliases": [],
+        "weight": 1.0
+      }
+    ],
+    "detail": "Firearms, armour, missiles or defence systems.",
+    "fact": "Israel's Merkava places the engine at the front to protect the crew."
+  },
+  {
+    "id": "gnd-fn-herstal",
+    "mode": "Ground",
+    "text": "Name a firearm made by FN Herstal.",
+    "answers": [
+      {
+        "name": "FN FAL",
+        "aliases": [
+          "FAL"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "FN SCAR",
+        "aliases": [
+          "SCAR",
+          "SCAR-L",
+          "SCAR-H"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "FN P90",
+        "aliases": [
+          "P90"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "FN Five-seveN",
+        "aliases": [
+          "Five-seveN",
+          "Five seven",
+          "57"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "FN Minimi",
+        "aliases": [
+          "Minimi",
+          "M249",
+          "FN M249"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "FN MAG",
+        "aliases": [
+          "MAG",
+          "M240",
+          "MAG 58"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "Browning Hi-Power",
+        "aliases": [
+          "Hi-Power",
+          "High Power",
+          "Browning HP"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "FN F2000",
+        "aliases": [
+          "F2000"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "FN FNC",
+        "aliases": [
+          "FNC"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "FN Model 1900",
+        "aliases": [
+          "FN 1900",
+          "Browning M1900"
+        ],
+        "weight": 1.0
+      },
+      {
+        "name": "FN 303",
+        "aliases": [
+          "FN303"
+        ],
+        "weight": 0.9
+      },
+      {
+        "name": "FN M3P",
+        "aliases": [
+          "M3P"
+        ],
+        "weight": 1.0
+      },
+      {
+        "name": "FN Model 1949",
+        "aliases": [
+          "SAFN-49"
+        ],
+        "weight": 0.9
+      }
+    ],
+    "detail": "Any model from the Belgian maker, past or present.",
+    "fact": "FN Herstal's FAL was adopted by more than 90 countries, earning the nickname 'the right arm of the Free World'."
+  },
+  {
+    "id": "gnd-hk-weapons",
+    "mode": "Ground",
+    "text": "Name a firearm made by Heckler & Koch.",
+    "answers": [
+      {
+        "name": "MP5",
+        "aliases": [
+          "HK MP5"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "HK416",
+        "aliases": [
+          "416"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "G3",
+        "aliases": [
+          "HK G3"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "G36",
+        "aliases": [
+          "HK G36"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "HK417",
+        "aliases": [
+          "417"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "MP7",
+        "aliases": [
+          "HK MP7"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "USP",
+        "aliases": [
+          "HK USP"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "HK45",
+        "aliases": [],
+        "weight": 0.85
+      },
+      {
+        "name": "UMP",
+        "aliases": [
+          "HK UMP"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "MG4",
+        "aliases": [
+          "HK MG4"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "MG5",
+        "aliases": [
+          "HK MG5"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "HK433",
+        "aliases": [
+          "433"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "PSG1",
+        "aliases": [
+          "PSG-1"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "MSG90",
+        "aliases": [
+          "MSG-90"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "G28",
+        "aliases": [
+          "HK G28"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "P30",
+        "aliases": [
+          "HK P30"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "G11",
+        "aliases": [
+          "HK G11"
+        ],
+        "weight": 0.9
+      },
+      {
+        "name": "MP5K",
+        "aliases": [
+          "HK MP5K"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "VP9",
+        "aliases": [
+          "VP-9"
+        ],
+        "weight": 0.9
+      },
+      {
+        "name": "HK21",
+        "aliases": [
+          "HK 21"
+        ],
+        "weight": 0.9
+      }
+    ],
+    "detail": "Any model, past or present.",
+    "fact": "The MP5 became the world's most widely used submachine gun in law enforcement and special forces."
+  },
+  {
+    "id": "gnd-russian-small-arms",
+    "mode": "Ground",
+    "text": "Name a modern Russian or Soviet small arm.",
+    "answers": [
+      {
+        "name": "AK-74M",
+        "aliases": [
+          "AK-74",
+          "AK74"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "AK-12",
+        "aliases": [
+          "AK12"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "SVD",
+        "aliases": [
+          "Dragunov",
+          "SVD Dragunov"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "PKM",
+        "aliases": [
+          "PK",
+          "PKP",
+          "Pecheneg",
+          "PKP Pecheneg"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "RPK",
+        "aliases": [
+          "RPK-74",
+          "RPK-16"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Makarov PM",
+        "aliases": [
+          "PM",
+          "Makarov"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "GSh-18",
+        "aliases": [
+          "GSh18"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "PP-19 Bizon",
+        "aliases": [
+          "Bizon",
+          "PP-19"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "VSS Vintorez",
+        "aliases": [
+          "VSS",
+          "Vintorez"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "AS Val",
+        "aliases": [
+          "Val",
+          "AS-Val"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "AN-94",
+        "aliases": [
+          "Nikonov",
+          "AN94"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "APS Stechkin",
+        "aliases": [
+          "Stechkin",
+          "APS"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Kord",
+        "aliases": [
+          "6P50 Kord"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "NSV",
+        "aliases": [
+          "NSV machine gun"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "SR-1 Vektor",
+        "aliases": [
+          "Vektor",
+          "SR-1"
+        ],
+        "weight": 0.9
+      },
+      {
+        "name": "Yarygin MP-443",
+        "aliases": [
+          "MP-443",
+          "Grach",
+          "Yarygin"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "ASM-DT",
+        "aliases": [
+          "ASM DT"
+        ],
+        "weight": 1.0
+      },
+      {
+        "name": "OTs-14 Groza",
+        "aliases": [
+          "Groza"
+        ],
+        "weight": 0.9
+      }
+    ],
+    "detail": "Rifles, machine guns, pistols or SMGs.",
+    "fact": "The SVD Dragunov, introduced in 1963, remains the standard Russian designated marksman rifle."
+  },
+  {
+    "id": "gnd-landmines",
+    "mode": "Ground",
+    "text": "Name a landmine or booby-trap munition.",
+    "answers": [
+      {
+        "name": "M18A1 Claymore",
+        "aliases": [
+          "Claymore",
+          "M18 Claymore"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "PMN",
+        "aliases": [
+          "PMN-1",
+          "PMN-2"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "TM-62",
+        "aliases": [
+          "TM62"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "M15",
+        "aliases": [
+          "M15 mine"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "M14",
+        "aliases": [
+          "M14 mine",
+          "toe popper"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "S-mine",
+        "aliases": [
+          "Bouncing Betty",
+          "Schrapnellmine 35"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "POMZ",
+        "aliases": [
+          "POMZ-2"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "PFM-1",
+        "aliases": [
+          "Butterfly mine",
+          "Lepestok"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Tellermine 35",
+        "aliases": [
+          "T.Mi.35",
+          "Tellermine"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "M16 mine",
+        "aliases": [
+          "M16"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "MON-50",
+        "aliases": [
+          "MON 50"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "OZM-72",
+        "aliases": [
+          "OZM 72"
+        ],
+        "weight": 0.9
+      },
+      {
+        "name": "Hawkins mine",
+        "aliases": [
+          "Hawkins"
+        ],
+        "weight": 1.0
+      }
+    ],
+    "detail": "Anti-personnel or anti-tank, any country.",
+    "fact": "The M18A1 Claymore is directional: its front face is marked 'FRONT TOWARD ENEMY'."
+  },
+  {
+    "id": "gnd-russian-spg",
+    "mode": "Ground",
+    "text": "Name a Soviet or Russian self-propelled artillery system by designation.",
+    "answers": [
+      {
+        "name": "2S19 Msta-S",
+        "aliases": [
+          "2S19",
+          "Msta-S",
+          "Msta"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "2S3 Akatsiya",
+        "aliases": [
+          "2S3",
+          "Akatsiya",
+          "Akatsia"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "2S1 Gvozdika",
+        "aliases": [
+          "2S1",
+          "Gvozdika"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "2S35 Koalitsiya-SV",
+        "aliases": [
+          "2S35",
+          "Koalitsiya",
+          "Koalitsiya-SV"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "2S7 Pion",
+        "aliases": [
+          "2S7",
+          "Malka",
+          "Pion"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "2S5 Giatsint-S",
+        "aliases": [
+          "2S5",
+          "Giatsint",
+          "Hyacinth"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "2S9 Nona",
+        "aliases": [
+          "2S9",
+          "Nona-S"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "2S34 Khosta",
+        "aliases": [
+          "2S34",
+          "Khosta"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "2S4 Tyulpan",
+        "aliases": [
+          "2S4",
+          "Tyulpan",
+          "Tulip"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "2S31 Vena",
+        "aliases": [
+          "2S31",
+          "Vena"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "2S23 Nona-SVK",
+        "aliases": [
+          "2S23",
+          "Nona-SVK"
+        ],
+        "weight": 0.9
+      },
+      {
+        "name": "2S36 Zauralets-D",
+        "aliases": [
+          "2S36",
+          "Zauralets"
+        ],
+        "weight": 1.0
+      }
+    ],
+    "detail": "Guns, howitzers or mortars on a tracked or wheeled chassis.",
+    "fact": "The 2S7 Pion fires a 203mm shell and was among the heaviest self-propelled guns ever fielded."
+  },
+  {
+    "id": "gnd-korean-armour",
+    "mode": "Ground",
+    "text": "Name a South Korean armoured vehicle or artillery system.",
+    "answers": [
+      {
+        "name": "K2 Black Panther",
+        "aliases": [
+          "K2",
+          "Black Panther"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "K1A1",
+        "aliases": [
+          "K1",
+          "K1A2",
+          "K1E1"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "K9 Thunder",
+        "aliases": [
+          "K9",
+          "K9A1",
+          "K9A2"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "K21",
+        "aliases": [
+          "K21 IFV"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "K200",
+        "aliases": [
+          "K200 KIFV",
+          "KIFV"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "K808",
+        "aliases": [
+          "K808 White Tiger",
+          "White Tiger"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "K806",
+        "aliases": [],
+        "weight": 0.9
+      },
+      {
+        "name": "K600 Rhino",
+        "aliases": [
+          "K600",
+          "Rhino"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "K239 Chunmoo",
+        "aliases": [
+          "Chunmoo",
+          "K239"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "K10",
+        "aliases": [
+          "K10 ammunition resupply"
+        ],
+        "weight": 1.0
+      },
+      {
+        "name": "K55",
+        "aliases": [
+          "K55A1"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "K77",
+        "aliases": [
+          "K77 fire direction"
+        ],
+        "weight": 1.0
+      }
+    ],
+    "detail": "Tanks, IFVs, APCs or howitzers.",
+    "fact": "The K9 Thunder is the most widely exported self-propelled howitzer of the 2020s."
+  },
+  {
+    "id": "gnd-japanese-armour",
+    "mode": "Ground",
+    "text": "Name a Japanese armoured vehicle.",
+    "answers": [
+      {
+        "name": "Type 10",
+        "aliases": [
+          "Type 10 tank",
+          "Hitomaru"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "Type 90",
+        "aliases": [
+          "Type 90 tank",
+          "Kyumaru"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "Type 74",
+        "aliases": [
+          "Type 74 tank",
+          "Nanayon"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Type 16",
+        "aliases": [
+          "Type 16 MCV",
+          "Maneuver Combat Vehicle"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "Type 89",
+        "aliases": [
+          "Type 89 IFV"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Type 96",
+        "aliases": [
+          "Type 96 APC",
+          "Type 96 Wheeled Armoured Personnel Carrier"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Type 99",
+        "aliases": [
+          "Type 99 SPH",
+          "Type 99 howitzer"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Type 87",
+        "aliases": [
+          "Type 87 RCV",
+          "Type 87 Reconnaissance and Patrol Vehicle"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Type 82",
+        "aliases": [
+          "Type 82 command vehicle"
+        ],
+        "weight": 0.9
+      },
+      {
+        "name": "Type 73",
+        "aliases": [
+          "Type 73 APC",
+          "Type 73 armoured personnel carrier"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Type 60",
+        "aliases": [
+          "Type 60 APC"
+        ],
+        "weight": 1.0
+      },
+      {
+        "name": "Type 61",
+        "aliases": [
+          "Type 61 tank"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Type 75",
+        "aliases": [
+          "Type 75 SPH"
+        ],
+        "weight": 0.9
+      }
+    ],
+    "detail": "JGSDF tanks, IFVs, APCs and wheeled vehicles.",
+    "fact": "The Type 10 is notable for its hydropneumatic suspension that lets the hull 'kneel'."
+  },
+  {
+    "id": "gnd-uk-vehicles",
+    "mode": "Ground",
+    "text": "Name a British Army armoured vehicle.",
+    "answers": [
+      {
+        "name": "Challenger 2",
+        "aliases": [
+          "CR2"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "Challenger 3",
+        "aliases": [
+          "CR3"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Warrior",
+        "aliases": [
+          "FV510",
+          "Warrior IFV",
+          "FV510 Warrior"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "FV432",
+        "aliases": [
+          "432"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Scimitar",
+        "aliases": [
+          "FV107"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Jackal",
+        "aliases": [
+          "Jackal 2",
+          "MWMIK"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Foxhound",
+        "aliases": [
+          "Foxhound LPPV"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Mastiff",
+        "aliases": [
+          "Mastiff PPV"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Ajax",
+        "aliases": [
+          "Ajax AFV"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Boxer",
+        "aliases": [
+          "Boxer MIV",
+          "Mechanised Infantry Vehicle"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Stormer",
+        "aliases": [
+          "FV4333",
+          "Stormer HVM"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Husky",
+        "aliases": [
+          "Husky TSV"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Ridgback",
+        "aliases": [],
+        "weight": 0.85
+      },
+      {
+        "name": "Saxon",
+        "aliases": [
+          "AT105 Saxon"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Saracen",
+        "aliases": [
+          "FV603"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "AS-90",
+        "aliases": [
+          "AS90"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Chieftain",
+        "aliases": [
+          "FV4201"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Centurion",
+        "aliases": [
+          "FV4007"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Fox",
+        "aliases": [
+          "FV721 Fox"
+        ],
+        "weight": 0.9
+      },
+      {
+        "name": "Spartan",
+        "aliases": [
+          "FV103"
+        ],
+        "weight": 0.85
+      }
+    ],
+    "detail": "Past or present, tracked or wheeled.",
+    "fact": "Challenger 2's Dorchester armour has never been defeated in service."
+  },
+  {
+    "id": "gnd-french-armour",
+    "mode": "Ground",
+    "text": "Name a French armoured vehicle.",
+    "answers": [
+      {
+        "name": "Leclerc",
+        "aliases": [
+          "AMX-56",
+          "AMX 56 Leclerc"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "AMX-10RC",
+        "aliases": [
+          "AMX 10 RC"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "VBCI",
+        "aliases": [],
+        "weight": 0.55
+      },
+      {
+        "name": "VAB",
+        "aliases": [
+          "VAB Mk2"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "AMX-30",
+        "aliases": [
+          "AMX 30"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Griffon",
+        "aliases": [
+          "VBMR Griffon"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Jaguar",
+        "aliases": [
+          "EBRC Jaguar",
+          "EBRC"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Serval",
+        "aliases": [
+          "VBMR-L Serval"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "AMX-13",
+        "aliases": [
+          "AMX 13"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Caesar",
+        "aliases": [
+          "Camion équipé d'un système d'artillerie"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "Sherpa",
+        "aliases": [
+          "Panhard Sherpa"
+        ],
+        "weight": 0.9
+      },
+      {
+        "name": "PVP",
+        "aliases": [
+          "Peugeot VP",
+          "Petit Véhicule Protégé"
+        ],
+        "weight": 0.9
+      },
+      {
+        "name": "Panhard ERC",
+        "aliases": [
+          "ERC 90",
+          "ERC 90 Sagaie"
+        ],
+        "weight": 0.9
+      },
+      {
+        "name": "AMX-10P",
+        "aliases": [
+          "AMX 10P"
+        ],
+        "weight": 0.85
+      }
+    ],
+    "detail": "Tanks, IFVs, APCs and wheeled armour in French service or design.",
+    "fact": "The Leclerc is among the few modern tanks fitted with an autoloader and a three-man crew in a Western army."
+  },
+  {
+    "id": "gnd-ww2-german-vehicles",
+    "mode": "Ground",
+    "text": "Name a German armoured vehicle from World War II.",
+    "answers": [
+      {
+        "name": "Tiger I",
+        "aliases": [
+          "Tiger",
+          "Panzer VI",
+          "PzKpfw VI"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "Panther",
+        "aliases": [
+          "Panzer V",
+          "Panzerkampfwagen V"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "Panzer IV",
+        "aliases": [
+          "Pz IV",
+          "Panzer 4",
+          "PzKpfw IV"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "Tiger II",
+        "aliases": [
+          "King Tiger",
+          "Königstiger"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "Panzer III",
+        "aliases": [
+          "Pz III",
+          "Panzer 3"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "Panzer II",
+        "aliases": [
+          "Pz II"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Panzer I",
+        "aliases": [
+          "Pz I"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "StuG III",
+        "aliases": [
+          "Sturmgeschütz III",
+          "StuG"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "Elefant",
+        "aliases": [
+          "Ferdinand"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Jagdpanther",
+        "aliases": [],
+        "weight": 0.55
+      },
+      {
+        "name": "Hetzer",
+        "aliases": [
+          "Jagdpanzer 38",
+          "Jagdpanzer 38(t)"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Sd.Kfz. 251",
+        "aliases": [
+          "Sdkfz 251",
+          "Hanomag"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Maus",
+        "aliases": [
+          "Panzer VIII Maus"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Nashorn",
+        "aliases": [
+          "Hornisse"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Wespe",
+        "aliases": [
+          "Sd.Kfz. 124"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Hummel",
+        "aliases": [
+          "Sd.Kfz. 165"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Sd.Kfz. 234",
+        "aliases": [
+          "Puma",
+          "Sd.Kfz. 234/2 Puma"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Brummbär",
+        "aliases": [
+          "Sturmpanzer IV"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Jagdtiger",
+        "aliases": [
+          "Sd.Kfz. 186"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Marder III",
+        "aliases": [
+          "Marder"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Panzer 38(t)",
+        "aliases": [
+          "Pz 38(t)",
+          "LT vz. 38"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Sd.Kfz. 222",
+        "aliases": [
+          "Sdkfz 222"
+        ],
+        "weight": 0.9
+      }
+    ],
+    "detail": "Tanks, assault guns, tank destroyers, half-tracks or armoured cars.",
+    "fact": "The Tiger I's 88mm gun could destroy most Allied tanks at ranges beyond 1,500 metres."
+  },
+  {
+    "id": "gnd-ww2-soviet-vehicles",
+    "mode": "Ground",
+    "text": "Name a Soviet armoured vehicle from World War II.",
+    "answers": [
+      {
+        "name": "T-34",
+        "aliases": [
+          "T-34-76",
+          "T-34-85"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "KV-1",
+        "aliases": [
+          "Kliment Voroshilov"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "IS-2",
+        "aliases": [],
+        "weight": 0.3
+      },
+      {
+        "name": "KV-2",
+        "aliases": [],
+        "weight": 0.55
+      },
+      {
+        "name": "SU-85",
+        "aliases": [
+          "SU85"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "SU-100",
+        "aliases": [
+          "SU100"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "ISU-152",
+        "aliases": [
+          "ISU 152",
+          "Beast Killer",
+          "Zveroboy"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "SU-76",
+        "aliases": [
+          "SU76"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "T-26",
+        "aliases": [
+          "T26"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "BT-7",
+        "aliases": [
+          "BT7"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "T-70",
+        "aliases": [
+          "T70"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "IS-3",
+        "aliases": [
+          "IS3"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "T-60",
+        "aliases": [
+          "T60"
+        ],
+        "weight": 0.9
+      },
+      {
+        "name": "BA-64",
+        "aliases": [
+          "BA64"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "T-35",
+        "aliases": [
+          "T35"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "SU-152",
+        "aliases": [
+          "SU152"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "BT-5",
+        "aliases": [
+          "BT5"
+        ],
+        "weight": 0.9
+      },
+      {
+        "name": "T-28",
+        "aliases": [
+          "T28"
+        ],
+        "weight": 0.9
+      }
+    ],
+    "detail": "Tanks, assault guns and armoured cars.",
+    "fact": "More than 84,000 T-34s of all variants were built, the second most produced tank in history."
+  },
+  {
+    "id": "gnd-ww2-us-vehicles",
+    "mode": "Ground",
+    "text": "Name a United States armoured or tactical vehicle from World War II.",
+    "answers": [
+      {
+        "name": "M4 Sherman",
+        "aliases": [
+          "Sherman",
+          "M4"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "M26 Pershing",
+        "aliases": [
+          "Pershing",
+          "M26"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "M3 Lee",
+        "aliases": [
+          "Lee",
+          "M3 Grant",
+          "Grant"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "M5 Stuart",
+        "aliases": [
+          "Stuart",
+          "M3 Stuart"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "M10 Wolverine",
+        "aliases": [
+          "Wolverine",
+          "M10"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "M18 Hellcat",
+        "aliases": [
+          "Hellcat",
+          "M18"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "M36 Jackson",
+        "aliases": [
+          "Jackson",
+          "M36"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "M24 Chaffee",
+        "aliases": [
+          "Chaffee",
+          "M24"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "M8 Greyhound",
+        "aliases": [
+          "Greyhound",
+          "M8"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "M3 Half-track",
+        "aliases": [
+          "M3 halftrack",
+          "Half-track"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Willys Jeep",
+        "aliases": [
+          "Jeep",
+          "Willys MB"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "M7 Priest",
+        "aliases": [
+          "Priest",
+          "M7"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "DUKW",
+        "aliases": [
+          "GMC DUKW",
+          "Duck"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "M29 Weasel",
+        "aliases": [
+          "Weasel"
+        ],
+        "weight": 0.9
+      },
+      {
+        "name": "M4 Sherman Calliope",
+        "aliases": [
+          "T34 Calliope",
+          "Calliope"
+        ],
+        "weight": 1.0
+      },
+      {
+        "name": "M2 Half-track",
+        "aliases": [
+          "M2"
+        ],
+        "weight": 1.0
+      },
+      {
+        "name": "M40 Gun Motor Carriage",
+        "aliases": [
+          "M40 GMC"
+        ],
+        "weight": 1.0
+      }
+    ],
+    "detail": "Tanks, tank destroyers, half-tracks and utility vehicles.",
+    "fact": "Roughly 49,000 M4 Shermans were built, and they equipped US, British and Soviet forces."
+  },
+  {
+    "id": "gnd-ww2-british-vehicles",
+    "mode": "Ground",
+    "text": "Name a British armoured vehicle from World War II.",
+    "answers": [
+      {
+        "name": "Churchill",
+        "aliases": [
+          "Churchill tank",
+          "A22"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "Cromwell",
+        "aliases": [
+          "A27M",
+          "Cromwell tank"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "Crusader",
+        "aliases": [
+          "A15",
+          "Crusader tank"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Matilda II",
+        "aliases": [
+          "Matilda",
+          "A12"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "Valentine",
+        "aliases": [
+          "Valentine tank",
+          "Infantry Tank Mk III"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Comet",
+        "aliases": [
+          "A34",
+          "Comet tank"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Sherman Firefly",
+        "aliases": [
+          "Firefly"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "Challenger",
+        "aliases": [
+          "A30",
+          "A30 Challenger"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Universal Carrier",
+        "aliases": [
+          "Bren Carrier",
+          "Bren gun carrier"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Daimler Dingo",
+        "aliases": [
+          "Dingo",
+          "Scout Car Dingo"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Archer",
+        "aliases": [
+          "17pdr SP Valentine"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Covenanter",
+        "aliases": [
+          "A13 Mk III"
+        ],
+        "weight": 0.9
+      },
+      {
+        "name": "Tetrarch",
+        "aliases": [
+          "A17",
+          "Light Tank Mk VII"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Centaur",
+        "aliases": [
+          "A27L",
+          "Centaur tank"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Black Prince",
+        "aliases": [
+          "A43"
+        ],
+        "weight": 0.9
+      },
+      {
+        "name": "Daimler Armoured Car",
+        "aliases": [
+          "Daimler"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "AEC Armoured Car",
+        "aliases": [
+          "AEC"
+        ],
+        "weight": 0.9
+      },
+      {
+        "name": "Humber Armoured Car",
+        "aliases": [
+          "Humber"
+        ],
+        "weight": 0.9
+      }
+    ],
+    "detail": "Tanks, tank destroyers and carriers.",
+    "fact": "The Sherman Firefly mounted the 17-pounder, one of the few Allied guns that could reliably defeat a Tiger."
+  },
+  {
+    "id": "gnd-cold-war-tanks",
+    "mode": "Ground",
+    "text": "Name a Cold War era main battle tank.",
+    "answers": [
+      {
+        "name": "M48 Patton",
+        "aliases": [
+          "M48"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "M60 Patton",
+        "aliases": [
+          "M60"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "Centurion",
+        "aliases": [
+          "FV4007"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "Chieftain",
+        "aliases": [
+          "FV4201"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "T-54",
+        "aliases": [
+          "T54"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "T-55",
+        "aliases": [
+          "T55"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "T-62",
+        "aliases": [
+          "T62"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "T-64",
+        "aliases": [
+          "T64"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "T-72",
+        "aliases": [
+          "T72"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "T-80",
+        "aliases": [
+          "T80"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "Leopard 1",
+        "aliases": [
+          "Leopard I"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "AMX-30",
+        "aliases": [
+          "AMX 30"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Strv 103",
+        "aliases": [
+          "S-tank",
+          "S Tank",
+          "Stridsvagn 103"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "M47 Patton",
+        "aliases": [
+          "M47"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Olifant",
+        "aliases": [],
+        "weight": 0.85
+      },
+      {
+        "name": "Merkava Mk 1",
+        "aliases": [
+          "Merkava I",
+          "Merkava 1"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Pz 61",
+        "aliases": [
+          "Panzer 61"
+        ],
+        "weight": 0.9
+      },
+      {
+        "name": "Pz 68",
+        "aliases": [
+          "Panzer 68"
+        ],
+        "weight": 0.9
+      },
+      {
+        "name": "Vickers MBT",
+        "aliases": [
+          "Vickers Mk 3",
+          "Vickers Main Battle Tank"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "TAM",
+        "aliases": [
+          "Tanque Argentino Mediano"
+        ],
+        "weight": 0.9
+      },
+      {
+        "name": "T-10",
+        "aliases": [
+          "IS-8"
+        ],
+        "weight": 0.9
+      },
+      {
+        "name": "Type 59",
+        "aliases": [
+          "Type-59"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "M1 Abrams",
+        "aliases": [
+          "M1",
+          "Abrams"
+        ],
+        "weight": 0.1
+      }
+    ],
+    "detail": "Any country, 1947 to 1991.",
+    "fact": "The Swedish Strv 103 'S-tank' had no turret: the whole hull aimed the gun."
+  },
+  {
+    "id": "gnd-thermobaric-flame",
+    "mode": "Ground",
+    "text": "Name a thermobaric or flame weapon system.",
+    "answers": [
+      {
+        "name": "TOS-1A Solntsepyok",
+        "aliases": [
+          "TOS-1A",
+          "Solntsepyok"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "TOS-1 Buratino",
+        "aliases": [
+          "TOS-1",
+          "Buratino"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "TOS-2 Tosochka",
+        "aliases": [
+          "TOS-2",
+          "Tosochka"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "RPO-A Shmel",
+        "aliases": [
+          "Shmel",
+          "RPO-A",
+          "RPO-Z"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "LPO-50",
+        "aliases": [
+          "LPO 50"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "M2 flamethrower",
+        "aliases": [
+          "M2-2",
+          "M2 flame thrower"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "M9 flamethrower",
+        "aliases": [
+          "M9-7"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Flammenwerfer 35",
+        "aliases": [
+          "FmW 35"
+        ],
+        "weight": 0.9
+      },
+      {
+        "name": "ROKS-3",
+        "aliases": [
+          "ROKS 3"
+        ],
+        "weight": 0.9
+      },
+      {
+        "name": "MZ-3",
+        "aliases": [
+          "MZ3"
+        ],
+        "weight": 1.0
+      },
+      {
+        "name": "M202 FLASH",
+        "aliases": [
+          "M202A1",
+          "M202"
+        ],
+        "weight": 0.7
+      }
+    ],
+    "detail": "Rocket launchers, vehicles and flamethrowers.",
+    "fact": "The TOS-1A Solntsepyok mounts 24 thermobaric rocket tubes on a T-72 chassis."
+  },
+  {
+    "id": "gnd-russian-wheeled-armour",
+    "mode": "Ground",
+    "text": "Name a Soviet or Russian wheeled armoured vehicle.",
+    "answers": [
+      {
+        "name": "BTR-80",
+        "aliases": [
+          "BTR 80"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "BTR-82A",
+        "aliases": [
+          "BTR-82"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "BTR-60",
+        "aliases": [
+          "BTR 60"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "BTR-70",
+        "aliases": [
+          "BTR 70"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "BRDM-2",
+        "aliases": [
+          "BRDM 2"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "Tigr",
+        "aliases": [
+          "GAZ Tigr",
+          "GAZ-2330"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "Typhoon-K",
+        "aliases": [
+          "Kamaz Typhoon",
+          "Typhoon"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "BTR-90",
+        "aliases": [
+          "BTR 90"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "BTR-152",
+        "aliases": [
+          "BTR 152"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "BRDM-1",
+        "aliases": [
+          "BRDM 1"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Vodnik",
+        "aliases": [
+          "GAZ Vodnik",
+          "GAZ-39371"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "BTR-40",
+        "aliases": [
+          "BTR 40"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "K-4386 Typhoon-VDV",
+        "aliases": [
+          "K-4386"
+        ],
+        "weight": 0.9
+      },
+      {
+        "name": "Patrul",
+        "aliases": [
+          "GAZ-233034"
+        ],
+        "weight": 1.0
+      },
+      {
+        "name": "Linza",
+        "aliases": [
+          "Linza APC"
+        ],
+        "weight": 1.0
+      },
+      {
+        "name": "BTR-3",
+        "aliases": [],
+        "weight": 1.0
+      }
+    ],
+    "detail": "APCs, armoured cars and MRAP-type vehicles.",
+    "fact": "The BTR-60 series was the first Soviet wheeled APC to carry its crew inside a fully enclosed hull."
+  },
+  {
+    "id": "gnd-ukrainian-systems",
+    "mode": "Ground",
+    "text": "Name a Ukrainian-designed vehicle or weapon system.",
+    "answers": [
+      {
+        "name": "T-84 Oplot",
+        "aliases": [
+          "Oplot",
+          "T-84"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "T-64BM Bulat",
+        "aliases": [
+          "Bulat",
+          "T-64BM"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "BTR-4",
+        "aliases": [
+          "Bucephalus",
+          "BTR-4 Bucephalus"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Stugna-P",
+        "aliases": [
+          "Stugna"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Neptune",
+        "aliases": [
+          "R-360 Neptune",
+          "Flamingo"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "2S22 Bohdana",
+        "aliases": [
+          "Bohdana",
+          "Bogdana"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "BTR-3",
+        "aliases": [
+          "BTR-3E"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Dozor-B",
+        "aliases": [
+          "Dozor"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Hrim-2",
+        "aliases": [
+          "Grom-2",
+          "Sapsan"
+        ],
+        "weight": 0.9
+      },
+      {
+        "name": "Vilkha",
+        "aliases": [
+          "RSZV Vilkha",
+          "Vilha"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Barrier",
+        "aliases": [
+          "Barrier-V"
+        ],
+        "weight": 1.0
+      },
+      {
+        "name": "Alder",
+        "aliases": [
+          "Olkha"
+        ],
+        "weight": 1.0
+      },
+      {
+        "name": "Kozak",
+        "aliases": [
+          "Kozak-2"
+        ],
+        "weight": 1.0
+      },
+      {
+        "name": "Korsar",
+        "aliases": [],
+        "weight": 0.9
+      }
+    ],
+    "detail": "Tanks, IFVs, missiles, artillery and anti-tank systems.",
+    "fact": "The Neptune anti-ship missile gained wide attention when it was used against a Russian cruiser in 2022."
+  },
+  {
+    "id": "gnd-turkish-systems",
+    "mode": "Ground",
+    "text": "Name a Turkish-designed armoured vehicle or weapon.",
+    "answers": [
+      {
+        "name": "Altay",
+        "aliases": [
+          "Altay tank"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "T-155 Fırtına",
+        "aliases": [
+          "Firtina",
+          "T-155",
+          "T155"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "Kirpi",
+        "aliases": [
+          "Kirpi MRAP"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Cobra",
+        "aliases": [
+          "Otokar Cobra",
+          "Cobra II"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Tulpar",
+        "aliases": [
+          "Otokar Tulpar"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "FNSS Pars",
+        "aliases": [
+          "Pars",
+          "Pars 8x8"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Ejder Yalçın",
+        "aliases": [
+          "Ejder Yalcin",
+          "Nurol Ejder Yalçın"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Vuran",
+        "aliases": [
+          "Nurol Vuran"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Kaplan MT",
+        "aliases": [
+          "Kaplan"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Hizir",
+        "aliases": [
+          "Hızır"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "ACV-15",
+        "aliases": [
+          "ACV 15"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Bora",
+        "aliases": [
+          "T-122 Sakarya"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Tayfun",
+        "aliases": [],
+        "weight": 0.85
+      },
+      {
+        "name": "Atmaca",
+        "aliases": [],
+        "weight": 0.9
+      }
+    ],
+    "detail": "Tanks, APCs, howitzers and mine-protected vehicles.",
+    "fact": "The T-155 Fırtına is a license-built Korean K9 variant with Turkish upgrades."
+  },
+  {
+    "id": "gnd-us-artillery",
+    "mode": "Ground",
+    "text": "Name a United States artillery or rocket system.",
+    "answers": [
+      {
+        "name": "M109 Paladin",
+        "aliases": [
+          "M109",
+          "Paladin"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "M777",
+        "aliases": [
+          "M777 howitzer"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "M270 MLRS",
+        "aliases": [
+          "M270",
+          "MLRS"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "M142 HIMARS",
+        "aliases": [
+          "HIMARS"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "M198",
+        "aliases": [
+          "M198 howitzer"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "M119",
+        "aliases": [
+          "M119 howitzer"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "M110",
+        "aliases": [
+          "M110 howitzer"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "M102",
+        "aliases": [
+          "M102 howitzer"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "M101",
+        "aliases": [
+          "M101 howitzer"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "M107",
+        "aliases": [
+          "M107 gun"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "M114",
+        "aliases": [
+          "M114 howitzer"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "M44",
+        "aliases": [
+          "M44 SPH"
+        ],
+        "weight": 0.9
+      },
+      {
+        "name": "M55",
+        "aliases": [
+          "M55 SPH"
+        ],
+        "weight": 0.9
+      },
+      {
+        "name": "M108",
+        "aliases": [
+          "M108 SPH"
+        ],
+        "weight": 0.9
+      },
+      {
+        "name": "Crusader",
+        "aliases": [
+          "XM2001"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Paladin PIM",
+        "aliases": [
+          "M109A7"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "M7 Priest",
+        "aliases": [
+          "Priest"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "M12 Gun Motor Carriage",
+        "aliases": [
+          "M12"
+        ],
+        "weight": 1.0
+      }
+    ],
+    "detail": "Towed or self-propelled, past or present.",
+    "fact": "The M777 weighs under 4,200 kg thanks to titanium, making it air-portable by helicopter."
+  },
+  {
+    "id": "gnd-cartridges",
+    "mode": "Ground",
+    "text": "Name a military cartridge or round.",
+    "answers": [
+      {
+        "name": "5.56x45mm",
+        "aliases": [
+          "5.56 NATO",
+          "5.56",
+          ".223"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "7.62x51mm",
+        "aliases": [
+          "7.62 NATO",
+          ".308",
+          ".308 Winchester"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "9x19mm",
+        "aliases": [
+          "9mm Parabellum",
+          "9mm Luger",
+          "9mm"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": ".50 BMG",
+        "aliases": [
+          "12.7x99mm",
+          ".50 Browning"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "5.45x39mm",
+        "aliases": [
+          "5.45"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "7.62x39mm",
+        "aliases": [
+          "7.62 Soviet",
+          "M43"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "7.62x54R",
+        "aliases": [
+          "7.62x54mmR",
+          "7.62R"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": ".45 ACP",
+        "aliases": [
+          ".45 Auto",
+          ".45"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "12.7x108mm",
+        "aliases": [
+          "12.7x108",
+          "12.7 Russian"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": ".338 Lapua Magnum",
+        "aliases": [
+          ".338 Lapua",
+          ".338"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": ".300 Winchester Magnum",
+        "aliases": [
+          ".300 Win Mag",
+          ".300 WM"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "9x18mm Makarov",
+        "aliases": [
+          "9x18",
+          "9mm Makarov"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "5.8x42mm",
+        "aliases": [
+          "5.8x42"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "7.92x57mm Mauser",
+        "aliases": [
+          "8mm Mauser",
+          "7.92 Mauser"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": ".303 British",
+        "aliases": [
+          ".303"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": ".30-06 Springfield",
+        "aliases": [
+          ".30-06",
+          "30-06"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "14.5x114mm",
+        "aliases": [
+          "14.5mm",
+          "14.5x114"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "4.6x30mm",
+        "aliases": [
+          "4.6x30"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "5.7x28mm",
+        "aliases": [
+          "5.7x28"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "6.8x51mm",
+        "aliases": [
+          ".277 Fury",
+          "6.8 Common"
+        ],
+        "weight": 1.0
+      },
+      {
+        "name": ".300 Blackout",
+        "aliases": [
+          ".300 AAC Blackout",
+          "300 BLK"
+        ],
+        "weight": 0.9
+      },
+      {
+        "name": ".416 Barrett",
+        "aliases": [
+          ".416"
+        ],
+        "weight": 1.0
+      }
+    ],
+    "detail": "Small arms, machine guns or heavy machine guns.",
+    "fact": "The 7.62x51mm NATO round is a short version of the .308 Winchester."
+  },
+  {
+    "id": "gnd-ugv",
+    "mode": "Ground",
+    "text": "Name an unmanned ground vehicle or military robot.",
+    "answers": [
+      {
+        "name": "PackBot",
+        "aliases": [
+          "iRobot PackBot",
+          "510 PackBot"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "TALON",
+        "aliases": [
+          "Foster-Miller TALON"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "THeMIS",
+        "aliases": [
+          "Milrem THeMIS"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Uran-9",
+        "aliases": [
+          "Uran 9"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Uran-6",
+        "aliases": [
+          "Uran 6"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Dragon Runner",
+        "aliases": [
+          "Dragon Runner 20"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "MAARS",
+        "aliases": [],
+        "weight": 0.85
+      },
+      {
+        "name": "Gladiator",
+        "aliases": [
+          "Gladiator TUGV"
+        ],
+        "weight": 0.9
+      },
+      {
+        "name": "Vision 60",
+        "aliases": [
+          "Ghost Robotics Vision 60",
+          "Q-UGV"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Spot",
+        "aliases": [
+          "Boston Dynamics Spot"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Dogo",
+        "aliases": [
+          "Dogo UGV"
+        ],
+        "weight": 0.9
+      },
+      {
+        "name": "MUTT",
+        "aliases": [
+          "Multifunction Utility/Logistics and Equipment"
+        ],
+        "weight": 0.9
+      },
+      {
+        "name": "Type-X",
+        "aliases": [
+          "Milrem Type-X",
+          "Type X"
+        ],
+        "weight": 0.9
+      }
+    ],
+    "detail": "Tracked or wheeled robots used by armies.",
+    "fact": "PackBot robots were used to search caves and bunkers in Afghanistan."
+  },
+  {
+    "id": "air-f15-users",
+    "mode": "Air",
+    "text": "Name a country that operates the F-15 fighter.",
+    "answers": [
+      {
+        "name": "United States",
+        "aliases": [
+          "USA",
+          "US",
+          "America",
+          "United States of America"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "Israel",
+        "aliases": [],
+        "weight": 0.3
+      },
+      {
+        "name": "Japan",
+        "aliases": [],
+        "weight": 0.3
+      },
+      {
+        "name": "Saudi Arabia",
+        "aliases": [
+          "Saudi"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "South Korea",
+        "aliases": [
+          "Korea",
+          "Republic of Korea"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Singapore",
+        "aliases": [],
+        "weight": 0.7
+      },
+      {
+        "name": "Qatar",
+        "aliases": [],
+        "weight": 0.7
+      },
+      {
+        "name": "Indonesia",
+        "aliases": [],
+        "weight": 1.0
+      }
+    ],
+    "detail": "Current operators of any F-15 variant.",
+    "fact": "The F-15 has scored more than 100 air-to-air kills with no air-to-air losses."
+  },
+  {
+    "id": "air-f16-users",
+    "mode": "Air",
+    "text": "Name a country that operates the F-16 Fighting Falcon.",
+    "answers": [
+      {
+        "name": "United States",
+        "aliases": [
+          "USA",
+          "US",
+          "America",
+          "United States of America"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "Turkey",
+        "aliases": [
+          "Türkiye"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "Israel",
+        "aliases": [],
+        "weight": 0.3
+      },
+      {
+        "name": "Egypt",
+        "aliases": [],
+        "weight": 0.3
+      },
+      {
+        "name": "Greece",
+        "aliases": [
+          "Hellas"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "Poland",
+        "aliases": [
+          "Polska"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Netherlands",
+        "aliases": [
+          "Holland"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Belgium",
+        "aliases": [],
+        "weight": 0.55
+      },
+      {
+        "name": "Denmark",
+        "aliases": [
+          "Danmark"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Norway",
+        "aliases": [
+          "Norge"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Portugal",
+        "aliases": [],
+        "weight": 0.55
+      },
+      {
+        "name": "Romania",
+        "aliases": [],
+        "weight": 0.55
+      },
+      {
+        "name": "Pakistan",
+        "aliases": [],
+        "weight": 0.3
+      },
+      {
+        "name": "Jordan",
+        "aliases": [],
+        "weight": 0.7
+      },
+      {
+        "name": "Bahrain",
+        "aliases": [],
+        "weight": 0.7
+      },
+      {
+        "name": "United Arab Emirates",
+        "aliases": [
+          "UAE",
+          "Emirates"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Taiwan",
+        "aliases": [],
+        "weight": 0.55
+      },
+      {
+        "name": "Thailand",
+        "aliases": [],
+        "weight": 0.7
+      },
+      {
+        "name": "Singapore",
+        "aliases": [],
+        "weight": 0.55
+      },
+      {
+        "name": "South Korea",
+        "aliases": [
+          "Korea"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Indonesia",
+        "aliases": [],
+        "weight": 0.7
+      },
+      {
+        "name": "Chile",
+        "aliases": [],
+        "weight": 0.7
+      },
+      {
+        "name": "Morocco",
+        "aliases": [],
+        "weight": 0.7
+      },
+      {
+        "name": "Oman",
+        "aliases": [],
+        "weight": 0.7
+      },
+      {
+        "name": "Iraq",
+        "aliases": [],
+        "weight": 0.7
+      },
+      {
+        "name": "Venezuela",
+        "aliases": [],
+        "weight": 0.85
+      },
+      {
+        "name": "Ukraine",
+        "aliases": [],
+        "weight": 0.7
+      },
+      {
+        "name": "Slovakia",
+        "aliases": [],
+        "weight": 0.85
+      },
+      {
+        "name": "Bulgaria",
+        "aliases": [],
+        "weight": 0.85
+      },
+      {
+        "name": "Italy",
+        "aliases": [],
+        "weight": 0.9
+      },
+      {
+        "name": "Argentina",
+        "aliases": [],
+        "weight": 0.9
+      },
+      {
+        "name": "Croatia",
+        "aliases": [],
+        "weight": 1.0
+      }
+    ],
+    "detail": "Current or former operators.",
+    "fact": "More than 4,600 F-16s have been built, and over 25 countries have flown them."
+  },
+  {
+    "id": "air-f35-users",
+    "mode": "Air",
+    "text": "Name a country that operates or has received the F-35 Lightning II.",
+    "answers": [
+      {
+        "name": "United States",
+        "aliases": [
+          "USA",
+          "US",
+          "America",
+          "United States of America"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "United Kingdom",
+        "aliases": [
+          "UK",
+          "Britain",
+          "Great Britain"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "Italy",
+        "aliases": [],
+        "weight": 0.3
+      },
+      {
+        "name": "Netherlands",
+        "aliases": [
+          "Holland"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Norway",
+        "aliases": [
+          "Norge"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Denmark",
+        "aliases": [
+          "Danmark"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Israel",
+        "aliases": [],
+        "weight": 0.3
+      },
+      {
+        "name": "Japan",
+        "aliases": [],
+        "weight": 0.3
+      },
+      {
+        "name": "South Korea",
+        "aliases": [
+          "Korea"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Australia",
+        "aliases": [],
+        "weight": 0.3
+      },
+      {
+        "name": "Canada",
+        "aliases": [],
+        "weight": 0.85
+      },
+      {
+        "name": "Belgium",
+        "aliases": [],
+        "weight": 0.85
+      },
+      {
+        "name": "Poland",
+        "aliases": [
+          "Polska"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Singapore",
+        "aliases": [],
+        "weight": 0.9
+      },
+      {
+        "name": "Finland",
+        "aliases": [
+          "Suomi"
+        ],
+        "weight": 1.0
+      },
+      {
+        "name": "Switzerland",
+        "aliases": [
+          "Schweiz"
+        ],
+        "weight": 1.0
+      },
+      {
+        "name": "Germany",
+        "aliases": [],
+        "weight": 1.0
+      },
+      {
+        "name": "Czech Republic",
+        "aliases": [
+          "Czechia"
+        ],
+        "weight": 1.0
+      }
+    ],
+    "detail": "Operators in service, any variant.",
+    "fact": "The F-35 is built in three versions: A (conventional), B (short take-off/vertical landing) and C (carrier)."
+  },
+  {
+    "id": "air-mig29-users",
+    "mode": "Air",
+    "text": "Name a country that operates or has operated the MiG-29.",
+    "answers": [
+      {
+        "name": "Russia",
+        "aliases": [
+          "Russian Federation"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "India",
+        "aliases": [],
+        "weight": 0.3
+      },
+      {
+        "name": "Poland",
+        "aliases": [
+          "Polska"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Ukraine",
+        "aliases": [],
+        "weight": 0.3
+      },
+      {
+        "name": "Iran",
+        "aliases": [],
+        "weight": 0.55
+      },
+      {
+        "name": "Syria",
+        "aliases": [],
+        "weight": 0.55
+      },
+      {
+        "name": "Algeria",
+        "aliases": [],
+        "weight": 0.7
+      },
+      {
+        "name": "Serbia",
+        "aliases": [],
+        "weight": 0.7
+      },
+      {
+        "name": "Bulgaria",
+        "aliases": [],
+        "weight": 0.7
+      },
+      {
+        "name": "Slovakia",
+        "aliases": [],
+        "weight": 0.7
+      },
+      {
+        "name": "Belarus",
+        "aliases": [],
+        "weight": 0.7
+      },
+      {
+        "name": "North Korea",
+        "aliases": [],
+        "weight": 0.7
+      },
+      {
+        "name": "Peru",
+        "aliases": [],
+        "weight": 0.85
+      },
+      {
+        "name": "Cuba",
+        "aliases": [],
+        "weight": 0.85
+      },
+      {
+        "name": "Myanmar",
+        "aliases": [
+          "Burma"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Hungary",
+        "aliases": [],
+        "weight": 0.85
+      },
+      {
+        "name": "Germany",
+        "aliases": [],
+        "weight": 0.7
+      },
+      {
+        "name": "Czech Republic",
+        "aliases": [
+          "Czechia",
+          "Czechoslovakia"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Moldova",
+        "aliases": [],
+        "weight": 0.9
+      },
+      {
+        "name": "Romania",
+        "aliases": [],
+        "weight": 0.9
+      },
+      {
+        "name": "Eritrea",
+        "aliases": [],
+        "weight": 0.9
+      },
+      {
+        "name": "Yemen",
+        "aliases": [],
+        "weight": 0.9
+      },
+      {
+        "name": "Iraq",
+        "aliases": [],
+        "weight": 0.85
+      }
+    ],
+    "detail": "Any operator, current or former.",
+    "fact": "The MiG-29 first flew in 1977 and was designed in response to the F-15 and F-16."
+  },
+  {
+    "id": "air-sukhoi-jets",
+    "mode": "Air",
+    "text": "Name a Sukhoi jet.",
+    "answers": [
+      {
+        "name": "Su-27",
+        "aliases": [
+          "Su27",
+          "Flanker"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "Su-30",
+        "aliases": [
+          "Su30",
+          "Flanker-C"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "Su-35",
+        "aliases": [
+          "Su35"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "Su-25",
+        "aliases": [
+          "Su25",
+          "Frogfoot"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "Su-34",
+        "aliases": [
+          "Su34",
+          "Fullback"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "Su-57",
+        "aliases": [
+          "Su57",
+          "Felon"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "Su-24",
+        "aliases": [
+          "Su24",
+          "Fencer"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "Su-33",
+        "aliases": [
+          "Su33",
+          "Sea Flanker"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "Su-22",
+        "aliases": [
+          "Su22",
+          "Fitter"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Su-17",
+        "aliases": [
+          "Su17"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Su-15",
+        "aliases": [
+          "Su15",
+          "Flagon"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Su-9",
+        "aliases": [
+          "Su9",
+          "Fishpot"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Su-7",
+        "aliases": [
+          "Su7",
+          "Fitter-A"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Su-47",
+        "aliases": [
+          "Su47",
+          "Berkut"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Su-75",
+        "aliases": [
+          "Su75",
+          "Checkmate"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Su-11",
+        "aliases": [
+          "Su11",
+          "Fishpot-C"
+        ],
+        "weight": 1.0
+      },
+      {
+        "name": "Su-100",
+        "aliases": [
+          "T-4",
+          "Sotka"
+        ],
+        "weight": 0.9
+      }
+    ],
+    "detail": "Any Su-series aircraft, including prototypes and variants.",
+    "fact": "Sukhoi's Su-27 family has produced the Su-30, Su-33, Su-34, Su-35 and Su-57."
+  },
+  {
+    "id": "air-mig-jets",
+    "mode": "Air",
+    "text": "Name a MiG fighter or interceptor.",
+    "answers": [
+      {
+        "name": "MiG-29",
+        "aliases": [
+          "MiG29",
+          "Fulcrum"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "MiG-21",
+        "aliases": [
+          "MiG21",
+          "Fishbed"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "MiG-15",
+        "aliases": [
+          "MiG15",
+          "Fagot"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "MiG-17",
+        "aliases": [
+          "MiG17",
+          "Fresco"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "MiG-23",
+        "aliases": [
+          "MiG23",
+          "Flogger"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "MiG-25",
+        "aliases": [
+          "MiG25",
+          "Foxbat"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "MiG-31",
+        "aliases": [
+          "MiG31",
+          "Foxhound"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "MiG-19",
+        "aliases": [
+          "MiG19",
+          "Farmer"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "MiG-35",
+        "aliases": [
+          "MiG35"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "MiG-27",
+        "aliases": [
+          "MiG27"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "MiG-3",
+        "aliases": [
+          "MiG3"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "MiG-9",
+        "aliases": [
+          "MiG9",
+          "Fargo"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "MiG-1",
+        "aliases": [
+          "MiG1"
+        ],
+        "weight": 0.9
+      },
+      {
+        "name": "MiG-1.44",
+        "aliases": [
+          "MiG 1.44",
+          "MFI"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "MiG-33",
+        "aliases": [
+          "MiG33"
+        ],
+        "weight": 1.0
+      }
+    ],
+    "detail": "Mikoyan-Gurevich aircraft, any era.",
+    "fact": "The MiG-15 shocked the West in the Korean War and prompted the creation of the F-86 Sabre."
+  },
+  {
+    "id": "air-ww1-aircraft",
+    "mode": "Air",
+    "text": "Name an aircraft flown in World War I.",
+    "answers": [
+      {
+        "name": "Sopwith Camel",
+        "aliases": [
+          "Camel"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "Fokker Dr.I",
+        "aliases": [
+          "Fokker Triplane",
+          "Dr.I",
+          "Fokker Dr1"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "SPAD S.XIII",
+        "aliases": [
+          "SPAD XIII",
+          "SPAD 13",
+          "SPAD"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "Albatros D.V",
+        "aliases": [
+          "Albatros DV",
+          "Albatros D.III",
+          "Albatros"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Fokker D.VII",
+        "aliases": [
+          "Fokker DVII",
+          "D.VII"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "Sopwith Pup",
+        "aliases": [
+          "Pup"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "S.E.5a",
+        "aliases": [
+          "SE5a",
+          "SE5"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "Nieuport 17",
+        "aliases": [
+          "Nieuport"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Handley Page O/400",
+        "aliases": [
+          "Handley Page",
+          "O/400"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Gotha G.V",
+        "aliases": [
+          "Gotha"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "B.E.2",
+        "aliases": [
+          "BE2",
+          "Royal Aircraft Factory B.E.2"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Fokker E.III",
+        "aliases": [
+          "Eindecker",
+          "Fokker Eindecker"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Bristol F.2b",
+        "aliases": [
+          "Bristol Fighter",
+          "F2b"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Sopwith Triplane",
+        "aliases": [
+          "Triplane"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Pfalz D.III",
+        "aliases": [
+          "Pfalz"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Airco DH.4",
+        "aliases": [
+          "DH4",
+          "DH.4"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Caproni Ca.3",
+        "aliases": [
+          "Caproni"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Zeppelin-Staaken R.VI",
+        "aliases": [
+          "Giant",
+          "Staaken R.VI"
+        ],
+        "weight": 1.0
+      },
+      {
+        "name": "Sopwith 1½ Strutter",
+        "aliases": [
+          "Strutter"
+        ],
+        "weight": 0.9
+      },
+      {
+        "name": "Fokker D.VIII",
+        "aliases": [
+          "Flying Razor"
+        ],
+        "weight": 1.0
+      }
+    ],
+    "detail": "Any side: fighters, bombers or reconnaissance types.",
+    "fact": "The Fokker Dr.I triplane is best known as the aircraft of Manfred von Richthofen."
+  },
+  {
+    "id": "air-ww2-bombers",
+    "mode": "Air",
+    "text": "Name a bomber used in World War II.",
+    "answers": [
+      {
+        "name": "B-17 Flying Fortress",
+        "aliases": [
+          "B-17",
+          "Flying Fortress"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "B-24 Liberator",
+        "aliases": [
+          "B-24",
+          "Liberator"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "B-29 Superfortress",
+        "aliases": [
+          "B-29",
+          "Superfortress"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "Avro Lancaster",
+        "aliases": [
+          "Lancaster"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "Handley Page Halifax",
+        "aliases": [
+          "Halifax"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "Short Stirling",
+        "aliases": [
+          "Stirling"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "de Havilland Mosquito",
+        "aliases": [
+          "Mosquito"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "Heinkel He 111",
+        "aliases": [
+          "He 111",
+          "He111"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "Junkers Ju 88",
+        "aliases": [
+          "Ju 88",
+          "Ju88"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "Dornier Do 17",
+        "aliases": [
+          "Do 17",
+          "Do17",
+          "Flying Pencil"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "B-25 Mitchell",
+        "aliases": [
+          "B-25",
+          "Mitchell"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "B-26 Marauder",
+        "aliases": [
+          "B-26",
+          "Marauder"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Vickers Wellington",
+        "aliases": [
+          "Wellington"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Tupolev Tu-2",
+        "aliases": [
+          "Tu-2",
+          "Tu2"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Petlyakov Pe-2",
+        "aliases": [
+          "Pe-2",
+          "Pe2"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Junkers Ju 87 Stuka",
+        "aliases": [
+          "Ju 87",
+          "Stuka",
+          "Ju87"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "Mitsubishi G4M",
+        "aliases": [
+          "G4M",
+          "Betty"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Mitsubishi G3M",
+        "aliases": [
+          "G3M",
+          "Nell"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Ilyushin Il-4",
+        "aliases": [
+          "Il-4",
+          "Il4"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Douglas A-20 Havoc",
+        "aliases": [
+          "A-20",
+          "Havoc",
+          "Boston"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Blenheim",
+        "aliases": [
+          "Bristol Blenheim"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Heinkel He 177",
+        "aliases": [
+          "He 177",
+          "Greif"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Ar 234",
+        "aliases": [
+          "Arado Ar 234",
+          "Blitz"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Nakajima Ki-49",
+        "aliases": [
+          "Ki-49",
+          "Helen"
+        ],
+        "weight": 1.0
+      }
+    ],
+    "detail": "Any air force, heavy, medium or light.",
+    "fact": "The B-29 dropped both atomic bombs on Japan in August 1945."
+  },
+  {
+    "id": "air-ww2-us-fighters",
+    "mode": "Air",
+    "text": "Name a United States fighter aircraft from World War II.",
+    "answers": [
+      {
+        "name": "P-51 Mustang",
+        "aliases": [
+          "P-51",
+          "Mustang"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "P-47 Thunderbolt",
+        "aliases": [
+          "P-47",
+          "Thunderbolt",
+          "Jug"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "P-38 Lightning",
+        "aliases": [
+          "P-38",
+          "Lightning"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "F4F Wildcat",
+        "aliases": [
+          "F4F",
+          "Wildcat"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "F6F Hellcat",
+        "aliases": [
+          "F6F",
+          "Hellcat"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "F4U Corsair",
+        "aliases": [
+          "F4U",
+          "Corsair"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "P-40 Warhawk",
+        "aliases": [
+          "P-40",
+          "Warhawk",
+          "Kittyhawk",
+          "Tomahawk"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "P-39 Airacobra",
+        "aliases": [
+          "P-39",
+          "Airacobra"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "P-61 Black Widow",
+        "aliases": [
+          "P-61",
+          "Black Widow"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "P-35",
+        "aliases": [
+          "Seversky P-35"
+        ],
+        "weight": 0.9
+      },
+      {
+        "name": "F2A Buffalo",
+        "aliases": [
+          "F2A",
+          "Buffalo",
+          "Brewster Buffalo"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "P-36 Hawk",
+        "aliases": [
+          "P-36",
+          "Curtiss Hawk 75"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "P-80 Shooting Star",
+        "aliases": [
+          "P-80",
+          "Shooting Star"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "F7F Tigercat",
+        "aliases": [
+          "F7F",
+          "Tigercat"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "P-63 Kingcobra",
+        "aliases": [
+          "P-63",
+          "Kingcobra"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "F8F Bearcat",
+        "aliases": [
+          "F8F",
+          "Bearcat"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "P-26 Peashooter",
+        "aliases": [
+          "P-26",
+          "Peashooter"
+        ],
+        "weight": 0.9
+      },
+      {
+        "name": "XP-55 Ascender",
+        "aliases": [
+          "XP-55"
+        ],
+        "weight": 1.0
+      }
+    ],
+    "detail": "Army Air Forces, Navy or Marine Corps.",
+    "fact": "The P-51D Mustang's range let it escort bombers all the way to Berlin and back."
+  },
+  {
+    "id": "air-ww2-japanese",
+    "mode": "Air",
+    "text": "Name a Japanese military aircraft from World War II.",
+    "answers": [
+      {
+        "name": "A6M Zero",
+        "aliases": [
+          "Zero",
+          "Mitsubishi Zero",
+          "A6M"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "Ki-43 Hayabusa",
+        "aliases": [
+          "Ki-43",
+          "Oscar",
+          "Hayabusa"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Ki-61 Hien",
+        "aliases": [
+          "Ki-61",
+          "Tony",
+          "Hien"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "N1K Shiden",
+        "aliases": [
+          "N1K",
+          "George",
+          "Shiden"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "J2M Raiden",
+        "aliases": [
+          "J2M",
+          "Jack",
+          "Raiden"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Ki-84 Hayate",
+        "aliases": [
+          "Ki-84",
+          "Frank",
+          "Hayate"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "G4M Betty",
+        "aliases": [
+          "G4M",
+          "Betty"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "D3A Val",
+        "aliases": [
+          "D3A",
+          "Val"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "B5N Kate",
+        "aliases": [
+          "B5N",
+          "Kate"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Ki-27",
+        "aliases": [
+          "Nate"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Ki-21",
+        "aliases": [
+          "Sally"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "G3M Nell",
+        "aliases": [
+          "G3M",
+          "Nell"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "B6N Tenzan",
+        "aliases": [
+          "B6N",
+          "Jill"
+        ],
+        "weight": 0.9
+      },
+      {
+        "name": "Ki-46",
+        "aliases": [
+          "Dinah"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "P1Y Ginga",
+        "aliases": [
+          "P1Y",
+          "Frances"
+        ],
+        "weight": 0.9
+      },
+      {
+        "name": "Ki-100",
+        "aliases": [],
+        "weight": 0.9
+      },
+      {
+        "name": "Ki-44 Shoki",
+        "aliases": [
+          "Ki-44",
+          "Tojo",
+          "Shoki"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Ki-45 Toryu",
+        "aliases": [
+          "Ki-45",
+          "Nick"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "A5M",
+        "aliases": [
+          "Claude"
+        ],
+        "weight": 1.0
+      },
+      {
+        "name": "Ki-15",
+        "aliases": [
+          "Babs"
+        ],
+        "weight": 1.0
+      },
+      {
+        "name": "Nakajima J1N",
+        "aliases": [
+          "J1N",
+          "Irving",
+          "Gekko"
+        ],
+        "weight": 1.0
+      },
+      {
+        "name": "Ohka",
+        "aliases": [
+          "MXY-7",
+          "Baka Bomb"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Kawasaki Ki-48",
+        "aliases": [
+          "Ki-48",
+          "Lily"
+        ],
+        "weight": 1.0
+      }
+    ],
+    "detail": "Army or Navy, fighters, bombers or reconnaissance.",
+    "fact": "The Mitsubishi A6M Zero outclassed Allied fighters in the first year of the Pacific war."
+  },
+  {
+    "id": "air-ww2-german-fighters",
+    "mode": "Air",
+    "text": "Name a German fighter or interceptor from World War II.",
+    "answers": [
+      {
+        "name": "Messerschmitt Bf 109",
+        "aliases": [
+          "Bf 109",
+          "Me 109",
+          "Bf109"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "Focke-Wulf Fw 190",
+        "aliases": [
+          "Fw 190",
+          "Fw190"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "Messerschmitt Me 262",
+        "aliases": [
+          "Me 262",
+          "Me262",
+          "Schwalbe"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "Messerschmitt Me 163 Komet",
+        "aliases": [
+          "Me 163",
+          "Komet"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "Heinkel He 162",
+        "aliases": [
+          "He 162",
+          "Volksjäger",
+          "Salamander"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Messerschmitt Bf 110",
+        "aliases": [
+          "Bf 110",
+          "Me 110",
+          "Zerstörer"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Focke-Wulf Ta 152",
+        "aliases": [
+          "Ta 152"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Messerschmitt Me 410",
+        "aliases": [
+          "Me 410",
+          "Hornisse"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Dornier Do 335",
+        "aliases": [
+          "Do 335",
+          "Pfeil",
+          "Arrow"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Heinkel He 219 Uhu",
+        "aliases": [
+          "He 219",
+          "Uhu"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Heinkel He 100",
+        "aliases": [
+          "He 100"
+        ],
+        "weight": 1.0
+      },
+      {
+        "name": "Focke-Wulf Ta 154",
+        "aliases": [
+          "Ta 154",
+          "Moskito"
+        ],
+        "weight": 1.0
+      },
+      {
+        "name": "Messerschmitt Me 210",
+        "aliases": [
+          "Me 210"
+        ],
+        "weight": 1.0
+      },
+      {
+        "name": "Horten Ho 229",
+        "aliases": [
+          "Ho 229",
+          "Gotha Go 229"
+        ],
+        "weight": 0.9
+      },
+      {
+        "name": "Bachem Ba 349",
+        "aliases": [
+          "Natter"
+        ],
+        "weight": 1.0
+      }
+    ],
+    "detail": "Luftwaffe single- and twin-engine fighters and rocket or jet types.",
+    "fact": "The Me 262 was the world's first operational jet fighter."
+  },
+  {
+    "id": "air-ww2-british-fighters",
+    "mode": "Air",
+    "text": "Name a British fighter aircraft from World War II.",
+    "answers": [
+      {
+        "name": "Supermarine Spitfire",
+        "aliases": [
+          "Spitfire"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "Hawker Hurricane",
+        "aliases": [
+          "Hurricane"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "Hawker Typhoon",
+        "aliases": [
+          "Typhoon",
+          "Tiffie"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Hawker Tempest",
+        "aliases": [
+          "Tempest"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Gloster Meteor",
+        "aliases": [
+          "Meteor"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "Bristol Beaufighter",
+        "aliases": [
+          "Beaufighter"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Boulton Paul Defiant",
+        "aliases": [
+          "Defiant"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Gloster Gladiator",
+        "aliases": [
+          "Gladiator"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Fairey Firefly",
+        "aliases": [
+          "Firefly"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Supermarine Seafire",
+        "aliases": [
+          "Seafire"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Westland Whirlwind",
+        "aliases": [
+          "Whirlwind"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Hawker Sea Fury",
+        "aliases": [
+          "Sea Fury"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "de Havilland Mosquito",
+        "aliases": [
+          "Mosquito"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "Fairey Fulmar",
+        "aliases": [
+          "Fulmar"
+        ],
+        "weight": 0.9
+      },
+      {
+        "name": "Sea Hurricane",
+        "aliases": [
+          "Hawker Sea Hurricane"
+        ],
+        "weight": 0.9
+      },
+      {
+        "name": "Supermarine Spiteful",
+        "aliases": [
+          "Spiteful"
+        ],
+        "weight": 1.0
+      },
+      {
+        "name": "de Havilland Vampire",
+        "aliases": [
+          "Vampire"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Blackburn Roc",
+        "aliases": [
+          "Roc"
+        ],
+        "weight": 1.0
+      },
+      {
+        "name": "Gloster Gauntlet",
+        "aliases": [
+          "Gauntlet"
+        ],
+        "weight": 1.0
+      }
+    ],
+    "detail": "RAF and Fleet Air Arm fighters.",
+    "fact": "The Hawker Hurricane shot down more enemy aircraft in the Battle of Britain than any other type."
+  },
+  {
+    "id": "air-ww2-soviet-aircraft",
+    "mode": "Air",
+    "text": "Name a Soviet military aircraft from World War II.",
+    "answers": [
+      {
+        "name": "Ilyushin Il-2",
+        "aliases": [
+          "Il-2",
+          "Il2",
+          "Sturmovik",
+          "Shturmovik"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "Yakovlev Yak-3",
+        "aliases": [
+          "Yak-3",
+          "Yak3"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Yakovlev Yak-9",
+        "aliases": [
+          "Yak-9",
+          "Yak9"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "Lavochkin La-5",
+        "aliases": [
+          "La-5",
+          "La5"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Lavochkin La-7",
+        "aliases": [
+          "La-7",
+          "La7"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "MiG-3",
+        "aliases": [
+          "MiG3"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "LaGG-3",
+        "aliases": [
+          "LaGG3"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Yakovlev Yak-1",
+        "aliases": [
+          "Yak-1",
+          "Yak1"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Petlyakov Pe-2",
+        "aliases": [
+          "Pe-2",
+          "Pe2"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Petlyakov Pe-8",
+        "aliases": [
+          "Pe-8",
+          "Pe8"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Tupolev Tu-2",
+        "aliases": [
+          "Tu-2",
+          "Tu2"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Polikarpov I-16",
+        "aliases": [
+          "I-16",
+          "I16",
+          "Rata"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Ilyushin Il-10",
+        "aliases": [
+          "Il-10",
+          "Il10"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Yakovlev Yak-7",
+        "aliases": [
+          "Yak-7",
+          "Yak7"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Polikarpov Po-2",
+        "aliases": [
+          "Po-2",
+          "Po2",
+          "Kukuruznik"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Ilyushin Il-4",
+        "aliases": [
+          "Il-4",
+          "Il4"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Polikarpov I-153",
+        "aliases": [
+          "I-153",
+          "I153",
+          "Chaika"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Tupolev SB",
+        "aliases": [
+          "SB",
+          "SB-2"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Petlyakov Pe-3",
+        "aliases": [
+          "Pe-3"
+        ],
+        "weight": 1.0
+      },
+      {
+        "name": "Tupolev TB-3",
+        "aliases": [
+          "TB-3",
+          "TB3"
+        ],
+        "weight": 0.9
+      }
+    ],
+    "detail": "Fighters, attack aircraft and bombers.",
+    "fact": "The Il-2 Sturmovik was built in greater numbers than any other military aircraft in history, at roughly 36,000."
+  },
+  {
+    "id": "air-lightweight-fighters",
+    "mode": "Air",
+    "text": "Name a lightweight or low-cost fighter.",
+    "answers": [
+      {
+        "name": "F-5 Tiger II",
+        "aliases": [
+          "F-5",
+          "F-5E",
+          "Tiger II",
+          "F-5 Freedom Fighter"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "F-16",
+        "aliases": [
+          "F-16 Fighting Falcon"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "Gripen",
+        "aliases": [
+          "JAS 39",
+          "JAS 39 Gripen",
+          "Saab Gripen"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "FA-50",
+        "aliases": [
+          "FA-50 Fighting Eagle",
+          "Golden Eagle"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "JF-17 Thunder",
+        "aliases": [
+          "JF-17",
+          "JF17",
+          "FC-1"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "Tejas",
+        "aliases": [
+          "HAL Tejas",
+          "LCA"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "MiG-21",
+        "aliases": [
+          "MiG21"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "F-20 Tigershark",
+        "aliases": [
+          "F-20"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "BAE Hawk",
+        "aliases": [
+          "Hawk"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "L-159 ACA",
+        "aliases": [
+          "L-159",
+          "Honey Badger"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Mirage F1",
+        "aliases": [
+          "F1"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Mirage 2000",
+        "aliases": [
+          "Mirage 2000-5"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "T-50 Golden Eagle",
+        "aliases": [
+          "T-50"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Saab 105",
+        "aliases": [
+          "Sk 60"
+        ],
+        "weight": 0.9
+      },
+      {
+        "name": "Aero L-39",
+        "aliases": [
+          "L-39",
+          "Albatros"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Northrop F-5A",
+        "aliases": [
+          "Freedom Fighter"
+        ],
+        "weight": 0.9
+      },
+      {
+        "name": "Dassault Mirage III",
+        "aliases": [
+          "Mirage III"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "IAI Kfir",
+        "aliases": [
+          "Kfir"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Folland Gnat",
+        "aliases": [
+          "Gnat"
+        ],
+        "weight": 0.85
+      }
+    ],
+    "detail": "Light fighters and combat trainers used as fighters.",
+    "fact": "The F-5 was designed as a cheap, easy-to-maintain fighter for allied air forces."
+  },
+  {
+    "id": "air-nato-aam",
+    "mode": "Air",
+    "text": "Name an air-to-air missile used by NATO air forces.",
+    "answers": [
+      {
+        "name": "AIM-120 AMRAAM",
+        "aliases": [
+          "AMRAAM",
+          "AIM-120"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "AIM-9 Sidewinder",
+        "aliases": [
+          "Sidewinder",
+          "AIM-9",
+          "AIM-9X",
+          "AIM-9L",
+          "AIM-9M"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "AIM-7 Sparrow",
+        "aliases": [
+          "Sparrow",
+          "AIM-7"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "AIM-54 Phoenix",
+        "aliases": [
+          "Phoenix"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "MBDA Meteor",
+        "aliases": [
+          "Meteor"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "MICA",
+        "aliases": [
+          "MICA IR",
+          "MICA EM"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "ASRAAM",
+        "aliases": [
+          "AIM-132",
+          "AIM-132 ASRAAM"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "IRIS-T",
+        "aliases": [
+          "IRIS T"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Skyflash",
+        "aliases": [],
+        "weight": 0.85
+      },
+      {
+        "name": "Magic",
+        "aliases": [
+          "R550 Magic",
+          "Matra R.550 Magic"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Super 530",
+        "aliases": [
+          "Matra Super 530"
+        ],
+        "weight": 0.9
+      },
+      {
+        "name": "AIM-4 Falcon",
+        "aliases": [
+          "AIM-4",
+          "Falcon"
+        ],
+        "weight": 0.9
+      },
+      {
+        "name": "AIM-47 Falcon",
+        "aliases": [
+          "AIM-47"
+        ],
+        "weight": 1.0
+      },
+      {
+        "name": "Firestreak",
+        "aliases": [
+          "Fireflash"
+        ],
+        "weight": 1.0
+      },
+      {
+        "name": "Red Top",
+        "aliases": [],
+        "weight": 1.0
+      },
+      {
+        "name": "AAM-4",
+        "aliases": [
+          "Type 99 AAM"
+        ],
+        "weight": 1.0
+      }
+    ],
+    "detail": "Radar-guided or infrared, any era.",
+    "fact": "The AIM-120 AMRAAM is the standard Western beyond-visual-range missile, with more than 14,000 built."
+  },
+  {
+    "id": "air-russian-aam",
+    "mode": "Air",
+    "text": "Name a Soviet or Russian air-to-air missile.",
+    "answers": [
+      {
+        "name": "R-77",
+        "aliases": [
+          "RVV-AE",
+          "R-77-1",
+          "AA-12 Adder",
+          "Adder"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "R-73",
+        "aliases": [
+          "R-73M",
+          "AA-11 Archer",
+          "Archer"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "R-27",
+        "aliases": [
+          "R-27R",
+          "R-27ER",
+          "AA-10 Alamo",
+          "Alamo"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "R-33",
+        "aliases": [
+          "AA-9 Amos",
+          "Amos"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "R-37",
+        "aliases": [
+          "R-37M",
+          "AA-13 Arrow",
+          "Arrow"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "R-60",
+        "aliases": [
+          "AA-8 Aphid",
+          "Aphid"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "R-40",
+        "aliases": [
+          "R-46",
+          "AA-6 Acrid",
+          "Acrid"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "R-23",
+        "aliases": [
+          "R-24",
+          "AA-7 Apex",
+          "Apex"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "R-3",
+        "aliases": [
+          "K-13",
+          "AA-2 Atoll",
+          "Atoll"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "R-13",
+        "aliases": [
+          "R-13M",
+          "AA-2"
+        ],
+        "weight": 1.0
+      },
+      {
+        "name": "K-5",
+        "aliases": [
+          "RS-2U",
+          "AA-1 Alkali"
+        ],
+        "weight": 0.9
+      },
+      {
+        "name": "R-98",
+        "aliases": [
+          "R-98M",
+          "R-98M1"
+        ],
+        "weight": 1.0
+      },
+      {
+        "name": "R-550",
+        "aliases": [],
+        "weight": 1.0
+      },
+      {
+        "name": "R-74",
+        "aliases": [
+          "RVV-MD",
+          "R-74M"
+        ],
+        "weight": 0.85
+      }
+    ],
+    "detail": "By designation, any version.",
+    "fact": "The R-37M is credited with one of the longest air-to-air kills ever recorded, estimated beyond 200 km."
+  },
+  {
+    "id": "air-russian-helis",
+    "mode": "Air",
+    "text": "Name a Soviet or Russian helicopter.",
+    "answers": [
+      {
+        "name": "Mi-8",
+        "aliases": [
+          "Mi8",
+          "Hip",
+          "Mi-17"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "Mi-24",
+        "aliases": [
+          "Mi24",
+          "Hind",
+          "Mi-35"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "Mi-28",
+        "aliases": [
+          "Mi28",
+          "Havoc",
+          "Mi-28N"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "Ka-52",
+        "aliases": [
+          "Ka52",
+          "Alligator"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "Ka-50",
+        "aliases": [
+          "Ka50",
+          "Black Shark",
+          "Werewolf"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "Mi-26",
+        "aliases": [
+          "Mi26",
+          "Halo"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "Ka-27",
+        "aliases": [
+          "Ka27",
+          "Helix"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Mi-14",
+        "aliases": [
+          "Mi14",
+          "Haze"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Mi-2",
+        "aliases": [
+          "Mi2",
+          "Hoplite"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Mi-4",
+        "aliases": [
+          "Mi4",
+          "Hound"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Ka-29",
+        "aliases": [
+          "Ka29",
+          "Helix-B"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Mi-6",
+        "aliases": [
+          "Mi6",
+          "Hook"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Mi-10",
+        "aliases": [
+          "Mi10",
+          "Harke"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Ka-226",
+        "aliases": [
+          "Ka226"
+        ],
+        "weight": 0.9
+      },
+      {
+        "name": "Mi-38",
+        "aliases": [
+          "Mi38"
+        ],
+        "weight": 0.9
+      },
+      {
+        "name": "Mi-1",
+        "aliases": [
+          "Mi1",
+          "Hare"
+        ],
+        "weight": 0.9
+      },
+      {
+        "name": "Ka-60",
+        "aliases": [
+          "Ka60",
+          "Kasatka"
+        ],
+        "weight": 0.9
+      },
+      {
+        "name": "Mi-34",
+        "aliases": [
+          "Mi34",
+          "Hermit"
+        ],
+        "weight": 1.0
+      },
+      {
+        "name": "Ka-31",
+        "aliases": [
+          "Ka31",
+          "Helix-B AEW"
+        ],
+        "weight": 0.9
+      }
+    ],
+    "detail": "Mil or Kamov designs, military or civil.",
+    "fact": "The Mi-26 is the heaviest helicopter ever to enter series production."
+  },
+  {
+    "id": "air-us-helis",
+    "mode": "Air",
+    "text": "Name a United States military helicopter.",
+    "answers": [
+      {
+        "name": "AH-64 Apache",
+        "aliases": [
+          "AH-64",
+          "Apache"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "UH-60 Black Hawk",
+        "aliases": [
+          "UH-60",
+          "Black Hawk",
+          "Blackhawk"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "CH-47 Chinook",
+        "aliases": [
+          "CH-47",
+          "Chinook"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "UH-1 Huey",
+        "aliases": [
+          "UH-1",
+          "Huey",
+          "Iroquois"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "AH-1 Cobra",
+        "aliases": [
+          "AH-1",
+          "Cobra",
+          "AH-1G",
+          "AH-1Z Viper",
+          "Viper",
+          "AH-1W Super Cobra"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "OH-58 Kiowa",
+        "aliases": [
+          "OH-58",
+          "Kiowa",
+          "Kiowa Warrior"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "AH-6 Little Bird",
+        "aliases": [
+          "AH-6",
+          "MH-6",
+          "Little Bird"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "CH-53E Super Stallion",
+        "aliases": [
+          "CH-53E",
+          "CH-53",
+          "Super Stallion"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "CH-53K King Stallion",
+        "aliases": [
+          "CH-53K",
+          "King Stallion"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "MH-60 Seahawk",
+        "aliases": [
+          "MH-60",
+          "SH-60",
+          "Seahawk"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "HH-60 Pave Hawk",
+        "aliases": [
+          "HH-60",
+          "Pave Hawk"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "UH-72 Lakota",
+        "aliases": [
+          "UH-72"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "CH-46 Sea Knight",
+        "aliases": [
+          "CH-46",
+          "Sea Knight"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "OH-6 Cayuse",
+        "aliases": [
+          "OH-6",
+          "Loach"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "CH-54 Tarhe",
+        "aliases": [
+          "CH-54",
+          "Skycrane"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "AH-56 Cheyenne",
+        "aliases": [
+          "AH-56",
+          "Cheyenne"
+        ],
+        "weight": 0.9
+      },
+      {
+        "name": "UH-1Y Venom",
+        "aliases": [
+          "UH-1Y",
+          "Venom"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "MH-47 Chinook",
+        "aliases": [
+          "MH-47"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "H-34 Choctaw",
+        "aliases": [
+          "H-34",
+          "Choctaw",
+          "Seabat"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "UH-19 Chickasaw",
+        "aliases": [
+          "H-19"
+        ],
+        "weight": 1.0
+      },
+      {
+        "name": "OH-13 Sioux",
+        "aliases": [
+          "OH-13",
+          "Sioux"
+        ],
+        "weight": 0.9
+      }
+    ],
+    "detail": "Any service, past or present.",
+    "fact": "The UH-1 'Huey' became the iconic helicopter of the Vietnam War."
+  },
+  {
+    "id": "air-european-helis",
+    "mode": "Air",
+    "text": "Name a helicopter designed in Western Europe.",
+    "answers": [
+      {
+        "name": "NH90",
+        "aliases": [
+          "NH-90"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "Tiger",
+        "aliases": [
+          "Eurocopter Tiger",
+          "EC665",
+          "Tigre"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "A129 Mangusta",
+        "aliases": [
+          "A129",
+          "Mangusta"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "AW101 Merlin",
+        "aliases": [
+          "Merlin",
+          "EH101",
+          "AW101"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "AW159 Wildcat",
+        "aliases": [
+          "Wildcat",
+          "Lynx Wildcat"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Super Puma",
+        "aliases": [
+          "AS332",
+          "AS 332",
+          "Cougar"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "Puma",
+        "aliases": [
+          "SA330",
+          "SA 330"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "Gazelle",
+        "aliases": [
+          "SA 341",
+          "SA341",
+          "Westland Gazelle"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "Lynx",
+        "aliases": [
+          "Westland Lynx",
+          "Super Lynx"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "Caracal",
+        "aliases": [
+          "EC725",
+          "H225M"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "H145M",
+        "aliases": [
+          "EC145",
+          "UH-72"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "A109",
+        "aliases": [
+          "AW109",
+          "Agusta A109"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Sea King",
+        "aliases": [
+          "Westland Sea King"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "AW139",
+        "aliases": [
+          "AB139"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Wessex",
+        "aliases": [
+          "Westland Wessex"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Whirlwind",
+        "aliases": [
+          "Westland Whirlwind"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Alouette II",
+        "aliases": [
+          "Alouette",
+          "SA 318"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Alouette III",
+        "aliases": [
+          "SA 316",
+          "SA 319"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Dauphin",
+        "aliases": [
+          "AS365",
+          "SA365"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Panther",
+        "aliases": [
+          "AS565"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Sea Lynx",
+        "aliases": [],
+        "weight": 0.9
+      },
+      {
+        "name": "BO 105",
+        "aliases": [
+          "Bo-105",
+          "Bolkow Bo 105"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Scout",
+        "aliases": [
+          "Westland Scout"
+        ],
+        "weight": 1.0
+      },
+      {
+        "name": "Wasp",
+        "aliases": [
+          "Westland Wasp"
+        ],
+        "weight": 0.9
+      }
+    ],
+    "detail": "France, Germany, Italy and the UK, military or civil.",
+    "fact": "The NH90 was developed jointly by France, Germany, Italy and the Netherlands."
+  },
+  {
+    "id": "air-trainer-props",
+    "mode": "Air",
+    "text": "Name a turboprop or piston military trainer aircraft.",
+    "answers": [
+      {
+        "name": "T-6 Texan II",
+        "aliases": [
+          "T-6",
+          "Texan II",
+          "Beechcraft T-6"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "Pilatus PC-9",
+        "aliases": [
+          "PC-9",
+          "PC9"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "T-34 Mentor",
+        "aliases": [
+          "T-34",
+          "Beechcraft T-34"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "T-28 Trojan",
+        "aliases": [
+          "T-28"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "EMB-312 Tucano",
+        "aliases": [
+          "Tucano",
+          "T-27"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "Pilatus PC-21",
+        "aliases": [
+          "PC-21"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "SIAI-Marchetti SF.260",
+        "aliases": [
+          "SF.260",
+          "SF260"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Yak-52",
+        "aliases": [
+          "Yak52"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "T-41 Mescalero",
+        "aliases": [
+          "T-41"
+        ],
+        "weight": 0.9
+      },
+      {
+        "name": "T-37 Tweet",
+        "aliases": [
+          "T-37"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Grob G 120",
+        "aliases": [
+          "G120"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "KAI KT-1",
+        "aliases": [
+          "KT-1",
+          "Woongbi"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "PZL-130 Orlik",
+        "aliases": [
+          "PZL-130",
+          "Orlik",
+          "TC-II"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Hongdu K-8",
+        "aliases": [
+          "K-8",
+          "Karakorum"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "T-6 Harvard",
+        "aliases": [
+          "Harvard",
+          "AT-6",
+          "SNJ"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "Fuji T-7",
+        "aliases": [
+          "T-7"
+        ],
+        "weight": 1.0
+      }
+    ],
+    "detail": "Basic and primary trainers.",
+    "fact": "The T-6 Texan II is the standard primary trainer of the US Air Force and Navy."
+  },
+  {
+    "id": "air-heavy-transport",
+    "mode": "Air",
+    "text": "Name a heavy military transport aircraft.",
+    "answers": [
+      {
+        "name": "C-5 Galaxy",
+        "aliases": [
+          "C-5",
+          "Galaxy",
+          "C-5M Super Galaxy"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "C-17 Globemaster III",
+        "aliases": [
+          "C-17",
+          "Globemaster"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "Antonov An-124",
+        "aliases": [
+          "An-124",
+          "An124",
+          "Ruslan",
+          "Condor"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "Antonov An-225",
+        "aliases": [
+          "An-225",
+          "An225",
+          "Mriya"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "Airbus A400M",
+        "aliases": [
+          "A400M",
+          "Atlas"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "Ilyushin Il-76",
+        "aliases": [
+          "Il-76",
+          "Il76",
+          "Candid"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "C-141 Starlifter",
+        "aliases": [
+          "C-141",
+          "Starlifter"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Xi'an Y-20",
+        "aliases": [
+          "Y-20",
+          "Y20",
+          "Kunpeng"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Kawasaki C-2",
+        "aliases": [
+          "C-2",
+          "XC-2"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "C-124 Globemaster II",
+        "aliases": [
+          "C-124",
+          "Globemaster II"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Antonov An-22",
+        "aliases": [
+          "An-22",
+          "Antei",
+          "Cock"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Embraer KC-390",
+        "aliases": [
+          "KC-390",
+          "C-390"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Short Belfast",
+        "aliases": [
+          "Belfast"
+        ],
+        "weight": 1.0
+      },
+      {
+        "name": "C-133 Cargomaster",
+        "aliases": [
+          "C-133"
+        ],
+        "weight": 1.0
+      },
+      {
+        "name": "Il-78",
+        "aliases": [
+          "Il-78M",
+          "Midas"
+        ],
+        "weight": 0.85
+      }
+    ],
+    "detail": "Strategic airlifters.",
+    "fact": "The Antonov An-225 Mriya was the heaviest aircraft ever built, with six engines."
+  },
+  {
+    "id": "air-tactical-transport",
+    "mode": "Air",
+    "text": "Name a tactical military transport aircraft.",
+    "answers": [
+      {
+        "name": "C-130 Hercules",
+        "aliases": [
+          "C-130",
+          "Hercules",
+          "C-130J",
+          "Super Hercules"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "C-295",
+        "aliases": [
+          "CASA C-295"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "C-27J Spartan",
+        "aliases": [
+          "C-27J",
+          "Spartan"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Antonov An-26",
+        "aliases": [
+          "An-26",
+          "An26",
+          "Curl"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Antonov An-12",
+        "aliases": [
+          "An-12",
+          "An12",
+          "Cub"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "G.222",
+        "aliases": [
+          "Alenia G.222",
+          "C-27A"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "CN-235",
+        "aliases": [
+          "CASA CN-235"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "C-160 Transall",
+        "aliases": [
+          "C-160",
+          "Transall"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Shaanxi Y-9",
+        "aliases": [
+          "Y-9",
+          "Y9"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Shaanxi Y-8",
+        "aliases": [
+          "Y-8",
+          "Y8"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "C-123 Provider",
+        "aliases": [
+          "C-123",
+          "Provider"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "C-7 Caribou",
+        "aliases": [
+          "C-7",
+          "Caribou",
+          "DHC-4"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "C-47 Skytrain",
+        "aliases": [
+          "C-47",
+          "Dakota",
+          "Skytrain",
+          "DC-3"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "Antonov An-32",
+        "aliases": [
+          "An-32",
+          "Cline"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "C-46 Commando",
+        "aliases": [
+          "C-46",
+          "Commando"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Dornier Do 228",
+        "aliases": [
+          "Do 228"
+        ],
+        "weight": 1.0
+      },
+      {
+        "name": "Antonov An-72",
+        "aliases": [
+          "An-72",
+          "Coaler"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "C-119 Flying Boxcar",
+        "aliases": [
+          "C-119"
+        ],
+        "weight": 0.85
+      }
+    ],
+    "detail": "Medium airlifters, any country.",
+    "fact": "The C-130 Hercules has been in continuous production since 1954, the longest of any military aircraft."
+  },
+  {
+    "id": "air-loitering-munitions",
+    "mode": "Air",
+    "text": "Name a loitering munition or one-way attack drone.",
+    "answers": [
+      {
+        "name": "Shahed-136",
+        "aliases": [
+          "Shahed 136",
+          "Geran-2",
+          "Geran 2"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "Switchblade",
+        "aliases": [
+          "AeroVironment Switchblade",
+          "Switchblade 300",
+          "Switchblade 600"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "Lancet",
+        "aliases": [
+          "ZALA Lancet",
+          "Lancet-3",
+          "KUB-BLA"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "Harop",
+        "aliases": [
+          "IAI Harop"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Harpy",
+        "aliases": [
+          "IAI Harpy"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Warmate",
+        "aliases": [
+          "WB Warmate",
+          "Warmate 2"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Hero-120",
+        "aliases": [
+          "UVision Hero",
+          "Hero 120",
+          "Hero-400"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Orbiter 1K",
+        "aliases": [
+          "Aeronautics Orbiter 1K"
+        ],
+        "weight": 0.9
+      },
+      {
+        "name": "Phoenix Ghost",
+        "aliases": [
+          "AEVEX Phoenix Ghost"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Kargu",
+        "aliases": [
+          "STM Kargu"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "LUCAS",
+        "aliases": [
+          "Low-cost Uncrewed Combat Attack System"
+        ],
+        "weight": 1.0
+      },
+      {
+        "name": "Shahed-238",
+        "aliases": [
+          "Shahed 238"
+        ],
+        "weight": 0.9
+      },
+      {
+        "name": "Geran-3",
+        "aliases": [
+          "Geran 3"
+        ],
+        "weight": 0.9
+      },
+      {
+        "name": "ZALA Kub",
+        "aliases": [],
+        "weight": 1.0
+      },
+      {
+        "name": "Hero-30",
+        "aliases": [
+          "Hero 30"
+        ],
+        "weight": 1.0
+      },
+      {
+        "name": "FPV drone",
+        "aliases": [
+          "FPV"
+        ],
+        "weight": 0.55
+      }
+    ],
+    "detail": "Drones that crash into the target.",
+    "fact": "The Shahed-136 flies at about 185 km/h and carries a warhead of roughly 40 kg."
+  },
+  {
+    "id": "air-recon-drones",
+    "mode": "Air",
+    "text": "Name a military reconnaissance or surveillance drone.",
+    "answers": [
+      {
+        "name": "RQ-4 Global Hawk",
+        "aliases": [
+          "RQ-4",
+          "Global Hawk"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "RQ-11 Raven",
+        "aliases": [
+          "Raven",
+          "RQ-11"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "RQ-7 Shadow",
+        "aliases": [
+          "Shadow",
+          "RQ-7",
+          "Shadow 200"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "ScanEagle",
+        "aliases": [
+          "Scan Eagle"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "Orlan-10",
+        "aliases": [
+          "Orlan 10"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "Hermes 900",
+        "aliases": [
+          "IAI Hermes 900"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "IAI Heron",
+        "aliases": [
+          "Heron"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "Hermes 450",
+        "aliases": [
+          "Elbit Hermes 450"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "RQ-170 Sentinel",
+        "aliases": [
+          "RQ-170",
+          "Sentinel"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Skylark",
+        "aliases": [
+          "Elbit Skylark"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "RQ-21 Blackjack",
+        "aliases": [
+          "RQ-21",
+          "Blackjack"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "RQ-20 Puma",
+        "aliases": [
+          "Puma",
+          "AeroVironment Puma"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Aerosonde",
+        "aliases": [
+          "Textron Aerosonde"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "MQ-4C Triton",
+        "aliases": [
+          "Triton",
+          "MQ-4C"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Eleron-3",
+        "aliases": [
+          "Eleron"
+        ],
+        "weight": 0.9
+      },
+      {
+        "name": "Forpost",
+        "aliases": [
+          "Forpost-R",
+          "IAI Searcher"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Elbit Watchkeeper",
+        "aliases": [
+          "Watchkeeper WK450"
+        ],
+        "weight": 0.85
+      }
+    ],
+    "detail": "Unarmed or primarily ISR UAVs.",
+    "fact": "The RQ-4 Global Hawk can stay aloft for over 30 hours at an altitude of about 60,000 feet."
+  },
+  {
+    "id": "air-cold-war-bombers",
+    "mode": "Air",
+    "text": "Name a Cold War bomber.",
+    "answers": [
+      {
+        "name": "B-52 Stratofortress",
+        "aliases": [
+          "B-52",
+          "Stratofortress",
+          "BUFF"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "B-47 Stratojet",
+        "aliases": [
+          "B-47",
+          "Stratojet"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "B-58 Hustler",
+        "aliases": [
+          "B-58",
+          "Hustler"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Tu-95",
+        "aliases": [
+          "Tu-95 Bear",
+          "Bear",
+          "Tu95"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "Tu-16",
+        "aliases": [
+          "Tu-16 Badger",
+          "Badger",
+          "Tu16"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "Tu-22",
+        "aliases": [
+          "Tu-22 Blinder",
+          "Blinder",
+          "Tu22"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Tu-22M",
+        "aliases": [
+          "Tu-22M Backfire",
+          "Backfire",
+          "Tu22M"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "Tu-160",
+        "aliases": [
+          "Tu-160 Blackjack",
+          "Blackjack",
+          "Tu160"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "Avro Vulcan",
+        "aliases": [
+          "Vulcan"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "Handley Page Victor",
+        "aliases": [
+          "Victor"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Vickers Valiant",
+        "aliases": [
+          "Valiant"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "B-1B Lancer",
+        "aliases": [
+          "B-1B",
+          "B-1",
+          "Lancer"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "FB-111",
+        "aliases": [
+          "F-111",
+          "FB-111A"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "English Electric Canberra",
+        "aliases": [
+          "Canberra"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Il-28",
+        "aliases": [
+          "Il-28 Beagle",
+          "Beagle",
+          "Il28"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Myasishchev M-4",
+        "aliases": [
+          "M-4",
+          "Bison",
+          "Mya-4"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "B-57",
+        "aliases": [
+          "B-57 Canberra"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "B-36 Peacemaker",
+        "aliases": [
+          "B-36",
+          "Peacemaker"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "M-50",
+        "aliases": [
+          "Myasishchev M-50",
+          "Bounder"
+        ],
+        "weight": 1.0
+      },
+      {
+        "name": "XB-70 Valkyrie",
+        "aliases": [
+          "XB-70",
+          "Valkyrie"
+        ],
+        "weight": 0.7
+      }
+    ],
+    "detail": "Any country, 1947 to 1991.",
+    "fact": "The B-52 first flew in 1952 and is expected to serve into the 2050s."
+  },
+  {
+    "id": "air-us-attack",
+    "mode": "Air",
+    "text": "Name a United States attack or fighter-bomber aircraft.",
+    "answers": [
+      {
+        "name": "A-10 Thunderbolt II",
+        "aliases": [
+          "A-10",
+          "Warthog",
+          "Thunderbolt II"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "A-6 Intruder",
+        "aliases": [
+          "A-6",
+          "Intruder"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "A-7 Corsair II",
+        "aliases": [
+          "A-7",
+          "Corsair II",
+          "SLUF"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "A-4 Skyhawk",
+        "aliases": [
+          "A-4",
+          "Skyhawk"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "A-1 Skyraider",
+        "aliases": [
+          "A-1",
+          "Skyraider",
+          "AD-1"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "A-37 Dragonfly",
+        "aliases": [
+          "A-37",
+          "Dragonfly"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "OV-10 Bronco",
+        "aliases": [
+          "OV-10",
+          "Bronco"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "AC-130 Spectre",
+        "aliases": [
+          "AC-130",
+          "Spooky",
+          "Spectre"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "F-111 Aardvark",
+        "aliases": [
+          "F-111",
+          "Aardvark"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "F-105 Thunderchief",
+        "aliases": [
+          "F-105",
+          "Thud",
+          "Thunderchief"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "F-117 Nighthawk",
+        "aliases": [
+          "F-117",
+          "Nighthawk"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "F-4 Phantom II",
+        "aliases": [
+          "F-4",
+          "Phantom"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "F-15E Strike Eagle",
+        "aliases": [
+          "F-15E",
+          "Strike Eagle"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "F-100 Super Sabre",
+        "aliases": [
+          "F-100",
+          "Super Sabre"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "F/A-18 Hornet",
+        "aliases": [
+          "F-18",
+          "F/A-18",
+          "Hornet"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "A-26 Invader",
+        "aliases": [
+          "A-26",
+          "Invader"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "A-20 Havoc",
+        "aliases": [
+          "A-20"
+        ],
+        "weight": 0.9
+      },
+      {
+        "name": "AV-8B Harrier II",
+        "aliases": [
+          "AV-8B",
+          "Harrier II",
+          "Harrier"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "EF-111 Raven",
+        "aliases": [
+          "EF-111"
+        ],
+        "weight": 0.9
+      },
+      {
+        "name": "A-5 Vigilante",
+        "aliases": [
+          "A-5",
+          "RA-5C",
+          "Vigilante"
+        ],
+        "weight": 0.9
+      },
+      {
+        "name": "A-3 Skywarrior",
+        "aliases": [
+          "A-3",
+          "Whale"
+        ],
+        "weight": 0.9
+      },
+      {
+        "name": "A-12 Avenger II",
+        "aliases": [
+          "A-12"
+        ],
+        "weight": 1.0
+      }
+    ],
+    "detail": "Any era, jet or prop.",
+    "fact": "The A-10's GAU-8 Avenger is a 30mm rotary cannon the size of a small car."
+  },
+  {
+    "id": "air-vietnam-aircraft",
+    "mode": "Air",
+    "text": "Name an aircraft that flew in the Vietnam War.",
+    "answers": [
+      {
+        "name": "F-4 Phantom II",
+        "aliases": [
+          "F-4",
+          "Phantom"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "F-105 Thunderchief",
+        "aliases": [
+          "F-105",
+          "Thud"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "A-4 Skyhawk",
+        "aliases": [
+          "A-4",
+          "Skyhawk"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "A-1 Skyraider",
+        "aliases": [
+          "A-1",
+          "Skyraider"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "B-52 Stratofortress",
+        "aliases": [
+          "B-52",
+          "Stratofortress",
+          "BUFF"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "MiG-21",
+        "aliases": [
+          "MiG21"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "MiG-17",
+        "aliases": [
+          "MiG17"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "UH-1 Huey",
+        "aliases": [
+          "UH-1",
+          "Huey"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "AC-47 Spooky",
+        "aliases": [
+          "AC-47",
+          "Spooky",
+          "Puff the Magic Dragon"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "F-8 Crusader",
+        "aliases": [
+          "F-8",
+          "Crusader"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "A-6 Intruder",
+        "aliases": [
+          "A-6",
+          "Intruder"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "A-7 Corsair II",
+        "aliases": [
+          "A-7",
+          "Corsair II"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "OV-10 Bronco",
+        "aliases": [
+          "OV-10",
+          "Bronco"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "CH-47 Chinook",
+        "aliases": [
+          "CH-47",
+          "Chinook"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "C-130 Hercules",
+        "aliases": [
+          "C-130",
+          "Hercules"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "F-100 Super Sabre",
+        "aliases": [
+          "F-100",
+          "Super Sabre"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "SR-71 Blackbird",
+        "aliases": [
+          "SR-71",
+          "Blackbird"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "MiG-19",
+        "aliases": [
+          "MiG19"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "B-57 Canberra",
+        "aliases": [
+          "B-57",
+          "Canberra"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "O-1 Bird Dog",
+        "aliases": [
+          "O-1",
+          "Bird Dog"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "A-37 Dragonfly",
+        "aliases": [
+          "A-37",
+          "Dragonfly"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "AC-119",
+        "aliases": [
+          "AC-119 Shadow",
+          "AC-119G",
+          "AC-119K"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "F-5 Tiger",
+        "aliases": [
+          "F-5",
+          "Freedom Fighter"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "AH-1G Cobra",
+        "aliases": [
+          "AH-1G",
+          "AH-1",
+          "Cobra"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "CH-46 Sea Knight",
+        "aliases": [
+          "CH-46",
+          "Sea Knight"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "EC-121 Warning Star",
+        "aliases": [
+          "EC-121",
+          "Constellation"
+        ],
+        "weight": 0.9
+      }
+    ],
+    "detail": "Any side.",
+    "fact": "The F-4 Phantom II was flown by the US Air Force, Navy and Marine Corps in Vietnam."
+  },
+  {
+    "id": "air-gulf-war-aircraft",
+    "mode": "Air",
+    "text": "Name an aircraft used in the 1991 Gulf War.",
+    "answers": [
+      {
+        "name": "F-117 Nighthawk",
+        "aliases": [
+          "F-117",
+          "Nighthawk"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "F-15E Strike Eagle",
+        "aliases": [
+          "F-15E",
+          "Strike Eagle"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "A-10 Thunderbolt II",
+        "aliases": [
+          "A-10",
+          "Warthog"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "F-16 Fighting Falcon",
+        "aliases": [
+          "F-16",
+          "Viper"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "F-14 Tomcat",
+        "aliases": [
+          "F-14",
+          "Tomcat"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "F/A-18 Hornet",
+        "aliases": [
+          "F-18",
+          "F/A-18",
+          "Hornet"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "B-52 Stratofortress",
+        "aliases": [
+          "B-52",
+          "BUFF"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "E-3 Sentry",
+        "aliases": [
+          "E-3",
+          "AWACS",
+          "Sentry"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "Panavia Tornado",
+        "aliases": [
+          "Tornado",
+          "Tornado GR1"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "SEPECAT Jaguar",
+        "aliases": [
+          "Jaguar"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Mirage 2000",
+        "aliases": [
+          "Mirage 2000C"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Mirage F1",
+        "aliases": [
+          "F1"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "MiG-29",
+        "aliases": [
+          "MiG29",
+          "Fulcrum"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "MiG-25",
+        "aliases": [
+          "MiG25",
+          "Foxbat"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Su-25",
+        "aliases": [
+          "Su25",
+          "Frogfoot"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "AH-64 Apache",
+        "aliases": [
+          "AH-64",
+          "Apache"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "F-111",
+        "aliases": [
+          "F-111F",
+          "Aardvark"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "A-6 Intruder",
+        "aliases": [
+          "A-6",
+          "Intruder"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "EF-111 Raven",
+        "aliases": [
+          "EF-111",
+          "Spark Vark"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "E-8 JSTARS",
+        "aliases": [
+          "E-8",
+          "JSTARS"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "KC-135 Stratotanker",
+        "aliases": [
+          "KC-135",
+          "Stratotanker"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "AV-8B Harrier II",
+        "aliases": [
+          "AV-8B",
+          "Harrier"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Sea King",
+        "aliases": [
+          "Westland Sea King"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Lynx",
+        "aliases": [
+          "Westland Lynx"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "MiG-23",
+        "aliases": [
+          "MiG23",
+          "Flogger"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Su-22",
+        "aliases": [
+          "Su22",
+          "Fitter"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "CH-47 Chinook",
+        "aliases": [
+          "CH-47",
+          "Chinook"
+        ],
+        "weight": 0.7
+      }
+    ],
+    "detail": "Coalition or Iraqi.",
+    "fact": "F-117 Nighthawks flew about 2% of coalition sorties but hit around 40% of strategic targets in the first days."
+  },
+  {
+    "id": "air-israeli-aircraft",
+    "mode": "Air",
+    "text": "Name an aircraft designed or built in Israel.",
+    "answers": [
+      {
+        "name": "IAI Kfir",
+        "aliases": [
+          "Kfir"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "IAI Lavi",
+        "aliases": [
+          "Lavi"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "IAI Nesher",
+        "aliases": [
+          "Nesher"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "IAI Heron",
+        "aliases": [
+          "Heron"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "Hermes 450",
+        "aliases": [
+          "Elbit Hermes 450"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "IAI Eitan",
+        "aliases": [
+          "Eitan",
+          "Heron TP"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "IAI Harop",
+        "aliases": [
+          "Harop"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "IAI Arava",
+        "aliases": [
+          "Arava"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Gulfstream G550 Nachshon",
+        "aliases": [
+          "G550",
+          "Nachshon"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "IAI Searcher",
+        "aliases": [
+          "Searcher"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "IAI Scout",
+        "aliases": [
+          "Scout"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "IAI Westwind",
+        "aliases": [
+          "Westwind"
+        ],
+        "weight": 0.9
+      },
+      {
+        "name": "IAI Phalcon",
+        "aliases": [
+          "Phalcon"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Hermes 900",
+        "aliases": [
+          "Elbit Hermes 900"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "IAI Dominator",
+        "aliases": [
+          "Dominator"
+        ],
+        "weight": 1.0
+      },
+      {
+        "name": "F-16I Sufa",
+        "aliases": [
+          "F-16I",
+          "Sufa",
+          "Storm"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "IAI 1124 Westwind",
+        "aliases": [
+          "1124"
+        ],
+        "weight": 1.0
+      }
+    ],
+    "detail": "Fighters, UAVs and special mission aircraft.",
+    "fact": "The IAI Kfir was based on the French Mirage 5 airframe with an American J79 engine."
+  },
+  {
+    "id": "air-fighter-engines",
+    "mode": "Air",
+    "text": "Name a jet engine that powers a fighter aircraft.",
+    "answers": [
+      {
+        "name": "F100",
+        "aliases": [
+          "Pratt & Whitney F100",
+          "F100-PW-229"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "F110",
+        "aliases": [
+          "GE F110"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "F119",
+        "aliases": [
+          "Pratt & Whitney F119"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "F135",
+        "aliases": [
+          "Pratt & Whitney F135"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "F414",
+        "aliases": [
+          "GE F414"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "F404",
+        "aliases": [
+          "GE F404"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "AL-31F",
+        "aliases": [
+          "AL-31"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "RD-33",
+        "aliases": [
+          "RD33",
+          "Klimov RD-33"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "EJ200",
+        "aliases": [
+          "Eurojet EJ200"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "M88",
+        "aliases": [
+          "Snecma M88"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Kaveri",
+        "aliases": [
+          "GTRE Kaveri"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "WS-10",
+        "aliases": [
+          "WS-10 Taihang",
+          "Taihang"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "J79",
+        "aliases": [
+          "GE J79"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "TF30",
+        "aliases": [
+          "Pratt & Whitney TF30"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Spey",
+        "aliases": [
+          "Rolls-Royce Spey"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "J57",
+        "aliases": [
+          "Pratt & Whitney J57"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "AL-41F",
+        "aliases": [
+          "AL-41F1S",
+          "117S"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "RD-93",
+        "aliases": [
+          "RD93"
+        ],
+        "weight": 0.9
+      },
+      {
+        "name": "Adour",
+        "aliases": [
+          "Rolls-Royce Turbomeca Adour"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "RB199",
+        "aliases": [
+          "Turbo-Union RB199"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "M53",
+        "aliases": [
+          "Snecma M53"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "RM12",
+        "aliases": [
+          "Volvo RM12"
+        ],
+        "weight": 1.0
+      },
+      {
+        "name": "J85",
+        "aliases": [
+          "GE J85"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Atar 9K50",
+        "aliases": [
+          "Atar"
+        ],
+        "weight": 0.9
+      },
+      {
+        "name": "Viper",
+        "aliases": [
+          "Rolls-Royce Viper"
+        ],
+        "weight": 0.9
+      }
+    ],
+    "detail": "By designation or name.",
+    "fact": "The Pratt & Whitney F135 delivers around 43,000 lb of thrust in the F-35A and uses a lift fan on the F-35B."
+  },
+  {
+    "id": "air-fighter-radars",
+    "mode": "Air",
+    "text": "Name a fighter aircraft radar.",
+    "answers": [
+      {
+        "name": "AN/APG-77",
+        "aliases": [
+          "APG-77"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "AN/APG-81",
+        "aliases": [
+          "APG-81"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "AN/APG-63",
+        "aliases": [
+          "APG-63"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "AN/APG-79",
+        "aliases": [
+          "APG-79"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "AN/APG-68",
+        "aliases": [
+          "APG-68"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "AN/APG-82",
+        "aliases": [
+          "APG-82"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "AN/APG-70",
+        "aliases": [
+          "APG-70"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "AN/APG-65",
+        "aliases": [
+          "APG-65"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "AN/APG-66",
+        "aliases": [
+          "APG-66"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Zhuk-AE",
+        "aliases": [
+          "Zhuk AE",
+          "Zhuk-ME"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "N011M Bars",
+        "aliases": [
+          "Bars",
+          "N011M"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Irbis-E",
+        "aliases": [
+          "Irbis",
+          "N035 Irbis-E"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "RBE2",
+        "aliases": [
+          "RBE2 AESA",
+          "RBE2-AA"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Captor",
+        "aliases": [
+          "CAPTOR-E",
+          "ECRS Mk0"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Gabbiano",
+        "aliases": [
+          "Selex Gabbiano"
+        ],
+        "weight": 1.0
+      },
+      {
+        "name": "AN/APQ-120",
+        "aliases": [
+          "APQ-120"
+        ],
+        "weight": 1.0
+      },
+      {
+        "name": "N001 Myech",
+        "aliases": [
+          "N001"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "N019 Rubin",
+        "aliases": [
+          "N019"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "KLJ-7",
+        "aliases": [
+          "KLJ7"
+        ],
+        "weight": 0.9
+      },
+      {
+        "name": "Type 1475",
+        "aliases": [
+          "KLJ-1475"
+        ],
+        "weight": 1.0
+      },
+      {
+        "name": "Raven ES-05",
+        "aliases": [
+          "ES-05",
+          "Raven"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Griffo",
+        "aliases": [
+          "Griffo-L"
+        ],
+        "weight": 1.0
+      }
+    ],
+    "detail": "AESA or mechanically scanned, any country.",
+    "fact": "The AN/APG-77 on the F-22 was the first AESA radar fitted to a fighter in service."
+  },
+  {
+    "id": "air-pods",
+    "mode": "Air",
+    "text": "Name a targeting, jamming or reconnaissance pod carried by aircraft.",
+    "answers": [
+      {
+        "name": "AN/ALQ-99",
+        "aliases": [
+          "ALQ-99"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "Sniper ATP",
+        "aliases": [
+          "Sniper XR",
+          "Sniper Advanced Targeting Pod"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "LITENING",
+        "aliases": [
+          "Litening III",
+          "Litening AT",
+          "Litening G4"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "Damocles",
+        "aliases": [
+          "Thales Damocles"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "ATFLIR",
+        "aliases": [
+          "AN/ASQ-228",
+          "ASQ-228"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Talios",
+        "aliases": [
+          "Thales Talios"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "AN/ALQ-131",
+        "aliases": [
+          "ALQ-131"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "AN/ALQ-184",
+        "aliases": [
+          "ALQ-184"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "AN/ALQ-165",
+        "aliases": [
+          "ALQ-165"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "LANTIRN",
+        "aliases": [
+          "AN/AAQ-13",
+          "AN/AAQ-14",
+          "Navigation pod"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Pave Spike",
+        "aliases": [
+          "AN/AVQ-23",
+          "AVQ-23"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Pave Tack",
+        "aliases": [
+          "AN/AVQ-26",
+          "AVQ-26"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "SPJ pod",
+        "aliases": [
+          "Self-Protection Jammer"
+        ],
+        "weight": 0.9
+      },
+      {
+        "name": "Skyshield",
+        "aliases": [
+          "Skyshield pod"
+        ],
+        "weight": 0.9
+      },
+      {
+        "name": "Khibiny",
+        "aliases": [
+          "SPS-171",
+          "L-175V"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Sorbtsiya",
+        "aliases": [
+          "Sorbtsiya pod"
+        ],
+        "weight": 1.0
+      }
+    ],
+    "detail": "External pods on fighters and strike aircraft.",
+    "fact": "The AN/ALQ-99 tactical jamming pod is carried by the EA-6B Prowler and EA-18G Growler."
+  },
+  {
+    "id": "air-aerobatic-teams",
+    "mode": "Air",
+    "text": "Name a military aerobatic display team.",
+    "answers": [
+      {
+        "name": "Blue Angels",
+        "aliases": [
+          "US Navy Blue Angels"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "Thunderbirds",
+        "aliases": [
+          "USAF Thunderbirds"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "Red Arrows",
+        "aliases": [
+          "RAF Red Arrows"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "Patrouille de France",
+        "aliases": [
+          "French Patrol"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "Frecce Tricolori",
+        "aliases": [
+          "Italian Frecce"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "Snowbirds",
+        "aliases": [
+          "Canadian Forces Snowbirds"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "Russian Knights",
+        "aliases": [
+          "Rus"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Swifts",
+        "aliases": [
+          "Strizhi"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Black Eagles",
+        "aliases": [
+          "Republic of Korea Air Force Black Eagles"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Patrulla Águila",
+        "aliases": [
+          "Aguila",
+          "Patrulla Aguila"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Blue Impulse",
+        "aliases": [
+          "JASDF Blue Impulse"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Patrouille Suisse",
+        "aliases": [
+          "Swiss Patrol"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Roulettes",
+        "aliases": [
+          "RAAF Roulettes"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Red Devils",
+        "aliases": [
+          "Red Devils parachute"
+        ],
+        "weight": 1.0
+      },
+      {
+        "name": "Sarang Hawks",
+        "aliases": [
+          "Sarang"
+        ],
+        "weight": 1.0
+      },
+      {
+        "name": "Yellow Birds",
+        "aliases": [],
+        "weight": 1.0
+      }
+    ],
+    "detail": "Air force or navy demonstration teams.",
+    "fact": "The Red Arrows have flown the BAE Hawk since 1980 and fly with nine aircraft in the 'Diamond Nine'."
+  },
+  {
+    "id": "air-30mm-aircraft",
+    "mode": "Air",
+    "text": "Name an aircraft armed with a 30mm cannon.",
+    "answers": [
+      {
+        "name": "A-10 Thunderbolt II",
+        "aliases": [
+          "A-10",
+          "Warthog"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "Su-25",
+        "aliases": [
+          "Su25",
+          "Frogfoot"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "Su-27",
+        "aliases": [
+          "Su27",
+          "Flanker"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "MiG-29",
+        "aliases": [
+          "MiG29",
+          "Fulcrum"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "Su-34",
+        "aliases": [
+          "Su34",
+          "Fullback"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Su-35",
+        "aliases": [
+          "Su35"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "AH-64 Apache",
+        "aliases": [
+          "AH-64",
+          "Apache"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "Mi-28",
+        "aliases": [
+          "Mi28",
+          "Havoc"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "Ka-52",
+        "aliases": [
+          "Ka52",
+          "Alligator"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "Tiger",
+        "aliases": [
+          "Eurocopter Tiger"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Rafale",
+        "aliases": [
+          "Dassault Rafale"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Mirage 2000",
+        "aliases": [
+          "Mirage 2000C"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Su-30",
+        "aliases": [
+          "Su30"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Su-57",
+        "aliases": [
+          "Su57"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Mi-24P",
+        "aliases": [
+          "Mi-24",
+          "Hind"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Il-2",
+        "aliases": [
+          "Il-2M",
+          "Il-2 Type 3M"
+        ],
+        "weight": 1.0
+      },
+      {
+        "name": "Su-24M",
+        "aliases": [
+          "Su-24"
+        ],
+        "weight": 0.9
+      },
+      {
+        "name": "Ka-50",
+        "aliases": [
+          "Ka50",
+          "Black Shark"
+        ],
+        "weight": 0.55
+      }
+    ],
+    "detail": "Fixed-wing or helicopter, any gun in the 30mm class.",
+    "fact": "The A-10's GAU-8/A fires 30x173mm rounds at up to 3,900 per minute."
   }
 ]

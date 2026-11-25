@@ -47,7 +47,7 @@ export function renderResults(app: App, v: ResultsView): void {
       ${ladderHtml(idx, idx, session.answers.length)}
       <ol class="answers">${rows}</ol>
       <pre class="share" id="share-text">${esc(text)}</pre>
-      <div class="row">${run ? `<button class="btn primary" id="again">Dive again ∞</button>` : ''}<button class="btn${run ? '' : ' primary'}" id="share">Copy share text</button><button class="btn" id="home">Home</button></div>
+      <div class="row">${run ? `<button class="btn primary" id="again">Fly again ∞</button>` : ''}<button class="btn${run ? '' : ' primary'}" id="share">Copy share text</button><button class="btn" id="home">Home</button></div>
       <p class="muted small" id="copied" role="status"></p>
     </section>`;
 

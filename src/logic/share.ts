@@ -12,7 +12,7 @@ export function buildShareText(opts: { date: string; mode: Mode; archive: boolea
   const tier = tierFor(depth, answers.length);
   return [
     `Military Krillion ${label ?? `${date} · ${mode}${archive ? ' (archive)' : ''}`}`,
-    `Depth ${formatMeters(depthMeters(depth))} · ${depthPoints(depth)} pts — ${tier.name} · ${tier.airfield} ${tier.flag}`,
+    `Distance ${formatMeters(depthMeters(depth))} · ${depthPoints(depth)} pts — ${tier.name} · ${tier.airfield} ${tier.flag}`,
     answers.map(scoreSquare).join(''),
   ].join('\n');
 }

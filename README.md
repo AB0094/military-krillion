@@ -15,6 +15,10 @@ npm run typecheck
 npm run build      # static site in dist/ (relative base, works on any static host or sub-path)
 ```
 
+## Look
+
+The menu is a dusk airfield: stars, hills, a lit runway, drifting cloud, a carrier jet with a HARM passing over and a tank patrolling. Home is organised as Today's missions (Ground, Air, Ranked), Free play (Endless and Unlimited), then your Service record and the Airfield ladder. Styles for the overhaul are the `v11` block at the end of `src/style.css`; the scene is `src/ui/backdrop.ts`.
+
 ## Modes
 
 | Mode | What it is |

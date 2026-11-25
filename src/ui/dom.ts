@@ -2,7 +2,7 @@ import type { SaveState } from '../logic/types';
 import type { Route } from '../logic/route';
 import { isRunSeed } from '../logic/seed';
 import type { Mode } from '../logic/types';
-import { missileSvg } from './logo';
+import { logoSvg } from './logo';
 
 export type View = Route;
 
@@ -25,7 +25,7 @@ export function fmt(n: number): string {
 }
 
 export function header(subtitle: string, big = false): string {
-  return `<header class="brand${big ? ' big' : ''}"><span class="logo-box">${missileSvg('missile logo')}</span><div><h1>Military Krillion</h1><p>${esc(subtitle)}</p></div></header>`;
+  return `<header class="brand${big ? ' big' : ''}"><span class="logo-box">${logoSvg()}</span><div><h1>Military Krillion</h1><p>${esc(subtitle)}</p></div></header>`;
 }
 
 /** Name of the mode as players see it: Unlimited's mixed runs read "Mixed", not "Ranked". */

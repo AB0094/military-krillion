@@ -1,16 +1,20 @@
-import { carrierSprite, cloudSprite, fishSprite, jetSprite } from './sprites';
+import { cloudSprite, dartSprite, harmSprite, jetSprite, tankSprite, TANK_MODELS } from './sprites';
 
-/** The fixed pixel-art sea scene behind the non-dive screens. */
+/** The fixed pixel-art dusk airfield behind the menu screens: stars, hills, a runway, drifting cloud, a jet carrying a HARM and a patrolling tank. */
 export function mountBackdrop(): void {
   if (document.getElementById('bg')) return;
   const el = document.createElement('div');
   el.id = 'bg';
   el.setAttribute('aria-hidden', 'true');
-  const clouds = [0, 1, 2, 3].map((i) => `<span class="bg-cloud" style="top:${2 + i * 3.2}vh;--d:${70 + i * 25}s;--delay:-${i * 23}s;--s:${i % 2 ? 1 : 0.7}">${cloudSprite()}</span>`).join('');
-  const fish = Array.from({ length: 12 }, (_, i) => `<span class="bg-fish${i % 2 ? ' flip' : ''}" style="top:${30 + ((i * 17) % 62)}vh;--dur:${45 + (i * 13) % 40}s;--delay:-${(i * 11) % 45}s">${fishSprite(i, 'rgba(3,15,34,.6)')}</span>`).join('');
-  const bubbles = Array.from({ length: 16 }, (_, i) => `<i class="bg-bub" style="left:${(i * 37) % 100}%;--d:${9 + (i * 3) % 10}s;--delay:-${(i * 5) % 14}s"></i>`).join('');
-  el.innerHTML = `<div class="bg-sky"></div><div class="bg-sea"></div>${clouds}
-    <div class="bg-ship">${carrierSprite()}</div><div class="bg-line"></div>
-    <div class="bg-jet">${jetSprite()}</div>${fish}${bubbles}<div class="scan"></div>`;
+  const stars = Array.from({ length: 46 }, (_, i) => `<i class="bg-star" style="left:${(i * 53) % 100}%;top:${(i * 29) % 46}%;--t:${2 + (i % 5)}s;--dl:-${(i * 7) % 6}s;--sz:${i % 7 === 0 ? 3 : 2}px"></i>`).join('');
+  const clouds = [0, 1, 2, 3].map((i) => `<span class="bg-cloud" style="top:${8 + i * 7}vh;--d:${90 + i * 30}s;--delay:-${i * 31}s;--s:${i % 2 ? 1.1 : 0.7}">${cloudSprite()}</span>`).join('');
+  const lights = Array.from({ length: 26 }, (_, i) => `<i style="left:${i * 4.2}%"></i>`).join('');
+  el.innerHTML = `<div class="bg-sky"></div><div class="bg-sun"></div>${stars}${clouds}
+    <div class="bg-hills far"></div><div class="bg-hills near"></div>
+    <div class="bg-ground"><div class="bg-runway"></div><div class="bg-lights">${lights}</div></div>
+    <div class="bg-jet"><span class="bg-jet-body">${jetSprite()}</span><span class="bg-jet-harm">${harmSprite()}</span></div>
+    <div class="bg-tank">${tankSprite(TANK_MODELS[4])}</div>
+    <div class="bg-dart">${dartSprite()}</div>
+    <div class="scan"></div><div class="bg-fade"></div>`;
   document.body.prepend(el);
 }
