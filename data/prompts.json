@@ -42,7 +42,7 @@
           "Havoc",
           "Night Hunter"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Mi-8/Mi-17",
@@ -104,14 +104,14 @@
           "Su22",
           "Fitter"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "MiG-27",
         "aliases": [
           "Flogger"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Ka-50",
@@ -126,7 +126,7 @@
         "aliases": [
           "Mitten"
         ],
-        "weight": 0.9
+        "weight": 1.0
       }
     ],
     "fact": "The S-8 is a Soviet/Russian 80mm unguided rocket, usually fired from 20-round pods such as the B-8M1.",
@@ -274,7 +274,7 @@
           "Tiger II",
           "Freedom Fighter"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "OV-10 Bronco",
@@ -283,7 +283,7 @@
           "OV10",
           "Bronco"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "A-4 Skyhawk",
@@ -292,7 +292,7 @@
           "A4",
           "Skyhawk"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "A-29 Super Tucano",
@@ -302,7 +302,7 @@
           "Super Tucano",
           "EMB-314"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "AT-6 Wolverine",
@@ -313,7 +313,7 @@
           "T-6 Texan II",
           "Wolverine"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "MD 530F",
@@ -330,7 +330,7 @@
           "Spectre",
           "Gunship"
         ],
-        "weight": 0.9
+        "weight": 1.0
       }
     ],
     "fact": "The Hydra 70 is an unguided 70mm (2.75 in) rocket, carried in 7- or 19-tube pods like the M260 and M261.",
@@ -475,7 +475,7 @@
           "A6",
           "Intruder"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "JAS 39 Gripen",
@@ -485,7 +485,7 @@
           "JAS-39",
           "Rb 75"
         ],
-        "weight": 0.55
+        "weight": 0.7
       }
     ],
     "fact": "The AGM-65 Maverick entered service in 1972 and comes in electro-optical, imaging-infrared and laser-guided versions.",
@@ -579,7 +579,7 @@
           "Direct Action Penetrator",
           "MH-60L"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "TAI T129 ATAK",
@@ -589,7 +589,7 @@
           "ATAK",
           "T129 ATAK"
         ],
-        "weight": 0.55
+        "weight": 0.7
       }
     ],
     "fact": "Hellfire began as 'Heliborne, Laser, Fire-and-Forget', a missile built to kill tanks from helicopters.",
@@ -660,14 +660,14 @@
           "Mi-24VM",
           "Mi-35P"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Mi-28NM",
         "aliases": [
           "Night Hunter"
         ],
-        "weight": 0.55
+        "weight": 0.7
       }
     ],
     "fact": "The Apache's M230 chain gun fires 30x113mm rounds and slews to wherever the gunner looks through a helmet sight.",
@@ -748,7 +748,7 @@
           "MQ9",
           "Reaper"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "F-14 Tomcat",
@@ -837,7 +837,7 @@
           "A29",
           "Super Tucano"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "AT-6 Wolverine",
@@ -847,7 +847,7 @@
           "Wolverine",
           "T-6 Texan II"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "F-117 Nighthawk",
@@ -856,7 +856,7 @@
           "F117",
           "Nighthawk"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "F-111 Aardvark",
@@ -866,7 +866,7 @@
           "Aardvark",
           "EF-111"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "KAI FA-50",
@@ -874,7 +874,7 @@
           "FA-50",
           "FA50"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Mirage F1",
@@ -882,7 +882,7 @@
           "F1CR",
           "Mirage F1CT"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "B-1B Lancer",
@@ -907,7 +907,7 @@
           "Ghostrider",
           "AC-130J"
         ],
-        "weight": 0.9
+        "weight": 1.0
       },
       {
         "name": "MQ-1 Predator",
@@ -916,7 +916,7 @@
           "MQ1",
           "Predator"
         ],
-        "weight": 0.9
+        "weight": 1.0
       }
     ],
     "fact": "The GBU-12 is a 500 lb Mk 82 bomb with a laser-guidance kit, a mainstay of precision strikes since the Gulf War.",
@@ -997,7 +997,7 @@
           "Tornado F3",
           "Tornado"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "F-14 Tomcat",
@@ -1070,7 +1070,7 @@
           "F86",
           "Sabre"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "JF-17 Thunder",
@@ -1080,7 +1080,7 @@
           "Thunder",
           "FC-1"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "KAI FA-50",
@@ -1090,7 +1090,7 @@
           "Golden Eagle",
           "T-50"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "F-20 Tigershark",
@@ -1099,7 +1099,7 @@
           "F20",
           "Tigershark"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Mirage 5",
@@ -1115,7 +1115,7 @@
           "F100",
           "Super Sabre"
         ],
-        "weight": 0.9
+        "weight": 1.0
       },
       {
         "name": "A-10",
@@ -1123,7 +1123,7 @@
           "Warthog",
           "A-10C"
         ],
-        "weight": 0.55
+        "weight": 0.7
       }
     ],
     "fact": "The AIM-9 Sidewinder has served since the 1950s and is among the most-produced air-to-air missiles ever.",
@@ -1176,7 +1176,7 @@
           "K2",
           "Black Panther"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Type 10",
@@ -1222,7 +1222,7 @@
         "aliases": [
           "CR3"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "KF51 Panther",
@@ -1231,7 +1231,7 @@
           "Panther KF51",
           "KF-51"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Sabra",
@@ -1240,14 +1240,14 @@
           "Sabra Mk 3",
           "Magach Sabra"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Strv 122",
         "aliases": [
           "Stridsvagn 122"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "MBT-70",
@@ -1255,7 +1255,7 @@
           "KPz-70",
           "Kampfpanzer 70"
         ],
-        "weight": 0.9
+        "weight": 1.0
       }
     ],
     "fact": "The Rheinmetall 120mm smoothbore, and its licence-built M256 version, arms the M1A1 onward, the Leopard 2 and many others.",
@@ -1282,7 +1282,7 @@
           "LAV25",
           "LAV 25"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Dardo",
@@ -1290,7 +1290,7 @@
           "VCC-80",
           "Dardo IFV"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "ASLAV-25",
@@ -1344,7 +1344,7 @@
           "M3A3",
           "Cavalry Fighting Vehicle"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Piranha IIIC",
@@ -1353,7 +1353,7 @@
           "Piranha 3C",
           "Piranha III 25"
         ],
-        "weight": 0.9
+        "weight": 1.0
       }
     ],
     "fact": "The Bradley's M242 Bushmaster is a 25mm chain gun, also used on the LAV-25 and on ships.",
@@ -1405,7 +1405,7 @@
           "T-14",
           "Armata"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Type 99",
@@ -1414,7 +1414,7 @@
           "ZTZ-99",
           "ZTZ99"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "T-84 Oplot",
@@ -1449,7 +1449,7 @@
           "Zulfiqar-3",
           "Zolfaghar"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Karrar",
@@ -1473,7 +1473,7 @@
           "M-84AB",
           "M84A"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "T-72 Ajeya",
@@ -1481,7 +1481,7 @@
           "Ajeya",
           "T-72M1 Ajeya"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "T-90 Bhishma",
@@ -1489,7 +1489,7 @@
           "Bhishma",
           "T-90S Bhishma"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Black Eagle",
@@ -1506,7 +1506,7 @@
           "T-95",
           "T95"
         ],
-        "weight": 0.9
+        "weight": 1.0
       },
       {
         "name": "2S25 Sprut-SD",
@@ -1515,14 +1515,14 @@
           "2S25",
           "Sprut SD"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "TR-125",
         "aliases": [
           "Romanian T-72"
         ],
-        "weight": 0.9
+        "weight": 1.0
       }
     ],
     "fact": "Soviet 125mm smoothbore guns (the 2A46 family) arm the T-64, T-72, T-80 and T-90 lines, fed by autoloaders.",
@@ -1575,7 +1575,7 @@
         "aliases": [
           "Type74"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Vijayanta",
@@ -1635,7 +1635,7 @@
       {
         "name": "AMX-10 RC",
         "aliases": [],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Centauro",
@@ -1643,7 +1643,7 @@
           "B1 Centauro",
           "Centauro B1"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Rooikat",
@@ -1651,7 +1651,7 @@
           "Rooikat 105",
           "Rooikat tank destroyer"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Type 16 MCV",
@@ -1660,7 +1660,7 @@
           "Type16",
           "Maneuver Combat Vehicle"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "ZTQ-15",
@@ -1668,7 +1668,7 @@
           "Type 15",
           "Type15"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "M8 AGS",
@@ -1677,7 +1677,7 @@
           "Armored Gun System",
           "AGS"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Stingray",
@@ -1702,7 +1702,7 @@
         "aliases": [
           "AMX-13/105"
         ],
-        "weight": 0.9
+        "weight": 1.0
       }
     ],
     "fact": "The British L7 105mm rifled gun became a NATO Cold War standard, fitted to the Centurion, M60 and Leopard 1.",
@@ -1765,7 +1765,7 @@
         "aliases": [
           "AHS Krab"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Zuzana 2",
@@ -1773,7 +1773,7 @@
           "Zuzana",
           "Zuzana2"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "PLZ-05",
@@ -1844,14 +1844,14 @@
           "Type 19 wheeled",
           "Type 19 155mm SPH"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "RCH 155",
         "aliases": [
           "Boxer RCH 155"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Nora B-52",
@@ -1859,7 +1859,7 @@
           "Nora",
           "B-52 Nora"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "ATMOS 2000",
@@ -1867,7 +1867,7 @@
           "ATMOS",
           "Atmos"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "T-155 Firtina",
@@ -1875,7 +1875,7 @@
           "Firtina",
           "T-155"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "K9 Vajra",
@@ -1883,7 +1883,7 @@
           "Vajra",
           "K9 Vajra-T"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Dana M2",
@@ -1907,7 +1907,7 @@
           "Crusader",
           "XM2001"
         ],
-        "weight": 0.9
+        "weight": 1.0
       },
       {
         "name": "Sholef",
@@ -1915,7 +1915,7 @@
           "Sholef 155",
           "Soltam Sholef"
         ],
-        "weight": 0.9
+        "weight": 1.0
       }
     ],
     "fact": "Barrel length in calibres matters: a 52-calibre gun like the PzH 2000 outranges a 39-calibre M109A6 Paladin.",
@@ -1972,7 +1972,7 @@
           "BMD4",
           "BMD-4M"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "BMPT Terminator",
@@ -2034,7 +2034,7 @@
           "Pizarro",
           "ASCOD IFV"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Warrior",
@@ -2043,21 +2043,21 @@
           "Warrior IFV",
           "Warrior FV510"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "ZBD-04",
         "aliases": [
           "Type 04"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "ZBD-05",
         "aliases": [
           "Type 05"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Boxer",
@@ -2066,7 +2066,7 @@
           "GTK Boxer",
           "Boxer RCT30"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Rosomak",
@@ -2074,7 +2074,7 @@
           "KTO Rosomak",
           "Rosomak-M"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Eitan",
@@ -2090,7 +2090,7 @@
           "Tulpar IFV",
           "Otokar Tulpar"
         ],
-        "weight": 0.9
+        "weight": 1.0
       }
     ],
     "fact": "A 30mm autocannon balances armour-piercing punch against light vehicles with ammunition weight and cost.",
@@ -2137,7 +2137,7 @@
         "aliases": [
           "MATADOR"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "C90",
@@ -2145,7 +2145,7 @@
           "Instalaza C90",
           "C-90"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "RPG-18 Mukha",
@@ -2213,14 +2213,14 @@
         "aliases": [
           "Armbrust Panzerabwehrwaffe"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "LAW 80",
         "aliases": [
           "L72 LAW"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "PF-89",
@@ -2228,7 +2228,7 @@
           "Type 89 80mm",
           "PF-89 Type 89"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Panzerfaust 60",
@@ -2237,7 +2237,7 @@
           "Panzerfaust 60M",
           "Panzerfaust 60 M1"
         ],
-        "weight": 0.9
+        "weight": 1.0
       },
       {
         "name": "SRAW",
@@ -2246,7 +2246,7 @@
           "Predator SRAW",
           "FGM172"
         ],
-        "weight": 0.9
+        "weight": 1.0
       }
     ],
     "fact": "Disposable launchers like the M72 LAW and AT4 are thrown away after one shot, trading reuse for low weight.",
@@ -2315,7 +2315,7 @@
           "Type10",
           "Hitomaru"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Type 90",
@@ -2323,7 +2323,7 @@
           "Type90",
           "Kyu-maru"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "T-64",
@@ -2372,21 +2372,21 @@
         "aliases": [
           "M-84AB"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "VT-4",
         "aliases": [
           "MBT-3000"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "AMX-13",
         "aliases": [
           "AMX-13/105"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Strv 103",
@@ -2395,7 +2395,7 @@
           "S tank",
           "Stridsvagn 103"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "MBT-70",
@@ -2416,7 +2416,7 @@
         "aliases": [
           "Karrar tank"
         ],
-        "weight": 0.9
+        "weight": 1.0
       }
     ],
     "fact": "Autoloaders let tanks run a three-man crew; many Soviet-pattern designs carousel the ammo under the turret ring.",
@@ -2483,7 +2483,7 @@
           "Marder Roland",
           "Roland"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "2K12 Kub",
@@ -2503,7 +2503,7 @@
           "SA-4",
           "Ganef"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "S-300V",
@@ -2523,7 +2523,7 @@
           "Rapier",
           "Rapier M548"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "M48 Chaparral",
@@ -2532,7 +2532,7 @@
           "MIM-72",
           "M48"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "ADATS",
@@ -2550,7 +2550,7 @@
           "Alvis Stormer",
           "Starstreak Stormer"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Pantsir-SA",
@@ -2559,7 +2559,7 @@
           "Pantsir-S1",
           "Pantsir-SM"
         ],
-        "weight": 0.9
+        "weight": 1.0
       }
     ],
     "fact": "Tracked air-defense carriers can keep pace with armoured columns, which truck-mounted systems often cannot.",
@@ -2657,7 +2657,7 @@
           "BrahMos-A",
           "BrahMos-A cruise missile"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "GSh-30-1",
@@ -2753,7 +2753,7 @@
           "JASSM",
           "AGM-158"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "AGM-84 Harpoon",
@@ -2761,7 +2761,7 @@
           "AGM-84",
           "Harpoon"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "CBU-87",
@@ -2770,7 +2770,7 @@
           "CBU-87 CEM",
           "Combined Effects Munition"
         ],
-        "weight": 0.9
+        "weight": 1.0
       }
     ],
     "detail": "Munitions the F-16 can carry, across Block variants and operators. Pods and fuel tanks don't count."
@@ -2856,7 +2856,7 @@
           "GBU-31",
           "Joint Direct Attack Munition"
         ],
-        "weight": 0.55
+        "weight": 0.7
       }
     ],
     "detail": "Munitions and guns the A-10 can carry. Pods and fuel tanks don't count."
@@ -2997,7 +2997,7 @@
           "Axehead",
           "RVV-BD"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "AAM-4",
@@ -3006,12 +3006,12 @@
           "AAM4",
           "Type 99 AAM"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "PL-15",
         "aliases": [],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Astra",
@@ -3019,7 +3019,7 @@
           "Astra Mk1",
           "Astra missile"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "AIM-174B",
@@ -3032,7 +3032,7 @@
       {
         "name": "R-27EA",
         "aliases": [],
-        "weight": 0.9
+        "weight": 1.0
       }
     ],
     "detail": "Missiles with their own active radar seeker. Name the missile, not the aircraft that carries it."
@@ -3095,7 +3095,7 @@
           "PL10",
           "PL-10E"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "A-Darter",
@@ -3104,7 +3104,7 @@
           "ADarter",
           "Denel A-Darter"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "R-60",
@@ -3148,14 +3148,14 @@
         "aliases": [
           "PL-5E"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "PL-9",
         "aliases": [
           "Thunder Fire"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "R-3",
@@ -3166,7 +3166,7 @@
           "K13",
           "R-3S"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "AAM-3",
@@ -3189,7 +3189,7 @@
           "Shafrir 2",
           "Shafrir-2"
         ],
-        "weight": 0.9
+        "weight": 1.0
       },
       {
         "name": "AIM-4 Falcon",
@@ -3198,7 +3198,7 @@
           "AIM4",
           "Falcon"
         ],
-        "weight": 0.9
+        "weight": 1.0
       }
     ],
     "detail": "Heat-seeking air-to-air missiles from any country, any generation."
@@ -3284,7 +3284,7 @@
           "Eitam",
           "Nachshon Eitam"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "KJ-500",
@@ -3307,7 +3307,7 @@
           "EMB 145",
           "E-99"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "IAI Phalcon",
@@ -3317,7 +3317,7 @@
           "A-50I",
           "Il-76 Phalcon"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Nimrod AEW3",
@@ -3325,7 +3325,7 @@
           "Nimrod AEW",
           "AEW3"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "E-1 Tracer",
@@ -3351,7 +3351,7 @@
         "aliases": [
           "Moss"
         ],
-        "weight": 0.9
+        "weight": 1.0
       },
       {
         "name": "Sea King AEW",
@@ -3360,7 +3360,7 @@
           "ASaC",
           "Sea King AEW2"
         ],
-        "weight": 0.9
+        "weight": 1.0
       }
     ],
     "detail": "Airborne early warning and control aircraft, including helicopter and retired types."
@@ -3434,7 +3434,7 @@
           "Boeing KC-767",
           "KC-767J"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "A400M Atlas",
@@ -3469,7 +3469,7 @@
           "KC97",
           "Stratofreighter"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "KC-707",
@@ -3477,14 +3477,14 @@
           "707 tanker",
           "Boeing 707 tanker"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "KDC-10",
         "aliases": [
           "DC-10 tanker"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Y-20U",
@@ -3508,7 +3508,7 @@
           "Buddy tanker",
           "Super Hornet buddy"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Victor K2",
@@ -3516,7 +3516,7 @@
           "Handley Page Victor",
           "Victor tanker"
         ],
-        "weight": 0.9
+        "weight": 1.0
       },
       {
         "name": "Su-33 buddy",
@@ -3524,7 +3524,7 @@
           "Su-33UB",
           "UPAZ"
         ],
-        "weight": 0.9
+        "weight": 1.0
       }
     ],
     "detail": "Aircraft that can refuel others in flight, including buddy-refuelling and retired tankers."
@@ -3630,7 +3630,7 @@
           "X47B",
           "X-47"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "S-70 Okhotnik",
@@ -3640,7 +3640,7 @@
           "Hunter",
           "Su-70"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "YF-23",
@@ -3648,12 +3648,12 @@
           "Black Widow II",
           "Gray Ghost"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Have Blue",
         "aliases": [],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Tacit Blue",
@@ -3695,7 +3695,7 @@
           "HAL AMCA",
           "Advanced Medium Combat Aircraft"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "XQ-58 Valkyrie",
@@ -3703,7 +3703,7 @@
           "XQ-58",
           "Valkyrie"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "J-36",
@@ -3730,28 +3730,28 @@
           "Sharp Sword",
           "Lijian"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Bird of Prey",
         "aliases": [
           "Boeing Bird of Prey"
         ],
-        "weight": 0.9
+        "weight": 1.0
       },
       {
         "name": "YF-22",
         "aliases": [
           "Lightning II YF-22"
         ],
-        "weight": 0.9
+        "weight": 1.0
       },
       {
         "name": "Sea Shadow",
         "aliases": [
           "IX-529"
         ],
-        "weight": 0.9
+        "weight": 1.0
       }
     ],
     "detail": "Manned and unmanned aircraft built around low-observable design, including prototypes and demonstrators."
@@ -3816,7 +3816,7 @@
           "Yak141",
           "Freestyle"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Kestrel",
@@ -3825,7 +3825,7 @@
           "P.1127",
           "Kestrel FGA.1"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Harrier GR9",
@@ -3845,21 +3845,21 @@
           "V280",
           "Valor"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "XV-15",
         "aliases": [
           "Bell XV-15"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "XFV-12",
         "aliases": [
           "Rockwell XFV-12"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "X-13 Vertijet",
@@ -3868,7 +3868,7 @@
           "Ryan X-13",
           "Vertijet"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Dornier Do 31",
@@ -3914,14 +3914,14 @@
         "aliases": [
           "LTV XC-142"
         ],
-        "weight": 0.9
+        "weight": 1.0
       },
       {
         "name": "P.1154",
         "aliases": [
           "Hawker Siddeley P.1154"
         ],
-        "weight": 0.9
+        "weight": 1.0
       },
       {
         "name": "AW609",
@@ -3930,7 +3930,7 @@
           "Bell AW609",
           "BA609"
         ],
-        "weight": 0.9
+        "weight": 1.0
       }
     ],
     "detail": "Anything that can take off or land vertically or in a very short distance, including tiltrotors and experimental airframes."
@@ -4044,7 +4044,7 @@
           "Xi'an Y-20",
           "Kunpeng"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "C-27J Spartan",
@@ -4112,7 +4112,7 @@
           "An-74",
           "Coaler"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Shaanxi Y-9",
@@ -4120,7 +4120,7 @@
           "Y-9",
           "Y9"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Shaanxi Y-8",
@@ -4128,7 +4128,7 @@
           "Y-8",
           "Y8"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "C-119 Flying Boxcar",
@@ -4137,7 +4137,7 @@
           "C119",
           "Flying Boxcar"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "CASA C-212 Aviocar",
@@ -4146,7 +4146,7 @@
           "C212",
           "Aviocar"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "G.222",
@@ -4155,7 +4155,7 @@
           "C-27A Spartan",
           "Alenia G.222"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "YC-15",
@@ -4167,7 +4167,7 @@
       {
         "name": "An-70",
         "aliases": [],
-        "weight": 0.9
+        "weight": 1.0
       }
     ],
     "detail": "Fixed-wing transports with a rear cargo ramp, any size or country, including retired types."
@@ -4234,7 +4234,7 @@
           "Defiant",
           "Sikorsky-Boeing Defiant"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Ka-226",
@@ -4242,7 +4242,7 @@
           "Ka226",
           "Ka-226T"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Ka-32",
@@ -4267,7 +4267,7 @@
           "Kasatka",
           "Ka-62"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Ka-26",
@@ -4289,7 +4289,7 @@
           "X2",
           "X2 Technology Demonstrator"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "XH-59",
@@ -4309,12 +4309,12 @@
           "DASH",
           "Gyrodyne QH-50"
         ],
-        "weight": 0.9
+        "weight": 1.0
       },
       {
         "name": "Ka-137",
         "aliases": [],
-        "weight": 0.9
+        "weight": 1.0
       }
     ],
     "detail": "Helicopters with two rotors stacked on one mast turning in opposite directions, including demonstrators."
@@ -4411,7 +4411,7 @@
           "Z-9",
           "Harbin Z-9C"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Mi-14",
@@ -4435,7 +4435,7 @@
           "Z-18",
           "Changhe Z-18"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Z-20F",
@@ -4443,7 +4443,7 @@
           "Z-20",
           "Harbin Z-20"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "AS565 Panther",
@@ -4453,7 +4453,7 @@
           "Dauphin",
           "AS565 MBe"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Westland Wessex",
@@ -4479,7 +4479,7 @@
           "Whirlwind",
           "HAS7"
         ],
-        "weight": 0.9
+        "weight": 1.0
       },
       {
         "name": "Alouette III",
@@ -4488,7 +4488,7 @@
           "SA 316",
           "Alouette 3"
         ],
-        "weight": 0.55
+        "weight": 0.7
       }
     ],
     "detail": "Helicopters flown from ships or used to hunt submarines, including older types."
@@ -4652,7 +4652,7 @@
           "Orion UAV",
           "Inokhodets"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "MQ-1 Predator",
@@ -4704,7 +4704,7 @@
           "Aksungur",
           "Aksungur UAV"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "CH-5",
@@ -4712,24 +4712,24 @@
           "Rainbow CH-5",
           "Caihong 5"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "CH-3",
         "aliases": [
           "Rainbow CH-3"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Shahed 129",
         "aliases": [],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Mohajer-6",
         "aliases": [],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Kaman-22",
@@ -4750,7 +4750,7 @@
           "United 40",
           "Yabhon"
         ],
-        "weight": 0.9
+        "weight": 1.0
       }
     ],
     "detail": "Armed drones in the medium-altitude, long-endurance class, from any country."
@@ -4870,7 +4870,7 @@
           "Foxbat",
           "MiG-25RB"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Su-7",
@@ -4878,7 +4878,7 @@
           "Fitter",
           "Su-7BMK"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Hawk",
@@ -4887,7 +4887,7 @@
           "BAE Hawk",
           "Hawk Mk 132"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Mystère IV",
@@ -4895,7 +4895,7 @@
           "Mystere",
           "Mystere IVA"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Toofani",
@@ -4911,7 +4911,7 @@
           "De Havilland Vampire",
           "Vampire FB52"
         ],
-        "weight": 0.9
+        "weight": 1.0
       },
       {
         "name": "Canberra",
@@ -4919,7 +4919,7 @@
           "English Electric Canberra",
           "B(I)58"
         ],
-        "weight": 0.55
+        "weight": 0.7
       }
     ],
     "detail": "Fighters and strike aircraft the Indian Air Force has flown, current or retired."
@@ -5018,7 +5018,7 @@
           "9M119",
           "Sheksna"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "APDS",
@@ -5027,7 +5027,7 @@
           "armor piercing discarding sabot",
           "armour piercing discarding sabot"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "APCR",
@@ -5035,7 +5035,7 @@
           "armor piercing composite rigid",
           "armour piercing composite rigid"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "APHE",
@@ -5043,7 +5043,7 @@
           "armor piercing high explosive",
           "armour piercing high explosive"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "HVAP",
@@ -5078,7 +5078,7 @@
         "aliases": [
           "high explosive tracer"
         ],
-        "weight": 0.9
+        "weight": 1.0
       },
       {
         "name": "Beehive",
@@ -5088,7 +5088,7 @@
           "APERS-T",
           "antipersonnel flechette"
         ],
-        "weight": 0.9
+        "weight": 1.0
       }
     ],
     "detail": "Name a type of round, not a specific model. Any era counts; Western and Soviet names both work."
@@ -5281,7 +5281,7 @@
           "Akeron",
           "MMP missile"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Nag",
@@ -5291,7 +5291,7 @@
           "Nag missile",
           "Prospina"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Brimstone",
@@ -5371,7 +5371,7 @@
         "aliases": [
           "Eryx missile"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "TRIGAT",
@@ -5379,7 +5379,7 @@
           "Trigat MR",
           "Trigat LR"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "PARS 3 LR",
@@ -5387,14 +5387,14 @@
           "PARS 3",
           "PARS3"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "LAHAT",
         "aliases": [
           "LAHAT missile"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "RBS 56 Bill",
@@ -5404,14 +5404,14 @@
           "RBS 56",
           "Bill 2"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Swingfire",
         "aliases": [
           "Swingfire missile"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "SS.11",
@@ -5419,14 +5419,14 @@
           "AS.11",
           "Nord SS.11"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "ENTAC",
         "aliases": [
           "MGR-1"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Malkara",
@@ -5481,12 +5481,12 @@
           "SRAW",
           "FGM172"
         ],
-        "weight": 0.9
+        "weight": 1.0
       },
       {
         "name": "NLAW",
         "aliases": [],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "9M117 Bastion",
@@ -5496,7 +5496,7 @@
           "Stabber",
           "9M117"
         ],
-        "weight": 0.9
+        "weight": 1.0
       },
       {
         "name": "9M112 Kobra",
@@ -5506,7 +5506,7 @@
           "Songster",
           "Cobra 9M112"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Skif",
@@ -5514,7 +5514,7 @@
           "Skif ATGM",
           "Skif Ukrainian"
         ],
-        "weight": 0.9
+        "weight": 1.0
       }
     ],
     "detail": "Guided anti-tank missiles of any generation and any country, launched from the ground or vehicles."
@@ -5638,7 +5638,7 @@
           "Eitan APC",
           "Eitan AFV"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Terrex",
@@ -5681,7 +5681,7 @@
           "ASLAV-25",
           "ASLAV-S"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "BTR-90",
@@ -5689,7 +5689,7 @@
           "Rostok",
           "GAZ-5923"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "K-17 Boomerang",
@@ -5698,7 +5698,7 @@
           "K17",
           "VPK-7829"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Rooikat",
@@ -5706,7 +5706,7 @@
           "Rooikat 105",
           "Rooikat 76"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "LAV 6.0",
@@ -5714,7 +5714,7 @@
           "LAV6",
           "LAV 6"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "VN-22",
@@ -5730,7 +5730,7 @@
           "Hunter 8x8",
           "Hunter IFV"
         ],
-        "weight": 0.9
+        "weight": 1.0
       },
       {
         "name": "Mowag Piranha V",
@@ -5738,7 +5738,7 @@
           "Piranha V",
           "Piranha 5"
         ],
-        "weight": 0.55
+        "weight": 0.7
       }
     ],
     "detail": "Wheeled armored vehicles with eight driven wheels: APCs, IFVs and reconnaissance vehicles."
@@ -5829,7 +5829,7 @@
           "QW2",
           "Vanguard 2"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Blowpipe",
@@ -5838,7 +5838,7 @@
           "Blowpipe missile",
           "Javelin SAM"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Strela-3",
@@ -5904,7 +5904,7 @@
           "Kin SAM",
           "Type 91 Kai"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Misagh-1",
@@ -5912,7 +5912,7 @@
           "Misagh-2",
           "Misagh"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "FIM-43 Redeye",
@@ -5921,7 +5921,7 @@
           "FIM-43",
           "FIM43"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Grom",
@@ -5929,7 +5929,7 @@
           "Grom missile",
           "Grom MANPADS"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Sungur",
@@ -5944,7 +5944,7 @@
         "aliases": [
           "Sakr Eye missile"
         ],
-        "weight": 0.9
+        "weight": 1.0
       }
     ],
     "detail": "Shoulder-fired or crew-portable surface-to-air missiles from any country."
@@ -6037,7 +6037,7 @@
           "ShKH vz.77",
           "vz. 77 Dana"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "2S43 Malva",
@@ -6047,7 +6047,7 @@
           "Malva-?",
           "2S43 Malva wheeled"
         ],
-        "weight": 0.55
+        "weight": 0.7
       }
     ],
     "detail": "Self-propelled 152mm howitzers and guns, Soviet, Russian or other."
@@ -6163,7 +6163,7 @@
           "Fajr 5",
           "Fadjr-5"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "BM-13",
@@ -6236,7 +6236,7 @@
           "LARS",
           "Artillerieraketenwerfer"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Lynx MLRS",
@@ -6245,12 +6245,12 @@
           "IMI Lynx",
           "Lynx IMI"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "LAR-160",
         "aliases": [],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "K136 Kooryong",
@@ -6259,7 +6259,7 @@
           "K136",
           "K-136"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "9A52-4 Tornado",
@@ -6269,7 +6269,7 @@
           "9K51M",
           "Tornado MLRS"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "T-122 Sakarya",
@@ -6278,7 +6278,7 @@
           "T122",
           "T-122"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Orkan",
@@ -6287,7 +6287,7 @@
           "Orkan M-87",
           "Orkan MLRS"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Type 75 130mm",
@@ -6305,7 +6305,7 @@
           "Teruel Spain",
           "Teruel MLRS"
         ],
-        "weight": 0.9
+        "weight": 1.0
       }
     ],
     "detail": "Rocket artillery launchers of any caliber or era, wheeled or tracked."
@@ -6447,7 +6447,7 @@
           "FV214",
           "Conqueror tank"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Vickers MBT",
@@ -6465,7 +6465,7 @@
           "M95",
           "M-95"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "TR-85",
@@ -6473,7 +6473,7 @@
           "TR-85M1",
           "Bizonul"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "BM Oplot",
@@ -6481,21 +6481,21 @@
           "Oplot",
           "T-84 Oplot"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Pz 61",
         "aliases": [
           "Panzer 61"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Pz 68",
         "aliases": [
           "Panzer 68"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Strv 74",
@@ -6504,7 +6504,7 @@
           "Strv 104",
           "Stridsvagn 104"
         ],
-        "weight": 0.9
+        "weight": 1.0
       }
     ],
     "detail": "Tanks designed and built in Europe, including Cold War and retired types."
@@ -6594,7 +6594,7 @@
           "Mobile Protected Firepower",
           "MPF"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "M104 Wolverine",
@@ -6629,7 +6629,7 @@
           "M992",
           "Field Artillery Ammunition Support Vehicle"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "M270 MLRS",
@@ -6638,7 +6638,7 @@
           "MLRS",
           "M270A1"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "M1064 mortar carrier",
@@ -6647,7 +6647,7 @@
           "M1064A3",
           "Mortar Carrier"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "M60 AVLB",
@@ -6665,7 +6665,7 @@
           "Improved TOW Vehicle",
           "ITV"
         ],
-        "weight": 0.9
+        "weight": 1.0
       }
     ],
     "detail": "Tracked armored vehicles currently or recently in US Army service, including support vehicles."
@@ -6786,7 +6786,7 @@
           "Rostok",
           "GAZ-5923"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "K-17 Boomerang",
@@ -6796,7 +6796,7 @@
           "K-16",
           "Boomerang-BM"
         ],
-        "weight": 0.9
+        "weight": 1.0
       },
       {
         "name": "BTR-70",
@@ -6839,12 +6839,12 @@
         "aliases": [
           "BRM-1"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "BMD-3",
         "aliases": [],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "GAZ Tigr",
@@ -6854,7 +6854,7 @@
           "Tigr-M",
           "Tiger GAZ"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Typhoon-K",
@@ -6863,7 +6863,7 @@
           "Typhoon-U",
           "Taifun"
         ],
-        "weight": 0.55
+        "weight": 0.7
       }
     ],
     "detail": "Soviet and Russian IFVs, APCs and armored cars, tracked or wheeled."
@@ -7012,7 +7012,7 @@
           "INSAS 1B1",
           "Indian Small Arms System"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "AR-18",
@@ -7091,7 +7091,7 @@
           "Zastava M85",
           "M85"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "CZ 805 BREN",
@@ -7102,7 +7102,7 @@
           "Bren 2",
           "CZ BREN 2"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "MSBS Grot",
@@ -7111,7 +7111,7 @@
           "MSBS",
           "Grot C16"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "SIG MCX",
@@ -7120,19 +7120,19 @@
           "SIG MCX Spear",
           "SIG MCX Virtus"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "HK433",
         "aliases": [],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "G41",
         "aliases": [
           "HK G41"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Colt Canada C7",
@@ -7142,7 +7142,7 @@
           "C7A2",
           "Diemaco C7"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "F88 Austeyr",
@@ -7152,7 +7152,7 @@
           "Austeyr",
           "Austeyr F88"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Vektor R4",
@@ -7162,7 +7162,7 @@
           "R6",
           "Vektor R5"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Stoner 63",
@@ -7186,14 +7186,14 @@
           "Masada",
           "Remington ACR"
         ],
-        "weight": 0.9
+        "weight": 1.0
       },
       {
         "name": "XM8",
         "aliases": [
           "HK XM8"
         ],
-        "weight": 0.9
+        "weight": 1.0
       }
     ],
     "detail": "Rifles chambered for 5.56x45mm NATO from any country. Carbine versions count as the same family."
@@ -7290,7 +7290,7 @@
           "Serbu BFG 50",
           "Serbu"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Browning M3",
@@ -7317,7 +7317,7 @@
           "M85 MG",
           "Colt M85"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "XM312",
@@ -7332,7 +7332,7 @@
           "M3M",
           "FN M3M machine gun"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Sako TRG-50",
@@ -7340,7 +7340,7 @@
           "TRG-50",
           "TRG50"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Zastava M93 Black Arrow",
@@ -7350,7 +7350,7 @@
           "Crna Strela",
           "Black Arrow"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Zastava M07",
@@ -7360,7 +7360,7 @@
           "Zastava M87",
           "M87"
         ],
-        "weight": 0.9
+        "weight": 1.0
       },
       {
         "name": "ArmaLite AR-50",
@@ -7368,7 +7368,7 @@
           "AR-50",
           "AR50"
         ],
-        "weight": 0.55
+        "weight": 0.7
       }
     ],
     "detail": "Rifles and machine guns chambered in .50 BMG (12.7x99mm NATO)."
@@ -7528,7 +7528,7 @@
           "Type 97",
           "Type 97 IFV"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "YW-531",
@@ -7536,7 +7536,7 @@
           "Type 63 APC",
           "YW-531H"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "ZSD-89",
@@ -7544,7 +7544,7 @@
           "Type 89 APC",
           "Type 89 tracked"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "PGZ-09",
@@ -7552,7 +7552,7 @@
           "Type 09 SPAAG",
           "Type 09"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "PGZ-95",
@@ -7560,21 +7560,21 @@
           "Type 95 SPAAG",
           "Type 95"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "PLZ-83",
         "aliases": [
           "Type 83"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "PLZ-07",
         "aliases": [
           "Type 07"
         ],
-        "weight": 0.55
+        "weight": 0.7
       }
     ],
     "detail": "Chinese tracked tanks, IFVs, APCs and self-propelled guns. Older types count."
@@ -7662,7 +7662,7 @@
           "AMAP-ADS APS",
           "IBD AMAP"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Shtora-1",
@@ -7695,7 +7695,7 @@
           "MUSS Saab",
           "MUSS APS"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Iron Curtain",
@@ -7703,7 +7703,7 @@
           "Artis Iron Curtain",
           "Iron Curtain APS"
         ],
-        "weight": 0.9
+        "weight": 1.0
       },
       {
         "name": "AKKOR",
@@ -7711,7 +7711,7 @@
           "Aselsan AKKOR",
           "Akkor APS"
         ],
-        "weight": 0.55
+        "weight": 0.7
       }
     ],
     "detail": "Hard-kill and soft-kill systems that protect armored vehicles from incoming missiles."
@@ -7839,7 +7839,7 @@
         "aliases": [
           "Fishpot"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Su-47",
@@ -7847,7 +7847,7 @@
           "Berkut",
           "S-37"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "MiG-1.44",
@@ -7855,7 +7855,7 @@
           "MFI",
           "1.44"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Yak-28P",
@@ -7881,40 +7881,40 @@
       {
         "name": "Yak-9",
         "aliases": [],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "La-5",
         "aliases": [
           "La-5FN"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Yak-3",
         "aliases": [],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "MiG-9",
         "aliases": [
           "Fargo"
         ],
-        "weight": 0.9
+        "weight": 1.0
       },
       {
         "name": "Su-11",
         "aliases": [
           "Fishpot-C"
         ],
-        "weight": 0.9
+        "weight": 1.0
       },
       {
         "name": "MiG-27",
         "aliases": [
           "Flogger-D"
         ],
-        "weight": 0.55
+        "weight": 0.7
       }
     ]
   },
@@ -8130,7 +8130,7 @@
           "Volksjäger",
           "Salamander"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "P-39 Airacobra",
@@ -8139,7 +8139,7 @@
           "P39",
           "Airacobra"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "P-61 Black Widow",
@@ -8148,7 +8148,7 @@
           "P61",
           "Black Widow"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Bf 110",
@@ -8156,7 +8156,7 @@
           "Me 110",
           "Messerschmitt Bf 110"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Brewster Buffalo",
@@ -8165,7 +8165,7 @@
           "Buffalo",
           "Brewster F2A"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Fiat G.55",
@@ -8173,7 +8173,7 @@
           "G.55",
           "Centauro"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Reggiane Re.2005",
@@ -8182,7 +8182,7 @@
           "Sagittario",
           "Re 2005"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Ki-61 Hien",
@@ -8192,7 +8192,7 @@
           "Tony",
           "Hien"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Dewoitine D.520",
@@ -8229,7 +8229,7 @@
         "aliases": [
           "P.11"
         ],
-        "weight": 0.9
+        "weight": 1.0
       },
       {
         "name": "Bloch MB.152",
@@ -8237,7 +8237,7 @@
           "MB.152",
           "Bloch 152"
         ],
-        "weight": 0.9
+        "weight": 1.0
       }
     ]
   },
@@ -8315,7 +8315,7 @@
           "F94",
           "Starfire"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "F-82 Twin Mustang",
@@ -8324,7 +8324,7 @@
           "F82",
           "Twin Mustang"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "F3D Skyknight",
@@ -8332,7 +8332,7 @@
           "F3D",
           "Skyknight"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "MiG-17",
@@ -8354,14 +8354,14 @@
         "aliases": [
           "Sea Fury"
         ],
-        "weight": 0.9
+        "weight": 1.0
       },
       {
         "name": "Supermarine Attacker",
         "aliases": [
           "Attacker"
         ],
-        "weight": 0.9
+        "weight": 1.0
       },
       {
         "name": "F-51 Mustang",
@@ -8370,7 +8370,7 @@
           "P-51",
           "P-51D"
         ],
-        "weight": 0.55
+        "weight": 0.7
       }
     ]
   },
@@ -8454,14 +8454,14 @@
         "aliases": [
           "Fiddler"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Yak-28P",
         "aliases": [
           "Firebar"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "English Electric Lightning",
@@ -8486,7 +8486,7 @@
           "Avro Arrow",
           "Arrow"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Saab 35 Draken",
@@ -8505,7 +8505,7 @@
           "AJ 37",
           "JA 37"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Mirage III",
@@ -8514,7 +8514,7 @@
           "Mirage IIIC",
           "Mirage IIIE"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Su-9",
@@ -8561,7 +8561,7 @@
           "F89",
           "Scorpion"
         ],
-        "weight": 0.9
+        "weight": 1.0
       },
       {
         "name": "F-94 Starfire",
@@ -8569,7 +8569,7 @@
           "F-94",
           "F94"
         ],
-        "weight": 0.9
+        "weight": 1.0
       },
       {
         "name": "Sukhoi Su-27",
@@ -8777,7 +8777,7 @@
           "F4U",
           "Corsair"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "F6F Hellcat",
@@ -8785,7 +8785,7 @@
           "F6F",
           "Hellcat"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "A6M Zero",
@@ -8793,14 +8793,14 @@
           "Zero",
           "A6M"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Fairey Swordfish",
         "aliases": [
           "Swordfish"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "SBD Dauntless",
@@ -8808,7 +8808,7 @@
           "SBD",
           "Dauntless"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "TBF Avenger",
@@ -8817,14 +8817,14 @@
           "Avenger",
           "TBM Avenger"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Yak-38",
         "aliases": [
           "Forger"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "E-1 Tracer",
@@ -8832,7 +8832,7 @@
           "E-1B",
           "Tracer"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Sea Vixen",
@@ -8853,7 +8853,7 @@
         "aliases": [
           "KA-6D"
         ],
-        "weight": 0.9
+        "weight": 1.0
       },
       {
         "name": "A-1 Skyraider",
@@ -8862,7 +8862,7 @@
           "AD Skyraider",
           "Skyraider"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Vigilante",
@@ -8871,7 +8871,7 @@
           "RA-5C",
           "A-5"
         ],
-        "weight": 0.9
+        "weight": 1.0
       }
     ]
   },
@@ -8963,21 +8963,21 @@
           "EA-37B",
           "Compass Call G550"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Su-24MP",
         "aliases": [
           "Fencer-F"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Il-22PP",
         "aliases": [
           "Porubshchik"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Mi-8PPA",
@@ -9000,14 +9000,14 @@
         "aliases": [
           "Fullback"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "EA-6A Intruder",
         "aliases": [
           "EA-6A"
         ],
-        "weight": 0.9
+        "weight": 1.0
       },
       {
         "name": "EKA-3B Skywarrior",
@@ -9016,7 +9016,7 @@
           "EA-3B Skywarrior",
           "EA-3B"
         ],
-        "weight": 0.9
+        "weight": 1.0
       }
     ]
   },
@@ -9126,7 +9126,7 @@
           "AS-9",
           "Kyle"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "ALARM",
@@ -9143,7 +9143,7 @@
           "AS37",
           "Martel"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Armiger",
@@ -9159,21 +9159,21 @@
           "Kh-31P Chinese",
           "Kingfisher"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "CM-102",
         "aliases": [
           "Chinese ARM"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "LD-10",
         "aliases": [
           "LD-10 ARM"
         ],
-        "weight": 0.9
+        "weight": 1.0
       },
       {
         "name": "Harpy",
@@ -9181,7 +9181,7 @@
           "IAI Harpy",
           "Harpy loitering"
         ],
-        "weight": 0.55
+        "weight": 0.7
       }
     ]
   },
@@ -9272,7 +9272,7 @@
         "aliases": [
           "AS-23B"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Kh-22",
@@ -9297,7 +9297,7 @@
           "Kh-65SE",
           "AS-15B"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "AGM-129 ACM",
@@ -9315,7 +9315,7 @@
           "Hound Dog",
           "GAM-77"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "AGM-84E SLAM",
@@ -9373,7 +9373,7 @@
         "aliases": [
           "Taurus KEPD 150"
         ],
-        "weight": 0.9
+        "weight": 1.0
       },
       {
         "name": "SOM",
@@ -9392,7 +9392,7 @@
           "Kh-35U",
           "Kh-35E"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Exocet AM39",
@@ -9410,7 +9410,7 @@
           "Sea Eagle missile",
           "Sea Eagle SL"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Joint Strike Missile",
@@ -9419,7 +9419,7 @@
           "Kongsberg JSM",
           "Joint Strike Missile JSM"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "AGM-69 SRAM",
@@ -9428,7 +9428,7 @@
           "SRAM",
           "AGM69"
         ],
-        "weight": 0.9
+        "weight": 1.0
       }
     ]
   },
@@ -9570,14 +9570,14 @@
           "Spice 250",
           "Spice 2000"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "GBU-15",
         "aliases": [
           "GBU-15 glide bomb"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "AGM-62 Walleye",
@@ -9586,14 +9586,14 @@
           "AGM-62",
           "Walleye II"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Hs 293",
         "aliases": [
           "Henschel Hs 293"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Fritz X",
@@ -9602,7 +9602,7 @@
           "SD 1400 X",
           "Ruhrstahl SD 1400"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Azon",
@@ -9627,14 +9627,14 @@
           "Chinese LS-6",
           "LS-6 glide bomb"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "FT-7",
         "aliases": [
           "FT-7 glide bomb"
         ],
-        "weight": 0.9
+        "weight": 1.0
       }
     ]
   },
@@ -9745,7 +9745,7 @@
         "aliases": [
           "ZAB-500 incendiary"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "BETAB-500",
@@ -9786,7 +9786,7 @@
         "aliases": [
           "BL 755 cluster"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Durandal",
@@ -9795,12 +9795,12 @@
           "BLU-107 Durandal",
           "Durandal runway bomb"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "JP233",
         "aliases": [],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Mk 77",
@@ -9808,14 +9808,14 @@
           "Mk 77 firebomb",
           "napalm bomb"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "BLU-109",
         "aliases": [
           "BLU-109 penetrator"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Tallboy",
@@ -9823,7 +9823,7 @@
           "Tallboy bomb",
           "12000 lb Tallboy"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Grand Slam",
@@ -9849,7 +9849,7 @@
           "Upkeep bomb",
           "Highball"
         ],
-        "weight": 0.9
+        "weight": 1.0
       },
       {
         "name": "SC 250",
@@ -9858,7 +9858,7 @@
           "SC 1000",
           "SC bomb"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "AN-M57",
@@ -9866,7 +9866,7 @@
           "M57",
           "250 lb general purpose bomb"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Mk 36 Destructor",
@@ -9874,7 +9874,7 @@
           "Destructor",
           "Mk 36 mine"
         ],
-        "weight": 0.9
+        "weight": 1.0
       }
     ]
   },
@@ -9954,7 +9954,7 @@
       {
         "name": "Mi-38",
         "aliases": [],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "AW101 Merlin",
@@ -10050,7 +10050,7 @@
           "Flying Banana",
           "Shawnee"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Z-8",
@@ -10104,7 +10104,7 @@
           "V-12",
           "Homer"
         ],
-        "weight": 0.9
+        "weight": 1.0
       },
       {
         "name": "Bell 412",
@@ -10113,7 +10113,7 @@
           "Griffon",
           "CH-146 Griffon"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "AW139",
@@ -10121,7 +10121,7 @@
           "AgustaWestland AW139",
           "Augusta AW139"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Sikorsky S-92",
@@ -10131,7 +10131,7 @@
           "CH-148 Cyclone",
           "H-92 Superhawk"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Westland Wessex",
@@ -10139,7 +10139,7 @@
           "Wessex",
           "Wessex HC2"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Westland Sea King",
@@ -10148,7 +10148,7 @@
           "Sea King HC4",
           "Commando"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Westland Lynx",
@@ -10157,7 +10157,7 @@
           "Lynx AH7",
           "Lynx AH9"
         ],
-        "weight": 0.55
+        "weight": 0.7
       }
     ]
   },
@@ -10236,7 +10236,7 @@
         "aliases": [
           "Tu-214ON"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "EP-3E Aries II",
@@ -10318,7 +10318,7 @@
           "RB47",
           "RB-47H"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "RB-57 Canberra",
@@ -10327,7 +10327,7 @@
           "RB57",
           "RB-57F"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Raytheon Shadow R1",
@@ -10346,28 +10346,28 @@
           "Tigereye",
           "RF-5E"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Mirage F1CR",
         "aliases": [
           "F1CR"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Su-24MR",
         "aliases": [
           "Fencer-E"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "MiG-21R",
         "aliases": [
           "Fishbed-H"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Canberra PR9",
@@ -10375,7 +10375,7 @@
           "PR9",
           "English Electric Canberra"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "RF-8 Crusader",
@@ -10384,7 +10384,7 @@
           "RF8",
           "RF-8G"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "RA-5C Vigilante",
@@ -10406,7 +10406,7 @@
         "aliases": [
           "Looking Glass"
         ],
-        "weight": 0.9
+        "weight": 1.0
       },
       {
         "name": "Lockheed D-21",
@@ -10416,7 +10416,7 @@
           "D-21 drone",
           "Tagboard"
         ],
-        "weight": 0.9
+        "weight": 1.0
       }
     ]
   },
@@ -10506,7 +10506,7 @@
         "aliases": [
           "MRA4"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Kawasaki P-1",
@@ -10567,7 +10567,7 @@
           "Falcon 50 Surmar",
           "Falcon 900 MPA"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Shaanxi Y-8Q",
@@ -10577,7 +10577,7 @@
           "Y-8 ASW",
           "GX-6"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "PBY Catalina",
@@ -10595,7 +10595,7 @@
           "Sunderland",
           "Short S.25"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Avro Shackleton",
@@ -10603,7 +10603,7 @@
           "Shackleton",
           "Avro Shackleton MR3"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "HU-16 Albatross",
@@ -10613,7 +10613,7 @@
           "Albatross",
           "Grumman Albatross"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "PB4Y-2 Privateer",
@@ -10630,7 +10630,7 @@
           "Do 228",
           "Do228"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Beriev Be-200",
@@ -10657,7 +10657,7 @@
           "Maritime Enforcer",
           "F27 MPA"
         ],
-        "weight": 0.9
+        "weight": 1.0
       },
       {
         "name": "PS-1",
@@ -10665,7 +10665,7 @@
           "ShinMaywa PS-1",
           "US-1"
         ],
-        "weight": 0.9
+        "weight": 1.0
       },
       {
         "name": "Lockheed Hudson",
@@ -10673,7 +10673,7 @@
           "Hudson",
           "Lockheed Hudson Mk"
         ],
-        "weight": 0.55
+        "weight": 0.7
       }
     ]
   },
@@ -10739,7 +10739,7 @@
           "Combat Caravan",
           "Cessna AC-208"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "AC-27J Stinger II",
@@ -10748,7 +10748,7 @@
           "AC27J",
           "Spartan gunship"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "AC-235",
@@ -10756,7 +10756,7 @@
           "CASA AC-235",
           "Airbus AC-235"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Basler BT-67 gunship",
@@ -10776,7 +10776,7 @@
           "Black Spot",
           "Provider gunship"
         ],
-        "weight": 0.9
+        "weight": 1.0
       }
     ]
   },
@@ -11000,7 +11000,7 @@
           "Su22",
           "Fitter"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Q-5 Fantan",
@@ -11010,7 +11010,7 @@
           "Fantan",
           "Nanchang Q-5"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "JH-7",
@@ -11019,7 +11019,7 @@
           "Flounder",
           "FBC-1 Flying Leopard"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Buccaneer",
@@ -11027,7 +11027,7 @@
           "Blackburn Buccaneer",
           "Buccaneer S2"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Fiat G.91",
@@ -11036,7 +11036,7 @@
           "G91",
           "Gina"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "P-47 Thunderbolt",
@@ -11045,7 +11045,7 @@
           "P47",
           "Thunderbolt"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "F-4 Phantom II",
@@ -11054,7 +11054,7 @@
           "F4",
           "Phantom"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Su-39",
@@ -11063,7 +11063,7 @@
           "Su-25TM",
           "Frogfoot-B"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Henschel Hs 123",
@@ -11078,7 +11078,7 @@
         "aliases": [
           "Su-6 Shturmovik"
         ],
-        "weight": 0.9
+        "weight": 1.0
       },
       {
         "name": "AC-130",
@@ -11086,7 +11086,7 @@
           "Spectre",
           "Spooky"
         ],
-        "weight": 0.55
+        "weight": 0.7
       }
     ]
   },
@@ -11268,7 +11268,7 @@
           "T4",
           "Kawasaki T-4 trainer"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Mitsubishi T-2",
@@ -11276,7 +11276,7 @@
           "T-2",
           "T2"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Saab 105",
@@ -11284,14 +11284,14 @@
           "Sk 60",
           "SK 60"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "MiG-AT",
         "aliases": [
           "MiG-AT trainer"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "IAR-99 Soim",
@@ -11301,7 +11301,7 @@
           "Soim",
           "IAR 99 Standard"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Soko G-4 Super Galeb",
@@ -11329,7 +11329,7 @@
           "Hawk 132",
           "Hawk Mk132"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "T-2 Buckeye",
@@ -11337,7 +11337,7 @@
           "T-2C",
           "Buckeye"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "T-1 Jayhawk",
@@ -11347,7 +11347,7 @@
           "T-1A Jayhawk",
           "Jayhawk"
         ],
-        "weight": 0.9
+        "weight": 1.0
       }
     ]
   },
@@ -11503,7 +11503,7 @@
           "Dhruv WSI",
           "Dhruv Weapon System Integrated"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "OH-58D Kiowa Warrior",
@@ -11531,7 +11531,7 @@
           "Defender",
           "MD 530"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "RAH-66 Comanche",
@@ -11539,7 +11539,7 @@
           "RAH-66",
           "Comanche"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "AH-56 Cheyenne",
@@ -11566,7 +11566,7 @@
           "Bell 360",
           "Bell Invictus"
         ],
-        "weight": 0.9
+        "weight": 1.0
       },
       {
         "name": "BO 105 PAH-1",
@@ -11576,7 +11576,7 @@
           "Bo105",
           "Bo 105P"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Alouette III armed",
@@ -11584,7 +11584,7 @@
           "SA 316 armed",
           "Alouette III gunship"
         ],
-        "weight": 0.9
+        "weight": 1.0
       },
       {
         "name": "Gazelle",
@@ -11593,7 +11593,7 @@
           "SA342",
           "SA 341"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Lynx",
@@ -11602,7 +11602,7 @@
           "Lynx AH1",
           "Super Lynx"
         ],
-        "weight": 0.55
+        "weight": 0.7
       }
     ]
   },
@@ -11668,7 +11668,7 @@
       {
         "name": "J-36",
         "aliases": [],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "JF-17 Thunder",
@@ -11799,14 +11799,14 @@
       {
         "name": "Y-8",
         "aliases": [],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Y-7",
         "aliases": [
           "Xian Y-7"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "JL-10",
@@ -11814,7 +11814,7 @@
           "L-15",
           "L15"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "JL-8",
@@ -11822,7 +11822,7 @@
           "K-8",
           "Hongdu JL-8"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Wing Loong",
@@ -11832,21 +11832,21 @@
           "Wing Loong I",
           "GJ-2"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "CH-4",
         "aliases": [
           "Rainbow CH-4"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "GJ-11",
         "aliases": [
           "Sharp Sword"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "WZ-7 Soaring Dragon",
@@ -11856,14 +11856,14 @@
           "Soaring Dragon",
           "Xianglong"
         ],
-        "weight": 0.9
+        "weight": 1.0
       },
       {
         "name": "Y-12",
         "aliases": [
           "Harbin Y-12"
         ],
-        "weight": 0.55
+        "weight": 0.7
       }
     ]
   },
@@ -12016,7 +12016,7 @@
           "Étendard IV",
           "Etendard"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Fiat G.91",
@@ -12032,7 +12032,7 @@
         "aliases": [
           "Meteor"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "de Havilland Vampire",
@@ -12040,14 +12040,14 @@
           "Vampire",
           "DH.100"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Gloster Javelin",
         "aliases": [
           "Javelin"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Saab 29 Tunnan",
@@ -12057,7 +12057,7 @@
           "Saab J 29",
           "Flying Barrel"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Saab 32 Lansen",
@@ -12072,7 +12072,7 @@
         "aliases": [
           "Gnat"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Dassault Mystère IV",
@@ -12104,14 +12104,14 @@
           "Buccaneer",
           "Blackburn Buccaneer"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Hawker Sea Hawk",
         "aliases": [
           "Sea Hawk"
         ],
-        "weight": 0.9
+        "weight": 1.0
       },
       {
         "name": "Supermarine Swift",
@@ -12119,7 +12119,7 @@
           "Swift",
           "Supermarine Swift F.1"
         ],
-        "weight": 0.9
+        "weight": 1.0
       }
     ]
   },
@@ -12306,14 +12306,14 @@
           "Enhanced Paveway II",
           "EPW II"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "ALARM",
         "aliases": [
           "Air Launched Anti-Radiation Missile"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Mauser BK-27",
@@ -12331,7 +12331,7 @@
           "SPEAR 3",
           "Spear missile"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Paveway III",
@@ -12339,7 +12339,7 @@
           "GBU-24",
           "Enhanced Paveway III"
         ],
-        "weight": 0.9
+        "weight": 1.0
       }
     ]
   },
@@ -12452,7 +12452,7 @@
           "Mark 82",
           "500 lb bomb"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Mk 84",
@@ -12460,7 +12460,7 @@
           "Mark 84",
           "2000 lb bomb"
         ],
-        "weight": 0.55
+        "weight": 0.7
       }
     ]
   },
@@ -12580,7 +12580,7 @@
           "AGM-158",
           "JASSM-ER"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "GAU-22/A",
@@ -12590,7 +12590,7 @@
           "25mm cannon",
           "Equalizer 25mm"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "B61-12",
@@ -12598,7 +12598,7 @@
           "B61",
           "B61-12 nuclear"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "AGM-154 JSOW",
@@ -12607,7 +12607,7 @@
           "AGM-154",
           "Joint Standoff Weapon"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "SPEAR 3",
@@ -12809,7 +12809,7 @@
           "Tu16",
           "Badger"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Tu-22 Blinder",
@@ -12818,7 +12818,7 @@
           "Tu22",
           "Blinder"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Tu-22M Backfire",
@@ -12838,7 +12838,7 @@
           "Myasishchev M-4",
           "Bison"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "M-50 Bounder",
@@ -12847,7 +12847,7 @@
           "M50",
           "Bounder"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "H-6",
@@ -12865,7 +12865,7 @@
           "Heinkel He 177",
           "Greif"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "B-32 Dominator",
@@ -12882,7 +12882,7 @@
           "Petlyakov Pe-8",
           "TB-7"
         ],
-        "weight": 0.9
+        "weight": 1.0
       },
       {
         "name": "Boeing B-50",
@@ -12891,7 +12891,7 @@
           "B50",
           "Superfortress B-50"
         ],
-        "weight": 0.55
+        "weight": 0.7
       }
     ]
   },
@@ -12992,7 +12992,7 @@
       {
         "name": "F-111B",
         "aliases": [],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "XF10F Jaguar",
@@ -13001,7 +13001,7 @@
           "Grumman Jaguar",
           "F10F"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Bell X-5",
@@ -13026,7 +13026,7 @@
           "Anglo-French Variable Geometry",
           "AFVG aircraft"
         ],
-        "weight": 0.9
+        "weight": 1.0
       }
     ]
   },
@@ -13110,7 +13110,7 @@
         "aliases": [
           "Terminator"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Saab 37 Viggen",
@@ -13126,7 +13126,7 @@
           "Kfir C2",
           "Kfir C7"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "IAI Lavi",
@@ -13142,7 +13142,7 @@
           "XB70",
           "Valkyrie"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "MiG 1.44",
@@ -13150,7 +13150,7 @@
           "MFI",
           "1.44"
         ],
-        "weight": 0.9
+        "weight": 1.0
       }
     ]
   },
@@ -13301,7 +13301,7 @@
         "aliases": [
           "Javelin"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "MiG-21",
@@ -13315,12 +13315,12 @@
         "aliases": [
           "Flagon"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Su-9",
         "aliases": [],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Fairey Delta 2",
@@ -13328,7 +13328,7 @@
           "Delta 2",
           "Fairey FD2"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Convair XF-92",
@@ -13343,7 +13343,7 @@
         "aliases": [
           "F-16XL Lockheed"
         ],
-        "weight": 0.9
+        "weight": 1.0
       },
       {
         "name": "SR-71 Blackbird",
@@ -13351,14 +13351,14 @@
           "SR-71",
           "Blackbird"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Saab 37 Viggen",
         "aliases": [
           "Viggen"
         ],
-        "weight": 0.55
+        "weight": 0.7
       }
     ]
   },
@@ -13411,7 +13411,7 @@
           "GSh-6-30K",
           "AO-18"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "NR-30",
@@ -13559,12 +13559,12 @@
         "aliases": [
           "30mm MK 108"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "MK 103",
         "aliases": [],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Oerlikon KCA",
@@ -13572,7 +13572,7 @@
           "KCA",
           "Oerlikon 30mm KCA"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "ShVAK",
@@ -13580,7 +13580,7 @@
           "ShVAK-20",
           "ShVAK 20mm"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "B-20",
@@ -13607,7 +13607,7 @@
           "GAU-2",
           "GAU-17"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Colt Mk 12",
@@ -13615,7 +13615,7 @@
           "Mk 12",
           "M12"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Rheinmetall Mk 20 Rh 202",
@@ -13631,7 +13631,7 @@
           "M24 20mm",
           "M24A1"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Browning .303",
@@ -13639,7 +13639,7 @@
           ".303 Browning",
           "Browning .303 machine gun"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Vickers K",
@@ -13647,7 +13647,7 @@
           "Vickers K gun",
           "Vickers Gas Operated"
         ],
-        "weight": 0.9
+        "weight": 1.0
       },
       {
         "name": "Type 23-3",
@@ -13656,7 +13656,7 @@
           "Type 23-3 cannon",
           "23-3"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Shipunov 9A-4071",
@@ -13664,7 +13664,7 @@
           "9A-4071",
           "Gryazev"
         ],
-        "weight": 0.9
+        "weight": 1.0
       }
     ]
   },
@@ -13898,7 +13898,7 @@
           "Panzer VIII Maus",
           "Pz VIII Maus"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Sherman Firefly",
@@ -13907,7 +13907,7 @@
           "Sherman Vc",
           "Sherman VC"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "M24 Chaffee",
@@ -13915,12 +13915,12 @@
           "Chaffee",
           "M24"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "T-26",
         "aliases": [],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "BT-7",
@@ -13928,24 +13928,24 @@
           "BT-5",
           "BT5"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "T-70",
         "aliases": [],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "KV-2",
         "aliases": [
           "KV-2 152mm"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "T-28",
         "aliases": [],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Ram",
@@ -13953,7 +13953,7 @@
           "Ram tank",
           "Ram Mk I"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Sentinel",
@@ -13977,7 +13977,7 @@
           "PzKpfw 38(t)",
           "LT vz. 38"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Panzer 35(t)",
@@ -14000,7 +14000,7 @@
           "M5A1 Stuart",
           "M5"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Type 3 Chi-Nu",
@@ -14008,12 +14008,12 @@
           "Chi-Nu",
           "Type 3"
         ],
-        "weight": 0.9
+        "weight": 1.0
       },
       {
         "name": "T-60",
         "aliases": [],
-        "weight": 0.9
+        "weight": 1.0
       },
       {
         "name": "Tetrarch",
@@ -14021,7 +14021,7 @@
           "Light Tank Mk VII",
           "Tetrarch tank"
         ],
-        "weight": 0.9
+        "weight": 1.0
       }
     ]
   },
@@ -14109,7 +14109,7 @@
           "Sturmmörser Tiger",
           "Sturmtiger assault mortar"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Brummbär",
@@ -14165,7 +14165,7 @@
         "aliases": [
           "SU-76M"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "ISU-152",
@@ -14180,7 +14180,7 @@
         "aliases": [
           "ISU-122S"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Achilles",
@@ -14189,7 +14189,7 @@
           "M10 Achilles",
           "17-pdr SP Achilles"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Archer",
@@ -14198,7 +14198,7 @@
           "Archer tank destroyer",
           "Valentine Archer"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "T-34-122",
@@ -14207,7 +14207,7 @@
           "SU122",
           "SU-122-44"
         ],
-        "weight": 0.9
+        "weight": 1.0
       }
     ]
   },
@@ -14331,7 +14331,7 @@
           "Grant",
           "M3 medium"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "M103",
@@ -14339,7 +14339,7 @@
           "M103 heavy tank",
           "M103A2"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "M10 Booker",
@@ -14347,7 +14347,7 @@
           "Booker",
           "Mobile Protected Firepower"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "M8 AGS",
@@ -14355,7 +14355,7 @@
           "M8",
           "Armored Gun System"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "M22 Locust",
@@ -14363,7 +14363,7 @@
           "Locust",
           "M22 airborne tank"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "T29",
@@ -14389,7 +14389,7 @@
           "MGS",
           "M1128"
         ],
-        "weight": 0.9
+        "weight": 1.0
       }
     ]
   },
@@ -14529,27 +14529,27 @@
         "aliases": [
           "BT-5"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "T-35",
         "aliases": [],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "T-28",
         "aliases": [],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "T-70",
         "aliases": [],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "T-60",
         "aliases": [],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "T-37",
@@ -14570,14 +14570,14 @@
         "aliases": [
           "Object 195"
         ],
-        "weight": 0.9
+        "weight": 1.0
       },
       {
         "name": "IS-7",
         "aliases": [
           "Object 260"
         ],
-        "weight": 0.9
+        "weight": 1.0
       }
     ]
   },
@@ -14797,7 +14797,7 @@
           "Karabiner 98k",
           "Kar98k ZF39"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Steyr SSG 69",
@@ -14807,7 +14807,7 @@
           "SSG-69",
           "Steyr SSG"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Steyr SSG 08",
@@ -14815,7 +14815,7 @@
           "SSG 08",
           "SSG08"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "HK MSG90",
@@ -14823,7 +14823,7 @@
           "MSG90",
           "MSG-90"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "SIG SSG 3000",
@@ -14832,7 +14832,7 @@
           "Sauer SSG 3000",
           "SSG3000"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "CheyTac Intervention",
@@ -14842,7 +14842,7 @@
           "Intervention",
           "CheyTac"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Sako TRG-42",
@@ -14852,7 +14852,7 @@
           "TRG-22",
           "Sako TRG 22"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Zastava M76",
@@ -14860,21 +14860,21 @@
           "M76",
           "Zastava M76 sniper"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "SVT-40",
         "aliases": [
           "SVT-40 sniper"
         ],
-        "weight": 0.9
+        "weight": 1.0
       },
       {
         "name": "QBU-88",
         "aliases": [
           "Type 88 sniper"
         ],
-        "weight": 0.55
+        "weight": 0.7
       }
     ]
   },
@@ -15105,7 +15105,7 @@
           "6P49",
           "Kord 12.7"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "KPV",
@@ -15114,7 +15114,7 @@
           "KPVT",
           "14.5mm KPV"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Browning Automatic Rifle",
@@ -15131,7 +15131,7 @@
           "Hotchkiss",
           "Hotchkiss machine gun"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Chauchat",
@@ -15139,7 +15139,7 @@
           "CSRG 1915",
           "Chauchat machine rifle"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Madsen",
@@ -15157,7 +15157,7 @@
           "Goryunov",
           "SGM"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Type 67",
@@ -15165,21 +15165,21 @@
           "Type 67 GPMG",
           "Type 67 machine gun"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "QJY-88",
         "aliases": [
           "Type 88 machine gun"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "FN M3M",
         "aliases": [
           "M3M"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "ZB vz. 26",
@@ -15189,7 +15189,7 @@
           "vz. 26",
           "ZB vz. 30"
         ],
-        "weight": 0.9
+        "weight": 1.0
       }
     ]
   },
@@ -15413,7 +15413,7 @@
           "M11 pistol",
           "SIG M11"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "SIG P229",
@@ -15421,7 +15421,7 @@
           "P229",
           "SIG Sauer P229"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Stechkin APS",
@@ -15430,7 +15430,7 @@
           "APS pistol",
           "Stechkin"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Walther P99",
@@ -15438,7 +15438,7 @@
           "P99",
           "Walther P99 pistol"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Smith & Wesson M&P",
@@ -15448,7 +15448,7 @@
           "S&W M&P",
           "M&P Shield"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Colt M1903",
@@ -15457,7 +15457,7 @@
           "Colt Pocket Hammerless",
           "M1903 Pocket Hammerless"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "FN Model 1910",
@@ -15475,7 +15475,7 @@
           "M1912",
           "Steyr Hahn"
         ],
-        "weight": 0.9
+        "weight": 1.0
       },
       {
         "name": "Mauser C96",
@@ -15697,12 +15697,12 @@
           "F1",
           "F1 submachine gun"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "MAT-49",
         "aliases": [],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Beretta MAB 38",
@@ -15711,7 +15711,7 @@
           "MAB38",
           "Beretta Model 1938"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "MP 18",
@@ -15726,7 +15726,7 @@
           "MP 28",
           "MP28"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Suomi KP/-31",
@@ -15736,7 +15736,7 @@
           "Suomi submachine gun",
           "Suomi SMG"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "PPD-40",
@@ -15744,7 +15744,7 @@
           "PPD-34",
           "PPD"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Walther MPL",
@@ -15753,7 +15753,7 @@
           "MPK",
           "Walther MPK"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Steyr MPi 69",
@@ -15779,7 +15779,7 @@
           "Vigneron M2",
           "Vigneron SMG"
         ],
-        "weight": 0.9
+        "weight": 1.0
       }
     ]
   },
@@ -15926,7 +15926,7 @@
           "SG 542",
           "SG542"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "SR-25",
@@ -15934,7 +15934,7 @@
           "Mk 11",
           "Mk 11 SWS"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Springfield M21",
@@ -15943,7 +15943,7 @@
           "M21 sniper weapon system",
           "M21 SWS"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "IWI Galatz",
@@ -16120,7 +16120,7 @@
           "Saiga rifle",
           "Saiga-308"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Vepr",
@@ -16130,7 +16130,7 @@
           "Molot Vepr",
           "Vepr-308"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Micro Draco",
@@ -16139,14 +16139,14 @@
           "Draco pistol",
           "Micro Draco pistol"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "AK-308",
         "aliases": [
           "AK-308 rifle"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "AK-200",
@@ -16162,7 +16162,7 @@
           "RPK74",
           "RPKS"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Galil",
@@ -16171,7 +16171,7 @@
           "Galil ARM",
           "Galil SAR"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "M76",
@@ -16179,7 +16179,7 @@
           "Zastava M76",
           "M76 sniper"
         ],
-        "weight": 0.9
+        "weight": 1.0
       },
       {
         "name": "Zastava M21",
@@ -16187,7 +16187,7 @@
           "M21",
           "Zastava M21 rifle"
         ],
-        "weight": 0.55
+        "weight": 0.7
       }
     ]
   },
@@ -16284,7 +16284,7 @@
         "aliases": [
           "GM-94 pump-action"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "AGS-30",
@@ -16328,7 +16328,7 @@
           "UGL",
           "Underslung Grenade Launcher"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "QLZ-87",
@@ -16336,14 +16336,14 @@
           "Type 87 grenade launcher",
           "Type 87"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "QLB-06",
         "aliases": [
           "Type 06 grenade launcher"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "M129",
@@ -16351,7 +16351,7 @@
           "M129 grenade launcher",
           "M129 lightweight automatic grenade launcher"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "XM25",
@@ -16368,7 +16368,7 @@
           "Heckler & Koch GMG",
           "GMG grenade launcher"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Pallad",
@@ -16383,7 +16383,7 @@
           "Type 91 grenade launcher",
           "Type 91 40mm"
         ],
-        "weight": 0.9
+        "weight": 1.0
       }
     ]
   },
@@ -16535,7 +16535,7 @@
           "Cardom mortar",
           "Cardom recoil mortar system"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "M1064",
@@ -16543,7 +16543,7 @@
           "M1064A3",
           "M1064 mortar carrier"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "M30",
@@ -16552,7 +16552,7 @@
           "M30 4.2 inch mortar",
           "M30 mortar"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "M19",
@@ -16560,7 +16560,7 @@
           "M19 60mm",
           "M19 mortar"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "L9A1",
@@ -16569,7 +16569,7 @@
           "L9A1 51mm",
           "51mm mortar"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "M-43",
@@ -16579,14 +16579,14 @@
           "M43 120mm",
           "M-37 82mm"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "M-37",
         "aliases": [
           "M-37 mortar"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Stokes mortar",
@@ -16594,7 +16594,7 @@
           "Stokes",
           "Stokes 3-inch"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Karl-Gerät",
@@ -16604,7 +16604,7 @@
           "Gerat 040",
           "Karl-Geraet"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Little David",
@@ -16630,7 +16630,7 @@
           "Tampella 120mm",
           "Tampella B 120mm"
         ],
-        "weight": 0.9
+        "weight": 1.0
       },
       {
         "name": "Minenwerfer",
@@ -16639,7 +16639,7 @@
           "leichter Minenwerfer",
           "schwerer Minenwerfer"
         ],
-        "weight": 0.9
+        "weight": 1.0
       }
     ]
   },
@@ -16809,7 +16809,7 @@
           "KS-19 100mm",
           "100mm KS-19"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "8.8 cm Flak 36",
@@ -16841,7 +16841,7 @@
           "Flakpanzer IV Wirbelwind",
           "Flakpanzer IV"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Ostwind",
@@ -16856,7 +16856,7 @@
         "aliases": [
           "Flakpanzer IV Möbelwagen"
         ],
-        "weight": 0.9
+        "weight": 1.0
       },
       {
         "name": "M16 MGMC",
@@ -16875,7 +16875,7 @@
           "M55 mount",
           "M45 Quad 50"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Marksman SPAAG",
@@ -16883,7 +16883,7 @@
           "Marksman",
           "Marksman turret"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Type 87",
@@ -16892,7 +16892,7 @@
           "Type 87 Japan",
           "Type 87 Self-Propelled"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "K30 Biho",
@@ -16902,7 +16902,7 @@
           "Flying Tiger",
           "Biho SPAAG"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "ZPU-4",
@@ -16919,7 +16919,7 @@
           "Oerlikon cannon",
           "20mm Oerlikon"
         ],
-        "weight": 0.55
+        "weight": 0.7
       }
     ]
   },
@@ -17105,7 +17105,7 @@
           "Puma",
           "SdKfz 234/2"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Sd.Kfz. 222",
@@ -17113,7 +17113,7 @@
           "Sd.Kfz. 221",
           "SdKfz 221"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Sd.Kfz. 231",
@@ -17122,7 +17122,7 @@
           "SdKfz 232",
           "8-rad"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "BRM-1K",
@@ -17130,7 +17130,7 @@
           "BRM-1",
           "BRM"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "VBL",
@@ -17139,7 +17139,7 @@
           "Panhard VBL",
           "VBL recce"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Fuchs",
@@ -17149,7 +17149,7 @@
           "Fuchs APC",
           "Transportpanzer 1"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Eland",
@@ -17157,7 +17157,7 @@
           "Eland armored car",
           "Eland 90"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Rooikat",
@@ -17165,7 +17165,7 @@
           "Rooikat 76",
           "Rooikat 105"
         ],
-        "weight": 0.55
+        "weight": 0.7
       }
     ]
   },
@@ -17225,7 +17225,7 @@
           "M8",
           "Armored Gun System"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Stingray",
@@ -17317,7 +17317,7 @@
           "Walker Bulldog",
           "M41 Walker"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "M22 Locust",
@@ -17325,14 +17325,14 @@
           "Locust",
           "M22 airborne tank"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "T-26",
         "aliases": [
           "T-26 light"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "BT-7",
@@ -17340,14 +17340,14 @@
           "BT-5",
           "BT5"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "T-70",
         "aliases": [
           "T-70 light tank"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "T-60",
@@ -17361,7 +17361,7 @@
           "PzKpfw II",
           "Panzer 2"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Panzer I",
@@ -17370,7 +17370,7 @@
           "PzKpfw I",
           "Panzer 1"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Panzer 38(t)",
@@ -17378,7 +17378,7 @@
           "Pz 38(t)",
           "LT vz. 38"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Type 95 Ha-Go",
@@ -17386,7 +17386,7 @@
           "Ha-Go",
           "Type 95"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Tetrarch",
@@ -17402,7 +17402,7 @@
           "Vickers Mk VI",
           "Light Tank Mk VI"
         ],
-        "weight": 0.9
+        "weight": 1.0
       },
       {
         "name": "Panhard EBR",
@@ -17411,7 +17411,7 @@
           "EBR 75",
           "Panhard EBR 90"
         ],
-        "weight": 0.9
+        "weight": 1.0
       }
     ]
   },
@@ -17568,7 +17568,7 @@
           "Combat Engineer Vehicle",
           "M728 Combat Engineer Vehicle"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Wisent 2",
@@ -17578,7 +17578,7 @@
           "Wisent engineer",
           "Wisent 2 engineer"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "M1150 ABV",
@@ -17588,7 +17588,7 @@
           "Assault Breacher Vehicle",
           "Assault Breacher"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Büffel",
@@ -17597,7 +17597,7 @@
           "Buffel ARV",
           "Bergepanzer 3"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "BREM-1",
@@ -17605,7 +17605,7 @@
           "BREM",
           "BREM-1M"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Challenger ARRV",
@@ -17614,7 +17614,7 @@
           "CRARRV",
           "Challenger Armoured Repair and Recovery Vehicle"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "M578",
@@ -17623,7 +17623,7 @@
           "M578 ARV",
           "Light Recovery Vehicle M578"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Sherman Crab",
@@ -17633,7 +17633,7 @@
           "Sherman Crab flail",
           "Crab mine flail"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Bobbin",
@@ -17642,7 +17642,7 @@
           "Churchill Bobbin",
           "Matilda Baron"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Churchill Crocodile",
@@ -17669,7 +17669,7 @@
           "M1 Panther II mine clearing",
           "Panther II mine"
         ],
-        "weight": 0.9
+        "weight": 1.0
       }
     ]
   },
@@ -17833,7 +17833,7 @@
           "M-68",
           "Soltam M-68"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "M102",
@@ -17841,7 +17841,7 @@
           "M102 howitzer",
           "M102 105mm"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "M-30",
@@ -17851,7 +17851,7 @@
           "M30 122mm",
           "M1938 howitzer"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "M1 155mm Long Tom",
@@ -17861,7 +17861,7 @@
           "Long Tom M2",
           "M1 gun"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "QF 25-pounder",
@@ -17881,7 +17881,7 @@
           "BL 5.5",
           "5.5-inch medium gun"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Leichte Feldhaubitze 18",
@@ -17891,7 +17891,7 @@
           "leFH18",
           "10.5 cm leFH 18"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "sFH 18",
@@ -17899,7 +17899,7 @@
           "15 cm sFH 18",
           "15cm sFH 18"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Big Bertha",
@@ -17909,7 +17909,7 @@
           "Dicke Bertha howitzer",
           "M-Gerät"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Schneider canon de 75",
@@ -17928,7 +17928,7 @@
           "Type 66 152mm",
           "Type 66 howitzer"
         ],
-        "weight": 0.9
+        "weight": 1.0
       }
     ]
   },
@@ -18064,7 +18064,7 @@
           "Sprut B",
           "2A45M"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "BS-3",
@@ -18072,7 +18072,7 @@
           "100mm BS-3",
           "BS-3 field gun"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "QF 2-pounder",
@@ -18083,7 +18083,7 @@
           "QF 2 pdr",
           "Ordnance QF 2 pounder"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Hotchkiss 25mm",
@@ -18092,7 +18092,7 @@
           "SA 34",
           "Hotchkiss SA 34"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "75mm M1897",
@@ -18101,7 +18101,7 @@
           "French 75",
           "Canon de 75"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "M5 3-inch",
@@ -18111,7 +18111,7 @@
           "76mm M5",
           "M5 76mm"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Type 1 47mm",
@@ -18128,7 +18128,7 @@
           "Kopye",
           "SPG-9M"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Pak 41",
@@ -18146,7 +18146,7 @@
           "F22 gun",
           "76mm Model 1936"
         ],
-        "weight": 0.9
+        "weight": 1.0
       }
     ]
   },
@@ -18455,7 +18455,7 @@
           "Ganef",
           "2K11 Krug"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "HQ-22",
@@ -18482,14 +18482,14 @@
           "KS-1C",
           "Kaishan"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Bavar-373",
         "aliases": [
           "Bavar"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Sky Sabre",
@@ -18499,7 +18499,7 @@
           "Sky Sabre Land Ceptor",
           "Sky Saber"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Spada",
@@ -18507,7 +18507,7 @@
           "Spada 2000",
           "Spada missile system"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Aspide",
@@ -18516,7 +18516,7 @@
           "Skyguard Aspide",
           "Skyguard-Aspide"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Sky Sword II",
@@ -18527,7 +18527,7 @@
           "Sky Bow",
           "TK-2"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "KM-SAM",
@@ -18538,7 +18538,7 @@
           "Cheolmae II",
           "KM-SAM Cheongung"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "S-350 Vityaz",
@@ -18548,7 +18548,7 @@
           "Vityaz",
           "S-350E"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "S-25 Berkut",
@@ -18559,7 +18559,7 @@
           "SA-1",
           "Guild"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Skyguard",
@@ -18567,7 +18567,7 @@
           "Oerlikon Skyguard",
           "Skyguard system"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Hisar-O",
@@ -18584,7 +18584,7 @@
           "Medium Extended Air Defence System",
           "MEADS system"
         ],
-        "weight": 0.9
+        "weight": 1.0
       }
     ]
   },
@@ -18755,7 +18755,7 @@
           "Zolfaghar missile",
           "Zolfaghar ballistic"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Shaheen-I",
@@ -18765,7 +18765,7 @@
           "Hatf 4",
           "Shaheen"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Prithvi",
@@ -18776,7 +18776,7 @@
           "Prithvi 1",
           "Prithvi II"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Hwasong-5",
@@ -18786,7 +18786,7 @@
           "Hwasong-5 Scud",
           "Scud-B clone"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "KN-23",
@@ -18796,7 +18796,7 @@
           "Hwasong-11Ga",
           "Hwasong 11Ga"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Hyunmoo-2",
@@ -18806,7 +18806,7 @@
           "Hyunmoo II",
           "Hyunmoo II-A"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Al-Samoud",
@@ -18815,7 +18815,7 @@
           "Samoud 2",
           "Al-Samoud II"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Jericho I",
@@ -18833,7 +18833,7 @@
           "Qiam",
           "Qiam-1 missile"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Frog-3",
@@ -18842,7 +18842,7 @@
           "FROG-5",
           "FROG 5"
         ],
-        "weight": 0.9
+        "weight": 1.0
       }
     ]
   },
@@ -18984,7 +18984,7 @@
         "aliases": [
           "Pansarbandvagn 302"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Boxer",
@@ -18994,7 +18994,7 @@
           "Boxer MRAV",
           "Schakal"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Bionix",
@@ -19004,7 +19004,7 @@
           "Bionix-II",
           "Bionix II"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Tulpar",
@@ -19013,7 +19013,7 @@
           "Otokar Tulpar",
           "Tulpar tracked"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Namer",
@@ -19022,7 +19022,7 @@
           "Namer IFV",
           "Merkava-based Namer"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Achzarit",
@@ -19030,7 +19030,7 @@
           "Achzarit APC",
           "Achzarit heavy APC"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Warrior CSP",
@@ -19055,7 +19055,7 @@
           "CV90 Armadillo APC",
           "Armadillo"
         ],
-        "weight": 0.9
+        "weight": 1.0
       },
       {
         "name": "KF31",
@@ -19064,7 +19064,7 @@
           "Lynx KF31",
           "Lynx 31"
         ],
-        "weight": 0.9
+        "weight": 1.0
       }
     ]
   },
@@ -19197,7 +19197,7 @@
           "Hyena APC",
           "Hyena South Africa"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Dingo",
@@ -19218,7 +19218,7 @@
           "Bushmaster protected mobility vehicle",
           "Bushmaster IMV"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Typhoon",
@@ -19229,7 +19229,7 @@
           "Typhoon MRAP",
           "Typhoon armoured"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Panthera T6",
@@ -19238,7 +19238,7 @@
           "T6 Panthera",
           "Panthera T6 MRAP"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Mamba",
@@ -19247,7 +19247,7 @@
           "Mamba Mk 3",
           "Mamba Mk5"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Marauder",
@@ -19256,7 +19256,7 @@
           "Marauder armoured",
           "Marauder 4x4"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Springbuck",
@@ -19274,7 +19274,7 @@
           "RG-12 Nyala",
           "RG-12 MRAP"
         ],
-        "weight": 0.9
+        "weight": 1.0
       }
     ]
   },
@@ -19445,7 +19445,7 @@
         "aliases": [
           "Pansarbandvagn 302"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Universal Carrier",
@@ -19456,7 +19456,7 @@
           "Loyd Carrier",
           "Bren Gun Carrier"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Kangaroo",
@@ -19466,7 +19466,7 @@
           "Ram Kangaroo",
           "Priest Kangaroo"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "M114",
@@ -19476,7 +19476,7 @@
           "M114A1",
           "M114 reconnaissance"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "LVT-4",
@@ -19486,7 +19486,7 @@
           "LVT-2",
           "LVT(A)-4"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "BTR-D",
@@ -19496,7 +19496,7 @@
           "BTR-MDM",
           "Rakushka"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "K200",
@@ -19506,7 +19506,7 @@
           "KIFV",
           "Korean Infantry Fighting Vehicle"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Type 73",
@@ -19515,7 +19515,7 @@
           "Type 73 armored personnel carrier",
           "Type 73 Japan"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Type 89 IFV",
@@ -19525,7 +19525,7 @@
           "Type 89 Japan",
           "Type 89 Japanese IFV"
         ],
-        "weight": 0.9
+        "weight": 1.0
       }
     ]
   },
@@ -19666,7 +19666,7 @@
           "EFV amphibious",
           "Expeditionary Fighting Vehicle USMC"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "LARC-V",
@@ -19693,7 +19693,7 @@
           "M3 rig",
           "M3 amphibious bridge"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Sherman DD",
@@ -19704,7 +19704,7 @@
           "DD Sherman",
           "Duplex Drive"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "T-37A",
@@ -19741,7 +19741,7 @@
           "ST Kinetics Terrex",
           "Terrex AV81"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "VAB",
@@ -19752,7 +19752,7 @@
           "Véhicule de l'Avant Blindé",
           "VAB Mk 2"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Piranha",
@@ -19765,7 +19765,7 @@
           "Piranha 10x10",
           "LAV-25"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Terrapin",
@@ -19773,7 +19773,7 @@
           "Terrapin amphibious",
           "Terrapin Mk 1"
         ],
-        "weight": 0.9
+        "weight": 1.0
       },
       {
         "name": "Alligator",
@@ -19782,7 +19782,7 @@
           "Landing Vehicle Tracked Alligator",
           "LVT-1 Alligator"
         ],
-        "weight": 0.9
+        "weight": 1.0
       },
       {
         "name": "BRDM-2",
@@ -19790,7 +19790,7 @@
           "BRDM",
           "BRDM-2M"
         ],
-        "weight": 0.55
+        "weight": 0.7
       }
     ]
   },
@@ -19886,7 +19886,7 @@
           "M865 TPCSDS",
           "M865 training"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "M1002 TPMP-T",
@@ -19895,7 +19895,7 @@
           "TPMP-T",
           "M1002 training"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "M1060",
@@ -19904,7 +19904,7 @@
           "M1060 obstacle",
           "M1060 breaching"
         ],
-        "weight": 0.9
+        "weight": 1.0
       }
     ]
   },
@@ -20169,7 +20169,7 @@
           "RPG-32 Hashim",
           "Nashshab"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "RPG-2",
@@ -20185,7 +20185,7 @@
           "RPG-43 grenade",
           "RKG-3"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "B-300",
@@ -20254,7 +20254,7 @@
           "57mm recoilless",
           "M18A1"
         ],
-        "weight": 0.9
+        "weight": 1.0
       },
       {
         "name": "Type 69 RPG",
@@ -20274,7 +20274,7 @@
           "Type 98",
           "PF-98 Norinco"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "LRAC F1",
@@ -20286,7 +20286,7 @@
           "LRAC F1 89mm",
           "F1 89mm"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "M79 Osa",
@@ -20296,7 +20296,7 @@
           "M79 90mm Osa",
           "M79 90"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Panzerfaust 100",
@@ -20309,7 +20309,7 @@
           "Panzerfaust klein",
           "Panzerfaust 30 klein"
         ],
-        "weight": 0.55
+        "weight": 0.7
       }
     ]
   },
@@ -20493,7 +20493,7 @@
           "Waffen-SS camouflage",
           "SS Duck Hunter"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Splittermuster",
@@ -20504,7 +20504,7 @@
           "Splittermuster 31 camouflage",
           "Splinter camouflage"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Leibermuster",
@@ -20513,7 +20513,7 @@
           "Leibermuster pattern",
           "Leibermuster Bundeswehr"
         ],
-        "weight": 0.9
+        "weight": 1.0
       },
       {
         "name": "DPCU",
@@ -20524,7 +20524,7 @@
           "DPCU camouflage",
           "Australian Auscam"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Multitarn",
@@ -20534,7 +20534,7 @@
           "Multitarn Swiss",
           "Multitarn Bundeswehr"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Type 07",
@@ -20545,7 +20545,7 @@
           "Type 07 digital",
           "Type 07 Universal"
         ],
-        "weight": 0.55
+        "weight": 0.7
       }
     ]
   },
@@ -20732,7 +20732,7 @@
           "Type 90 JGSDF",
           "JGSDF Type 90"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "LWH",
@@ -20743,7 +20743,7 @@
           "USMC LWH",
           "Lightweight Helmet LWH"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "M1917 helmet",
@@ -20755,7 +20755,7 @@
           "M1917 steel helmet",
           "Doughboy"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Gallet",
@@ -20768,7 +20768,7 @@
           "F1 helmet",
           "SPECTRA"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Zischägge",
@@ -20778,7 +20778,7 @@
           "Zischaegge",
           "Lobster pot helmet"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Spangenhelm",
@@ -20800,7 +20800,7 @@
           "M1938 tanker's helmet",
           "M1938"
         ],
-        "weight": 0.9
+        "weight": 1.0
       }
     ]
   },
@@ -21012,7 +21012,7 @@
           "GAZ-66 truck",
           "GAZ-66-11"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Polaris MRZR",
@@ -21023,7 +21023,7 @@
           "Polaris MRZR-D",
           "Polaris MRZR Alpha"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Jackal",
@@ -21033,7 +21033,7 @@
           "MWMIK",
           "Jackal 3"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Eagle",
@@ -21045,7 +21045,7 @@
           "Eagle IV MOWAG",
           "Mowag Eagle IV"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Kübelwagen",
@@ -21056,7 +21056,7 @@
           "VW Type 82",
           "Volkswagen Type 82"
         ],
-        "weight": 0.55
+        "weight": 0.7
       },
       {
         "name": "Schwimmwagen",
@@ -21067,7 +21067,7 @@
           "VW Type 166",
           "Volkswagen Type 166"
         ],
-        "weight": 0.9
+        "weight": 0.85
       },
       {
         "name": "Horch 901",
@@ -21079,7 +21079,7 @@
           "Horch Kfz 15",
           "Horch 108 Type 40"
         ],
-        "weight": 0.9
+        "weight": 1.0
       },
       {
         "name": "M274 Mule",
@@ -21091,7 +21091,7 @@
           "Mule M274",
           "M274 Platform Utility Truck"
         ],
-        "weight": 0.55
+        "weight": 0.7
       }
     ]
   }

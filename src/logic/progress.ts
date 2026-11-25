@@ -5,7 +5,7 @@ import { dayMedianDepth, START_RATING, updateRating } from './elo';
 import { isRunSeed } from './seed';
 
 export function emptyState(): SaveState {
-  return { version: 1, sessions: {}, crowd: {}, ratings: { ranked: START_RATING }, rankedHistory: [], endless: { run: null, best: { depth: 0, correct: 0, streak: 0 }, runs: 0 } };
+  return { version: 1, sessions: {}, crowd: {}, ratings: { ranked: START_RATING }, rankedHistory: [], endless: { run: null, best: { depth: 0, distance: 0, correct: 0, streak: 0 }, runs: 0 } };
 }
 
 export function sessionKey(date: string, mode: Mode, archive: boolean): string {

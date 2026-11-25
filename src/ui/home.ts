@@ -42,7 +42,7 @@ export function renderHome(app: App): void {
     if (s?.complete) { status = `Done · ${formatMeters(depthMeters(s.depth))} · ${tierFor(s.depth, prompts.length).name}`; st = 'done'; action = 'View results'; }
     else if (s) { status = `In progress · ${s.answers.length}/${prompts.length}`; st = 'go'; action = 'Resume'; }
     return `<article class="card mode-card mode-${mode.toLowerCase()}">
-      <div class="mc-top">${ICONS[mode]}<span class="mc-tag">Daily</span></div>
+      <div class="mc-top">${ICONS[mode]}<span class="mc-tag">Limited · 7</span></div>
       <h2>${mode}</h2><p class="muted">${esc(BLURB[mode])}</p>
       <p class="status st-${st}"><i></i>${esc(status)}</p>
       <button class="btn primary" data-mode="${mode}" data-done="${s?.complete ? 1 : 0}">${action}</button>
@@ -65,19 +65,19 @@ export function renderHome(app: App): void {
     </div>
     <section class="grid">${cards}</section>
     <section class="card unlimited endless">
-      <div class="u-head"><span class="u-inf" aria-hidden="true">☠</span><div><span class="u-badge hot">Endless · 3 lives</span><h2>Survive the sky</h2></div></div>
-      <p class="muted">Random questions with no end and ${QUESTION_SECONDS} seconds each. A wrong answer or a timeout costs a HARM: enemy missiles streak past, and when the last one goes, yours is intercepted. Lives never come back.</p>
-      ${live ? `<button class="btn primary wide" id="resume" data-resume="${live.mode}">Resume run · question ${live.answers.length + 1} · ${live.lives} HARM${live.lives === 1 ? '' : 's'} left</button>` : ''}
+      <div class="u-head"><span class="u-inf" aria-hidden="true">☠</span><div><span class="u-badge hot">Endless · 3 lives</span><h2>Fly until you crash</h2></div></div>
+      <p class="muted">Random questions with no end, ${QUESTION_SECONDS} seconds each, getting harder as you go. Every miss costs a life and adds DRAG, slowing your jet. Lose all three and you crash. Lives never come back.</p>
+      ${live ? `<button class="btn primary wide" id="resume" data-resume="${live.mode}">Resume run · question ${live.answers.length + 1} · ${live.lives} li${live.lives === 1 ? 'fe' : 'ves'} left</button>` : ''}
       <div class="row u-buttons">
         <button class="btn primary" data-endless="Ground">Ground</button>
         <button class="btn primary" data-endless="Air">Air</button>
         <button class="btn primary" data-endless="Ranked">Mixed</button>
       </div>
-      <p class="muted small u-stats">${endless.runs ? `Records: ${formatMeters(depthMeters(endless.best.depth))} · ${endless.best.correct} correct · streak ${endless.best.streak} · ${endless.runs} run${endless.runs === 1 ? '' : 's'}` : 'No runs yet. How deep can you get?'}</p>
+      <p class="muted small u-stats">${endless.runs ? `Records: ${formatMeters(endless.best.distance)} · ${endless.best.correct} correct · streak ${endless.best.streak} · ${endless.runs} run${endless.runs === 1 ? '' : 's'}` : 'No runs yet. How deep can you get?'}</p>
     </section>
     <section class="card unlimited">
       <div class="u-head">${ICONS.Unlimited}<div><span class="u-badge">Unlimited</span><h2>Free dives</h2></div></div>
-      <p class="muted">Relaxed 7-prompt runs, as many as you like. No lives, and nothing touches your streak, rating or daily stats.</p>
+      <p class="muted">Unlimited 7-prompt runs, as many as you like, each with the same ${QUESTION_SECONDS}-second timer. No lives, and nothing touches your streak, rating or daily stats.</p>
       <div class="row u-buttons">
         <button class="btn primary" data-run="Ground">Ground</button>
         <button class="btn primary" data-run="Air">Air</button>

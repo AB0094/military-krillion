@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { MIN_CROWD, RARITY_NAMES, crossedTier, depthMeters, depthPoints, formatMeters, maxMeters, rarity, rarityLabel, rarityRank, shaftPosition, tierMeters, TIERS, tierFor, tierIndex, totalDepth } from './scoring';
+import { MIN_CROWD, RARITY_NAMES, crossedTier, depthMeters, depthPoints, formatMeters, maxMeters, rarity, rarityLabel, rarityRank, rarityTier, shaftPosition, tierMeters, TIERS, tierFor, tierIndex, totalDepth } from './scoring';
 import type { Answer } from './types';
 
 const a: Answer = { name: 'Su-25', aliases: [], weight: 0.1 };
@@ -47,13 +47,16 @@ describe('tierFor', () => {
   });
 });
 
-describe('rarity names', () => {
-  it('are security classifications, rarer = more classified', () => {
-    expect(RARITY_NAMES).toEqual(['Unclassified', 'Restricted', 'Confidential', 'Secret', 'Cosmic Top Secret']);
-    expect([0.1, 0.3, 0.55, 0.7, 0.9].map(rarityLabel)).toEqual(['Unclassified', 'Restricted', 'Confidential', 'Secret', 'Cosmic Top Secret']);
+describe('rarity ranks', () => {
+  it('run Recruit to Transcendent, rarer = higher', () => {
+    expect(RARITY_NAMES).toEqual(['Recruit', 'Recon', 'Vanguard', 'Apex', 'Warbringer', 'Mythic', 'Transcendent']);
+    expect([0.1, 0.3, 0.55, 0.7, 0.85, 0.9, 1].map(rarityLabel)).toEqual(['Recruit', 'Recon', 'Vanguard', 'Apex', 'Warbringer', 'Mythic', 'Transcendent']);
   });
-  it('switch exactly at 20/40/60/80 points', () => {
-    expect([0.19, 0.2, 0.39, 0.4, 0.59, 0.6, 0.79, 0.8, 1].map(rarityRank)).toEqual([0, 1, 1, 2, 2, 3, 3, 4, 4]);
+  it('pair each rank with its familiar tier word', () => {
+    expect([0.1, 0.3, 0.55, 0.7, 0.85, 0.9, 1].map(rarityTier)).toEqual(['Common', 'Uncommon', 'Rare', 'Epic', 'Legendary', 'Mythical', 'Highest']);
+  });
+  it('switch exactly at 20/40/60/80/90 points, with Transcendent reserved for a perfect 100', () => {
+    expect([0.19, 0.2, 0.39, 0.4, 0.59, 0.6, 0.79, 0.8, 0.89, 0.9, 0.99, 1].map(rarityRank)).toEqual([0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6]);
   });
 });
 

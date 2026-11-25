@@ -37,7 +37,7 @@ export function renderResults(app: App, v: ResultsView): void {
 
   app.root.innerHTML = `${header(runTitle(v))}
     <section class="card result">
-      <p class="muted">Final depth</p>
+      <p class="muted">Distance flown</p>
       <p class="depth" id="depth">0m</p>
       <p class="muted">${depthPoints(session.depth)} / ${maxMeters(session.answers.length) / 10} points</p>
       <p class="tier">${esc(tier.name)}</p>

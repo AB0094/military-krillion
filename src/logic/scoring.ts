@@ -68,12 +68,22 @@ export function tierMeters(tierIdx: number, rounds: number = DEFAULT_PROMPT_COUN
   return Math.round(TIERS[tierIdx].min * maxMeters(rounds));
 }
 
-/** How rare an answer was, named after security classifications: the rarer, the more classified. */
-export const RARITY_NAMES = ['Unclassified', 'Restricted', 'Confidential', 'Secret', 'Cosmic Top Secret'] as const;
-export type RarityName = (typeof RARITY_NAMES)[number];
-const RARITY_CUTOFFS = [0, 0.2, 0.4, 0.6, 0.8];
+/** How rare an answer was, as an aviation/military-arcade rank. Rarer answers rank higher. */
+export const RARITIES = [
+  { name: 'Recruit', tier: 'Common' },
+  { name: 'Recon', tier: 'Uncommon' },
+  { name: 'Vanguard', tier: 'Rare' },
+  { name: 'Apex', tier: 'Epic' },
+  { name: 'Warbringer', tier: 'Legendary' },
+  { name: 'Mythic', tier: 'Mythical' },
+  { name: 'Transcendent', tier: 'Highest' },
+] as const;
+export type RarityName = (typeof RARITIES)[number]['name'];
+export const RARITY_NAMES: readonly RarityName[] = RARITIES.map((r) => r.name);
+/** Minimum rarity (0..1) for each rank: 0-19 Recruit, 20-39 Recon, 40-59 Vanguard, 60-79 Apex, 80-89 Warbringer, 90-99 Mythic, 100 Transcendent. */
+const RARITY_CUTOFFS = [0, 0.2, 0.4, 0.6, 0.8, 0.9, 1];
 
-/** 0..4: index into RARITY_NAMES. Also drives the share squares and badge colours. */
+/** 0..6: index into RARITIES. Also drives the share squares, badge colours and reveal effects. */
 export function rarityRank(score: number): number {
   let rank = 0;
   RARITY_CUTOFFS.forEach((c, i) => { if (score >= c - 1e-9) rank = i; });
@@ -81,7 +91,12 @@ export function rarityRank(score: number): number {
 }
 
 export function rarityLabel(score: number): RarityName {
-  return RARITY_NAMES[rarityRank(score)];
+  return RARITIES[rarityRank(score)].name;
+}
+
+/** The familiar tier word ("Common", "Rare", "Legendary"...) shown under the rank name. */
+export function rarityTier(score: number): string {
+  return RARITIES[rarityRank(score)].tier;
 }
 
 /** Where the missile sits in the descent shaft (0 = top/start, 1 = bottom): the running average rarity. */

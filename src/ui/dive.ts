@@ -1,26 +1,33 @@
 import { PROMPTS } from '../data';
 import { dailySet } from '../logic/seed';
 import { getSession, submitAnswer, type PlayContext } from '../logic/progress';
-import { MIN_CROWD, TIERS, crossedTier, depthMeters, depthPoints, formatMeters, rarity, rarityLabel, rarityRank, shaftPosition, tierIndex, tierMeters } from '../logic/scoring';
-import { START_LIVES } from '../logic/endless';
+import { MIN_CROWD, TIERS, crossedTier, depthMeters, depthPoints, formatMeters, rarity, rarityLabel, rarityRank, rarityTier, tierIndex } from '../logic/scoring';
+import { START_LIVES, START_SPEED, speedFactor } from '../logic/endless';
+import { milestone, milestonesCrossed, nextMilestone } from '../logic/milestones';
 import { QUESTION_SECONDS, isLow, secondsLeft } from '../logic/timer';
 import type { AnswerRecord, AnswerStats, Prompt } from '../logic/types';
+import type { EnvId } from '../logic/environments';
+import { ENVIRONMENTS } from '../logic/environments';
 import { esc, on, runTitle, type App, type View } from './dom';
-import { burst, countUp, reducedMotion } from './fx';
-import { timerEnabled } from './prefs';
+import { burst, reducedMotion } from './fx';
+import { pickEnvironment } from './envpick';
+import { CRUISE, createHorizon, type Horizon } from './horizon';
 import { playExplosion, shockwave, smokeColumns, wreckage } from './explosion';
-import { SPAN, SURFACE_Y, WORLD_H, camFor, missileY, worldHtml, type Theme } from './scene';
+import { RARITY_COLORS, showRarity } from './rarity';
 import { play } from './sound';
-import { missileSprite, samSprite } from './sprites';
+import { jetSprite, samSprite } from './sprites';
 
 type DiveView = Extract<View, { name: 'dive' }>;
-
-const MOVE_MS = 1300;
 
 /** A point-in-time view of a run, whatever kind of run it is. */
 export interface Snapshot {
   index: number;
+  /** Sum of rarity so far: points = depth x 100. */
   depth: number;
+  /** Metres flown. For Limited/Unlimited this is points x 10; in Endless it is scaled by speed. */
+  distance: number;
+  /** km/h. Only Endless changes it. */
+  speed: number;
   answers: readonly AnswerRecord[];
   lives: number;
   streak: number;
@@ -29,6 +36,9 @@ export interface Snapshot {
 
 export interface Outcome {
   depth: number;
+  distance: number;
+  speed: number;
+  speedDelta: number;
   answers: readonly AnswerRecord[];
   record: AnswerRecord;
   hint: string | null;
@@ -38,13 +48,12 @@ export interface Outcome {
   over: boolean;
 }
 
-/** Everything the scene needs from a run. Fixed daily/free runs and Endless runs each provide one. */
+/** Everything the scene needs from a run. Limited/Unlimited runs and Endless runs each provide one. */
 export interface Game {
-  theme: Theme;
   seedKey: string;
   title: string;
   endless: boolean;
-  /** Prompts per run (fixed) or the endless scale; depth/scale is the position down the shaft. */
+  /** Prompts per run (fixed) or the endless scale; distance/1000 over this picks the airfield. */
   scale: number;
   snapshot(): Snapshot;
   prompt(index: number): Prompt;
@@ -53,7 +62,7 @@ export interface Game {
   finish(): void;
 }
 
-/** Fixed-length runs: the daily sets, Ranked, the archive and free (unlimited) 7-prompt runs. */
+/** Limited runs (the daily sets, Ranked, the archive) and Unlimited free runs: a fixed number of questions. */
 export function renderDive(app: App, v: DiveView): void {
   const ctx: PlayContext = { date: v.date, mode: v.mode, archive: v.archive, prompts: dailySet(v.date, v.mode, PROMPTS) };
   const total = ctx.prompts.length;
@@ -62,16 +71,17 @@ export function renderDive(app: App, v: DiveView): void {
   if (s0?.complete) return app.go({ name: 'results', mode: v.mode, date: v.date, archive: v.archive }, true);
 
   const game: Game = {
-    theme: 'sea', seedKey: v.date, title: runTitle(v), endless: false, scale: total,
+    seedKey: `${v.archive ? 'archive|' : ''}${v.date}|${v.mode}`, title: runTitle(v), endless: false, scale: total,
     snapshot() {
       const s = session();
-      return { index: s?.answers.length ?? 0, depth: s?.depth ?? 0, answers: s?.answers ?? [], lives: START_LIVES, streak: 0, over: !!s?.complete };
+      const depth = s?.depth ?? 0;
+      return { index: s?.answers.length ?? 0, depth, distance: depthMeters(depth), speed: START_SPEED, answers: s?.answers ?? [], lives: START_LIVES, streak: 0, over: !!s?.complete };
     },
     prompt: (i) => ctx.prompts[i],
     submit(input, timedOut) {
       const r = submitAnswer(app.getState(), ctx, input, { timedOut });
       app.setState(r.state);
-      return { depth: r.session.depth, answers: r.session.answers, record: r.record, hint: r.hint, lives: START_LIVES, streak: 0, lostLife: false, over: r.session.complete };
+      return { depth: r.session.depth, distance: depthMeters(r.session.depth), speed: START_SPEED, speedDelta: 0, answers: r.session.answers, record: r.record, hint: r.hint, lives: START_LIVES, streak: 0, lostLife: false, over: r.session.complete };
     },
     crowd: (id) => app.getState().crowd[id],
     finish: () => app.go({ name: 'results', mode: v.mode, date: v.date, archive: v.archive }, true),
@@ -79,76 +89,117 @@ export function renderDive(app: App, v: DiveView): void {
   runScene(app, game, !s0 || s0.answers.length === 0);
 }
 
-/** The full-screen descent scene: world + camera, HUD, 20-second timer, answer dock, near misses and interceptions. */
+const easeInOut = (u: number) => (u < 0.5 ? 2 * u * u : 1 - (-2 * u + 2) ** 2 / 2);
+const lerp = (a: number, b: number, t: number) => a + (b - a) * t;
+
+/**
+ * The flight scene: a randomly chosen landscape scrolls past a jet that takes off from a military airfield and then flies
+ * horizontally, with the HUD, the shared 20-second question timer, distance milestones, DRAG, and (in Endless) the crash.
+ */
 export function runScene(app: App, game: Game, wantIntro: boolean): void {
-  const intro = wantIntro && !reducedMotion();
   const start = game.snapshot();
   if (start.over) return game.finish();
+  const intro = wantIntro && !reducedMotion();
+  const env: EnvId = pickEnvironment(game.seedKey);
+  const envName = ENVIRONMENTS.find((e) => e.id === env)!.name;
 
-  app.root.innerHTML = `<div class="dv ${game.theme}${intro ? ' intro' : ''}" id="dv">
-    <div class="dv-view">
-      <div class="dv-far" style="top:${game.theme === 'sea' ? SURFACE_Y : 0}px;height:${Math.round(WORLD_H * 0.62)}px"></div>
-      <div class="dv-world" style="height:${WORLD_H}px;--sy:${SURFACE_Y}px;--tick:${Math.round(SPAN / (game.scale * 2))}px">${worldHtml(game.seedKey, game.theme, game.scale)}</div>
+  app.root.innerHTML = `<div class="dv env-${env}${intro ? ' intro' : ''}" id="dv">
+    <div class="dv-stage" id="stage">
+      <canvas class="dv-canvas" id="cv"></canvas>
+      <div class="dv-jet" id="jet">
+        <div class="jet-body">${jetSprite()}</div>
+        <i class="gear g1"></i><i class="gear g2"></i><i class="jet-flame"></i><i class="jet-heat"></i>
+      </div>
     </div>
     <div class="scan"></div><div class="dv-vig"></div>
     <div class="hud">
-      <button class="hud-btn" id="home" aria-label="Home">≡</button>
-      <div class="hud-panel"><span class="lbl">Depth</span><b id="hd">0m</b></div>
+      <button class="hud-btn" id="home" aria-label="Main menu">≡</button>
+      <div class="hud-panel"><span class="lbl">Distance</span><b id="hd">0m</b></div>
       <div class="hud-panel hud-score"><span class="lbl">Score</span><b id="hs">0</b></div>
-      <div class="hud-mid">${game.endless ? '<div class="lives" id="lives" aria-label="Missiles left"></div>' : '<div class="pips" id="pips" aria-hidden="true"></div>'}<span class="lbl" id="plabel"></span></div>
+      ${game.endless ? '<div class="hud-panel hud-speed"><span class="lbl">Speed</span><b id="hv">600</b><small>km/h</small></div>' : ''}
+      <div class="hud-mid">
+        ${game.endless ? '<div class="lives" id="lives" aria-label="Lives left"></div>' : '<div class="pips" id="pips" aria-hidden="true"></div>'}
+        <div class="timer" id="timer"><div class="tbar"><i id="tfill"></i></div><b id="tnum">${QUESTION_SECONDS}</b></div>
+        <span class="lbl" id="plabel"></span>
+        <span class="lbl mile" id="mile"></span>
+      </div>
       <div class="hud-panel hud-tier"><span class="lbl">Airfield</span><b id="ht"></b></div>
     </div>
     <div class="dv-panel px" id="panel"></div>
     <div class="dv-dock" id="dock"></div>
-    <div class="dv-intro-msg">Launch sequence · tap to skip</div>
+    <div class="dv-intro-msg" id="intromsg">Take-off · tap to skip</div>
+    <div class="callout" id="callout"></div>
   </div>`;
 
   const $ = <T extends HTMLElement>(sel: string) => app.root.querySelector<T>(sel)!;
   const dv = $('#dv');
-  const world = $('.dv-world');
-  const far = $('.dv-far');
-  const mk = $('.dv-mk');
+  const cv = $<HTMLCanvasElement>('#cv');
+  const jet = $('#jet');
   const panel = $('#panel');
   const dock = $('#dock');
+  const callout = $('#callout');
 
-  let depth = start.depth;
+  const horizon: Horizon = createHorizon({
+    canvas: cv, env, seed: game.seedKey,
+    onEvent: (e) => { if (e === 'radar-lit') play('ping'); if (e === 'radar-blast') { play('boom'); shake(500, false); } if (e === 'sun') play('boom'); },
+  });
+  horizon.start();
+
   let timerId = 0;
+  let autoId = 0;
   let startQuestion: (() => void) | null = null;
-  const ratio = () => (dv.clientWidth <= 1000 ? 0.62 : 0.4);
+  let busy = false; // a crash or take-off owns the scene
+  const timers: number[] = [];
+  const later = (fn: () => void, ms: number) => { const id = window.setTimeout(() => { if (dv.isConnected) fn(); }, ms); timers.push(id); return id; };
 
-  // ---------- camera and HUD ----------
-  function place(d: number, animate: boolean): void {
-    const y = missileY(shaftPosition(d, game.scale));
-    const cam = camFor(y, dv.clientHeight, ratio());
-    dv.classList.toggle('anim', animate);
-    mk.style.top = `${y}px`;
-    world.style.transform = `translateY(${-cam}px)`;
-    far.style.transform = `translateY(${-cam * 0.55}px)`;
+  // ---------- jet pose ----------
+  let jw = 0;
+  let jh = 0;
+  const measure = () => { jw = jet.offsetWidth; jh = jet.offsetHeight; };
+  const cruiseXY = () => ({ x: dv.clientWidth * 0.24 - jw / 2, y: dv.clientHeight * 0.58 - jh / 2 });
+  let pose = { x: 0, y: 0, pitch: 0 };
+  function setPose(x: number, y: number, pitch = 0): void {
+    pose = { x, y, pitch };
+    jet.style.transform = `translate(${x}px,${y}px) rotate(${pitch}deg)`;
+    horizon.setJet(x + jw / 2, y + jh, true);
+  }
+  const jetCenter = () => ({ x: pose.x + jw / 2, y: pose.y + jh / 2 });
+  const cruiseSpeed = (kmh: number) => CRUISE * speedFactor(kmh);
+
+  // ---------- hud ----------
+  function tween(el: HTMLElement, from: number, to: number, ms: number, fmt: (n: number) => string): void {
+    if (reducedMotion() || from === to) { el.textContent = fmt(to); return; }
+    const t0 = performance.now();
+    const step = (now: number) => {
+      if (!el.isConnected) return;
+      const u = Math.min(1, (now - t0) / ms);
+      el.textContent = fmt(Math.round(lerp(from, to, 1 - (1 - u) ** 3)));
+      if (u < 1) requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
   }
 
-  function hud(d: number, answers: readonly AnswerRecord[], index: number, lives: number, streak: number): void {
-    if (!dv.isConnected) return; // delayed updates must not run after the player has left this screen
-    $('#hd').textContent = formatMeters(depthMeters(d));
-    $('#hs').textContent = String(depthPoints(d));
+  function hud(depth: number, dist: number, answers: readonly AnswerRecord[], index: number, lives: number, streak: number, speed: number): void {
+    if (!dv.isConnected) return;
+    $('#hd').textContent = formatMeters(dist);
+    $('#hs').textContent = String(depthPoints(depth));
     if (game.endless) {
-      $('#lives').innerHTML = Array.from({ length: START_LIVES }, (_, i) => `<i class="life${i < lives ? '' : ' lost'}">${missileSprite()}</i>`).join('');
+      $('#lives').innerHTML = Array.from({ length: START_LIVES }, (_, i) => `<i class="life${i < lives ? '' : ' lost'}">${jetSprite()}</i>`).join('');
+      $('#hv').textContent = String(Math.round(speed));
       $('#plabel').textContent = `${game.title} · question ${index + 1} · streak ${streak}`;
       dv.classList.toggle('low', lives === 1);
     } else {
       $('#pips').innerHTML = Array.from({ length: game.scale }, (_, i) => `<i class="pip ${i < answers.length ? (answers[i].matched ? 'hit' : 'miss') : i === answers.length ? 'now' : ''}"></i>`).join('');
       $('#plabel').textContent = `${game.title} · prompt ${Math.min(index + 1, game.scale)} of ${game.scale}`;
     }
-    const idx = tierIndex(d, game.scale);
+    const idx = tierIndex(dist / 1000, game.scale);
     $('#ht').textContent = `${TIERS[idx].flag} ${TIERS[idx].name}`;
-    world.querySelectorAll<HTMLElement>('.gauge li[data-i]').forEach((li) => li.classList.toggle('reached', Number(li.dataset.i) <= idx));
+    const nm = nextMilestone(dist);
+    $('#mile').textContent = `${envName} · next: ${nm.name} ${formatMeters(nm.meters)}`;
   }
 
   // ---------- small effects ----------
-  const target = () => {
-    const r = mk.getBoundingClientRect();
-    const d = dv.getBoundingClientRect();
-    return { x: r.left - d.left + r.width / 2, y: r.top - d.top + r.height / 2 };
-  };
+  const target = () => jetCenter();
 
   function burstAt(x: number, y: number, count: number, color: string): void {
     const a = document.createElement('i');
@@ -159,27 +210,13 @@ export function runScene(app: App, game: Game, wantIntro: boolean): void {
     setTimeout(() => a.remove(), 60);
   }
 
-  function bubbles(y0: number, y1: number): void {
-    if (reducedMotion()) return;
-    const x = mk.offsetLeft;
-    for (let i = 0; i <= 11; i++) {
-      setTimeout(() => {
-        if (!world.isConnected) return;
-        const b = document.createElement('i');
-        b.className = game.theme === 'sky' ? 'bub puffy' : 'bub';
-        b.style.cssText = `left:${x + (Math.random() - 0.5) * 26}px;top:${y0 + ((y1 - y0) * i) / 11}px`;
-        world.appendChild(b);
-        setTimeout(() => b.remove(), 1700);
-      }, i * 95);
-    }
-  }
-
   function pop(text: string, bad = false): void {
     const el = document.createElement('span');
     el.className = `pop${bad ? ' bad' : ''}`;
     el.textContent = text;
-    el.style.cssText = `left:${mk.offsetLeft}px;top:${parseFloat(mk.style.top) - 70}px`;
-    world.appendChild(el);
+    const t = target();
+    el.style.cssText = `left:${t.x}px;top:${t.y - 56}px`;
+    dv.appendChild(el);
     setTimeout(() => el.remove(), 1700);
   }
 
@@ -196,7 +233,20 @@ export function runScene(app: App, game: Game, wantIntro: boolean): void {
     setTimeout(() => el.remove(), 700);
   }
 
-  /** Enemy radar lock: the screen goes red, a warning shows and an alarm sounds before any missile is launched. */
+  function showCallout(title: string, sub: string, kind = ''): void {
+    callout.className = `callout show ${kind}`;
+    callout.innerHTML = `<small>${esc(sub)}</small><b>${esc(title)}</b>`;
+    void callout.offsetWidth;
+    callout.className = `callout show on ${kind}`;
+    later(() => { callout.classList.remove('on'); }, 2600);
+  }
+
+  function smoke(n: number, dark = true): void {
+    const t = target();
+    horizon.emit(t.x - jw * 0.45, t.y + 4, { n, color: dark ? ['#2b2b2e', '#3c3c40', '#55555a'] : ['#ffffff', '#dfe6ec'], size: 3, vx: -40, vy: -8, spread: 30, life: 1.6 });
+  }
+
+  /** Enemy radar lock: the screen goes red and an alarm sounds before any missile is launched. */
   function lockWarning(): void {
     play('alarm');
     dv.classList.add('alert');
@@ -207,7 +257,7 @@ export function runScene(app: App, game: Game, wantIntro: boolean): void {
     setTimeout(() => { dv.classList.remove('alert'); el.remove(); }, 1100);
   }
 
-  /** A hostile missile streaks in from a bottom corner, leaving smoke. `miss` flies past; `hit` strikes the HARM. */
+  /** A hostile missile streaks in from below, leaving smoke. `miss` flies past; `hit` strikes the jet. */
   function samFlight(kind: 'miss' | 'hit', delay: number, onHit?: () => void): void {
     if (reducedMotion()) { if (kind === 'hit') setTimeout(() => onHit?.(), delay); return; }
     const W = dv.clientWidth;
@@ -223,7 +273,7 @@ export function runScene(app: App, game: Game, wantIntro: boolean): void {
     let ey = ty;
     const side = fromLeft ? 1 : -1;
     if (kind === 'miss') {
-      const off = 190 + Math.random() * 70; // the path deviates by `off` 900px past the HARM, so the closest pass is ~70-120px
+      const off = 190 + Math.random() * 70;
       ex = tx + -uy * off * side + ux * 900;
       ey = ty + ux * off * side + uy * 900;
     }
@@ -238,11 +288,8 @@ export function runScene(app: App, game: Game, wantIntro: boolean): void {
       { transform: `translate(${ex}px,${ey}px) translate(-50%,-50%) rotate(${ang}deg)` },
     ], { delay, duration: dur, easing: 'cubic-bezier(.45,0,.9,.6)', fill: 'both' });
     a.onfinish = () => { el.remove(); if (kind === 'hit') onHit?.(); };
-
-    // smoke puffs dropped along the flight path
-    const puffs = 14;
-    for (let i = 1; i <= puffs; i++) {
-      const f = i / puffs;
+    for (let i = 1; i <= 14; i++) {
+      const f = i / 14;
       setTimeout(() => {
         if (!dv.isConnected) return;
         const q = document.createElement('i');
@@ -252,10 +299,7 @@ export function runScene(app: App, game: Game, wantIntro: boolean): void {
         setTimeout(() => q.remove(), 900);
       }, delay + dur * f);
     }
-
     if (kind === 'miss') {
-      // proximity fuse: the warhead detonates as it passes, close enough to rattle the HARM but not hit it
-      const closest = delay + dur * (len / (len + 900)) * 1.12;
       setTimeout(() => {
         if (!dv.isConnected) return;
         const now = target();
@@ -263,63 +307,127 @@ export function runScene(app: App, game: Game, wantIntro: boolean): void {
         const py = now.y + ux * side * 84;
         playExplosion(dv, px, py, { px: 4, frames: 9, size: 17, seed: 11 + Math.floor(Math.random() * 40) });
         shockwave(dv, px, py, 70);
-      }, closest);
+      }, delay + dur * (len / (len + 900)) * 1.12);
     }
   }
 
-  function nearMiss(): void {
-    lockWarning();
-    setTimeout(() => {
-      if (!dv.isConnected) return;
-      play('whoosh');
-      samFlight('miss', 0);
-      samFlight('miss', 340);
-    }, 950);
-    setTimeout(() => {
-      if (!dv.isConnected) return;
-      shake(600, false);
-      mk.classList.add('wobble');
-      setTimeout(() => mk.classList.remove('wobble'), 900);
-      pop('Near miss!', true);
-    }, 1750);
+  // ---------- DRAG ----------
+  function showDrag(delta: number): void {
+    play('drag');
+    const el = document.createElement('div');
+    el.className = 'dragfx';
+    el.innerHTML = `<span class="chevs">‹‹‹ ‹‹‹ ‹‹‹</span><b>DRAG</b><small>${Math.round(delta)} km/h</small>`;
+    dv.appendChild(el);
+    setTimeout(() => el.remove(), 2200);
+    jet.classList.add('jolt');
+    setTimeout(() => jet.classList.remove('jolt'), 900);
+    dv.classList.add('dragging');
+    setTimeout(() => dv.classList.remove('dragging'), 1800);
+    shake(420, false);
+    smoke(14);
+    $('#hv')?.parentElement?.classList.add('bad');
+    setTimeout(() => $('#hv')?.parentElement?.classList.remove('bad'), 1400);
   }
 
-  function explode(done: () => void): void {
-    if (!dv.isConnected) return;
-    const { x, y } = target();
-    play('boom');
+  // ---------- Endless: the loss ----------
+  function crash(done: () => void): void {
+    busy = true;
+    stopTimer();
+    lockWarning();
+    const hit = () => {
+      if (!dv.isConnected) return;
+      const c = target();
+      play('boom');
+      flash();
+      shake(700, true);
+      playExplosion(dv, c.x, c.y, { px: 5, frames: 12, size: 21, seed: 9 });
+      shockwave(dv, c.x, c.y, 50);
+      burstAt(c.x, c.y, 28, 'var(--gold)');
+      jet.classList.add('burning', 'jolt');
+      showCallout('Engine failure', 'Mayday', 'bad');
+      showDrag(-190);
+      const fire = window.setInterval(() => {
+        if (!dv.isConnected) return window.clearInterval(fire);
+        const p = target();
+        horizon.emit(p.x - jw * 0.35, p.y, { n: 3, color: ['#ff8a2a', '#ffd84a', '#e0322f'], size: 3, vx: -50, vy: -10, spread: 30, life: 0.6 });
+        horizon.emit(p.x - jw * 0.4, p.y, { n: 3, color: ['#2b2b2e', '#3c3c40', '#55555a'], size: 4, vx: -70, vy: -14, spread: 30, life: 1.6 });
+      }, 70);
+      later(() => { window.clearInterval(fire); descend(fire, done); }, 1100);
+    };
+    later(() => { play('whoosh'); samFlight('hit', 480, hit); }, 950);
+  }
+
+  function descend(fire: number, done: () => void): void {
+    jet.classList.add('burning');
+    const W = dv.clientWidth;
+    const H = dv.clientHeight;
+    const x0 = pose.x;
+    const y0 = pose.y;
+    const impactWorldY = horizon.groundYCss() + 0 - jh * 0.35;
+    const x1 = Math.min(W - jw - 20, x0 + W * 0.2);
+    const camMax = Math.max(0, (impactWorldY - H * 0.64) / horizon.scale);
+    const t0 = performance.now();
+    const DUR = 2500;
+    horizon.setSpeed(40);
+    const fireId = window.setInterval(() => {
+      if (!dv.isConnected) return window.clearInterval(fireId);
+      const p = target();
+      horizon.emit(p.x - jw * 0.3, p.y, { n: 4, color: ['#ff8a2a', '#ffd84a', '#e0322f'], size: 3, vx: -60, vy: -16, spread: 36, life: 0.55 });
+      horizon.emit(p.x - jw * 0.35, p.y, { n: 4, color: ['#222226', '#3a3a3e', '#55555a'], size: 4, vx: -80, vy: -20, spread: 36, life: 1.8 });
+    }, 55);
+    showCallout('Going down', 'Mayday', 'bad');
+    play('alarm');
+    const step = (now: number) => {
+      if (!dv.isConnected) return window.clearInterval(fireId);
+      const u = Math.min(1, (now - t0) / DUR);
+      const e = u ** 2.1;
+      const camNow = camMax * easeInOut(u);
+      horizon.setCam(camNow, true);
+      const worldY = lerp(y0, impactWorldY, e);
+      setPose(lerp(x0, x1, u), worldY - camNow * horizon.scale, 6 + 56 * u);
+      if (u < 1) { requestAnimationFrame(step); return; }
+      window.clearInterval(fireId);
+      impact(done);
+    };
+    requestAnimationFrame(step);
+    void fire;
+  }
+
+  function impact(done: () => void): void {
+    const c = target();
+    jet.style.visibility = 'hidden';
+    horizon.setJet(0, 0, false);
+    horizon.setSpeed(0);
+    play('crash');
     flash();
-    shake(1100, true);
-    shockwave(dv, x, y, 60);
-    setTimeout(() => shockwave(dv, x, y, 40), 140);
-    playExplosion(dv, x, y, { px: 9, frames: 14, size: 27, seed: 3 });
-    burstAt(x, y, 36, '#ffffff');
-    burstAt(x, y, 40, 'var(--gold)');
-    burstAt(x, y, 32, 'var(--pink)');
-    setTimeout(() => { if (dv.isConnected) { playExplosion(dv, x - 70, y + 50, { px: 5, frames: 10, size: 21, seed: 21 }); burstAt(x - 70, y + 50, 14, 'var(--gold)'); } }, 260);
-    setTimeout(() => { if (dv.isConnected) { playExplosion(dv, x + 60, y - 40, { px: 5, frames: 10, size: 21, seed: 34 }); burstAt(x + 60, y - 40, 14, 'var(--gold)'); } }, 420);
-    wreckage(dv, x, y, dv.clientHeight);
-    smokeColumns(dv, x, y);
-    mk.classList.add('gone');
+    shake(1500, true);
+    const gy = horizon.groundYCss();
+    horizon.boomAt(c.x, gy - 40, 3.6);
+    playExplosion(dv, c.x, gy - 50, { px: 11, frames: 14, size: 27, seed: 3 });
+    later(() => playExplosion(dv, c.x - 90, gy - 24, { px: 6, frames: 11, size: 21, seed: 21 }), 220);
+    later(() => playExplosion(dv, c.x + 80, gy - 30, { px: 6, frames: 11, size: 21, seed: 34 }), 380);
+    shockwave(dv, c.x, gy - 10, 70);
+    later(() => shockwave(dv, c.x, gy - 10, 46), 160);
+    burstAt(c.x, gy - 40, 44, '#ffffff'); burstAt(c.x, gy - 40, 46, 'var(--gold)'); burstAt(c.x, gy - 40, 36, 'var(--pink)');
+    wreckage(dv, c.x, gy - 40, gy);
+    smokeColumns(dv, c.x, gy - 20, 12);
+    // a big rolling dust cloud along the ground
+    for (let k = 0; k < 6; k++) later(() => horizon.emit(c.x, gy - 8, { n: 18, color: ['#c9a66a', '#d8b87a', '#b8955a', '#e6d2a0'], size: 5, vx: (k % 2 ? 1 : -1) * 140, vy: -26, spread: 90, life: 2.8, world: true }), k * 110);
+    const fireId = window.setInterval(() => {
+      if (!dv.isConnected) return window.clearInterval(fireId);
+      horizon.emit(c.x, gy - 14, { n: 3, color: ['#ff8a2a', '#ffd84a', '#e0322f'], size: 3, vy: -34, spread: 24, life: 0.7, world: true });
+      horizon.emit(c.x, gy - 22, { n: 2, color: ['#222226', '#3a3a3e', '#55555a'], size: 5, vy: -30, spread: 20, life: 2.6, world: true });
+    }, 90);
+    showCallout('Crashed', 'Mission over', 'bad');
     const banner = document.createElement('div');
     banner.className = 'intercepted';
-    banner.textContent = 'Intercepted';
+    banner.textContent = 'Crashed';
     dv.appendChild(banner);
     setTimeout(() => banner.remove(), 2800);
-    setTimeout(done, 1700);
+    later(() => { window.clearInterval(fireId); done(); }, 3000);
   }
 
-  function intercept(done: () => void): void {
-    lockWarning();
-    setTimeout(() => {
-      if (!dv.isConnected) return;
-      play('whoosh');
-      samFlight('miss', 0);
-      samFlight('hit', 520, () => explode(done));
-    }, 950);
-  }
-
-  // ---------- the 20-second timer ----------
+  // ---------- the question timer (shared by every mode) ----------
   function stopTimer(): void {
     if (timerId) clearInterval(timerId);
     timerId = 0;
@@ -327,12 +435,12 @@ export function runScene(app: App, game: Game, wantIntro: boolean): void {
 
   function startTimer(onExpire: () => void): void {
     stopTimer();
-    const el = panel.querySelector<HTMLElement>('#timer');
-    if (!el || !timerEnabled()) return;
-    const fill = el.querySelector<HTMLElement>('#tfill')!;
-    const num = el.querySelector<HTMLElement>('#tnum')!;
+    const el = $('#timer');
+    const fill = $('#tfill');
+    const num = $('#tnum');
     const t0 = performance.now();
     let lastSec = QUESTION_SECONDS + 1;
+    el.classList.remove('low');
     timerId = window.setInterval(() => {
       if (!dv.isConnected) return stopTimer();
       const left = secondsLeft(t0, performance.now());
@@ -350,25 +458,26 @@ export function runScene(app: App, game: Game, wantIntro: boolean): void {
 
   // ---------- the question ----------
   function ask(): void {
+    window.clearTimeout(autoId);
     const snap = game.snapshot();
     if (snap.over) return game.finish();
     const index = snap.index;
     const prompt = game.prompt(index);
-    depth = snap.depth;
-    mk.classList.remove('abort', 'gone', 'wobble');
-    hud(snap.depth, snap.answers, index, snap.lives, snap.streak);
+    jet.classList.remove('hit');
+    hud(snap.depth, snap.distance, snap.answers, index, snap.lives, snap.streak, snap.speed);
+    $('#tfill').style.width = '100%';
+    $('#tnum').textContent = String(QUESTION_SECONDS);
     panel.className = `dv-panel px${dv.classList.contains('intro') ? '' : ' swap'}`;
     panel.scrollTop = 0;
-    panel.innerHTML = `${timerEnabled() ? `<div class="timer" id="timer"><div class="tbar"><i id="tfill"></i></div><b id="tnum">${QUESTION_SECONDS}</b></div>` : ''}
-      <p class="plabel">${game.endless ? `Question ${index + 1}` : `Prompt ${index + 1} of ${game.scale}`} · ${prompt.mode}</p>
+    panel.innerHTML = `<p class="plabel">${game.endless ? `Question ${index + 1}` : `Prompt ${index + 1} of ${game.scale}`} · ${prompt.mode}</p>
       <h2 class="prompt">${esc(prompt.text)}</h2>
       ${prompt.detail ? `<p class="detail">${esc(prompt.detail)}</p>` : ''}
-      <p class="hintline">▼ rarer answers sink deeper ▼</p>`;
+      <p class="hintline">▶ rarer answers fly further ◀</p>`;
     dock.innerHTML = `<form id="f" autocomplete="off"><input id="answer" type="text" maxlength="80" placeholder="Type your answer…" autocapitalize="off" spellcheck="false" aria-label="Your answer" /><button class="btn primary" type="submit">Fire</button></form>`;
     const input = $<HTMLInputElement>('#answer');
     let locked = false; // guards against double-submit (Enter + click) and against a late timer firing
     const submitNow = (raw: string, timedOut: boolean) => {
-      if (locked || !dv.isConnected) return;
+      if (locked || !dv.isConnected || busy) return;
       locked = true;
       stopTimer();
       play('launch');
@@ -381,7 +490,7 @@ export function runScene(app: App, game: Game, wantIntro: boolean): void {
       if (input.value.trim()) submitNow(input.value, false);
     });
     startQuestion = () => { input.focus(); startTimer(() => submitNow('', true)); };
-    if (!dv.classList.contains('intro')) startQuestion();
+    if (!dv.classList.contains('intro') && !busy) startQuestion();
   }
 
   // ---------- the result ----------
@@ -389,30 +498,30 @@ export function runScene(app: App, game: Game, wantIntro: boolean): void {
     const matched = out.record.matched;
     const score = out.record.score;
     const timedOut = out.record.timedOut === true;
-    const label = rarityLabel(score);
+    const rank = rarityRank(score);
     const board = [...prompt.answers]
       .map((a) => ({ a, r: rarity(a, crowdBefore, MIN_CROWD) }))
       .sort((x, y) => y.r - x.r)
-      .map(({ a, r }, i) => `<li class="${a.name === matched ? 'mine' : ''}" style="--i:${i}"><span class="bn">${esc(a.name)}</span><span class="bar"><i style="--w:${Math.round(r * 100)}%"></i></span><b>${Math.round(r * 100)}</b></li>`)
+      .map(({ a, r }, i) => `<li class="${a.name === matched ? 'mine' : ''}" style="--i:${i}"><span class="bn">${esc(a.name)}</span><span class="bar"><i style="--w:${Math.round(r * 100)}%;background:${RARITY_COLORS[rarityRank(r)]}"></i></span><b>${Math.round(r * 100)}</b></li>`)
       .join('');
 
     let body: string;
     if (matched) {
-      body = `<p class="verdict good">✓ ${esc(matched)} <span class="badge badge-r${rarityRank(score)}">${label}</span></p>${out.record.corrected ? `<p class="muted small">Spelling corrected: you typed “${esc(typed)}”.</p>` : ''}<p class="score"><span id="score">+0</span> <span class="muted">points</span> <span class="meters" id="metres">+0m</span></p>`;
+      body = `<p class="verdict good">✓ ${esc(matched)} <span class="badge badge-r${rank}" title="${rarityTier(score)}">${rarityLabel(score)}</span></p>${out.record.corrected ? `<p class="muted small">Spelling corrected: you typed “${esc(typed)}”.</p>` : ''}<p class="score"><span id="score">+${Math.round(score * 100)}</span> <span class="muted">points</span> <span class="meters" id="metres">+${formatMeters(out.distance - before.distance)}</span></p>`;
     } else {
       const head = timedOut
         ? '<p class="verdict bad">⏱ Time\'s up</p><p class="stamp">Out of time</p>'
-        : `<p class="verdict bad"><s>“${esc(typed)}”</s></p><p class="stamp">${game.endless ? 'Wrong answer' : 'Launch cancelled'}</p>`;
-      body = `${head}<p class="score">+0 <span class="muted">points</span> <span class="meters">+0m</span></p><p class="hint">${esc(out.hint ?? '')}</p>`;
+        : `<p class="verdict bad"><s>“${esc(typed)}”</s></p><p class="stamp">${game.endless ? 'Wrong answer' : 'Missed'}</p>`;
+      body = `${head}<p class="score">+0 <span class="muted">points</span></p><p class="hint">${esc(out.hint ?? '')}</p>`;
     }
     if (game.endless) {
       const n = out.lives;
-      if (out.over) body += '<p class="lifeline danger">Last missile lost. Your HARM was intercepted.</p>';
-      else if (out.lostLife) body += `<p class="lifeline danger">Near miss! ${n} HARM${n === 1 ? '' : 's'} left.</p>`;
-      else if (matched && out.streak > 1) body += `<p class="lifeline">${out.streak} in a row.</p>`;
+      if (out.over) body += '<p class="lifeline danger">Last life lost. Your aircraft is going down.</p>';
+      else if (out.lostLife) body += `<p class="lifeline danger">DRAG! ${Math.round(out.speedDelta)} km/h. ${n} li${n === 1 ? 'fe' : 'ves'} left.</p>`;
+      else if (matched) body += `<p class="lifeline good">${out.speedDelta > 0 ? `+${Math.round(out.speedDelta)} km/h` : 'Full speed'}${out.streak > 1 ? ` · ${out.streak} in a row` : ''}</p>`;
     }
 
-    panel.className = `dv-panel px swap ${matched ? 'hit' : 'miss'}`;
+    panel.className = `dv-panel px swap ${matched ? `hit rar-${rank}` : 'miss'}`;
     panel.scrollTop = 0;
     panel.innerHTML = `<p class="plabel">${game.endless ? `Question ${before.index + 1}` : `Prompt ${before.index + 1} of ${game.scale}`} · ${prompt.mode}</p>
       <h2 class="prompt small">${esc(prompt.text)}</h2>
@@ -422,148 +531,157 @@ export function runScene(app: App, game: Game, wantIntro: boolean): void {
       ${prompt.fact ? `<p class="fact"><strong>Briefing.</strong> ${esc(prompt.fact)}</p>` : ''}`;
 
     const finishing = !game.endless && out.over;
-    const showNext = (label2: string, fn: () => void) => {
-      dock.innerHTML = `<button class="btn primary wide" id="next">${label2} ▶</button>`;
-      on(app.root, '#next', fn);
+    const showNext = (label: string, fn: () => void, auto = false) => {
+      dock.innerHTML = `<button class="btn primary wide${auto ? ' auto' : ''}" id="next">${label} ▶</button>`;
+      on(app.root, '#next', () => { window.clearTimeout(autoId); fn(); });
       $<HTMLButtonElement>('#next').focus();
+      if (auto) autoId = window.setTimeout(() => { if (dv.isConnected) { fn(); } }, 3400); // a timed-out question moves on by itself
     };
     dock.innerHTML = '';
+    const nextLabel = finishing ? 'See results' : game.endless ? 'Next question' : 'Next prompt';
+    const goNext = finishing ? () => game.finish() : ask;
 
-    hud(before.depth, before.answers, before.index, before.lives, before.streak); // updates once the missile has moved
-    const after = () => hud(out.depth, out.answers, before.index + 1, out.lives, out.streak);
+    hud(before.depth, before.distance, before.answers, before.index, before.lives, before.streak, before.speed);
+    const after = () => hud(out.depth, out.distance, out.answers, before.index + 1, out.lives, out.streak, out.speed);
 
     if (matched) {
-      const y0 = missileY(shaftPosition(before.depth, game.scale));
-      const y1 = missileY(shaftPosition(out.depth, game.scale));
-      place(out.depth, true);
-      bubbles(y0, y1);
-      pop(`+${Math.round(score * 100)}`);
-      const scoreEl = $<HTMLElement>('#score');
-      const pts = Math.round(score * 100);
-      countUp(scoreEl, pts, { prefix: '+', delay: 350, decimals: 0 });
-      countUp($<HTMLElement>('#metres'), pts * 10, { prefix: '+', delay: 350, decimals: 0, suffix: 'm' });
-      play(score >= 0.8 ? 'rare' : 'hit');
-      if (score >= 0.5) setTimeout(() => dv.isConnected && burst(panel, scoreEl, score >= 0.8 ? 26 : 14, score >= 0.8 ? 'var(--gold)' : 'var(--accent)'), 450);
-      setTimeout(after, MOVE_MS * 0.6);
-      const arrived = crossedTier(before.depth, out.depth, game.scale);
-      if (arrived !== null) setTimeout(() => arrive(arrived), MOVE_MS);
-      depth = out.depth;
-      showNext(finishing ? 'See results' : game.endless ? 'Next question' : 'Next prompt', finishing ? () => game.finish() : ask);
+      const gained = out.distance - before.distance;
+      horizon.boost(gained * 0.32);
+      horizon.setSpeed(cruiseSpeed(out.speed));
+      tween($('#hd'), before.distance, out.distance, 1500, formatMeters);
+      tween($('#hs'), depthPoints(before.depth), depthPoints(out.depth), 1200, String);
+      jet.classList.add('surge');
+      later(() => jet.classList.remove('surge'), 1600);
+      later(after, 900);
+      showRarity(dv, rank, { shake, flash, burstAt, slowmo: (ms) => { horizon.setTimeScale(0.35); later(() => horizon.setTimeScale(1), ms); }, target });
+      play(rank >= 4 ? 'rare' : 'hit');
+      // distance milestones: an arcade set piece for every 1,000m passed
+      milestonesCrossed(before.distance, out.distance).forEach((k, i) => later(() => {
+        const m = milestone(k);
+        horizon.milestone(m);
+        play('milestone');
+        showCallout(m.name, `${formatMeters(m.meters)} · ${m.blurb}`, `ms-${m.kind}`);
+      }, 700 + i * 2700));
+      const arrived = crossedTier(before.distance / 1000, out.distance / 1000, game.scale);
+      if (arrived !== null) later(() => arrive(arrived), 1700);
+      showNext(nextLabel, goNext, false);
     } else if (game.endless) {
       if (out.over) {
-        intercept(() => { after(); showNext('See results', () => game.finish()); });
+        crash(() => { after(); game.finish(); });
+        dock.innerHTML = '<button class="btn wide" id="skip">Skip ▶</button>';
+        on(app.root, '#skip', () => { busy = false; game.finish(); });
       } else {
-        nearMiss();
-        setTimeout(after, 800);
-        showNext('Next question', ask);
+        lockWarning();
+        later(() => { play('whoosh'); samFlight('miss', 0); samFlight('miss', 340); }, 950);
+        later(() => { shake(500, false); pop('Near miss!', true); showDrag(out.speedDelta); horizon.setSpeed(cruiseSpeed(out.speed)); after(); }, 1950);
+        showNext(nextLabel, goNext, timedOut);
       }
     } else {
-      // Fixed runs: the launch is cancelled; the missile aborts in place and the answer is struck out.
-      mk.classList.add('abort');
-      pop('Cancelled', true);
+      // Limited / Unlimited: no points, and a short stall as the jet is hit by flak
+      jet.classList.add('hit');
+      smoke(10);
+      pop('Missed', true);
+      shake(360, false);
       play('miss');
       after();
-      showNext(finishing ? 'See results' : 'Next prompt', finishing ? () => game.finish() : ask);
+      showNext(nextLabel, goNext, timedOut && !finishing);
     }
   }
 
-  /** Banner when the missile reaches a deeper airfield. */
+  /** Banner when the jet reaches a deeper airfield tier. */
   function arrive(tierIdx: number): void {
-    if (!dv.isConnected) return;
     const t = TIERS[tierIdx];
     const el = document.createElement('div');
     el.className = 'arrival px';
-    el.innerHTML = `<span class="aflag">${t.flag}</span><div><div class="alabel">Arrived</div><div class="aname">${esc(t.name)}</div><div class="afield">${esc(t.airfield)}, ${esc(t.country)}</div><div class="ameters">${formatMeters(tierMeters(tierIdx, game.scale))}</div></div>`;
+    el.innerHTML = `<span class="aflag">${t.flag}</span><div><div class="alabel">Arrived</div><div class="aname">${esc(t.name)}</div><div class="afield">${esc(t.airfield)}, ${esc(t.country)}</div></div>`;
     dv.appendChild(el);
     play('tier');
     burst(dv, el, 22, 'var(--gold)');
     setTimeout(() => el.remove(), 3400);
   }
 
-  // ---------- opening: a jet launches the missile ----------
-  function runIntro(onDone: () => void): void {
-    const jet = $('.dv-jet');
-    const ship = world.querySelector<HTMLElement>('.w-ship');
-    const sea = game.theme === 'sea' && !!ship;
-    const W = dv.clientWidth;
-    const jw = jet.offsetWidth;
-    const jh = jet.offsetHeight;
-    const tx = mk.offsetLeft;
-    const y0 = missileY(0);
-    const releaseY = Math.max(64, SURFACE_Y * 0.34);
-    const shipPx = sea ? ship!.offsetHeight / 21 : 0; // the carrier sprite is 21 pixel-rows tall
-    const deckX = sea ? ship!.offsetLeft + ship!.offsetWidth * 0.16 : -jw;
-    const deckY = sea ? ship!.offsetTop + shipPx * 10 - jh + shipPx * 1.5 : releaseY + 50;
-    const mkDy0 = releaseY + jh + 8 - y0;
-    const surfDy = SURFACE_Y - 8 - y0;
-    const c = 'translate(-50%,-50%)';
-
-    const jetA = jet.animate([
-      { transform: `translate(${deckX}px,${deckY}px) rotate(0deg)`, offset: 0, easing: sea ? 'cubic-bezier(.5,0,.9,.8)' : 'linear' },
-      { transform: `translate(${tx - jw / 2}px,${releaseY}px) rotate(-3deg)`, offset: 0.5, easing: 'linear' },
-      { transform: `translate(${W + jw}px,${releaseY - 30}px) rotate(-6deg)`, offset: 1 },
-    ], { duration: 3000, fill: 'forwards' });
-
-    const frames: Keyframe[] = sea
-      ? [
-        { transform: `${c} translate(0px,${mkDy0}px) rotate(-90deg)`, opacity: 1, offset: 0, easing: 'cubic-bezier(.5,0,1,.7)' },
-        { transform: `${c} translate(46px,${surfDy}px) rotate(-30deg)`, opacity: 1, offset: 0.5, easing: 'ease-out' },
-        { transform: `${c} translate(20px,${surfDy + 60}px) rotate(-6deg)`, opacity: 1, offset: 0.64, easing: 'ease-out' },
-        { transform: `${c} translate(0px,0px) rotate(0deg)`, opacity: 1, offset: 1 },
-      ]
-      : [
-        { transform: `${c} translate(0px,${mkDy0}px) rotate(-90deg)`, opacity: 1, offset: 0, easing: 'cubic-bezier(.4,0,.8,.6)' },
-        { transform: `${c} translate(44px,${mkDy0 * 0.45}px) rotate(-38deg)`, opacity: 1, offset: 0.4, easing: 'ease-out' },
-        { transform: `${c} translate(0px,0px) rotate(0deg)`, opacity: 1, offset: 1 },
-      ];
-    const mkA = mk.animate(frames, { delay: 1500, duration: 1500, fill: 'forwards' });
-
-    const timers = [
-      setTimeout(() => play('launch'), 1500),
-      setTimeout(() => {
-        if (sea) {
-          const sp = document.createElement('i');
-          sp.className = 'splash';
-          sp.style.cssText = `left:${tx + 46}px;top:${SURFACE_Y - 2}px`;
-          world.appendChild(sp);
-          setTimeout(() => sp.remove(), 1000);
-          bubbles(SURFACE_Y, y0);
-          play('splash');
-        } else {
-          const t = target();
-          burstAt(t.x, t.y, 16, 'var(--gold)');
-          play('whoosh');
-        }
-      }, 2250),
-    ];
-
+  // ---------- opening: engine start, take-off roll, lift-off, level flight ----------
+  function takeoff(onDone: () => void): void {
+    busy = true;
+    const rest = () => horizon.runwayYCss() - jh - 3;
+    const cruise = cruiseXY();
+    const VMAX = 620;
+    const t0 = performance.now();
     let finished = false;
+    const did: Record<string, boolean> = {};
+    jet.classList.add('grounded');
+    horizon.setSpeed(0, true);
+    setPose(cruise.x, rest(), 0);
+
     const finish = () => {
       if (finished) return;
       finished = true;
-      timers.forEach(clearTimeout);
-      jetA.cancel();
-      mkA.cancel();
-      jet.classList.add('gone');
       dv.classList.remove('intro');
+      jet.classList.remove('grounded', 'afterburner', 'shudder');
+      jet.classList.add('engine', 'cruise');
+      setPose(cruise.x, cruise.y, 0);
+      horizon.setSpeed(cruiseSpeed(start.speed));
+      busy = false;
       onDone();
     };
-    void Promise.all([jetA.finished, mkA.finished]).then(finish, finish);
-    dv.addEventListener('pointerdown', () => { if (!finished) { jetA.finish(); mkA.finish(); } }, { once: true });
+
+    const step = (now: number) => {
+      if (finished || !dv.isConnected) return;
+      const t = (now - t0) / 1000;
+      const r = rest();
+      if (t < 1.8) {
+        if (!did.eng) { did.eng = true; showCallout('Engine start', 'Pre-flight', 'info'); play('engine'); }
+        if (t > 0.4 && !did.fl) { did.fl = true; jet.classList.add('engine', 'shudder'); }
+        setPose(cruise.x, r + (Math.random() - 0.5) * (t > 0.4 ? 1.2 : 0), 0);
+        if (Math.random() < 0.5 && t > 0.5) horizon.emit(cruise.x, horizon.runwayYCss() + 2, { n: 1, color: ['#d8cfb8', '#b9b09a'], size: 3, vx: -60, vy: -10, spread: 20, life: 1.2, world: true });
+      } else if (t < 4.7) {
+        const u = (t - 1.8) / 2.9;
+        if (!did.roll) { did.roll = true; jet.classList.add('afterburner'); showCallout('Take-off roll', 'Full power', 'info'); play('roar'); }
+        horizon.setSpeed(VMAX * u ** 2.2, true);
+        setPose(cruise.x, r + (Math.random() - 0.5) * 1.5 * (1 - u), -u * 1.5);
+        horizon.emit(cruise.x - jw * 0.4, horizon.runwayYCss() + 1, { n: 2, color: ['#d8cfb8', '#b9b09a', '#ffffff'], size: 4, vx: -90, vy: -14, spread: 26, life: 1.4, world: true });
+      } else if (t < 6.2) {
+        const u = (t - 4.7) / 1.5;
+        const e = easeInOut(u);
+        if (!did.lift) { did.lift = true; showCallout('Lift-off', 'Rotate', 'info'); }
+        if (u > 0.3 && !did.gear) { did.gear = true; jet.classList.remove('grounded'); }
+        if (u > 0.45 && dv.classList.contains('intro')) { dv.classList.remove('intro'); panel.classList.remove('swap'); void panel.offsetWidth; panel.classList.add('swap'); }
+        horizon.setSpeed(lerp(VMAX, CRUISE * 1.3, e), true);
+        setPose(cruise.x, lerp(r, cruise.y, e), -14 * Math.sin(Math.PI * Math.min(1, u * 1.15)));
+      } else if (t < 7.0) {
+        const u = (t - 6.2) / 0.8;
+        horizon.setSpeed(lerp(CRUISE * 1.3, CRUISE, u), true);
+        setPose(cruise.x, cruise.y, 0);
+      } else { finish(); return; }
+      requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+    dv.addEventListener('pointerdown', () => { if (!finished) { horizon.jump(1900); finish(); } }, { once: true });
   }
 
-  const onResize = () => { if (!dv.isConnected) return window.removeEventListener('resize', onResize); place(depth, false); };
+  // ---------- wiring ----------
+  const onResize = () => {
+    if (!dv.isConnected) return window.removeEventListener('resize', onResize);
+    horizon.resize();
+    measure();
+    if (!busy) { const c = cruiseXY(); setPose(c.x, c.y, pose.pitch); }
+  };
   window.addEventListener('resize', onResize);
-  on(app.root, '#home', () => { stopTimer(); app.go({ name: 'home' }); });
+  on(app.root, '#home', () => { stopTimer(); horizon.stop(); app.go({ name: 'home' }); });
+  // stop the render loop when the player leaves this screen by any route
+  const watch = window.setInterval(() => { if (!dv.isConnected) { horizon.stop(); window.clearInterval(watch); timers.forEach(window.clearTimeout); } }, 500);
 
-  place(depth, false);
+  measure();
+  hud(start.depth, start.distance, start.answers, start.index, start.lives, start.streak, start.speed);
   ask();
   if (intro) {
-    runIntro(() => {
-      panel.classList.remove('swap');
-      void panel.offsetWidth; // restart the entry animation now that the panel is visible
-      panel.classList.add('swap');
-      startQuestion?.();
-    });
+    takeoff(() => startQuestion?.());
+  } else {
+    horizon.jump(2600); // resuming mid-run: start already in flight, past the airfield
+    const c = cruiseXY();
+    setPose(c.x, c.y, 0);
+    jet.classList.add('engine', 'cruise');
+    horizon.setSpeed(cruiseSpeed(start.speed), true);
+    dv.classList.remove('intro');
   }
 }

@@ -45,7 +45,6 @@ p { margin: 0 0 10px; }
 .bg-jet { position: absolute; top: 5vh; left: -220px; animation: fly 28s linear infinite; animation-delay: -6s; }
 @keyframes fly { to { transform: translateX(calc(100vw + 360px)); } }
 .bg-cloud { position: absolute; left: 0; transform: scale(var(--s)); transform-origin: left top; animation: cloudx var(--d) linear infinite; animation-delay: var(--delay); }
-@keyframes cloudx { from { translate: -30vw 0; } to { translate: 110vw 0; } }
 .bg-fish { position: absolute; left: 0; animation: fishx var(--dur) linear infinite; animation-delay: var(--delay); }
 .bg-fish.flip { transform: scaleX(-1); animation-name: fishr; }
 @keyframes fishx { from { translate: -12vw 0; } to { translate: 108vw 0; } }
@@ -184,46 +183,9 @@ thead th { color: var(--muted); font: .6rem var(--pf); letter-spacing: .1em; tex
 .dv { position: fixed; inset: 0; z-index: 5; overflow: hidden; background: #020b1c; --mx: 76%; }
 @media (max-width: 1000px) { .dv { --mx: 60%; } }
 @media (max-width: 700px) { .dv { --mx: 44%; } }
-.dv-view { position: absolute; inset: 0; overflow: hidden; }
-.dv-world, .dv-far { position: absolute; left: 0; top: 0; width: 100%; will-change: transform; }
-.dv.anim .dv-world, .dv.anim .dv-far { transition: transform 1.3s cubic-bezier(.35, .1, .2, 1); }
-.dv-far { background-image: radial-gradient(circle, #ffffff55 1.2px, transparent 1.8px), radial-gradient(circle, #ffffff33 1.2px, transparent 1.8px); background-size: 150px 210px, 260px 330px; background-position: 0 0, 70px 100px; }
-.w-bg { position: absolute; inset: 0; }
-.w-rays { position: absolute; left: 0; right: 0; height: 520px; background: repeating-linear-gradient(104deg, #ffffff14 0 46px, transparent 46px 120px); -webkit-mask-image: linear-gradient(#000, transparent); mask-image: linear-gradient(#000, transparent); }
-.w-surface { position: absolute; left: 0; right: 0; height: 8px; background: repeating-linear-gradient(90deg, #d6f1ff 0 10px, #8fd0f2 10px 20px); box-shadow: 0 0 22px #8fd0f299; animation: wave 2.4s linear infinite; }
-.w-cloud { position: absolute; transform: scale(var(--s)); transform-origin: left top; animation: cloudx var(--d) linear infinite alternate; }
-@keyframes cloudx { from { translate: 0 0; } to { translate: 26vw 0; } }
-.w-ship { position: absolute; left: 5%; }
-.w-fish { position: absolute; left: 0; animation: wfish var(--dur) linear infinite; animation-delay: var(--delay); }
-.w-fish.flip { transform: scaleX(-1); animation-name: wfishr; }
-@keyframes wfish { from { translate: -15vw 0; } to { translate: 112vw 0; } }
-@keyframes wfishr { from { translate: -112vw 0; } to { translate: 15vw 0; } }
 
-/* depth gauge, scrolls with the world */
-.gauge { position: absolute; right: 0; top: 0; bottom: 0; width: 170px; margin: 0; padding: 0; list-style: none; }
-.gauge::before { content: ''; position: absolute; right: 14px; top: var(--sy); bottom: 0; width: 8px; border-right: 3px solid #8da7c8aa; background: repeating-linear-gradient(180deg, #8da7c8aa 0 2px, transparent 2px 70px) right 3px top / 6px 70px repeat-y; }
-.gauge li { position: absolute; right: 14px; transform: translateY(-50%); display: flex; align-items: center; gap: 8px; opacity: .5; transition: opacity .4s; }
-.gauge li.reached { opacity: 1; }
-.gauge .gl { text-align: right; line-height: 1; } .gauge .gl b { display: block; font: .55rem var(--pf); letter-spacing: .06em; text-transform: uppercase; color: #cfe3f7; } .gauge .gl small { color: #8da7c8; font-size: 1rem; white-space: nowrap; }
-.gauge li.reached .gl b { color: var(--accent); }
-.gauge .gf { font-size: 1.15rem; line-height: 1; }
-.gauge .gt { width: 22px; height: 3px; background: #8da7c8; } .gauge li.reached .gt { background: var(--accent); box-shadow: 0 0 8px var(--accent); }
-@media (max-width: 700px) { .gauge { width: 118px; } .gauge .gl small { display: none; } }
 
 /* jet, missile, effects */
-.dv-jet { position: absolute; left: 0; top: 0; z-index: 5; pointer-events: none; } .dv-jet.gone, .dv:not(.intro) .dv-jet { display: none; }
-.dv-mk { position: absolute; left: var(--mx); top: 0; transform: translate(-50%, -50%); z-index: 4; }
-.dv.intro .dv-mk { opacity: 0; }
-.mk-body { display: block; animation: sway 2.6s ease-in-out infinite; filter: drop-shadow(0 0 8px #4fe3ff88); }
-@keyframes sway { 0%, 100% { transform: rotate(-3deg) translateX(-2px); } 50% { transform: rotate(3deg) translateX(2px); } }
-.dv-mk.abort .mk-body { animation: abort .9s ease-out both; filter: sepia(1) saturate(7) hue-rotate(-45deg) drop-shadow(0 0 8px #ff5c7a); }
-.dv-mk.abort::after { content: '✕'; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); font: 700 2.6rem var(--pf); color: var(--bad); text-shadow: 3px 3px 0 #3a0710; animation: stampx .5s .25s cubic-bezier(.3,1.8,.5,1) both; }
-@keyframes abort { 0% { transform: none; opacity: 1; } 25% { transform: rotate(-14deg) translateY(2px); } 45% { transform: rotate(10deg); opacity: .5; } 60% { opacity: 1; } 100% { transform: rotate(6deg); opacity: .6; } }
-@keyframes stampx { from { transform: translate(-50%, -50%) scale(3); opacity: 0; } to { transform: translate(-50%, -50%) scale(1); opacity: 1; } }
-.bub { position: absolute; width: 6px; height: 6px; background: #d4f1ffcc; z-index: 3; animation: bubx 1.6s steps(10) forwards; }
-@keyframes bubx { to { transform: translateY(-70px); opacity: 0; } }
-.splash { position: absolute; width: 14px; height: 14px; margin: -7px; border: 3px solid #e6f8ff; z-index: 6; animation: splashx .9s steps(8) forwards; }
-@keyframes splashx { to { transform: scale(9, 3); opacity: 0; } }
 .pop { position: absolute; z-index: 6; transform: translateX(-50%); font: 700 1.1rem var(--pf); color: var(--accent); text-shadow: 3px 3px 0 #031018; white-space: nowrap; animation: popx 1.6s ease-out forwards; }
 .pop.bad { color: var(--bad); }
 @keyframes popx { from { opacity: 1; margin-top: 0; } to { opacity: 0; margin-top: -70px; } }
@@ -268,7 +230,6 @@ thead th { color: var(--muted); font: .6rem var(--pf); letter-spacing: .1em; tex
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
-.dv-mk .spr { --px: 5px; }
 @media (max-width: 700px) { .dv-mk .spr { --px: 4px; } }
 
 /* ===================== timer, lives, endless ===================== */
@@ -300,15 +261,10 @@ thead th { color: var(--muted); font: .6rem var(--pf); letter-spacing: .1em; tex
 .newbest { display: inline-block; margin-left: 6px; padding: 1px 7px; background: var(--gold); color: #3a2400; font: .5rem var(--pf); letter-spacing: .12em; text-transform: uppercase; animation: blink 1s steps(2) infinite; }
 
 /* sky scene (Endless) */
-.dv.sky .dv-far { opacity: .45; }
-.sky-gauge::before { top: 0; }
-.w-plane .spr { --px: 2px; filter: brightness(.25) contrast(1.2); opacity: .55; }
-.bub.puffy { background: #fff; opacity: .85; width: 8px; height: 8px; }
 
 /* enemy fire, near misses and interception */
 .anchor { position: absolute; width: 1px; height: 1px; pointer-events: none; }
 .sam { position: absolute; left: 0; top: 0; z-index: 9; pointer-events: none; }
-.sam .spr { --px: 3px; }
 .deb { position: absolute; z-index: 10; width: 8px; height: 8px; margin: -4px; background: #b8c4d0; box-shadow: inset -2px -2px 0 #6f8196; pointer-events: none; }
 .flash { position: absolute; inset: 0; z-index: 20; background: #fff; pointer-events: none; animation: flashx .6s ease-out forwards; }
 @keyframes flashx { from { opacity: .95; } to { opacity: 0; } }
@@ -319,27 +275,19 @@ thead th { color: var(--muted); font: .6rem var(--pf); letter-spacing: .1em; tex
 .dv.shake-big .dv-view { animation: shk2 1s linear; }
 @keyframes shk { 10%, 50%, 90% { transform: translate(-4px, 2px); } 30%, 70% { transform: translate(4px, -2px); } }
 @keyframes shk2 { 8%, 40%, 72% { transform: translate(-12px, 6px); } 24%, 56%, 88% { transform: translate(12px, -6px); } 100% { transform: none; } }
-.dv-mk.wobble .mk-body { animation: wob .9s ease-out; }
 @keyframes wob { 0%, 100% { transform: none; } 15% { transform: rotate(-16deg) translateX(-8px); } 35% { transform: rotate(14deg) translateX(8px); } 60% { transform: rotate(-7deg); } }
-.dv-mk.gone { visibility: hidden; }
 .dv-vig { position: absolute; inset: 0; z-index: 6; pointer-events: none; opacity: 0; box-shadow: inset 0 0 150px 30px #ff2a4acc; }
 .dv.low .dv-vig { opacity: 1; animation: vig 1.1s ease-in-out infinite; }
 @keyframes vig { 50% { opacity: .3; } }
-.gauge .gl b, .gauge .gl small { text-shadow: 1px 1px 0 #061a30, -1px 0 #061a30, 1px 0 #061a30, 0 -1px #061a30; }
-.gauge .gl small { color: #e3effc; }
-.gauge li { opacity: .7; }
 
 
 /* ===================== v6: sprites, HUD, explosions ===================== */
 /* sprite scales (the sprites are bigger and more detailed now) */
-.dv-mk .spr { --px: 3px; } .sam .spr { --px: 2px; } .life .spr { --px: 1px; } .ladder .pin-missile { --px: 1px; }
 .brand .logo { --px: 2px; } .brand .logo-box { width: 86px; height: 38px; }
 .brand.big .logo { --px: 3px; } .brand.big .logo-box { width: 124px; height: 50px; }
-.dv-jet { --px: 3px; } .bg-jet { --px: 3px; } .w-ship, .bg-ship { --px: 3px; }
-.w-fish .spr, .bg-fish .spr { --px: 3px; } .w-plane .spr { --px: 2px; }
 .ladder .pin { width: 30px; height: 44px; }
 @media (max-width: 700px) {
-  .dv-mk .spr { --px: 2px; } .sam .spr { --px: 2px; } .dv-jet { --px: 2px; } .w-ship, .bg-ship { --px: 2px; }
+  .sam .spr { --px: 2px; } .bg-ship { --px: 2px; }
   .brand.big .logo { --px: 2px; } .brand.big .logo-box { width: 90px; }
 }
 
@@ -360,21 +308,8 @@ thead th { color: var(--muted); font: .6rem var(--pf); letter-spacing: .1em; tex
 .badge-r4 { color: var(--gold); animation: glow 1.4s ease-in-out infinite alternate; }
 
 /* gauge in metres */
-.gauge::before { background: repeating-linear-gradient(180deg, #8da7c8aa 0 2px, transparent 2px var(--tick, 70px)) right 3px top / 6px var(--tick, 70px) repeat-y; }
-.gauge li.km { opacity: .55; } .gauge li.km .gt { width: 12px; } .gauge li.km .gl small { font-size: .95rem; }
 
 /* HARM exhaust and the jet's afterburner and contrail */
-.mk-body { position: relative; }
-.mk-body::before { content: ''; position: absolute; left: 50%; bottom: calc(100% - 6px); width: 14px; height: 40px; transform: translateX(-50%); z-index: -1;
-  background: linear-gradient(0deg, #fff6d0 0, #ffd84a 22%, #ff8a2a 55%, #e0322f 80%, transparent);
-  clip-path: polygon(0 100%, 100% 100%, 82% 45%, 62% 0, 40% 25%, 20% 55%); animation: flame .14s steps(2) infinite; }
-.dv.anim .mk-body::before { animation-name: flame2; }
-@keyframes flame { 50% { height: 28px; opacity: .85; } }
-@keyframes flame2 { 0% { height: 96px; } 50% { height: 72px; opacity: .9; } 100% { height: 96px; } }
-.dv-jet::before { content: ''; position: absolute; right: calc(100% - var(--px) * 8); top: calc(var(--px) * 12.5); width: calc(var(--px) * 9); height: calc(var(--px) * 3);
-  background: linear-gradient(270deg, #fff6d0, #ffb347 55%, transparent); animation: jflame .12s steps(2) infinite; }
-.dv-jet::after { content: ''; position: absolute; right: calc(100% - var(--px) * 8); top: calc(var(--px) * 13.4); width: 380px; height: calc(var(--px) * 1.4); background: linear-gradient(270deg, #ffffffcc, #ffffff00); }
-@keyframes jflame { 50% { width: calc(var(--px) * 5); } }
 
 /* explosions */
 .boom { position: absolute; z-index: 10; transform: translate(-50%, -50%); pointer-events: none; filter: drop-shadow(0 0 16px #ff8a2a99); }
@@ -389,3 +324,133 @@ thead th { color: var(--muted); font: .6rem var(--pf); letter-spacing: .1em; tex
 /* enemy radar lock */
 .lockwarn { position: absolute; left: 50%; top: 92px; transform: translateX(-50%); z-index: 21; padding: 8px 20px; font: 700 1.1rem var(--pf); letter-spacing: .3em; text-transform: uppercase; color: #fff; background: #b3122d; clip-path: var(--chamfer-s); pointer-events: none; animation: blink .3s steps(2) infinite; white-space: nowrap; }
 .dv.alert::after { content: ''; position: absolute; inset: 0; z-index: 19; pointer-events: none; box-shadow: inset 0 0 0 6px #ff2a4a, inset 0 0 120px 24px #ff2a4a88; animation: blink .3s steps(2) infinite; }
+
+
+/* ===================== v7: horizontal flight ===================== */
+.dv { position: fixed; inset: 0; z-index: 5; overflow: hidden; background: #0b1620; }
+.dv-stage { position: absolute; inset: 0; }
+.dv-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; image-rendering: pixelated; }
+.sam .spr { --px: 2px; }
+.sam::before { content: ''; position: absolute; left: 50%; bottom: 100%; width: 6px; height: 90px; transform: translateX(-50%); background: linear-gradient(0deg, #ffd166cc, #ff8a3d66, transparent); }
+
+/* the jet: side view, facing right */
+.dv-jet { --px: 3px; position: absolute; left: 0; top: 0; z-index: 5; pointer-events: none; transform-origin: 50% 55%; will-change: transform; }
+@media (max-width: 700px) { .dv-jet { --px: 2px; } }
+.jet-body { display: block; filter: drop-shadow(0 0 6px #0006); }
+.dv-jet.cruise .jet-body { animation: bob 3.2s ease-in-out infinite; }
+@keyframes bob { 50% { transform: translateY(-4px); } }
+.gear { position: absolute; bottom: -6px; width: 6px; height: 9px; background: #1c2128; box-shadow: inset 0 0 0 1px #6a7480; }
+.gear::after { content: ''; position: absolute; left: -2px; bottom: -3px; width: 10px; height: 5px; background: #111; box-shadow: inset 0 0 0 1px #555; }
+.gear.g1 { left: calc(var(--px) * 15); } .gear.g2 { left: calc(var(--px) * 36); }
+.dv-jet:not(.grounded) .gear { display: none; }
+.jet-flame { position: absolute; right: calc(100% - var(--px) * 8); top: calc(var(--px) * 12.4); width: calc(var(--px) * 10); height: calc(var(--px) * 3.2); background: linear-gradient(270deg, #fff6d0, #ffb347 55%, transparent); opacity: 0; }
+.dv-jet.engine .jet-flame { opacity: .9; animation: jflame .12s steps(2) infinite; }
+.dv-jet.afterburner .jet-flame { width: calc(var(--px) * 22); height: calc(var(--px) * 4.2); background: linear-gradient(270deg, #fff, #8fe6ff 25%, #ffb347 60%, transparent); }
+.dv-jet.surge .jet-flame { width: calc(var(--px) * 26); height: calc(var(--px) * 4.4); background: linear-gradient(270deg, #fff, #8fe6ff 25%, #ffb347 60%, transparent); }
+@keyframes jflame { 50% { transform: scaleX(.72); } }
+.dv-jet.surge .jet-body { filter: drop-shadow(0 0 12px #4fe3ff); }
+.jet-heat { position: absolute; right: calc(100% - var(--px) * 8); top: calc(var(--px) * 7); width: 90px; height: calc(var(--px) * 11); opacity: 0; background: repeating-linear-gradient(0deg, #ffffff18 0 3px, transparent 3px 7px); animation: heat .5s linear infinite; }
+.dv-jet.shudder .jet-heat, .dv-jet.afterburner .jet-heat { opacity: 1; }
+@keyframes heat { to { background-position: 0 14px; } }
+.dv-jet.shudder .jet-body { animation: shudder .08s steps(2) infinite; }
+@keyframes shudder { 50% { transform: translate(1px, 1px); } }
+.dv-jet.jolt { animation: jolt .9s; }
+@keyframes jolt { 15% { translate: -10px 5px; } 35% { translate: 8px -5px; } 55% { translate: -5px 3px; } 100% { translate: 0 0; } }
+.dv-jet.hit .jet-body { animation: hitf .9s steps(6); }
+@keyframes hitf { 0%, 40%, 80% { filter: sepia(1) saturate(8) hue-rotate(-50deg) brightness(1.2); } 20%, 60%, 100% { filter: none; } }
+.dv-jet.burning .jet-body { filter: brightness(.5) sepia(.6) saturate(3) hue-rotate(-25deg); }
+.dv-jet.burning .jet-flame { opacity: 0; }
+
+/* HUD: distance, score, speed, lives/pips, timer, airfield */
+.hud { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 10px; padding: 12px 64px 0 12px; }
+.hud-mid { flex: 1; min-width: 200px; justify-self: auto; text-align: center; padding-top: 2px; }
+.hud-mid .timer { width: min(250px, 80%); margin: 6px auto 2px; }
+.hud-mid .lbl { margin-top: 3px; }
+.hud-mid .mile { color: #ffe9a8; }
+.hud-speed b { color: #ffb347; } .hud-speed small { margin-left: 4px; font: .55rem var(--pf); letter-spacing: .1em; color: var(--muted); }
+.hud-speed.bad { animation: jolt .6s; } .hud-speed.bad b { color: var(--bad); }
+.life { width: 58px; height: 26px; }
+.life .spr { --px: 1px; position: static; transform: none; filter: none; }
+.life.lost .spr { filter: grayscale(1) brightness(.35); }
+@media (max-width: 700px) {
+  .hud { padding: 10px 58px 0 10px; gap: 6px; }
+  .hud-mid { order: 9; flex-basis: 100%; }
+  .hud-tier { display: none; }
+  .hud-panel { min-width: 0; }
+}
+
+/* prompt / answer panel: sits above the jet so the aircraft is always visible */
+.dv-panel { top: 172px; max-height: calc(58vh - 220px); }
+@media (max-width: 700px) { .dv-panel { top: 214px; max-height: calc(58vh - 262px); padding: 14px 16px; } }
+.dv-dock { bottom: 16px; }
+.btn.auto { position: relative; overflow: hidden; }
+.btn.auto::after { content: ''; position: absolute; left: 0; bottom: 0; height: 4px; width: 100%; background: #fff; animation: autobar 3.4s linear forwards; }
+@keyframes autobar { to { width: 0; } }
+
+/* milestone / event callouts */
+.callout { position: absolute; left: 50%; top: 108px; transform: translateX(-50%); z-index: 20; min-width: 240px; padding: 8px 22px 10px; text-align: center; opacity: 0; pointer-events: none; background: #0a1b30ee; clip-path: var(--chamfer-s); box-shadow: inset 0 0 0 2px var(--cc, #4fe3ff); --cc: #4fe3ff; }
+@media (max-width: 700px) { .callout { top: 152px; min-width: 200px; } }
+.callout small { display: block; font: .52rem var(--pf); letter-spacing: .2em; text-transform: uppercase; color: var(--cc); }
+.callout b { display: block; margin-top: 2px; font: 700 1.2rem var(--pf); letter-spacing: .14em; text-transform: uppercase; color: #fff; text-shadow: 2px 2px 0 #02101f; }
+.callout.on { animation: callin 2.6s both; }
+@keyframes callin { 0% { opacity: 0; transform: translate(-50%, -14px) scale(.9); } 10% { opacity: 1; transform: translate(-50%, 0) scale(1); } 82% { opacity: 1; } 100% { opacity: 0; transform: translate(-50%, 6px); } }
+.callout.ms-vehicle { --cc: #e0b46a; } .callout.ms-sam { --cc: #7db4ff; } .callout.ms-radar { --cc: #ff5c7a; } .callout.ms-dust { --cc: #e8c07a; }
+.callout.ms-coast { --cc: #4fe3ff; } .callout.ms-storm { --cc: #b8c4d8; } .callout.ms-horizon { --cc: #ffe066; } .callout.bad { --cc: #ff5c7a; } .callout.info { --cc: #4fe3ff; }
+
+/* DRAG */
+.dragfx { position: absolute; left: 50%; top: 46%; transform: translate(-50%, -50%); z-index: 23; text-align: center; pointer-events: none; animation: dragin .25s both, dragout .5s 1.7s forwards; }
+.dragfx b { display: block; font: 700 3.2rem/1 var(--pf); letter-spacing: .22em; color: #ff4a4a; text-shadow: 4px 4px 0 #2a0508, -2px 0 #2a0508, 2px 0 #2a0508; }
+.dragfx small { display: block; margin-top: 4px; font: 1.8rem var(--bf); color: #ffd0d0; text-shadow: 2px 2px 0 #2a0508; }
+.dragfx .chevs { display: block; font: 700 1.6rem var(--pf); letter-spacing: .1em; color: #ff8a8a; white-space: nowrap; animation: chevslide .5s linear infinite; }
+@keyframes dragin { from { opacity: 0; transform: translate(-30%, -50%) scale(1.8); } to { opacity: 1; transform: translate(-50%, -50%) scale(1); } }
+@keyframes dragout { to { opacity: 0; transform: translate(-70%, -50%); } }
+@keyframes chevslide { from { transform: translateX(14px); } to { transform: translateX(-14px); } }
+.dv.dragging::before { content: ''; position: absolute; inset: 0; z-index: 18; pointer-events: none; background: radial-gradient(ellipse at 70% 50%, transparent 40%, #ff2a4a55 100%); animation: blink .35s steps(2) infinite; }
+@media (max-width: 700px) { .dragfx b { font-size: 2.2rem; } }
+
+/* rarity classes: Recruit, Recon, Vanguard, Apex, Warbringer, Mythic, Transcendent */
+.rar-0 { --c: #9fb3cc; } .rar-1 { --c: #4fe39a; } .rar-2 { --c: #4f9bff; } .rar-3 { --c: #b06bff; } .rar-4 { --c: #ff8a2a; } .rar-5 { --c: #ff3d8b; } .rar-6 { --c: #ffe066; }
+.dv-panel.hit[class*='rar-'] { box-shadow: inset 0 0 0 3px var(--c), inset 0 0 0 6px #08162a, inset 0 0 28px color-mix(in srgb, var(--c) 28%, transparent); }
+.badge-r0 { color: #9fb3cc; } .badge-r1 { color: #4fe39a; } .badge-r2 { color: #4f9bff; } .badge-r3 { color: #b06bff; box-shadow: inset 0 0 0 2px currentColor, 0 0 10px #b06bff88; }
+.badge-r4 { color: #ff8a2a; box-shadow: inset 0 0 0 2px currentColor, 0 0 12px #ff8a2a99; animation: glow 1.2s ease-in-out infinite alternate; }
+.badge-r5 { color: #ff3d8b; box-shadow: inset 0 0 0 2px currentColor, 0 0 14px #ff3d8b99; animation: hue 2.4s linear infinite; }
+.badge-r6 { color: #ffe066; box-shadow: inset 0 0 0 2px currentColor, 0 0 18px #ffe066; animation: hue 1.4s linear infinite; }
+@keyframes hue { to { filter: hue-rotate(360deg); } }
+.rar { position: absolute; left: var(--rx, 50%); top: var(--ry, 28%); transform: translate(-50%, -50%); z-index: 22; text-align: center; pointer-events: none; animation: rarin .6s cubic-bezier(.2, 1.4, .4, 1) both, rarout .5s ease-in 2.1s forwards; }
+.rar-tier { display: block; font: .6rem var(--pf); letter-spacing: .32em; text-transform: uppercase; color: #fff; text-shadow: 2px 2px 0 #02101f; }
+.rar-name { display: block; font: 700 1.5rem/1.1 var(--pf); letter-spacing: .14em; text-transform: uppercase; color: var(--c); text-shadow: 3px 3px 0 #02101f, 0 0 16px var(--c); }
+.rar-sub { display: block; margin-top: 4px; font: .5rem var(--pf); letter-spacing: .22em; text-transform: uppercase; color: #cfe3f7; }
+.rar-1 .rar-name { font-size: 1.7rem; } .rar-2 .rar-name { font-size: 1.95rem; } .rar-3 .rar-name { font-size: 2.2rem; }
+@media (min-width: 1100px) { .rar-5 .rar-name { font-size: 2.3rem; } .rar-6 .rar-name { font-size: 2.5rem; } .rar-4 .rar-name { font-size: 2.1rem; } }
+.rar-4 .rar-name { font-size: 2.5rem; animation: flicker .18s steps(2) infinite; text-shadow: 3px 3px 0 #3a0e00, 0 -6px 14px #ff5a1a, 0 0 22px #ffb347; }
+.rar-5 .rar-name { font-size: 2.8rem; background: linear-gradient(90deg, #ff3d8b, #4fe3ff, #b06bff, #ff3d8b); background-size: 200%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: rainbow 1.6s linear infinite; filter: drop-shadow(0 0 12px #ff3d8b); text-shadow: none; }
+.rar-6 .rar-name { font-size: 3.2rem; background: linear-gradient(90deg, #ff3d8b, #ffe066, #4fe3ff, #b06bff, #ff3d8b); background-size: 200%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: rainbow .9s linear infinite; filter: drop-shadow(0 0 18px #ffe066); text-shadow: none; }
+.rar-6 { animation: rarin .8s cubic-bezier(.2, 1.6, .4, 1) both, rarout .6s ease-in 2.7s forwards; }
+@media (max-width: 700px) { .rar-name { font-size: 1.3rem !important; } .rar-6 .rar-name, .rar-5 .rar-name { font-size: 1.8rem !important; } }
+@keyframes rarin { from { opacity: 0; transform: translate(-50%, -50%) scale(2.6); } to { opacity: 1; transform: translate(-50%, -50%) scale(1); } }
+@keyframes rarout { to { opacity: 0; transform: translate(-50%, -80%) scale(.9); } }
+@keyframes flicker { 50% { transform: translateY(-2px); filter: brightness(1.25); } }
+@keyframes rainbow { to { background-position: 200% 0; } }
+.rfx { position: absolute; z-index: 21; pointer-events: none; }
+.rfx.ring { left: var(--rx, 50%); top: var(--ry, 28%); width: 24px; height: 24px; margin: -12px; border: 3px solid var(--rc); border-radius: 50%; animation: ringx 1.3s ease-out calc(var(--i) * .22s) both; }
+@keyframes ringx { from { transform: scale(.4); opacity: 1; } to { transform: scale(14); opacity: 0; } }
+.rfx.chev { left: 0; top: calc(24% + var(--i) * 9px); width: 64px; height: 10px; background: var(--rc); clip-path: polygon(0 0, 70% 0, 100% 50%, 70% 100%, 0 100%, 30% 50%); animation: chevx 1s ease-out calc(var(--i) * .07s) both; }
+@keyframes chevx { from { transform: translateX(-80px); opacity: 1; } to { transform: translateX(110vw); opacity: 0; } }
+.rfx.shine { left: 30%; top: 22%; width: 40%; height: 90px; background: linear-gradient(100deg, transparent 40%, #ffffffbb 50%, transparent 60%); animation: shinex .9s ease-out both; }
+@keyframes shinex { from { transform: translateX(-60%); opacity: 1; } to { transform: translateX(60%); opacity: 0; } }
+.rfx.bolt { top: 0; left: calc(18% + var(--i) * 20%); width: 16px; height: 48%; background: #efdcff; clip-path: polygon(40% 0, 100% 0, 60% 40%, 100% 40%, 20% 100%, 45% 55%, 0 55%); filter: drop-shadow(0 0 10px #b06bff); animation: boltx .9s steps(6) calc(var(--i) * .08s) both; }
+@keyframes boltx { 0% { opacity: 0; } 15%, 45% { opacity: 1; } 30% { opacity: .2; } 100% { opacity: 0; } }
+.rfx.glow { inset: 0; box-shadow: inset 0 0 120px 10px #b06bff99; animation: flashx 1.2s ease-out both; }
+.rfx.holo { left: var(--rx, 50%); top: var(--ry, 28%); width: 280px; height: 280px; margin: -140px; border: 5px dashed var(--rc); border-radius: 50%; animation: spin2 2.2s linear both, flashx 2.2s ease-out both; }
+.rfx.holo:nth-of-type(2n) { width: 200px; height: 200px; margin: -100px; animation-direction: reverse, normal; }
+@keyframes spin2 { to { transform: rotate(360deg) scale(1.4); } }
+.rfx.goldflash { inset: 0; background: radial-gradient(circle at var(--rx, 50%) var(--ry, 28%), #fff 0, #ffe066 35%, #ff9a3a88 100%); animation: flashx 1.5s ease-out both; }
+.rfx.rays { left: var(--rx, 50%); top: var(--ry, 28%); width: 150vmax; height: 150vmax; margin: -75vmax; background: repeating-conic-gradient(from 0deg, #ffe06666 0 7deg, transparent 7deg 20deg); -webkit-mask-image: radial-gradient(circle, #000 0, transparent 62%); mask-image: radial-gradient(circle, #000 0, transparent 62%); animation: spin2 6s linear both, flashx 2.8s ease-out both; }
+.rfx.stars { top: calc(var(--i) * 3.8%); left: calc(var(--r) * 100%); width: 6px; height: 6px; background: #fff; box-shadow: 0 0 8px #ffe066; animation: twinkle 1.6s ease-in-out calc(var(--r) * .8s) both; }
+@keyframes twinkle { 0%, 100% { opacity: 0; transform: scale(.4); } 50% { opacity: 1; transform: scale(1.6) translateY(24px); } }
+@keyframes flashx { from { opacity: 1; } to { opacity: 0; } }
+
+@media (min-width: 1100px) {
+  .dragfx { left: 19%; top: 34%; }
+  .dragfx b { font-size: 2.6rem; }
+}

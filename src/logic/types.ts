@@ -63,14 +63,20 @@ export interface EndlessRun {
   lives: number;
   streak: number;
   bestStreak: number;
+  /** Aircraft speed in km/h. Misses add drag and slow it; correct answers recover some. */
+  speed: number;
+  /** Metres flown. Correct answers add points x 10 m, scaled by current speed. */
+  distance: number;
+  /** Misses so far (each one costs a life and more speed than the last). */
+  wrongs: number;
   over: boolean;
   /** Set when the run ends: which personal bests this run set. */
-  newBest?: { depth: boolean; correct: boolean; streak: boolean };
+  newBest?: { depth: boolean; distance: boolean; correct: boolean; streak: boolean };
 }
 
 export interface EndlessState {
   run: EndlessRun | null;
-  best: { depth: number; correct: number; streak: number };
+  best: { depth: number; distance: number; correct: number; streak: number };
   runs: number;
 }
 

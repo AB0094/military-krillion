@@ -2,7 +2,7 @@ import { emptyState, sessionKey } from './progress';
 import { isValidDate } from './route';
 import { isRunSeed } from './seed';
 import { totalDepth } from './scoring';
-import { START_LIVES } from './endless';
+import { MAX_SPEED, MIN_SPEED, START_LIVES, START_SPEED } from './endless';
 import { MODES, type AnswerRecord, type AnswerStats, type EndlessRun, type EndlessState, type RatingEntry, type SaveState, type SessionRecord } from './types';
 
 const isObj = (x: unknown): x is Record<string, unknown> => typeof x === 'object' && x !== null && !Array.isArray(x);
@@ -51,14 +51,17 @@ function cleanRun(x: unknown): EndlessRun | null {
   let bestStreak = 0;
   for (const a of clean) { streak = a.matched ? streak + 1 : 0; bestStreak = Math.max(bestStreak, streak); }
   const lives = isNum(x.lives) ? Math.min(START_LIVES, Math.max(0, Math.floor(x.lives))) : START_LIVES;
-  const nb = isObj(x.newBest) ? { depth: x.newBest.depth === true, correct: x.newBest.correct === true, streak: x.newBest.streak === true } : undefined;
-  return { seed: x.seed, mode, answers: clean, depth: totalDepth(clean.map((a) => a.score)), lives, streak, bestStreak, over: lives === 0 || x.over === true, ...(nb ? { newBest: nb } : {}) };
+  const nb = isObj(x.newBest) ? { depth: x.newBest.depth === true, distance: x.newBest.distance === true, correct: x.newBest.correct === true, streak: x.newBest.streak === true } : undefined;
+  const speed = isNum(x.speed) ? Math.min(MAX_SPEED, Math.max(MIN_SPEED, x.speed)) : START_SPEED;
+  const distance = isNum(x.distance) && x.distance >= 0 ? Math.round(x.distance) : 0;
+  const wrongs = clean.filter((a) => a.matched === null).length; // derived, not trusted
+  return { seed: x.seed, mode, answers: clean, depth: totalDepth(clean.map((a) => a.score)), lives, streak, bestStreak, speed, distance, wrongs, over: lives === 0 || x.over === true, ...(nb ? { newBest: nb } : {}) };
 }
 
 function cleanEndless(x: unknown, base: EndlessState): EndlessState {
   if (!isObj(x)) return base;
   const n = (v: unknown) => (isNum(v) && v >= 0 ? v : 0);
-  const best = isObj(x.best) ? { depth: n(x.best.depth), correct: Math.floor(n(x.best.correct)), streak: Math.floor(n(x.best.streak)) } : base.best;
+  const best = isObj(x.best) ? { depth: n(x.best.depth), distance: Math.round(n(x.best.distance)), correct: Math.floor(n(x.best.correct)), streak: Math.floor(n(x.best.streak)) } : base.best;
   return { run: cleanRun(x.run), best, runs: Math.floor(n(x.runs)) };
 }
 
