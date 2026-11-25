@@ -659,3 +659,42 @@ body { background: var(--bg); }
 @media (max-width: 640px) { .hero-mark { width: 150px; } .hero-mark .logo { --px: 2px; } }
 .dv-panel { overflow-y: auto; scrollbar-width: thin; scrollbar-color: #3b6aa0 transparent; }
 #bg .bg-sky { height: 100%; bottom: 0; }
+
+/* =====================================================================================
+   v12: in-flight HUD overhaul. Same glass language as the menu: thin borders, one accent per element.
+   ===================================================================================== */
+.dv .hud-btn, .dv .hud-panel { background: linear-gradient(180deg, #0c1a31ee, #08121fee); box-shadow: inset 0 0 0 1px #2c4c78, 0 6px 16px #0005; clip-path: var(--chamfer-s); backdrop-filter: blur(4px); }
+.dv .hud-btn { width: 42px; height: 42px; }
+.dv .hud-panel { min-width: 104px; padding: 6px 14px 7px; border-top: 0; position: relative; }
+.dv .hud-panel::before { content: ''; position: absolute; left: 0; top: 0; width: 100%; height: 2px; background: var(--accent); opacity: .85; }
+.dv .hud-score::before { background: var(--gold); } .dv .hud-speed::before { background: #ffb347; } .dv .hud-tier::before { background: #6ea8ff; }
+.dv .hud-panel .lbl { font-size: .46rem; letter-spacing: .26em; color: #7f9cc4; }
+.dv .hud-panel b { font-size: 1.75rem; }
+.dv .hud-mid .timer { width: min(260px, 82%); }
+.dv .tbar { height: 8px; background: #06101d; box-shadow: inset 0 0 0 1px #2c4c78; }
+.dv .tbar i { background: linear-gradient(90deg, #2bb8d8, var(--accent)); }
+.dv .timer.low .tbar i { background: linear-gradient(90deg, #c0344f, var(--bad)); }
+.dv .timer b { font-size: 1.6rem; }
+.dv .pip { width: 14px; height: 6px; box-shadow: inset 0 0 0 1px #2c4c78; }
+.dv .pip.hit { background: var(--accent); box-shadow: none; } .dv .pip.miss { background: var(--bad); box-shadow: none; }
+.dv .hud-mid .lbl { font-size: .46rem; letter-spacing: .2em; color: #dfeaff; text-shadow: 0 1px 0 #02101f, 0 0 8px #02101f; }
+
+/* question panel */
+.dv .dv-panel { background: linear-gradient(180deg, #0c1a31f4, #08121ff6); box-shadow: inset 0 0 0 1px #2f5280, 0 18px 40px #0008; clip-path: var(--chamfer-s); backdrop-filter: blur(6px); padding: 20px 26px; }
+.dv .dv-panel::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 3px; background: linear-gradient(180deg, var(--accent), transparent); }
+.dv .dv-panel .prompt { font-size: 2.05rem; }
+.dv .dv-panel.hit[class*='rar-'] { box-shadow: inset 0 0 0 1px var(--c), 0 0 30px color-mix(in srgb, var(--c) 30%, transparent), 0 18px 40px #0008; }
+.dv .dv-panel.hit[class*='rar-']::before { background: var(--c); }
+
+/* answer dock */
+.dv .dv-dock input[type=text] { background: #07111fee; box-shadow: inset 0 0 0 1px #3b6aa0, 0 8px 20px #0006; font-size: 1.6rem; padding: 12px 16px; }
+.dv .dv-dock input[type=text]:focus { box-shadow: inset 0 0 0 2px var(--accent), 0 0 22px #4fe3ff44; }
+.dv .dv-dock .btn { box-shadow: inset 0 0 0 1px #c4f8ff, inset 0 -3px 0 0 #1a9bb8, 0 8px 20px #0006; }
+
+/* callouts and banners */
+.dv .callout { background: linear-gradient(180deg, #0c1a31ee, #08121fee); box-shadow: inset 0 0 0 1px var(--cc, #4fe3ff), 0 10px 24px #0007; clip-path: var(--chamfer-s); backdrop-filter: blur(4px); }
+.dv .arrival { background: linear-gradient(180deg, #0c1a31f2, #08121ff2); box-shadow: inset 0 0 0 1px var(--gold), 0 12px 30px #0008; }
+.dv .pop { text-shadow: 0 2px 0 #02101f, 0 0 10px #02101f; }
+.dv .hud-mid .lives .life { opacity: .98; }
+.cockpit { background: #07111fcc; box-shadow: inset 0 0 0 1px #2c6b88; }
+@media (max-width: 700px) { .dv .callout { top: auto; bottom: 112px; } }

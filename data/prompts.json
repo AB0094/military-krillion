@@ -382,6 +382,45 @@
           "Sky Guardian"
         ],
         "weight": 0.55
+      },
+      {
+        "name": "MQ-8C Fire Scout",
+        "aliases": [
+          "MQ-8 Fire Scout",
+          "Fire Scout"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Predator C Avenger",
+        "aliases": [
+          "Avenger",
+          "Predator C",
+          "MQ-20 Avenger"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "General Atomics Mojave",
+        "aliases": [
+          "Mojave"
+        ],
+        "weight": 0.9
+      },
+      {
+        "name": "RQ-7 Shadow",
+        "aliases": [
+          "Shadow 200",
+          "RQ-7B"
+        ],
+        "weight": 1.0
+      },
+      {
+        "name": "MQ-9A Reaper",
+        "aliases": [
+          "MQ-9A"
+        ],
+        "weight": 0.55
       }
     ],
     "fact": "The Predator was first test-fired with Hellfire missiles in early 2001, one of the first armed drones.",
@@ -486,6 +525,13 @@
           "Rb 75"
         ],
         "weight": 0.7
+      },
+      {
+        "name": "F-5E",
+        "aliases": [
+          "F-5"
+        ],
+        "weight": 0.85
       }
     ],
     "fact": "The AGM-65 Maverick entered service in 1972 and comes in electro-optical, imaging-infrared and laser-guided versions.",
@@ -502,7 +548,8 @@
           "AH64",
           "Apache",
           "AH-64D",
-          "AH-64E"
+          "AH-64E",
+          "AH-64E Guardian"
         ],
         "weight": 0.1
       },
@@ -590,6 +637,42 @@
           "T129 ATAK"
         ],
         "weight": 0.7
+      },
+      {
+        "name": "AH-6M",
+        "aliases": [],
+        "weight": 0.55
+      },
+      {
+        "name": "AH-64 Longbow",
+        "aliases": [],
+        "weight": 0.3
+      },
+      {
+        "name": "MQ-8 Fire Scout",
+        "aliases": [
+          "Fire Scout"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "UH-60M Black Hawk",
+        "aliases": [
+          "UH-60M"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "OH-58D Kiowa Warrior",
+        "aliases": [
+          "OH-58D"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "SH-60B Seahawk",
+        "aliases": [],
+        "weight": 0.85
       }
     ],
     "fact": "Hellfire began as 'Heliborne, Laser, Fire-and-Forget', a missile built to kill tanks from helicopters.",
@@ -668,6 +751,35 @@
           "Night Hunter"
         ],
         "weight": 0.7
+      },
+      {
+        "name": "Mi-28UB",
+        "aliases": [],
+        "weight": 0.9
+      },
+      {
+        "name": "T129 ATAK",
+        "aliases": [
+          "ATAK",
+          "T129"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Tiger HAD",
+        "aliases": [
+          "HAD",
+          "Eurocopter Tiger HAD"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "AH-64E Apache Guardian",
+        "aliases": [
+          "Guardian",
+          "Apache Guardian"
+        ],
+        "weight": 0.55
       }
     ],
     "fact": "The Apache's M230 chain gun fires 30x113mm rounds and slews to wherever the gunner looks through a helmet sight.",
@@ -1280,7 +1392,8 @@
         "name": "LAV-25",
         "aliases": [
           "LAV25",
-          "LAV 25"
+          "LAV 25",
+          "LAV"
         ],
         "weight": 0.85
       },
@@ -1351,9 +1464,23 @@
         "aliases": [
           "Piranha",
           "Piranha 3C",
-          "Piranha III 25"
+          "Piranha III 25",
+          "Piranha III"
         ],
         "weight": 1.0
+      },
+      {
+        "name": "M2A3 Bradley",
+        "aliases": [],
+        "weight": 0.1
+      },
+      {
+        "name": "M1126 Stryker",
+        "aliases": [
+          "Stryker ICV",
+          "Stryker"
+        ],
+        "weight": 0.7
       }
     ],
     "fact": "The Bradley's M242 Bushmaster is a 25mm chain gun, also used on the LAV-25 and on ships.",
@@ -2638,7 +2765,8 @@
           "AS-18",
           "Kazoo",
           "Kh-59M",
-          "Ovod"
+          "Ovod",
+          "Kh-59MK"
         ],
         "weight": 0.55
       },
@@ -2668,6 +2796,64 @@
           "Gryazev-Shipunov 30mm"
         ],
         "weight": 0.9
+      },
+      {
+        "name": "Kh-35",
+        "aliases": [
+          "Kh-35U",
+          "Uran",
+          "AS-20 Kayak"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "R-77-1",
+        "aliases": [
+          "R-77M"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Kh-38",
+        "aliases": [
+          "Kh-38ME"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "KAB-1500",
+        "aliases": [
+          "KAB-1500L"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "S-25",
+        "aliases": [
+          "S-25L"
+        ],
+        "weight": 0.9
+      },
+      {
+        "name": "B-8M",
+        "aliases": [
+          "B-8M1 rocket pod"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Kh-25ML",
+        "aliases": [
+          "Kh-25"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Kh-58",
+        "aliases": [
+          "Kh-58UShE"
+        ],
+        "weight": 0.9
       }
     ],
     "detail": "Missiles, bombs, rockets and guns the Su-30 family can carry. Name the weapon; designations and NATO names work."
@@ -2694,7 +2880,8 @@
           "AIM9",
           "Sidewinder",
           "AIM-9X",
-          "AIM-9M"
+          "AIM-9M",
+          "AIM-9X Sidewinder"
         ],
         "weight": 0.1
       },
@@ -2713,7 +2900,8 @@
           "GBU-12",
           "GBU12",
           "Paveway II",
-          "Paveway"
+          "Paveway",
+          "Paveway III"
         ],
         "weight": 0.3
       },
@@ -2771,6 +2959,61 @@
           "Combined Effects Munition"
         ],
         "weight": 1.0
+      },
+      {
+        "name": "AIM-7 Sparrow",
+        "aliases": [
+          "Sparrow"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "AGM-154 JSOW",
+        "aliases": [
+          "JSOW"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "GBU-31 JDAM",
+        "aliases": [],
+        "weight": 0.55
+      },
+      {
+        "name": "GBU-39 SDB",
+        "aliases": [
+          "Small Diameter Bomb"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Mk 82",
+        "aliases": [
+          "Mk-82"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "Mk 84",
+        "aliases": [
+          "Mk-84"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "LAU-131 rocket pod",
+        "aliases": [
+          "Hydra 70",
+          "LAU-68"
+        ],
+        "weight": 0.9
+      },
+      {
+        "name": "B61",
+        "aliases": [
+          "B61 nuclear bomb"
+        ],
+        "weight": 0.9
       }
     ],
     "detail": "Munitions the F-16 can carry, across Block variants and operators. Pods and fuel tanks don't count."
@@ -2857,6 +3100,60 @@
           "Joint Direct Attack Munition"
         ],
         "weight": 0.7
+      },
+      {
+        "name": "Mk 84",
+        "aliases": [
+          "Mk-84"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Mk 77 incendiary",
+        "aliases": [
+          "Mk 77"
+        ],
+        "weight": 0.9
+      },
+      {
+        "name": "AIM-9X",
+        "aliases": [
+          "AIM-9X Sidewinder"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "CBU-103",
+        "aliases": [
+          "CBU-103 WCMD"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "GBU-38 JDAM",
+        "aliases": [],
+        "weight": 0.55
+      },
+      {
+        "name": "LAU-131 rocket pod",
+        "aliases": [
+          "LAU-131"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "ALQ-131",
+        "aliases": [
+          "AN/ALQ-131 ECM pod"
+        ],
+        "weight": 0.9
+      },
+      {
+        "name": "Mk 20 Rockeye",
+        "aliases": [
+          "Rockeye"
+        ],
+        "weight": 0.85
       }
     ],
     "detail": "Munitions and guns the A-10 can carry. Pods and fuel tanks don't count."
@@ -2919,6 +3216,41 @@
           "Joint Air-to-Ground Missile"
         ],
         "weight": 0.55
+      },
+      {
+        "name": "APKWS",
+        "aliases": [
+          "Advanced Precision Kill Weapon System",
+          "APKWS II"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Hellfire Longbow",
+        "aliases": [],
+        "weight": 0.3
+      },
+      {
+        "name": "M261 rocket launcher",
+        "aliases": [
+          "M261 pod",
+          "19-tube rocket pod"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "M299 launcher",
+        "aliases": [
+          "M299 Hellfire launcher"
+        ],
+        "weight": 0.9
+      },
+      {
+        "name": "Hydra 70 Mk 66",
+        "aliases": [
+          "Mk 66 rocket"
+        ],
+        "weight": 1.0
       }
     ],
     "detail": "Weapons the AH-64 Apache can fire, across A, D and E models."
@@ -3414,7 +3746,8 @@
         "aliases": [
           "Il78",
           "IL-78M",
-          "Midas"
+          "Midas",
+          "Il-78M-90A"
         ],
         "weight": 0.55
       },
@@ -3423,7 +3756,8 @@
         "aliases": [
           "KC130",
           "KC-130J",
-          "Hercules tanker"
+          "Hercules tanker",
+          "KC-130J Super Hercules"
         ],
         "weight": 0.55
       },
@@ -3525,6 +3859,35 @@
           "UPAZ"
         ],
         "weight": 1.0
+      },
+      {
+        "name": "KC-46A",
+        "aliases": [
+          "KC-46A Pegasus"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "KC-135R",
+        "aliases": [],
+        "weight": 0.1
+      },
+      {
+        "name": "KC-767A",
+        "aliases": [],
+        "weight": 0.85
+      },
+      {
+        "name": "KC-390 tanker",
+        "aliases": [
+          "KC-390"
+        ],
+        "weight": 0.9
+      },
+      {
+        "name": "KC-135E",
+        "aliases": [],
+        "weight": 0.9
       }
     ],
     "detail": "Aircraft that can refuel others in flight, including buddy-refuelling and retired tankers."
@@ -4569,6 +4932,43 @@
           "H-6N"
         ],
         "weight": 0.9
+      },
+      {
+        "name": "B-21 Raider",
+        "aliases": [
+          "B-21"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "Tupolev Tu-95",
+        "aliases": [],
+        "weight": 0.1
+      },
+      {
+        "name": "Xian H-6K",
+        "aliases": [],
+        "weight": 0.55
+      },
+      {
+        "name": "PAK DA",
+        "aliases": [
+          "PAK-DA",
+          "Tu-160M2"
+        ],
+        "weight": 1.0
+      },
+      {
+        "name": "Xian H-20",
+        "aliases": [
+          "H-20"
+        ],
+        "weight": 0.9
+      },
+      {
+        "name": "B-52H Stratofortress",
+        "aliases": [],
+        "weight": 0.7
       }
     ],
     "detail": "Long-range bombers currently in service with any air force."
@@ -5131,7 +5531,8 @@
           "7.62mm machine gun",
           "coax machine gun",
           "M240C",
-          "coaxial machine gun"
+          "coaxial machine gun",
+          "M240B coaxial"
         ],
         "weight": 0.3
       },
@@ -5155,6 +5556,21 @@
           "RWS"
         ],
         "weight": 0.55
+      },
+      {
+        "name": "M2HB Browning",
+        "aliases": [],
+        "weight": 0.3
+      },
+      {
+        "name": "M256 smoothbore",
+        "aliases": [],
+        "weight": 0.3
+      },
+      {
+        "name": "M1 Abrams smoke grenade launcher",
+        "aliases": [],
+        "weight": 0.9
       }
     ],
     "detail": "Weapons mounted on the M1A2 Abrams, including remote weapon stations and grenade launchers."
@@ -5962,7 +6378,8 @@
           "Msta-S",
           "Msta",
           "2S19M2",
-          "2S19M1"
+          "2S19M1",
+          "2S19M2 Msta-SM2"
         ],
         "weight": 0.1
       },
@@ -6048,6 +6465,43 @@
           "2S43 Malva wheeled"
         ],
         "weight": 0.7
+      },
+      {
+        "name": "2S3M Akatsiya",
+        "aliases": [],
+        "weight": 0.85
+      },
+      {
+        "name": "D-20",
+        "aliases": [
+          "152mm D-20",
+          "D-20 howitzer"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "2A65 Msta-B",
+        "aliases": [
+          "Msta-B",
+          "2A65"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "2A36 Giatsint-B",
+        "aliases": [
+          "Giatsint-B",
+          "2A36"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "M1937 ML-20",
+        "aliases": [
+          "ML-20",
+          "ML-20 gun-howitzer"
+        ],
+        "weight": 0.85
       }
     ],
     "detail": "Self-propelled 152mm howitzers and guns, Soviet, Russian or other."
@@ -10708,7 +11162,8 @@
           "Puff the Magic Dragon",
           "Puff",
           "AC-47D",
-          "Gooney Bird gunship"
+          "Gooney Bird gunship",
+          "AC-47D Dragon"
         ],
         "weight": 0.3
       },
@@ -10777,6 +11232,40 @@
           "Provider gunship"
         ],
         "weight": 1.0
+      },
+      {
+        "name": "AC-130J Ghostrider",
+        "aliases": [],
+        "weight": 0.3
+      },
+      {
+        "name": "AC-130U Spooky II",
+        "aliases": [
+          "Spooky II"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "AC-130W Stinger II",
+        "aliases": [],
+        "weight": 0.55
+      },
+      {
+        "name": "AC-130H Spectre",
+        "aliases": [],
+        "weight": 0.55
+      },
+      {
+        "name": "AC-130A",
+        "aliases": [
+          "Plain Jane"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "AC-130 Hercules",
+        "aliases": [],
+        "weight": 0.1
       }
     ]
   },
@@ -12162,7 +12651,8 @@
           "Sidewinder",
           "AIM-9L",
           "AIM-9M",
-          "AIM-9X"
+          "AIM-9X",
+          "AIM-9X Sidewinder"
         ],
         "weight": 0.3
       },
@@ -12213,6 +12703,28 @@
           "BGM71"
         ],
         "weight": 0.9
+      },
+      {
+        "name": "GAU-21",
+        "aliases": [
+          "FN M3M",
+          ".50 cal"
+        ],
+        "weight": 1.0
+      },
+      {
+        "name": "M261 rocket launcher",
+        "aliases": [
+          "M261"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Spike",
+        "aliases": [
+          "Spike NLOS"
+        ],
+        "weight": 1.0
       }
     ]
   },
@@ -12892,6 +13404,54 @@
           "Superfortress B-50"
         ],
         "weight": 0.7
+      },
+      {
+        "name": "B-17G",
+        "aliases": [
+          "Fortress"
+        ],
+        "weight": 0.3
+      },
+      {
+        "name": "B-24D",
+        "aliases": [
+          "B-24D Liberator"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Avro Lincoln",
+        "aliases": [
+          "Lincoln"
+        ],
+        "weight": 0.9
+      },
+      {
+        "name": "Tupolev Tu-4",
+        "aliases": [],
+        "weight": 0.85
+      },
+      {
+        "name": "Boeing B-50 Superfortress",
+        "aliases": [],
+        "weight": 0.9
+      },
+      {
+        "name": "Convair B-36",
+        "aliases": [],
+        "weight": 0.55
+      },
+      {
+        "name": "Consolidated B-32 Dominator",
+        "aliases": [],
+        "weight": 1.0
+      },
+      {
+        "name": "Boeing XB-15",
+        "aliases": [
+          "XB-15"
+        ],
+        "weight": 1.0
       }
     ]
   },
@@ -19811,7 +20371,9 @@
           "M829A4",
           "APFSDS",
           "Silver Bullet",
-          "M829 series"
+          "M829 series",
+          "M829A4 APFSDS",
+          "M829A3 APFSDS"
         ],
         "weight": 0.1
       },
@@ -19874,7 +20436,8 @@
           "M831",
           "TP-T",
           "M831A1",
-          "M831 TP-T training"
+          "M831 TP-T training",
+          "M831A1 TP"
         ],
         "weight": 0.55
       },
@@ -19893,7 +20456,8 @@
         "aliases": [
           "M1002",
           "TPMP-T",
-          "M1002 training"
+          "M1002 training",
+          "M1002 TPMP"
         ],
         "weight": 0.85
       },
@@ -19904,6 +20468,18 @@
           "M1060 obstacle",
           "M1060 breaching"
         ],
+        "weight": 1.0
+      },
+      {
+        "name": "M900",
+        "aliases": [
+          "M900 APFSDS"
+        ],
+        "weight": 0.9
+      },
+      {
+        "name": "XM1147",
+        "aliases": [],
         "weight": 1.0
       }
     ]
@@ -19937,7 +20513,8 @@
           "TOW 2",
           "TOW-2B",
           "TOW launcher",
-          "Tube-launched Optically-tracked Wire-guided"
+          "Tube-launched Optically-tracked Wire-guided",
+          "TOW 2B"
         ],
         "weight": 0.1
       },
@@ -19985,6 +20562,35 @@
           "M231 firing port"
         ],
         "weight": 0.9
+      },
+      {
+        "name": "M242 Bushmaster 25mm",
+        "aliases": [
+          "Chain gun"
+        ],
+        "weight": 0.1
+      },
+      {
+        "name": "M240 coaxial",
+        "aliases": [
+          "M240C coax",
+          "7.62 coax"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "M257 smoke launcher",
+        "aliases": [
+          "smoke grenade launcher"
+        ],
+        "weight": 0.85
+      },
+      {
+        "name": "Firing Port Weapons",
+        "aliases": [
+          "Firing ports"
+        ],
+        "weight": 0.85
       }
     ]
   },
@@ -20014,7 +20620,6 @@
           "Refleks",
           "9M119M",
           "Refleks-M",
-          "Svir",
           "9M119 Svir",
           "AT-11",
           "Sniper",
@@ -20031,7 +20636,9 @@
           "7.62mm coax",
           "coax machine gun",
           "PKT coax",
-          "7.62mm machine gun"
+          "7.62mm machine gun",
+          "PKT coaxial",
+          "7.62 PKT"
         ],
         "weight": 0.55
       },
@@ -20044,7 +20651,8 @@
           "12.7mm machine gun",
           "Kord machine gun",
           "12.7mm Kord",
-          "NSV"
+          "NSV",
+          "6P49 Kord"
         ],
         "weight": 0.3
       },
@@ -20059,6 +20667,34 @@
           "Tucha smoke"
         ],
         "weight": 0.55
+      },
+      {
+        "name": "2A46M-5 125mm gun",
+        "aliases": [],
+        "weight": 0.3
+      },
+      {
+        "name": "Kontakt-5",
+        "aliases": [
+          "Kontakt-5 ERA",
+          "ERA"
+        ],
+        "weight": 0.7
+      },
+      {
+        "name": "Shtora-1",
+        "aliases": [
+          "Shtora",
+          "TShU-1"
+        ],
+        "weight": 0.55
+      },
+      {
+        "name": "Relikt",
+        "aliases": [
+          "Relikt ERA"
+        ],
+        "weight": 0.85
       }
     ]
   },
@@ -21710,13 +22346,6 @@
         "weight": 0.85
       },
       {
-        "name": "Ross rifle",
-        "aliases": [
-          "Ross"
-        ],
-        "weight": 0.9
-      },
-      {
         "name": "Johnson M1941",
         "aliases": [
           "Johnson rifle",
@@ -21863,15 +22492,6 @@
           "QF 6-pounder"
         ],
         "weight": 0.7
-      },
-      {
-        "name": "Bofors 40 mm",
-        "aliases": [
-          "Bofors",
-          "40mm Bofors",
-          "Bofors L/60"
-        ],
-        "weight": 0.55
       },
       {
         "name": "Leichte Feldhaubitze 18",
@@ -22307,11 +22927,6 @@
           "Barak MX"
         ],
         "weight": 0.85
-      },
-      {
-        "name": "Sufa",
-        "aliases": [],
-        "weight": 1.0
       }
     ],
     "detail": "Firearms, armour, missiles or defence systems.",
@@ -24371,25 +24986,6 @@
           "K-4386"
         ],
         "weight": 0.9
-      },
-      {
-        "name": "Patrul",
-        "aliases": [
-          "GAZ-233034"
-        ],
-        "weight": 1.0
-      },
-      {
-        "name": "Linza",
-        "aliases": [
-          "Linza APC"
-        ],
-        "weight": 1.0
-      },
-      {
-        "name": "BTR-3",
-        "aliases": [],
-        "weight": 1.0
       }
     ],
     "detail": "APCs, armoured cars and MRAP-type vehicles.",
@@ -24476,20 +25072,6 @@
           "Vilha"
         ],
         "weight": 0.85
-      },
-      {
-        "name": "Barrier",
-        "aliases": [
-          "Barrier-V"
-        ],
-        "weight": 1.0
-      },
-      {
-        "name": "Alder",
-        "aliases": [
-          "Olkha"
-        ],
-        "weight": 1.0
       },
       {
         "name": "Kozak",
@@ -24596,9 +25178,7 @@
       },
       {
         "name": "Bora",
-        "aliases": [
-          "T-122 Sakarya"
-        ],
+        "aliases": [],
         "weight": 0.85
       },
       {
@@ -25270,16 +25850,6 @@
         "name": "Italy",
         "aliases": [],
         "weight": 0.9
-      },
-      {
-        "name": "Argentina",
-        "aliases": [],
-        "weight": 0.9
-      },
-      {
-        "name": "Croatia",
-        "aliases": [],
-        "weight": 1.0
       }
     ],
     "detail": "Current or former operators.",
@@ -25358,52 +25928,9 @@
         "weight": 0.3
       },
       {
-        "name": "Canada",
-        "aliases": [],
-        "weight": 0.85
-      },
-      {
         "name": "Belgium",
         "aliases": [],
         "weight": 0.85
-      },
-      {
-        "name": "Poland",
-        "aliases": [
-          "Polska"
-        ],
-        "weight": 0.85
-      },
-      {
-        "name": "Singapore",
-        "aliases": [],
-        "weight": 0.9
-      },
-      {
-        "name": "Finland",
-        "aliases": [
-          "Suomi"
-        ],
-        "weight": 1.0
-      },
-      {
-        "name": "Switzerland",
-        "aliases": [
-          "Schweiz"
-        ],
-        "weight": 1.0
-      },
-      {
-        "name": "Germany",
-        "aliases": [],
-        "weight": 1.0
-      },
-      {
-        "name": "Czech Republic",
-        "aliases": [
-          "Czechia"
-        ],
-        "weight": 1.0
       }
     ],
     "detail": "Operators in service, any variant.",
@@ -25797,13 +26324,6 @@
           "MFI"
         ],
         "weight": 0.85
-      },
-      {
-        "name": "MiG-33",
-        "aliases": [
-          "MiG33"
-        ],
-        "weight": 1.0
       }
     ],
     "detail": "Mikoyan-Gurevich aircraft, any era.",
@@ -26275,14 +26795,6 @@
         "weight": 0.85
       },
       {
-        "name": "P-80 Shooting Star",
-        "aliases": [
-          "P-80",
-          "Shooting Star"
-        ],
-        "weight": 0.85
-      },
-      {
         "name": "F7F Tigercat",
         "aliases": [
           "F7F",
@@ -26313,13 +26825,6 @@
           "Peashooter"
         ],
         "weight": 0.9
-      },
-      {
-        "name": "XP-55 Ascender",
-        "aliases": [
-          "XP-55"
-        ],
-        "weight": 1.0
       }
     ],
     "detail": "Army Air Forces, Navy or Marine Corps.",
@@ -26732,13 +27237,6 @@
         "weight": 0.85
       },
       {
-        "name": "Hawker Sea Fury",
-        "aliases": [
-          "Sea Fury"
-        ],
-        "weight": 0.85
-      },
-      {
         "name": "de Havilland Mosquito",
         "aliases": [
           "Mosquito"
@@ -26758,20 +27256,6 @@
           "Hawker Sea Hurricane"
         ],
         "weight": 0.9
-      },
-      {
-        "name": "Supermarine Spiteful",
-        "aliases": [
-          "Spiteful"
-        ],
-        "weight": 1.0
-      },
-      {
-        "name": "de Havilland Vampire",
-        "aliases": [
-          "Vampire"
-        ],
-        "weight": 0.85
       },
       {
         "name": "Blackburn Roc",
@@ -27230,13 +27714,6 @@
         "name": "Red Top",
         "aliases": [],
         "weight": 1.0
-      },
-      {
-        "name": "AAM-4",
-        "aliases": [
-          "Type 99 AAM"
-        ],
-        "weight": 1.0
       }
     ],
     "detail": "Radar-guided or infrared, any era.",
@@ -27329,14 +27806,6 @@
         "weight": 0.55
       },
       {
-        "name": "R-13",
-        "aliases": [
-          "R-13M",
-          "AA-2"
-        ],
-        "weight": 1.0
-      },
-      {
         "name": "K-5",
         "aliases": [
           "RS-2U",
@@ -27350,11 +27819,6 @@
           "R-98M",
           "R-98M1"
         ],
-        "weight": 1.0
-      },
-      {
-        "name": "R-550",
-        "aliases": [],
         "weight": 1.0
       },
       {
@@ -28017,14 +28481,6 @@
         "weight": 0.85
       },
       {
-        "name": "Hongdu K-8",
-        "aliases": [
-          "K-8",
-          "Karakorum"
-        ],
-        "weight": 0.85
-      },
-      {
         "name": "T-6 Harvard",
         "aliases": [
           "Harvard",
@@ -28165,14 +28621,6 @@
           "C-133"
         ],
         "weight": 1.0
-      },
-      {
-        "name": "Il-78",
-        "aliases": [
-          "Il-78M",
-          "Midas"
-        ],
-        "weight": 0.85
       }
     ],
     "detail": "Strategic airlifters.",
@@ -28928,13 +29376,6 @@
         "weight": 0.3
       },
       {
-        "name": "EF-111 Raven",
-        "aliases": [
-          "EF-111"
-        ],
-        "weight": 0.9
-      },
-      {
         "name": "A-5 Vigilante",
         "aliases": [
           "A-5",
@@ -28950,13 +29391,6 @@
           "Whale"
         ],
         "weight": 0.9
-      },
-      {
-        "name": "A-12 Avenger II",
-        "aliases": [
-          "A-12"
-        ],
-        "weight": 1.0
       }
     ],
     "detail": "Any era, jet or prop.",
@@ -29465,14 +29899,6 @@
         "weight": 0.7
       },
       {
-        "name": "Gulfstream G550 Nachshon",
-        "aliases": [
-          "G550",
-          "Nachshon"
-        ],
-        "weight": 0.7
-      },
-      {
         "name": "IAI Searcher",
         "aliases": [
           "Searcher"
@@ -29513,15 +29939,6 @@
           "Dominator"
         ],
         "weight": 1.0
-      },
-      {
-        "name": "F-16I Sufa",
-        "aliases": [
-          "F-16I",
-          "Sufa",
-          "Storm"
-        ],
-        "weight": 0.55
       },
       {
         "name": "IAI 1124 Westwind",
@@ -29831,13 +30248,6 @@
         "weight": 0.55
       },
       {
-        "name": "Gabbiano",
-        "aliases": [
-          "Selex Gabbiano"
-        ],
-        "weight": 1.0
-      },
-      {
         "name": "AN/APQ-120",
         "aliases": [
           "APQ-120"
@@ -29989,13 +30399,6 @@
         "weight": 0.7
       },
       {
-        "name": "SPJ pod",
-        "aliases": [
-          "Self-Protection Jammer"
-        ],
-        "weight": 0.9
-      },
-      {
         "name": "Skyshield",
         "aliases": [
           "Skyshield pod"
@@ -30070,9 +30473,7 @@
       },
       {
         "name": "Russian Knights",
-        "aliases": [
-          "Rus"
-        ],
+        "aliases": [],
         "weight": 0.55
       },
       {
@@ -30117,25 +30518,6 @@
           "RAAF Roulettes"
         ],
         "weight": 0.7
-      },
-      {
-        "name": "Red Devils",
-        "aliases": [
-          "Red Devils parachute"
-        ],
-        "weight": 1.0
-      },
-      {
-        "name": "Sarang Hawks",
-        "aliases": [
-          "Sarang"
-        ],
-        "weight": 1.0
-      },
-      {
-        "name": "Yellow Birds",
-        "aliases": [],
-        "weight": 1.0
       }
     ],
     "detail": "Air force or navy demonstration teams.",
@@ -30259,21 +30641,6 @@
           "Hind"
         ],
         "weight": 0.55
-      },
-      {
-        "name": "Il-2",
-        "aliases": [
-          "Il-2M",
-          "Il-2 Type 3M"
-        ],
-        "weight": 1.0
-      },
-      {
-        "name": "Su-24M",
-        "aliases": [
-          "Su-24"
-        ],
-        "weight": 0.9
       },
       {
         "name": "Ka-50",

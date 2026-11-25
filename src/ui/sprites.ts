@@ -172,7 +172,15 @@ export interface TankSpec {
   name: string;
   country: string;
   len: number;
-  turret: 'round' | 'angular' | 'flat' | 'rear';
+  turret: 'round' | 'bulb' | 'angular' | 'flat' | 'rear';
+  /** Turret height in cells (default 7). */
+  h?: number;
+  /** Rear turret bustle, in cells. */
+  bustle?: number;
+  /** Rear-deck snorkel tube (T-series). */
+  snorkel?: boolean;
+  /** Tall commander cupola. */
+  cupola?: boolean;
   gun: number;
   skirt: boolean;
   era: boolean;
@@ -180,17 +188,17 @@ export interface TankSpec {
 }
 /** A different model per distance. The first seven are the first lap; the rest appear past 7,000 m. */
 export const TANK_MODELS: readonly TankSpec[] = [
-  { name: 'T-55', country: 'USSR', len: 40, turret: 'round', gun: 22, skirt: false, era: false, scheme: 'olive' },
-  { name: 'M60 Patton', country: 'USA', len: 44, turret: 'round', gun: 24, skirt: false, era: false, scheme: 'green' },
-  { name: 'T-72B3', country: 'Russia', len: 42, turret: 'round', gun: 24, skirt: false, era: true, scheme: 'green' },
-  { name: 'Leopard 2A6', country: 'Germany', len: 48, turret: 'angular', gun: 28, skirt: true, era: false, scheme: 'olive' },
-  { name: 'M1A2 Abrams', country: 'USA', len: 50, turret: 'flat', gun: 28, skirt: true, era: false, scheme: 'sand' },
-  { name: 'Challenger 2', country: 'UK', len: 50, turret: 'flat', gun: 28, skirt: true, era: true, scheme: 'olive' },
-  { name: 'K2 Black Panther', country: 'South Korea', len: 50, turret: 'angular', gun: 30, skirt: true, era: true, scheme: 'grey' },
-  { name: 'Merkava Mk.4', country: 'Israel', len: 48, turret: 'rear', gun: 26, skirt: true, era: false, scheme: 'sand' },
-  { name: 'T-90M', country: 'Russia', len: 44, turret: 'round', gun: 26, skirt: true, era: true, scheme: 'green' },
-  { name: 'Type 99A', country: 'China', len: 50, turret: 'angular', gun: 28, skirt: true, era: true, scheme: 'olive' },
-  { name: 'Leclerc', country: 'France', len: 48, turret: 'flat', gun: 28, skirt: false, era: false, scheme: 'sand' },
+  { name: 'T-55', country: 'USSR', len: 40, turret: 'round', h: 6, gun: 24, skirt: false, era: false, snorkel: true, scheme: 'olive' },
+  { name: 'M60 Patton', country: 'USA', len: 44, turret: 'bulb', h: 9, bustle: 2, cupola: true, gun: 26, skirt: false, era: false, scheme: 'green' },
+  { name: 'T-72B3', country: 'Russia', len: 42, turret: 'round', h: 6, gun: 25, skirt: false, era: true, snorkel: true, scheme: 'green' },
+  { name: 'Leopard 2A6', country: 'Germany', len: 48, turret: 'angular', h: 8, bustle: 3, gun: 30, skirt: true, era: false, scheme: 'olive' },
+  { name: 'M1A2 Abrams', country: 'USA', len: 50, turret: 'flat', h: 8, bustle: 5, gun: 28, skirt: true, era: false, cupola: true, scheme: 'sand' },
+  { name: 'Challenger 2', country: 'UK', len: 50, turret: 'flat', h: 9, bustle: 3, gun: 28, skirt: true, era: true, cupola: true, scheme: 'olive' },
+  { name: 'K2 Black Panther', country: 'South Korea', len: 50, turret: 'angular', h: 7, bustle: 4, gun: 31, skirt: true, era: true, scheme: 'grey' },
+  { name: 'Merkava Mk.4', country: 'Israel', len: 48, turret: 'rear', h: 8, bustle: 4, gun: 26, skirt: true, era: false, scheme: 'sand' },
+  { name: 'T-90M', country: 'Russia', len: 44, turret: 'round', h: 7, gun: 27, skirt: true, era: true, snorkel: true, scheme: 'green' },
+  { name: 'Type 99A', country: 'China', len: 50, turret: 'angular', h: 8, bustle: 3, gun: 29, skirt: true, era: true, scheme: 'olive' },
+  { name: 'Leclerc', country: 'France', len: 48, turret: 'angular', h: 7, bustle: 3, gun: 29, skirt: false, era: false, scheme: 'sand' },
 ];
 export const tankModel = (k: number): TankSpec => TANK_MODELS[(Math.max(1, k) - 1) % TANK_MODELS.length];
 /** The player's own tank: no gun in the sprite, because the barrel is a separate element that elevates and recoils. */
@@ -216,18 +224,25 @@ function tankGrid(t: TankSpec): Grid {
   if (t.skirt) { rect(g, 5, GY - 10, len - 3, GY - 6, 's'); for (let x = 9; x < len - 3; x += 6) rect(g, x, GY - 10, x, GY - 6, 'd'); rect(g, 5, GY - 10, len - 3, GY - 10, 'l'); }
   if (t.era) for (let x = len - 7; x < len - 1; x += 2) { put(g, x, GY - 10 - Math.floor((len - 1 - x) / 3), 'e'); put(g, x, GY - 9, 'e'); }
   const rear = t.turret === 'rear';
+  const th = t.h ?? 7;
+  const top = GY - 13 - th;
   const x0 = Math.round(len * (rear ? 0.12 : 0.3));
   const x1 = Math.round(len * (rear ? 0.62 : 0.8));
   if (rear) poly(g, [[len - 16, GY - 13], [len, GY - 9], [len, GY - 11], [len - 9, GY - 15]], 'm'); // sloped front engine deck
-  if (t.turret === 'round') poly(g, [[x0, GY - 13], [x1, GY - 13], [x1 - 2, GY - 18], [x1 - 6, GY - 20], [x0 + 6, GY - 20], [x0 + 2, GY - 17]], 'm');
-  else if (t.turret === 'angular') { poly(g, [[x0, GY - 13], [x1 + 3, GY - 13], [x1, GY - 18], [x1 - 3, GY - 20], [x0 + 1, GY - 20]], 'm'); rect(g, x0 - 3, GY - 19, x0 + 1, GY - 14, 's'); }
-  else if (t.turret === 'flat') { poly(g, [[x0, GY - 13], [x1, GY - 13], [x1 - 1, GY - 20], [x0 + 2, GY - 20], [x0 - 2, GY - 17]], 'm'); rect(g, x0 - 4, GY - 19, x0, GY - 14, 's'); }
-  else poly(g, [[x0, GY - 13], [x1, GY - 13], [x1 - 2, GY - 17], [x1 - 8, GY - 20], [x0, GY - 20]], 'm');
-  rect(g, x0 + 3, GY - 20, x1 - 5, GY - 19, 'l'); // lit roof
+  if (t.snorkel) { rect(g, 3, GY - 15, 12, GY - 14, 'k'); put(g, 12, GY - 16, 'k'); } // rear-deck snorkel tube
+  if (t.bustle) rect(g, x0 - t.bustle, top + Math.round(th * 0.35), x0 + 1, GY - 14, 's');
+  if (t.turret === 'round') poly(g, [[x0, GY - 13], [x1, GY - 13], [x1 - 1, GY - 13 - th * 0.45], [x1 - 4, top], [x0 + 5, top], [x0 + 1, GY - 13 - th * 0.5]], 'm');
+  else if (t.turret === 'bulb') poly(g, [[x0, GY - 13], [x1 + 1, GY - 13], [x1 + 2, GY - 13 - th * 0.55], [x1 - 2, top], [x0 + 3, top], [x0 - 1, GY - 13 - th * 0.6]], 'm');
+  else if (t.turret === 'angular') poly(g, [[x0 - 1, GY - 13], [x1 + 4, GY - 13], [x1 + 1, GY - 13 - th * 0.6], [x1 - 4, top], [x0 + 1, top]], 'm');
+  else if (t.turret === 'flat') poly(g, [[x0 - 2, GY - 13], [x1 + 1, GY - 13], [x1, top], [x0, top]], 'm');
+  else poly(g, [[x0, GY - 13], [x1, GY - 13], [x1 - 2, GY - 13 - th * 0.5], [x1 - 8, top], [x0, top]], 'm');
+  rect(g, x0 + 3, top, x1 - 5, top + 1, 'l'); // lit roof
   rect(g, x0, GY - 14, x1 - 1, GY - 13, 'd');
-  rect(g, x0 + 5, GY - 22, x0 + 8, GY - 21, 'k'); put(g, x0 + 6, GY - 22, 'h'); // commander hatch
-  rect(g, x0 + 2, GY - 25, x0 + 2, GY - 21, 'k'); // antenna
-  if (t.era && t.turret !== 'round') rect(g, x1 - 2, GY - 19, x1 + 2, GY - 15, 'e');
+  const cup = t.cupola ? 3 : 1;
+  rect(g, x0 + 5, top - cup, x0 + 8, top - 1, 'k'); put(g, x0 + 6, top - cup, 'h'); // commander hatch or cupola
+  rect(g, x0 + 2, top - 4, x0 + 2, top - 1, 'k'); // antenna
+  if (t.era && t.turret !== 'round') for (let k = 0; k < 3; k++) rect(g, x1 - 2 - k * 2, top + 2, x1 - 1 - k * 2, top + 3, 'e');
+  if (t.era && t.turret === 'round') for (let k = 0; k < 3; k++) { put(g, x1 - 3 - k * 2, top + 1, 'e'); put(g, x1 - 3 - k * 2, top + 2, 'e'); }
   if (gun) {
     const gy0 = GY - 16;
     rect(g, x1 - 1, gy0 - 2, x1 + 1, gy0 + 3, 's'); // mantlet
@@ -245,7 +260,7 @@ export const tankSprite = (t: TankSpec, cls = ''): string => sprite(toRows(mirro
 export function playerTank(): { svg: string; pivot: { x: number; y: number }; cells: { w: number; h: number } } {
   const t = PLAYER_TANK;
   const g = tankGrid(t);
-  const x1 = Math.round(t.len * 0.8);
+  const x1 = Math.round(t.len * (t.turret === 'rear' ? 0.62 : 0.8));
   return { svg: sprite(toRows(g), tankPal(t), ''), pivot: { x: x1 + 3, y: GY - 16 + 1 + 1 }, cells: { w: g[0].length, h: g.length } };
 }
 
