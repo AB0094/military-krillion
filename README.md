@@ -83,6 +83,10 @@ The game has no score multipliers, so the ranks are presentation only. Data weig
 - **Difficulty ramps.** The pool is ordered easy to hard (by whether a common answer exists and how many answers there are) with seeded noise, so early questions are easy and later ones are not (`endlessPromptAt`).
 - **Losing.** The third miss triggers an enemy radar lock; a missile hits your craft, its motor fails, it pitches nose-down trailing smoke while the camera follows, then crashes in a large explosion with a dust cloud. The results screen shows score, distance, correct answers and accuracy, with **Retry** and **Main menu**.
 
+## Data coverage and accuracy
+
+`data/prompts.json` has 210 prompts (105 Ground, 105 Air) and over 5,500 answers. Category prompts are broad on purpose: for example the WWII, WWI, Cold War, helicopter, bomber, drone, transport, flying-boat, tank, IFV and armoured-car prompts accept prop aircraft and early tanks, modern types, prototypes that flew, and designs that were never built (see the `*-prototypes`, `*-unbuilt-designs` and `gnd-never-built` prompts). The answers were compiled from general knowledge, not checked against a single authoritative source, so some are probably still wrong or missing. Entries I was unsure of were left out rather than guessed. If you spot a mistake, edit `data/prompts.json` and run `npm run validate`.
+
 ## Add prompts
 
 Edit `data/prompts.json` (no code changes needed):
