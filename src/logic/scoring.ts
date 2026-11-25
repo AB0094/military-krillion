@@ -59,3 +59,15 @@ export function rarityLabel(score: number): 'Common' | 'Uncommon' | 'Rare' | 'Ul
   if (score >= 0.25) return 'Uncommon';
   return 'Common';
 }
+
+/** Where the missile sits in the descent shaft (0 = top/start, 1 = bottom): the running average rarity. */
+export function shaftPosition(depth: number, promptCount = DEFAULT_PROMPT_COUNT): number {
+  return promptCount > 0 ? Math.min(1, Math.max(0, depth / promptCount)) : 0;
+}
+
+/** The new tier index if going from `before` to `after` depth crosses into a deeper tier, else null. */
+export function crossedTier(before: number, after: number, promptCount = DEFAULT_PROMPT_COUNT): number | null {
+  const a = tierIndex(before, promptCount);
+  const b = tierIndex(after, promptCount);
+  return b > a ? b : null;
+}

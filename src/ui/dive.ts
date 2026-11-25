@@ -1,11 +1,11 @@
 import { PROMPTS } from '../data';
 import { dailySet } from '../logic/seed';
 import { getSession, submitAnswer, type PlayContext } from '../logic/progress';
-import { MIN_CROWD, rarity, rarityLabel } from '../logic/scoring';
+import { MIN_CROWD, TIERS, crossedTier, rarity, rarityLabel, shaftPosition, tierIndex } from '../logic/scoring';
 import { fmt, esc, header, on, type App, type View } from './dom';
 import { burst, countUp } from './fx';
-import { missileSvg } from './logo';
 import { play } from './sound';
+import { shaftHtml } from './shaft';
 
 type DiveView = Extract<View, { name: 'dive' }>;
 
@@ -15,26 +15,30 @@ export function renderDive(app: App, v: DiveView): void {
   const session = () => getSession(app.getState(), ctx);
   const title = `${v.mode}${v.archive ? ' · archive' : ''} · ${v.date}`;
 
-  /** `label` is the prompt number shown; `at` is how far along the track the missile starts. */
-  const top = (label: number, at: number, depth: number, mode: string) => `
-    <div class="meta"><span>Prompt ${Math.min(label, total)} / ${total}</span><span class="tag tag-${mode.toLowerCase()}">${mode}</span><span>Depth <strong>${fmt(depth)}</strong></span></div>
-    <div class="track" aria-hidden="true"><span class="mk" style="left:${(at / total) * 100}%">${missileSvg('missile')}</span></div>`;
+  const meta = (label: number, depth: number, mode: string) => `
+    <div class="meta"><span>Prompt ${Math.min(label, total)} / ${total}</span><span class="tag tag-${mode.toLowerCase()}">${mode}</span><span>Depth <strong>${fmt(depth)}</strong></span></div>`;
 
   function ask(): void {
     const s = session();
     const index = s?.answers.length ?? 0;
     if (s?.complete || index >= total) return app.go({ name: 'results', mode: v.mode, date: v.date, archive: v.archive }, true);
     const prompt = ctx.prompts[index];
+    const depth = s?.depth ?? 0;
     app.root.innerHTML = `${header(title)}
       <section class="card dive">
-        ${top(index + 1, index, s?.depth ?? 0, prompt.mode)}
-        <h2 class="prompt">${esc(prompt.text)}</h2>
-        ${prompt.detail ? `<p class="detail">${esc(prompt.detail)}</p>` : ''}
-        <form id="f" autocomplete="off">
-          <input id="answer" type="text" maxlength="80" placeholder="Type your answer…" autocapitalize="off" spellcheck="false" />
-          <button class="btn primary" type="submit">Fire</button>
-        </form>
-        <p class="muted small">One answer per prompt. The rarer your answer, the deeper you dive.</p>
+        ${meta(index + 1, depth, prompt.mode)}
+        <div class="dive-grid">
+          ${shaftHtml(shaftPosition(depth, total), tierIndex(depth, total))}
+          <div class="dive-main">
+            <h2 class="prompt">${esc(prompt.text)}</h2>
+            ${prompt.detail ? `<p class="detail">${esc(prompt.detail)}</p>` : ''}
+            <form id="f" autocomplete="off">
+              <input id="answer" type="text" maxlength="80" placeholder="Type your answer…" autocapitalize="off" spellcheck="false" />
+              <button class="btn primary" type="submit">Fire</button>
+            </form>
+            <p class="muted small">One answer per prompt. The rarer your answer, the deeper the missile dives.</p>
+          </div>
+        </div>
       </section>
       <p class="center"><button class="btn" id="home">Home</button></p>`;
     on(app.root, '#home', () => app.go({ name: 'home' }));
@@ -49,11 +53,11 @@ export function renderDive(app: App, v: DiveView): void {
       const before = app.getState().crowd[prompt.id]; // board uses player data as it was when you answered
       const result = submitAnswer(app.getState(), ctx, input.value);
       app.setState(result.state);
-      reveal(index, result.record.matched, result.record.score, result.hint, input.value.trim(), before, result.record.corrected === true);
+      reveal(index, depth, result.session.depth, result.record.matched, result.record.score, result.hint, input.value.trim(), before, result.record.corrected === true);
     });
   }
 
-  function reveal(index: number, matched: string | null, score: number, hint: string | null, typed: string, before: Parameters<typeof rarity>[1], corrected: boolean): void {
+  function reveal(index: number, depthBefore: number, depthAfter: number, matched: string | null, score: number, hint: string | null, typed: string, before: Parameters<typeof rarity>[1], corrected: boolean): void {
     const prompt = ctx.prompts[index];
     const last = index + 1 >= total;
     const board = [...prompt.answers]
@@ -64,34 +68,61 @@ export function renderDive(app: App, v: DiveView): void {
     const label = rarityLabel(score);
     const body = matched
       ? `<p class="verdict good">✓ ${esc(matched)} <span class="badge badge-${label.toLowerCase().replace(' ', '-')}">${label}</span></p>${corrected ? `<p class="muted small">Spelling corrected: you typed “${esc(typed)}”.</p>` : ''}<p class="score"><span id="score">+0.00</span> <span class="muted">rarity</span></p>`
-      : `<p class="verdict bad">✗ “${esc(typed)}”</p><p class="score">+0.00</p><p class="hint">${esc(hint ?? '')}</p>`;
+      : `<p class="verdict bad"><s>“${esc(typed)}”</s></p><p class="stamp">Launch cancelled</p><p class="score">+0.00</p><p class="hint">${esc(hint ?? '')}</p>`;
     app.root.innerHTML = `${header(title)}
       <section class="card dive ${matched ? 'hit' : 'miss'}">
-        ${top(index + 1, index, session()?.depth ?? 0, prompt.mode)}
-        <h2 class="prompt">${esc(prompt.text)}</h2>
-        ${prompt.detail ? `<p class="detail">${esc(prompt.detail)}</p>` : ''}
-        ${body}
-        <h3 class="boardtitle">All valid answers</h3>
-        <ul class="board">${board}</ul>
-        ${prompt.fact ? `<p class="fact"><strong>Briefing.</strong> ${esc(prompt.fact)}</p>` : ''}
-        <button class="btn primary" id="next">${last ? 'See results' : 'Next prompt'}</button>
+        ${meta(index + 1, depthAfter, prompt.mode)}
+        <div class="dive-grid">
+          ${shaftHtml(shaftPosition(depthBefore, total), tierIndex(depthBefore, total))}
+          <div class="dive-main">
+            <h2 class="prompt">${esc(prompt.text)}</h2>
+            ${prompt.detail ? `<p class="detail">${esc(prompt.detail)}</p>` : ''}
+            ${body}
+            <h3 class="boardtitle">All valid answers</h3>
+            <ul class="board">${board}</ul>
+            ${prompt.fact ? `<p class="fact"><strong>Briefing.</strong> ${esc(prompt.fact)}</p>` : ''}
+            <button class="btn primary" id="next">${last ? 'See results' : 'Next prompt'}</button>
+          </div>
+        </div>
       </section>`;
 
-    // Launch the missile: it starts at the old position, then flies to the new one.
-    const mk = app.root.querySelector<HTMLElement>('.mk')!;
-    requestAnimationFrame(() => requestAnimationFrame(() => { mk.style.left = `${((index + 1) / total) * 100}%`; mk.classList.add('flying'); }));
-
     const card = app.root.querySelector<HTMLElement>('.card')!;
+    const mk = app.root.querySelector<HTMLElement>('.shaft-mk')!;
     const scoreEl = app.root.querySelector<HTMLElement>('#score');
+
     if (matched && scoreEl) {
+      // Correct: the missile dives down the shaft by the rarity it earned.
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        mk.style.top = `${shaftPosition(depthAfter, total) * 100}%`;
+        mk.classList.add('diving');
+      }));
       countUp(scoreEl, score, { prefix: '+', delay: 350 });
       play(score >= 0.8 ? 'rare' : 'hit');
       if (score >= 0.5) setTimeout(() => burst(card, scoreEl, score >= 0.8 ? 26 : 14, score >= 0.8 ? 'var(--gold)' : 'var(--accent)'), 450);
+
+      const arrived = crossedTier(depthBefore, depthAfter, total);
+      if (arrived !== null) setTimeout(() => arrive(card, arrived), 1000);
     } else {
+      // Wrong: the launch is cancelled. The missile aborts where it is and the answer is struck out.
+      mk.classList.add('abort');
       play('miss');
     }
     on(app.root, '#next', ask);
     app.root.querySelector<HTMLButtonElement>('#next')!.focus();
+  }
+
+  /** Banner when the missile reaches a deeper airfield. */
+  function arrive(card: HTMLElement, tierIdx: number): void {
+    if (!card.isConnected) return;
+    const t = TIERS[tierIdx];
+    card.querySelectorAll<HTMLElement>('.shaft li').forEach((li) => { if (Number(li.dataset.i) <= tierIdx) li.classList.add('reached'); });
+    const el = document.createElement('div');
+    el.className = 'arrival';
+    el.innerHTML = `<span class="aflag">${t.flag}</span><div><div class="alabel">Arrived</div><div class="aname">${esc(t.name)}</div><div class="afield">${esc(t.airfield)}, ${esc(t.country)}</div></div>`;
+    card.appendChild(el);
+    play('tier');
+    burst(card, el, 20, 'var(--gold)');
+    setTimeout(() => el.remove(), 3200);
   }
 
   ask();

@@ -51,9 +51,6 @@ input:focus { outline: 2px solid var(--accent); }
 .chip { border: 1px solid var(--line); background: var(--panel); border-radius: 99px; padding: 4px 12px; font-size: .85rem; color: var(--muted); }
 .chip strong { color: var(--text); font-variant-numeric: tabular-nums; }
 .btn.danger { color: var(--bad); border-color: #5a2a2a; }
-.track { position: relative; height: 22px; margin: 4px 0 8px; border-bottom: 1px dashed var(--line); }
-.track .mk { position: absolute; top: -6px; transform: translateX(-50%); transition: left .5s ease; }
-.track .missile { height: 28px; width: auto; color: var(--accent); transform: rotate(-90deg); }
 .boardtitle { font-size: .8rem; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); margin: 16px 0 6px; }
 .board { list-style: none; padding: 0; margin: 0 0 16px; }
 .board li { display: grid; grid-template-columns: minmax(80px, 1.2fr) 2fr 3em; gap: 8px; align-items: center; padding: 4px 6px; border-radius: 6px; font-size: .9rem; }
@@ -96,11 +93,8 @@ body::before { content: ''; position: fixed; left: 50%; top: 30vh; width: 120vma
 @keyframes hover { 0%, 100% { translate: 0 0; } 50% { translate: 4px 0; } }
 
 /* dive: missile flight, exhaust trail, hit/miss feedback */
-.track .mk.flying { transition: left .9s cubic-bezier(.3,.1,.2,1); }
-.track .mk.flying::before { content: ''; position: absolute; right: 100%; top: 50%; width: 46px; height: 3px; transform: translateY(-50%); background: linear-gradient(90deg, transparent, #ffd16699, var(--accent)); border-radius: 3px; animation: trail .9s ease-out both; }
-@keyframes trail { from { opacity: 1; } to { opacity: 0; } }
 .card.hit .verdict { animation: pop .45s cubic-bezier(.3,1.6,.5,1) both; }
-#app > .card.miss { animation: rise .45s both, shake .45s .1s both, flash .6s .1s both; }
+#app > .card.miss { animation: rise .45s both, flash .6s .1s both; }
 @keyframes pop { from { transform: scale(.7); opacity: 0; } to { transform: none; opacity: 1; } }
 @keyframes shake { 20% { transform: translateX(-8px); } 40% { transform: translateX(7px); } 60% { transform: translateX(-5px); } 80% { transform: translateX(3px); } }
 @keyframes flash { 0% { box-shadow: 0 0 0 0 #ff6b6b00; } 20% { box-shadow: 0 0 22px 2px #ff6b6b66; } 100% { box-shadow: 0 0 0 0 #ff6b6b00; } }
@@ -135,3 +129,43 @@ body::before { content: ''; position: fixed; left: 50%; top: 30vh; width: 120vma
 }
 
 .detail { margin: -8px 0 16px; color: var(--muted); font-size: .9rem; }
+
+/* --- v4: vertical descent shaft --- */
+.dive-grid { display: grid; grid-template-columns: 128px 1fr; gap: 14px; align-items: start; margin-top: 6px; }
+.dive-main { min-width: 0; }
+.dive-main .prompt { margin-top: 4px; font-size: 1.25rem; }
+.shaft { position: sticky; top: 12px; height: min(420px, calc(100vh - 24px)); border-radius: 10px; overflow: hidden;
+  background: linear-gradient(180deg, #1c4a5c 0%, #123241 35%, #0b1b26 70%, #050c12 100%); border: 1px solid var(--line); }
+.shaft-inner { position: absolute; inset: 28px 0; }
+.shaft-line { position: absolute; left: 20px; top: -28px; bottom: -28px; width: 2px; background: linear-gradient(180deg, #3fd0c955, #3fd0c922); }
+.shaft ul { list-style: none; margin: 0; padding: 0; }
+.shaft li { position: absolute; left: 0; right: 0; transform: translateY(-50%); display: flex; align-items: center; gap: 5px; padding-left: 34px; padding-right: 4px; opacity: .45; transition: opacity .4s; }
+.shaft li::before { content: ''; position: absolute; left: 14px; width: 14px; height: 2px; background: var(--muted); }
+.shaft li.reached { opacity: 1; }
+.shaft li.reached::before { background: var(--accent); box-shadow: 0 0 8px var(--accent); }
+.shaft .sflag { font-size: 1rem; line-height: 1; }
+.shaft .sname { font-size: .58rem; line-height: 1.1; letter-spacing: 0; text-transform: uppercase; color: var(--text); }
+.shaft-mk { position: absolute; left: 21px; transform: translate(-50%, -50%); width: 22px; z-index: 3; transition: none; }
+.shaft-mk .missile { height: 44px; width: auto; display: block; color: var(--accent); filter: drop-shadow(0 0 6px #3fd0c9aa); }
+.shaft-mk.diving { transition: top 1.1s cubic-bezier(.3,.1,.2,1); }
+.shaft-mk.diving::before { content: ''; position: absolute; left: 50%; bottom: 100%; width: 3px; height: 54px; transform: translateX(-50%); background: linear-gradient(0deg, #ffd166aa, transparent); border-radius: 3px; animation: trail 1.1s ease-out both; }
+@keyframes trail { from { opacity: 1; } to { opacity: 0; } }
+/* cancelled launch: the missile sputters, tilts and a red X stamps over it */
+.shaft-mk.abort .missile { color: var(--bad); animation: abort .9s ease-out both; filter: drop-shadow(0 0 6px #ff6b6baa); }
+.shaft-mk.abort::after { content: '✕'; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); font-size: 2rem; font-weight: 700; color: var(--bad); text-shadow: 0 0 10px #ff6b6b; animation: stampx .5s .25s cubic-bezier(.3,1.8,.5,1) both; }
+@keyframes abort { 0% { transform: none; opacity: 1; } 25% { transform: rotate(-14deg) translateY(2px); } 45% { transform: rotate(10deg); opacity: .5; } 60% { opacity: 1; } 100% { transform: rotate(6deg); opacity: .55; } }
+@keyframes stampx { from { transform: translate(-50%, -50%) scale(3); opacity: 0; } to { transform: translate(-50%, -50%) scale(1); opacity: 1; } }
+.verdict s { text-decoration-thickness: 3px; text-decoration-color: var(--bad); opacity: .85; }
+.stamp { display: inline-block; margin: 0 0 6px; padding: 3px 12px; border: 2px solid var(--bad); border-radius: 6px; color: var(--bad); font-weight: 700; letter-spacing: .14em; text-transform: uppercase; font-size: .8rem; transform: rotate(-4deg); animation: stampin .45s .2s cubic-bezier(.3,1.8,.5,1) both; }
+@keyframes stampin { from { transform: rotate(-4deg) scale(2.4); opacity: 0; } to { transform: rotate(-4deg) scale(1); opacity: 1; } }
+/* arriving at a deeper airfield */
+.arrival { position: fixed; left: 50%; bottom: 18px; transform: translateX(-50%); z-index: 8; display: flex; align-items: center; gap: 14px; padding: 14px 20px; width: max-content; max-width: 92%;
+  background: linear-gradient(135deg, #0f2f3a, #123f4a); border: 1px solid var(--gold); border-radius: 12px; box-shadow: 0 10px 40px #000a, 0 0 30px #ffd16655; animation: arrive .6s cubic-bezier(.2,1.4,.4,1) both, leave .5s 2.6s ease-in both; }
+.arrival .aflag { font-size: 2.4rem; line-height: 1; }
+.arrival .alabel { font-size: .7rem; letter-spacing: .2em; text-transform: uppercase; color: var(--gold); }
+.arrival .aname { font-size: 1.3rem; font-weight: 700; }
+.arrival .afield { font-size: .85rem; color: var(--muted); }
+@keyframes arrive { from { opacity: 0; transform: translate(-50%, 30px) scale(.85); } to { opacity: 1; transform: translate(-50%, 0) scale(1); } }
+@keyframes leave { to { opacity: 0; transform: translate(-50%, 14px); } }
+@media (max-width: 380px) { .dive-grid { grid-template-columns: 112px 1fr; gap: 10px; } }
+.dive-main .board li { grid-template-columns: minmax(70px, 1.5fr) 1fr 2.6em; gap: 6px; font-size: .85rem; }

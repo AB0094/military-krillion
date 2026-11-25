@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { MIN_CROWD, rarity, rarityLabel, TIERS, tierFor, tierIndex, totalDepth } from './scoring';
+import { MIN_CROWD, crossedTier, rarity, rarityLabel, shaftPosition, TIERS, tierFor, tierIndex, totalDepth } from './scoring';
 import type { Answer } from './types';
 
 const a: Answer = { name: 'Su-25', aliases: [], weight: 0.1 };
@@ -52,5 +52,21 @@ describe('rarityLabel', () => {
     expect([0.1, 0.3, 0.55, 0.9].map(rarityLabel)).toEqual(['Common', 'Uncommon', 'Rare', 'Ultra rare']);
     expect(rarityLabel(0.8)).toBe('Ultra rare');
     expect(rarityLabel(0.25)).toBe('Uncommon');
+  });
+});
+
+describe('descent shaft', () => {
+  it('positions the missile by running average rarity, clamped', () => {
+    expect(shaftPosition(0)).toBe(0);
+    expect(shaftPosition(3.5)).toBeCloseTo(0.5);
+    expect(shaftPosition(99)).toBe(1);
+    expect(shaftPosition(-1)).toBe(0);
+  });
+  it('reports a tier only when a deeper airfield is reached', () => {
+    expect(crossedTier(0, 0.9)).toBeNull(); // still Chocks Away
+    expect(crossedTier(1.0, 1.5)).toBe(1); // crosses 20% of 7 = 1.4 into Hot Pit
+    expect(crossedTier(1.5, 2.0)).toBeNull();
+    expect(crossedTier(1.0, 5.7)).toBe(5); // can skip several tiers at once
+    expect(crossedTier(3, 2)).toBeNull(); // never "goes back"
   });
 });
