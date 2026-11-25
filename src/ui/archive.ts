@@ -1,7 +1,8 @@
 import { previousDates } from '../logic/seed';
 import { resetSession, sessionKey } from '../logic/progress';
 import { MODES, type Mode } from '../logic/types';
-import { fmt, header, on, type App } from './dom';
+import { header, on, type App } from './dom';
+import { depthMeters, formatMeters } from '../logic/scoring';
 
 const DAYS = 30;
 
@@ -10,7 +11,7 @@ export function renderArchive(app: App): void {
   const rows = previousDates(app.today, DAYS).map((date) => {
     const buttons = MODES.map((mode) => {
       const s = state.sessions[sessionKey(date, mode, true)];
-      const label = s?.complete ? `${mode} · ${fmt(s.depth)}` : mode;
+      const label = s?.complete ? `${mode} · ${formatMeters(depthMeters(s.depth))}` : mode;
       return `<button class="btn small-btn" data-date="${date}" data-mode="${mode}">${label}</button>`;
     }).join('');
     return `<li><span class="date">${date}</span><span class="row">${buttons}</span></li>`;

@@ -1,14 +1,15 @@
 import { PROMPTS } from '../data';
 import { dailySet } from '../logic/seed';
 import { getSession, submitAnswer, type PlayContext } from '../logic/progress';
-import { MIN_CROWD, TIERS, crossedTier, rarity, rarityLabel, shaftPosition, tierIndex } from '../logic/scoring';
+import { MIN_CROWD, TIERS, crossedTier, depthMeters, depthPoints, formatMeters, rarity, rarityLabel, rarityRank, shaftPosition, tierIndex, tierMeters } from '../logic/scoring';
 import { START_LIVES } from '../logic/endless';
 import { QUESTION_SECONDS, isLow, secondsLeft } from '../logic/timer';
 import type { AnswerRecord, AnswerStats, Prompt } from '../logic/types';
-import { esc, fmt, on, runTitle, type App, type View } from './dom';
+import { esc, on, runTitle, type App, type View } from './dom';
 import { burst, countUp, reducedMotion } from './fx';
 import { timerEnabled } from './prefs';
-import { SURFACE_Y, WORLD_H, camFor, missileY, worldHtml, type Theme } from './scene';
+import { playExplosion, shockwave, smokeColumns, wreckage } from './explosion';
+import { SPAN, SURFACE_Y, WORLD_H, camFor, missileY, worldHtml, type Theme } from './scene';
 import { play } from './sound';
 import { missileSprite, samSprite } from './sprites';
 
@@ -34,7 +35,6 @@ export interface Outcome {
   lives: number;
   streak: number;
   lostLife: boolean;
-  gainedLife: boolean;
   over: boolean;
 }
 
@@ -71,7 +71,7 @@ export function renderDive(app: App, v: DiveView): void {
     submit(input, timedOut) {
       const r = submitAnswer(app.getState(), ctx, input, { timedOut });
       app.setState(r.state);
-      return { depth: r.session.depth, answers: r.session.answers, record: r.record, hint: r.hint, lives: START_LIVES, streak: 0, lostLife: false, gainedLife: false, over: r.session.complete };
+      return { depth: r.session.depth, answers: r.session.answers, record: r.record, hint: r.hint, lives: START_LIVES, streak: 0, lostLife: false, over: r.session.complete };
     },
     crowd: (id) => app.getState().crowd[id],
     finish: () => app.go({ name: 'results', mode: v.mode, date: v.date, archive: v.archive }, true),
@@ -88,12 +88,13 @@ export function runScene(app: App, game: Game, wantIntro: boolean): void {
   app.root.innerHTML = `<div class="dv ${game.theme}${intro ? ' intro' : ''}" id="dv">
     <div class="dv-view">
       <div class="dv-far" style="top:${game.theme === 'sea' ? SURFACE_Y : 0}px;height:${Math.round(WORLD_H * 0.62)}px"></div>
-      <div class="dv-world" style="height:${WORLD_H}px;--sy:${SURFACE_Y}px">${worldHtml(game.seedKey, game.theme)}</div>
+      <div class="dv-world" style="height:${WORLD_H}px;--sy:${SURFACE_Y}px;--tick:${Math.round(SPAN / (game.scale * 2))}px">${worldHtml(game.seedKey, game.theme, game.scale)}</div>
     </div>
     <div class="scan"></div><div class="dv-vig"></div>
     <div class="hud">
       <button class="hud-btn" id="home" aria-label="Home">≡</button>
-      <div class="hud-panel"><span class="lbl">Depth</span><b id="hd">0.00</b></div>
+      <div class="hud-panel"><span class="lbl">Depth</span><b id="hd">0m</b></div>
+      <div class="hud-panel hud-score"><span class="lbl">Score</span><b id="hs">0</b></div>
       <div class="hud-mid">${game.endless ? '<div class="lives" id="lives" aria-label="Missiles left"></div>' : '<div class="pips" id="pips" aria-hidden="true"></div>'}<span class="lbl" id="plabel"></span></div>
       <div class="hud-panel hud-tier"><span class="lbl">Airfield</span><b id="ht"></b></div>
     </div>
@@ -127,7 +128,8 @@ export function runScene(app: App, game: Game, wantIntro: boolean): void {
 
   function hud(d: number, answers: readonly AnswerRecord[], index: number, lives: number, streak: number): void {
     if (!dv.isConnected) return; // delayed updates must not run after the player has left this screen
-    $('#hd').textContent = fmt(d);
+    $('#hd').textContent = formatMeters(depthMeters(d));
+    $('#hs').textContent = String(depthPoints(d));
     if (game.endless) {
       $('#lives').innerHTML = Array.from({ length: START_LIVES }, (_, i) => `<i class="life${i < lives ? '' : ' lost'}">${missileSprite()}</i>`).join('');
       $('#plabel').textContent = `${game.title} · question ${index + 1} · streak ${streak}`;
@@ -138,7 +140,7 @@ export function runScene(app: App, game: Game, wantIntro: boolean): void {
     }
     const idx = tierIndex(d, game.scale);
     $('#ht').textContent = `${TIERS[idx].flag} ${TIERS[idx].name}`;
-    world.querySelectorAll<HTMLElement>('.gauge li').forEach((li) => li.classList.toggle('reached', Number(li.dataset.i) <= idx));
+    world.querySelectorAll<HTMLElement>('.gauge li[data-i]').forEach((li) => li.classList.toggle('reached', Number(li.dataset.i) <= idx));
   }
 
   // ---------- small effects ----------
@@ -194,7 +196,18 @@ export function runScene(app: App, game: Game, wantIntro: boolean): void {
     setTimeout(() => el.remove(), 700);
   }
 
-  /** A hostile missile streaks in from a bottom corner. `miss` flies past; `hit` strikes the HARM. */
+  /** Enemy radar lock: the screen goes red, a warning shows and an alarm sounds before any missile is launched. */
+  function lockWarning(): void {
+    play('alarm');
+    dv.classList.add('alert');
+    const el = document.createElement('div');
+    el.className = 'lockwarn';
+    el.textContent = 'Missile lock';
+    dv.appendChild(el);
+    setTimeout(() => { dv.classList.remove('alert'); el.remove(); }, 1100);
+  }
+
+  /** A hostile missile streaks in from a bottom corner, leaving smoke. `miss` flies past; `hit` strikes the HARM. */
   function samFlight(kind: 'miss' | 'hit', delay: number, onHit?: () => void): void {
     if (reducedMotion()) { if (kind === 'hit') setTimeout(() => onHit?.(), delay); return; }
     const W = dv.clientWidth;
@@ -208,8 +221,8 @@ export function runScene(app: App, game: Game, wantIntro: boolean): void {
     const uy = (ty - sy) / len;
     let ex = tx;
     let ey = ty;
+    const side = fromLeft ? 1 : -1;
     if (kind === 'miss') {
-      const side = fromLeft ? 1 : -1;
       const off = 190 + Math.random() * 70; // the path deviates by `off` 900px past the HARM, so the closest pass is ~70-120px
       ex = tx + -uy * off * side + ux * 900;
       ey = ty + ux * off * side + uy * 900;
@@ -225,31 +238,50 @@ export function runScene(app: App, game: Game, wantIntro: boolean): void {
       { transform: `translate(${ex}px,${ey}px) translate(-50%,-50%) rotate(${ang}deg)` },
     ], { delay, duration: dur, easing: 'cubic-bezier(.45,0,.9,.6)', fill: 'both' });
     a.onfinish = () => { el.remove(); if (kind === 'hit') onHit?.(); };
+
+    // smoke puffs dropped along the flight path
+    const puffs = 14;
+    for (let i = 1; i <= puffs; i++) {
+      const f = i / puffs;
+      setTimeout(() => {
+        if (!dv.isConnected) return;
+        const q = document.createElement('i');
+        q.className = 'trail';
+        q.style.cssText = `left:${sx + (ex - sx) * f * f}px;top:${sy + (ey - sy) * f * f}px`;
+        dv.appendChild(q);
+        setTimeout(() => q.remove(), 900);
+      }, delay + dur * f);
+    }
+
     if (kind === 'miss') {
+      // proximity fuse: the warhead detonates as it passes, close enough to rattle the HARM but not hit it
       const closest = delay + dur * (len / (len + 900)) * 1.12;
       setTimeout(() => {
         if (!dv.isConnected) return;
         const now = target();
-        const puff = document.createElement('i');
-        puff.className = 'flak';
-        puff.style.cssText = `left:${now.x + -uy * (fromLeft ? 1 : -1) * 78}px;top:${now.y + ux * (fromLeft ? 1 : -1) * 78}px`;
-        dv.appendChild(puff);
-        setTimeout(() => puff.remove(), 700);
+        const px = now.x + -uy * side * 84;
+        const py = now.y + ux * side * 84;
+        playExplosion(dv, px, py, { px: 4, frames: 9, size: 17, seed: 11 + Math.floor(Math.random() * 40) });
+        shockwave(dv, px, py, 70);
       }, closest);
     }
   }
 
   function nearMiss(): void {
-    play('whoosh');
-    samFlight('miss', 0);
-    samFlight('miss', 320);
+    lockWarning();
+    setTimeout(() => {
+      if (!dv.isConnected) return;
+      play('whoosh');
+      samFlight('miss', 0);
+      samFlight('miss', 340);
+    }, 950);
     setTimeout(() => {
       if (!dv.isConnected) return;
       shake(600, false);
       mk.classList.add('wobble');
       setTimeout(() => mk.classList.remove('wobble'), 900);
       pop('Near miss!', true);
-    }, 700);
+    }, 1750);
   }
 
   function explode(done: () => void): void {
@@ -257,43 +289,34 @@ export function runScene(app: App, game: Game, wantIntro: boolean): void {
     const { x, y } = target();
     play('boom');
     flash();
-    shake(1000, true);
-    const ball = document.createElement('i');
-    ball.className = 'fireball';
-    ball.style.cssText = `left:${x}px;top:${y}px`;
-    dv.appendChild(ball);
-    setTimeout(() => ball.remove(), 1100);
+    shake(1100, true);
+    shockwave(dv, x, y, 60);
+    setTimeout(() => shockwave(dv, x, y, 40), 140);
+    playExplosion(dv, x, y, { px: 9, frames: 14, size: 27, seed: 3 });
     burstAt(x, y, 36, '#ffffff');
-    burstAt(x, y, 36, 'var(--gold)');
-    burstAt(x, y, 30, 'var(--pink)');
-    if (!reducedMotion()) {
-      for (let i = 0; i < 12; i++) {
-        const d = document.createElement('i');
-        d.className = 'deb';
-        d.style.cssText = `left:${x}px;top:${y}px`;
-        dv.appendChild(d);
-        const vx = (Math.random() - 0.5) * 320;
-        const vy = 60 + Math.random() * 190;
-        d.animate([
-          { transform: 'translate(0,0)', opacity: 1 },
-          { transform: `translate(${vx * 0.5}px,${-vy}px)`, opacity: 1, offset: 0.35 },
-          { transform: `translate(${vx}px,${dv.clientHeight - y + 40}px)`, opacity: 0.2 },
-        ], { duration: 1500, easing: 'ease-in' }).onfinish = () => d.remove();
-      }
-    }
+    burstAt(x, y, 40, 'var(--gold)');
+    burstAt(x, y, 32, 'var(--pink)');
+    setTimeout(() => { if (dv.isConnected) { playExplosion(dv, x - 70, y + 50, { px: 5, frames: 10, size: 21, seed: 21 }); burstAt(x - 70, y + 50, 14, 'var(--gold)'); } }, 260);
+    setTimeout(() => { if (dv.isConnected) { playExplosion(dv, x + 60, y - 40, { px: 5, frames: 10, size: 21, seed: 34 }); burstAt(x + 60, y - 40, 14, 'var(--gold)'); } }, 420);
+    wreckage(dv, x, y, dv.clientHeight);
+    smokeColumns(dv, x, y);
     mk.classList.add('gone');
     const banner = document.createElement('div');
     banner.className = 'intercepted';
     banner.textContent = 'Intercepted';
     dv.appendChild(banner);
-    setTimeout(() => banner.remove(), 2600);
-    setTimeout(done, 1500);
+    setTimeout(() => banner.remove(), 2800);
+    setTimeout(done, 1700);
   }
 
   function intercept(done: () => void): void {
-    play('whoosh');
-    samFlight('miss', 0);
-    samFlight('hit', 480, () => explode(done));
+    lockWarning();
+    setTimeout(() => {
+      if (!dv.isConnected) return;
+      play('whoosh');
+      samFlight('miss', 0);
+      samFlight('hit', 520, () => explode(done));
+    }, 950);
   }
 
   // ---------- the 20-second timer ----------
@@ -370,24 +393,23 @@ export function runScene(app: App, game: Game, wantIntro: boolean): void {
     const board = [...prompt.answers]
       .map((a) => ({ a, r: rarity(a, crowdBefore, MIN_CROWD) }))
       .sort((x, y) => y.r - x.r)
-      .map(({ a, r }, i) => `<li class="${a.name === matched ? 'mine' : ''}" style="--i:${i}"><span class="bn">${esc(a.name)}</span><span class="bar"><i style="--w:${Math.round(r * 100)}%"></i></span><b>${fmt(r)}</b></li>`)
+      .map(({ a, r }, i) => `<li class="${a.name === matched ? 'mine' : ''}" style="--i:${i}"><span class="bn">${esc(a.name)}</span><span class="bar"><i style="--w:${Math.round(r * 100)}%"></i></span><b>${Math.round(r * 100)}</b></li>`)
       .join('');
 
     let body: string;
     if (matched) {
-      body = `<p class="verdict good">✓ ${esc(matched)} <span class="badge badge-${label.toLowerCase().replace(' ', '-')}">${label}</span></p>${out.record.corrected ? `<p class="muted small">Spelling corrected: you typed “${esc(typed)}”.</p>` : ''}<p class="score"><span id="score">+0.00</span> <span class="muted">rarity</span></p>`;
+      body = `<p class="verdict good">✓ ${esc(matched)} <span class="badge badge-r${rarityRank(score)}">${label}</span></p>${out.record.corrected ? `<p class="muted small">Spelling corrected: you typed “${esc(typed)}”.</p>` : ''}<p class="score"><span id="score">+0</span> <span class="muted">points</span> <span class="meters" id="metres">+0m</span></p>`;
     } else {
       const head = timedOut
         ? '<p class="verdict bad">⏱ Time\'s up</p><p class="stamp">Out of time</p>'
         : `<p class="verdict bad"><s>“${esc(typed)}”</s></p><p class="stamp">${game.endless ? 'Wrong answer' : 'Launch cancelled'}</p>`;
-      body = `${head}<p class="score">+0.00</p><p class="hint">${esc(out.hint ?? '')}</p>`;
+      body = `${head}<p class="score">+0 <span class="muted">points</span> <span class="meters">+0m</span></p><p class="hint">${esc(out.hint ?? '')}</p>`;
     }
     if (game.endless) {
       const n = out.lives;
       if (out.over) body += '<p class="lifeline danger">Last missile lost. Your HARM was intercepted.</p>';
       else if (out.lostLife) body += `<p class="lifeline danger">Near miss! ${n} HARM${n === 1 ? '' : 's'} left.</p>`;
-      else if (out.gainedLife) body += `<p class="lifeline good">Resupply: +1 HARM after ${out.streak} in a row.</p>`;
-      else if (matched && out.streak > 1) body += `<p class="lifeline">${out.streak} in a row. ${5 - (out.streak % 5)} more for a resupply.</p>`;
+      else if (matched && out.streak > 1) body += `<p class="lifeline">${out.streak} in a row.</p>`;
     }
 
     panel.className = `dv-panel px swap ${matched ? 'hit' : 'miss'}`;
@@ -415,13 +437,14 @@ export function runScene(app: App, game: Game, wantIntro: boolean): void {
       const y1 = missileY(shaftPosition(out.depth, game.scale));
       place(out.depth, true);
       bubbles(y0, y1);
-      pop(`+${fmt(score)}`);
+      pop(`+${Math.round(score * 100)}`);
       const scoreEl = $<HTMLElement>('#score');
-      countUp(scoreEl, score, { prefix: '+', delay: 350 });
+      const pts = Math.round(score * 100);
+      countUp(scoreEl, pts, { prefix: '+', delay: 350, decimals: 0 });
+      countUp($<HTMLElement>('#metres'), pts * 10, { prefix: '+', delay: 350, decimals: 0, suffix: 'm' });
       play(score >= 0.8 ? 'rare' : 'hit');
       if (score >= 0.5) setTimeout(() => dv.isConnected && burst(panel, scoreEl, score >= 0.8 ? 26 : 14, score >= 0.8 ? 'var(--gold)' : 'var(--accent)'), 450);
       setTimeout(after, MOVE_MS * 0.6);
-      if (out.gainedLife) setTimeout(() => { if (dv.isConnected) { play('gain'); pop('+1 HARM'); } }, 700);
       const arrived = crossedTier(before.depth, out.depth, game.scale);
       if (arrived !== null) setTimeout(() => arrive(arrived), MOVE_MS);
       depth = out.depth;
@@ -450,7 +473,7 @@ export function runScene(app: App, game: Game, wantIntro: boolean): void {
     const t = TIERS[tierIdx];
     const el = document.createElement('div');
     el.className = 'arrival px';
-    el.innerHTML = `<span class="aflag">${t.flag}</span><div><div class="alabel">Arrived</div><div class="aname">${esc(t.name)}</div><div class="afield">${esc(t.airfield)}, ${esc(t.country)}</div></div>`;
+    el.innerHTML = `<span class="aflag">${t.flag}</span><div><div class="alabel">Arrived</div><div class="aname">${esc(t.name)}</div><div class="afield">${esc(t.airfield)}, ${esc(t.country)}</div><div class="ameters">${formatMeters(tierMeters(tierIdx, game.scale))}</div></div>`;
     dv.appendChild(el);
     play('tier');
     burst(dv, el, 22, 'var(--gold)');
@@ -468,8 +491,9 @@ export function runScene(app: App, game: Game, wantIntro: boolean): void {
     const tx = mk.offsetLeft;
     const y0 = missileY(0);
     const releaseY = Math.max(64, SURFACE_Y * 0.34);
-    const deckX = sea ? ship!.offsetLeft + ship!.offsetWidth * 0.18 : -jw;
-    const deckY = sea ? ship!.offsetTop + 24 - jh + 6 : releaseY + 50;
+    const shipPx = sea ? ship!.offsetHeight / 21 : 0; // the carrier sprite is 21 pixel-rows tall
+    const deckX = sea ? ship!.offsetLeft + ship!.offsetWidth * 0.16 : -jw;
+    const deckY = sea ? ship!.offsetTop + shipPx * 10 - jh + shipPx * 1.5 : releaseY + 50;
     const mkDy0 = releaseY + jh + 8 - y0;
     const surfDy = SURFACE_Y - 8 - y0;
     const c = 'translate(-50%,-50%)';

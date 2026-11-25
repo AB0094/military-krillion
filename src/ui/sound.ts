@@ -38,7 +38,7 @@ function noise(at: number, dur: number, vol = 0.08): void {
   src.start(ctx.currentTime + at);
 }
 
-export type Cue = 'launch' | 'hit' | 'rare' | 'miss' | 'tier' | 'splash' | 'tick' | 'whoosh' | 'boom' | 'gain';
+export type Cue = 'launch' | 'hit' | 'rare' | 'miss' | 'tier' | 'splash' | 'tick' | 'whoosh' | 'boom' | 'alarm';
 
 /** Short synthesized cues. Safe to call anywhere: silently does nothing if muted or audio is unavailable. */
 export function play(cue: Cue): void {
@@ -55,7 +55,7 @@ export function play(cue: Cue): void {
       case 'tick': tone(920, 0, 0.05, 'square', 0.025); break;
       case 'whoosh': noise(0, 0.55, 0.05); tone(320, 0, 0.5, 'sawtooth', 0.012); break;
       case 'boom': noise(0, 1.2, 0.2); tone(75, 0, 0.7, 'sawtooth', 0.09); tone(45, 0.05, 0.9, 'sine', 0.12); break;
-      case 'gain': [660, 880, 1320].forEach((f, i) => tone(f, i * 0.09, 0.22, 'triangle', 0.06)); break;
+      case 'alarm': [0, 0.28, 0.56].forEach((t) => { tone(1040, t, 0.12, 'square', 0.03); tone(780, t + 0.13, 0.12, 'square', 0.03); }); break;
       case 'tier': [392, 523, 659, 784, 1047].forEach((f, i) => tone(f, i * 0.11, 0.35, 'triangle', 0.06)); break;
     }
   } catch { /* audio blocked or unsupported */ }

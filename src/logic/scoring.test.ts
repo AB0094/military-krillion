@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { MIN_CROWD, crossedTier, rarity, rarityLabel, shaftPosition, TIERS, tierFor, tierIndex, totalDepth } from './scoring';
+import { MIN_CROWD, RARITY_NAMES, crossedTier, depthMeters, depthPoints, formatMeters, maxMeters, rarity, rarityLabel, rarityRank, shaftPosition, tierMeters, TIERS, tierFor, tierIndex, totalDepth } from './scoring';
 import type { Answer } from './types';
 
 const a: Answer = { name: 'Su-25', aliases: [], weight: 0.1 };
@@ -47,11 +47,41 @@ describe('tierFor', () => {
   });
 });
 
-describe('rarityLabel', () => {
-  it('uses the share-square cut-offs', () => {
-    expect([0.1, 0.3, 0.55, 0.9].map(rarityLabel)).toEqual(['Common', 'Uncommon', 'Rare', 'Ultra rare']);
-    expect(rarityLabel(0.8)).toBe('Ultra rare');
-    expect(rarityLabel(0.25)).toBe('Uncommon');
+describe('rarity names', () => {
+  it('are security classifications, rarer = more classified', () => {
+    expect(RARITY_NAMES).toEqual(['Unclassified', 'Restricted', 'Confidential', 'Secret', 'Cosmic Top Secret']);
+    expect([0.1, 0.3, 0.55, 0.7, 0.9].map(rarityLabel)).toEqual(['Unclassified', 'Restricted', 'Confidential', 'Secret', 'Cosmic Top Secret']);
+  });
+  it('switch exactly at 20/40/60/80 points', () => {
+    expect([0.19, 0.2, 0.39, 0.4, 0.59, 0.6, 0.79, 0.8, 1].map(rarityRank)).toEqual([0, 1, 1, 2, 2, 3, 3, 4, 4]);
+  });
+});
+
+describe('Krillion scoring: 100 points a round, 10 metres a point', () => {
+  it('a perfect 7-round dive is 700 points and 7,000m', () => {
+    expect(maxMeters(7)).toBe(7000);
+    expect(depthPoints(7)).toBe(700);
+    expect(depthMeters(7)).toBe(7000);
+  });
+  it('converts a depth of summed rarity to points and metres exactly', () => {
+    expect(depthPoints(5.4)).toBe(540);
+    expect(depthMeters(5.4)).toBe(5400);
+    expect(depthMeters(0.9)).toBe(900);
+    expect(depthMeters(0)).toBe(0);
+  });
+  it('formats metres with thousands separators', () => {
+    expect([0, 900, 1400, 5400, 7000, 14000].map(formatMeters)).toEqual(['0m', '900m', '1,400m', '5,400m', '7,000m', '14,000m']);
+  });
+  it('puts each airfield at its tier threshold in metres', () => {
+    expect([0, 1, 2, 3, 4, 5].map((i) => tierMeters(i, 7))).toEqual([0, 1400, 2450, 3500, 4550, 5600]);
+    expect(tierMeters(5, 14)).toBe(11200);
+  });
+  it('rarity from player data is always whole points', () => {
+    for (const given of [0, 1, 2, 3, 7, 10]) {
+      const r = rarity({ name: 'x', aliases: [], weight: 0.5 }, { total: 11, counts: { x: given } });
+      expect(Math.round(r * 100)).toBeCloseTo(r * 100, 9);
+    }
+    expect(rarity({ name: 'x', aliases: [], weight: 0.5 }, { total: 3, counts: { x: 1 } })).toBe(0.67);
   });
 });
 

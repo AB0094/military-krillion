@@ -1,4 +1,4 @@
-import { TIERS } from '../logic/scoring';
+import { TIERS, formatMeters, maxMeters, tierMeters } from '../logic/scoring';
 import { hashString, mulberry32 } from '../logic/seed';
 import { esc } from './dom';
 import { carrierSprite, cloudSprite, fishSprite, jetSprite, missileSprite } from './sprites';
@@ -19,10 +19,22 @@ export function camFor(y: number, viewportH: number, ratio = 0.4): number {
   return Math.max(0, Math.min(WORLD_H - viewportH, y - viewportH * ratio));
 }
 
+/** The depth gauge: a label every 1,000m and one airfield per tier at its threshold in metres. */
+export function gaugeHtml(scale: number): string {
+  const metersToY = (m: number) => Math.round(START_Y + (m / maxMeters(scale)) * SPAN);
+  const km = Array.from({ length: Math.floor(maxMeters(scale) / 1000) }, (_, i) => (i + 1) * 1000)
+    .filter((m) => !TIERS.some((_t, i) => Math.abs(tierMeters(i, scale) - m) < 400))
+    .map((m) => `<li class="km" style="top:${metersToY(m)}px"><span class="gl"><small>${formatMeters(m)}</small></span><i class="gt"></i></li>`)
+    .join('');
+  const tiers = TIERS.map((t, i) => `<li data-i="${i}" style="top:${metersToY(tierMeters(i, scale))}px">
+      <span class="gl"><b>${esc(t.name)}</b><small>${esc(t.airfield)} · ${formatMeters(tierMeters(i, scale))}</small></span><span class="gf">${t.flag}</span><i class="gt"></i></li>`).join('');
+  return km + tiers;
+}
+
 /** Everything inside the scrolling world: sky, clouds, carrier, sea life, depth gauge, jet and missile. */
-export function worldHtml(seedKey: string, theme: Theme = 'sea'): string {
+export function worldHtml(seedKey: string, theme: Theme = 'sea', scale = 7): string {
   const rng = mulberry32(hashString(`scene|${seedKey}`));
-  if (theme === 'sky') return skyHtml(rng);
+  if (theme === 'sky') return skyHtml(rng, scale);
   const clouds = Array.from({ length: 5 }, (_, i) => `<span class="w-cloud" style="left:${Math.round(rng() * 90)}%;top:${30 + Math.round(rng() * 130)}px;--d:${60 + Math.round(rng() * 60)}s;--s:${i % 2 ? 1 : 0.7}">${cloudSprite()}</span>`).join('');
 
   const fish = Array.from({ length: 34 }, () => {
@@ -34,15 +46,14 @@ export function worldHtml(seedKey: string, theme: Theme = 'sea'): string {
     return `<span class="w-fish${left ? ' flip' : ''}" style="top:${Math.round(y)}px;left:0;--dur:${dur}s;--delay:-${Math.round(rng() * dur)}s">${fishSprite(Math.floor(rng() * 3), color)}</span>`;
   }).join('');
 
-  const gauge = TIERS.map((t, i) => `<li data-i="${i}" style="top:${Math.round(START_Y + t.min * SPAN)}px">
-      <span class="gl"><b>${esc(t.name)}</b><small>${esc(t.airfield)}</small></span><span class="gf">${t.flag}</span><i class="gt"></i></li>`).join('');
+  const gauge = gaugeHtml(scale);
 
   const sea = `linear-gradient(180deg, #dce9f0 0, #b8d2e0 ${SURFACE_Y}px, #2b7db8 ${SURFACE_Y}px, #1d62a0 ${SURFACE_Y + 500}px, #123f72 ${SURFACE_Y + 1300}px, #0a2750 ${SURFACE_Y + 2200}px, #051530 ${SURFACE_Y + 3000}px, #020b1c 100%)`;
 
   return `<div class="w-bg" style="background:${sea}"></div>
     <div class="w-rays" style="top:${SURFACE_Y}px"></div>
     ${clouds}
-    <div class="w-ship" style="top:calc(${SURFACE_Y}px - 14 * var(--px))">${carrierSprite()}</div>
+    <div class="w-ship" style="top:calc(${SURFACE_Y}px - 19 * var(--px))">${carrierSprite()}</div>
     <div class="w-surface" style="top:${SURFACE_Y - 4}px"></div>
     ${fish}
     <ul class="gauge">${gauge}</ul>
@@ -51,7 +62,7 @@ export function worldHtml(seedKey: string, theme: Theme = 'sea'): string {
 }
 
 /** Endless scene: a descent through open sky that darkens toward the stratosphere, with drifting cloud banks and far-off aircraft. */
-function skyHtml(rng: () => number): string {
+function skyHtml(rng: () => number, scale: number): string {
   const clouds = Array.from({ length: 18 }, () => {
     const y = 40 + rng() * (WORLD_H * 0.82);
     const fade = Math.max(0.3, 1 - y / WORLD_H);
@@ -62,8 +73,7 @@ function skyHtml(rng: () => number): string {
     const dur = 50 + Math.round(rng() * 60);
     return `<span class="w-fish w-plane${rng() < 0.5 ? ' flip' : ''}" style="top:${Math.round(y)}px;--dur:${dur}s;--delay:-${Math.round(rng() * dur)}s">${jetSprite()}</span>`;
   }).join('');
-  const gauge = TIERS.map((t, i) => `<li data-i="${i}" style="top:${Math.round(START_Y + t.min * SPAN)}px">
-      <span class="gl"><b>${esc(t.name)}</b><small>${esc(t.airfield)}</small></span><span class="gf">${t.flag}</span><i class="gt"></i></li>`).join('');
+  const gauge = gaugeHtml(scale);
   const sky = `linear-gradient(180deg, #7cc3f2 0, #5aa6e4 ${SURFACE_Y}px, #3f82cc ${SURFACE_Y + 700}px, #2d5aac ${SURFACE_Y + 1500}px, #26206f ${SURFACE_Y + 2300}px, #130f40 ${SURFACE_Y + 3000}px, #06051c 100%)`;
   return `<div class="w-bg" style="background:${sky}"></div>${clouds}${planes}
     <ul class="gauge sky-gauge">${gauge}</ul>

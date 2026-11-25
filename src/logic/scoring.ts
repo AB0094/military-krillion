@@ -13,7 +13,7 @@ const clamp01 = (n: number) => Math.min(1, Math.max(0, n));
 export function rarity(answer: Answer, stats?: AnswerStats, minPlayers = 1): number {
   if (!stats || stats.total <= 0 || stats.total < minPlayers) return clamp01(answer.weight);
   const given = stats.counts[answer.name] ?? 0;
-  return clamp01(1 - given / stats.total);
+  return clamp01(Math.round((1 - given / stats.total) * 100) / 100); // whole points: rarity is always a multiple of 0.01
 }
 
 /** Depth = sum of rarity scores (wrong answers contribute 0). */
@@ -52,12 +52,36 @@ export function tierFor(depth: number, promptCount = DEFAULT_PROMPT_COUNT): Tier
   return TIERS[tierIndex(depth, promptCount)];
 }
 
-/** Label for a matched answer's rarity; the same cut-offs drive the share squares. */
-export function rarityLabel(score: number): 'Common' | 'Uncommon' | 'Rare' | 'Ultra rare' {
-  if (score >= 0.8) return 'Ultra rare';
-  if (score >= 0.5) return 'Rare';
-  if (score >= 0.25) return 'Uncommon';
-  return 'Common';
+/** Krillion-style scoring: a round is worth up to 100 points, and every point is 10 metres of depth. */
+export const POINTS_PER_ROUND = 100;
+export const METERS_PER_POINT = 10;
+
+/** Points for a depth (sum of rarity). Rarity is a multiple of 0.01, so this is exact. */
+export const depthPoints = (depth: number): number => Math.round(depth * POINTS_PER_ROUND);
+export const depthMeters = (depth: number): number => depthPoints(depth) * METERS_PER_POINT;
+/** Deepest possible: every round a perfect 100 points. 7 rounds = 7,000m. */
+export const maxMeters = (rounds: number = DEFAULT_PROMPT_COUNT): number => rounds * POINTS_PER_ROUND * METERS_PER_POINT;
+export const formatMeters = (m: number): string => `${Math.round(m).toLocaleString('en-US')}m`;
+
+/** The depth, in metres, at which a tier's airfield starts for a run of `rounds` rounds. */
+export function tierMeters(tierIdx: number, rounds: number = DEFAULT_PROMPT_COUNT): number {
+  return Math.round(TIERS[tierIdx].min * maxMeters(rounds));
+}
+
+/** How rare an answer was, named after security classifications: the rarer, the more classified. */
+export const RARITY_NAMES = ['Unclassified', 'Restricted', 'Confidential', 'Secret', 'Cosmic Top Secret'] as const;
+export type RarityName = (typeof RARITY_NAMES)[number];
+const RARITY_CUTOFFS = [0, 0.2, 0.4, 0.6, 0.8];
+
+/** 0..4: index into RARITY_NAMES. Also drives the share squares and badge colours. */
+export function rarityRank(score: number): number {
+  let rank = 0;
+  RARITY_CUTOFFS.forEach((c, i) => { if (score >= c - 1e-9) rank = i; });
+  return rank;
+}
+
+export function rarityLabel(score: number): RarityName {
+  return RARITY_NAMES[rarityRank(score)];
 }
 
 /** Where the missile sits in the descent shaft (0 = top/start, 1 = bottom): the running average rarity. */

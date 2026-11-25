@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { ENDLESS_SCALE, START_LIVES, STREAK_FOR_LIFE, endlessPromptAt, endlessStats, startEndless, submitEndless } from './endless';
+import { ENDLESS_SCALE, START_LIVES, endlessPromptAt, endlessStats, startEndless, submitEndless } from './endless';
 import { emptyState, submitAnswer, type PlayContext } from './progress';
 import { sanitizeState, serializeSave } from './save';
 import { buildEndlessShare } from './share';
@@ -66,17 +66,17 @@ describe('lives', () => {
     expect(last.run.newBest).toEqual({ depth: true, correct: true, streak: true });
     expect(() => answer(last.state, true)).toThrow();
   });
-  it('a streak of five resupplies one missile, never above the maximum', () => {
+  it('lives are never won back, however long the streak', () => {
     let s = play(startEndless(emptyState(), SEED, 'Ground'), [false]);
     expect(s.endless.run!.lives).toBe(2);
-    for (let i = 0; i < STREAK_FOR_LIFE - 1; i++) s = answer(s, true).state;
-    expect(s.endless.run!.lives).toBe(2);
-    const fifth = answer(s, true);
-    expect(fifth.gainedLife).toBe(true);
-    expect(fifth.run.lives).toBe(3);
-    let t = fifth.state;
-    for (let i = 0; i < STREAK_FOR_LIFE; i++) t = answer(t, true).state;
-    expect(t.endless.run!.lives).toBe(3);
+    for (let i = 0; i < 12; i++) {
+      const o = answer(s, true);
+      expect(o.run.lives).toBe(2);
+      expect(o.lostLife).toBe(false);
+      s = o.state;
+    }
+    expect(s.endless.run!.streak).toBe(12);
+    expect(Object.keys(answer(s, false)).includes('gainedLife')).toBe(false);
   });
   it('a miss resets the streak but keeps the best', () => {
     const s = play(startEndless(emptyState(), SEED, 'Ground'), [true, true, true, false]);
@@ -125,6 +125,7 @@ describe('saving and sharing', () => {
     const text = buildEndlessShare(run);
     expect(text).toContain('Endless · Air');
     expect(text).toContain('2/5 answered');
+    expect(text).toMatch(/Depth [\d,]+m · \d+ pts/);
     expect(text).toContain('intercepted');
     expect([...text.split('\n')[3]]).toHaveLength(5);
   });

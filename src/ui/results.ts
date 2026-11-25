@@ -1,10 +1,10 @@
 import { PROMPTS } from '../data';
 import { dailySet } from '../logic/seed';
 import { getSession } from '../logic/progress';
-import { tierFor, tierIndex } from '../logic/scoring';
+import { depthMeters, depthPoints, maxMeters, tierFor, tierIndex } from '../logic/scoring';
 import { buildShareText, scoreSquare } from '../logic/share';
 import { isRunSeed } from '../logic/seed';
-import { esc, fmt, header, modeLabel, on, runTitle, type App, type View } from './dom';
+import { esc, header, modeLabel, on, runTitle, type App, type View } from './dom';
 import { copyText } from './clipboard';
 import { startRun } from './run';
 import { burst, countUp } from './fx';
@@ -27,7 +27,7 @@ export function renderResults(app: App, v: ResultsView): void {
     return `<li class="${a.matched ? 'ok' : 'miss'}"><span class="sq">${scoreSquare(a)}</span>
       <div><div class="q">${esc(prompt?.text ?? a.promptId)}</div>
       <div class="a">${a.matched ? `<strong>${esc(a.matched)}</strong>` : `<s>${esc(a.input)}</s>`}</div></div>
-      <span class="pts">${fmt(a.score)}</span></li>`;
+      <span class="pts">${Math.round(a.score * 100)}</span></li>`;
   }).join('');
 
   const entry = !v.archive && v.mode === 'Ranked' ? state.rankedHistory.find((h) => h.date === v.date) : undefined;
@@ -38,12 +38,13 @@ export function renderResults(app: App, v: ResultsView): void {
   app.root.innerHTML = `${header(runTitle(v))}
     <section class="card result">
       <p class="muted">Final depth</p>
-      <p class="depth" id="depth">0.00</p>
+      <p class="depth" id="depth">0m</p>
+      <p class="muted">${depthPoints(session.depth)} / ${maxMeters(session.answers.length) / 10} points</p>
       <p class="tier">${esc(tier.name)}</p>
       <p class="field">${tier.flag} ${esc(tier.airfield)}, ${esc(tier.country)}</p>
       <p class="muted small">${esc(tier.blurb)}</p>
       ${rating}
-      ${ladderHtml(idx, idx)}
+      ${ladderHtml(idx, idx, session.answers.length)}
       <ol class="answers">${rows}</ol>
       <pre class="share" id="share-text">${esc(text)}</pre>
       <div class="row">${run ? `<button class="btn primary" id="again">Dive again ∞</button>` : ''}<button class="btn${run ? '' : ' primary'}" id="share">Copy share text</button><button class="btn" id="home">Home</button></div>
@@ -52,7 +53,7 @@ export function renderResults(app: App, v: ResultsView): void {
 
   const card = app.root.querySelector<HTMLElement>('.card')!;
   const depthEl = app.root.querySelector<HTMLElement>('#depth')!;
-  countUp(depthEl, session.depth, { ms: 1200 });
+  countUp(depthEl, depthMeters(session.depth), { ms: 1300, decimals: 0, suffix: 'm' });
   setTimeout(() => {
     play(idx >= 3 ? 'tier' : 'hit');
     if (idx >= 2) burst(card, depthEl, 12 + idx * 6, idx >= 5 ? 'var(--gold)' : 'var(--accent)');

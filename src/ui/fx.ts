@@ -1,9 +1,9 @@
 export const reducedMotion = (): boolean => window.matchMedia?.('(prefers-reduced-motion: reduce)').matches ?? false;
 
 /** Animates a number inside `el` from 0 to `to` (e.g. "+0.90"). Skips straight to the end for reduced motion. */
-export function countUp(el: HTMLElement, to: number, opts: { ms?: number; prefix?: string; delay?: number } = {}): void {
-  const { ms = 700, prefix = '', delay = 0 } = opts;
-  const show = (v: number) => { el.textContent = `${prefix}${v.toFixed(2)}`; };
+export function countUp(el: HTMLElement, to: number, opts: { ms?: number; prefix?: string; suffix?: string; delay?: number; decimals?: number } = {}): void {
+  const { ms = 700, prefix = '', suffix = '', delay = 0, decimals = 2 } = opts;
+  const show = (v: number) => { el.textContent = `${prefix}${decimals ? v.toFixed(decimals) : Math.round(v).toLocaleString('en-US')}${suffix}`; };
   if (reducedMotion()) return show(to);
   show(0);
   let start = 0;

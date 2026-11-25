@@ -1,12 +1,10 @@
 import type { AnswerRecord, EndlessRun, Mode } from './types';
-import { tierFor } from './scoring';
+import { depthMeters, depthPoints, formatMeters, rarityRank, tierFor } from './scoring';
+
+const SQUARES = ['⬜', '🟩', '🟦', '🟪', '🟨'];
 
 export function scoreSquare(a: AnswerRecord): string {
-  if (a.matched === null) return '⬛';
-  if (a.score >= 0.8) return '🟪';
-  if (a.score >= 0.5) return '🟦';
-  if (a.score >= 0.25) return '🟩';
-  return '🟨';
+  return a.matched === null ? '⬛' : SQUARES[rarityRank(a.score)];
 }
 
 export function buildShareText(opts: { date: string; mode: Mode; archive: boolean; depth: number; answers: readonly AnswerRecord[]; label?: string }): string {
@@ -14,7 +12,7 @@ export function buildShareText(opts: { date: string; mode: Mode; archive: boolea
   const tier = tierFor(depth, answers.length);
   return [
     `Military Krillion ${label ?? `${date} · ${mode}${archive ? ' (archive)' : ''}`}`,
-    `Depth ${depth.toFixed(2)} — ${tier.name} · ${tier.airfield} ${tier.flag}`,
+    `Depth ${formatMeters(depthMeters(depth))} · ${depthPoints(depth)} pts — ${tier.name} · ${tier.airfield} ${tier.flag}`,
     answers.map(scoreSquare).join(''),
   ].join('\n');
 }
@@ -26,7 +24,7 @@ export function buildEndlessShare(run: EndlessRun): string {
   const label = run.mode === 'Ranked' ? 'Mixed' : run.mode;
   return [
     `Military Krillion · Endless · ${label}`,
-    `Depth ${run.depth.toFixed(2)} · ${correct}/${answers.length} answered · best streak ${run.bestStreak}`,
+    `Depth ${formatMeters(depthMeters(run.depth))} · ${depthPoints(run.depth)} pts · ${correct}/${answers.length} answered · best streak ${run.bestStreak}`,
     `${tier.name} · ${tier.airfield} ${tier.flag}${run.over ? ' · intercepted' : ''}`,
     answers.slice(-24).map(scoreSquare).join(''),
   ].join('\n');

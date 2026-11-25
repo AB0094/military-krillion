@@ -4,8 +4,6 @@ import { MIN_CROWD, rarity, totalDepth } from './scoring';
 import { hashString, mulberry32, seededShuffle } from './seed';
 
 export const START_LIVES = 3;
-/** Every this many correct answers in a row resupplies one lost missile. */
-export const STREAK_FOR_LIFE = 5;
 /** Endless depth is mapped onto the airfield tiers as if a run were this many prompts long. */
 export const ENDLESS_SCALE = 14;
 
@@ -31,7 +29,6 @@ export interface EndlessOutcome {
   record: AnswerRecord;
   hint: string | null;
   lostLife: boolean;
-  gainedLife: boolean;
   over: boolean;
 }
 
@@ -54,9 +51,7 @@ export function submitEndless(state: SaveState, pool: readonly Prompt[], input: 
   const bestStreak = Math.max(run.bestStreak, streak);
   let lives = run.lives;
   let lostLife = false;
-  let gainedLife = false;
-  if (!correct) { lives -= 1; lostLife = true; }
-  else if (streak % STREAK_FOR_LIFE === 0 && lives < START_LIVES) { lives += 1; gainedLife = true; }
+  if (!correct) { lives -= 1; lostLife = true; } // lives are never won back
   const over = lives <= 0;
 
   let next: EndlessRun = { ...run, answers, depth: totalDepth(answers.map((a) => a.score)), lives, streak, bestStreak, over };
@@ -72,7 +67,7 @@ export function submitEndless(state: SaveState, pool: readonly Prompt[], input: 
     };
   }
   const hint = match ? null : opts.timedOut ? timeoutHint(prompt.answers) : hintFor(prompt.answers);
-  return { state: { ...state, endless }, run: next, record, hint, lostLife, gainedLife, over };
+  return { state: { ...state, endless }, run: next, record, hint, lostLife, over };
 }
 
 export function endlessStats(run: EndlessRun): { answered: number; correct: number; accuracy: number } {
