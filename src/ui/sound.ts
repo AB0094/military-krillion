@@ -24,7 +24,21 @@ function tone(freq: number, at: number, dur: number, type: OscillatorType = 'sin
   o.stop(t + dur + 0.02);
 }
 
-export type Cue = 'launch' | 'hit' | 'rare' | 'miss' | 'tier' | 'splash';
+function noise(at: number, dur: number, vol = 0.08): void {
+  if (!ctx) return;
+  const len = Math.floor(ctx.sampleRate * dur);
+  const buf = ctx.createBuffer(1, len, ctx.sampleRate);
+  const d = buf.getChannelData(0);
+  for (let i = 0; i < len; i++) d[i] = (Math.random() * 2 - 1) * (1 - i / len);
+  const src = ctx.createBufferSource();
+  const g = ctx.createGain();
+  src.buffer = buf;
+  g.gain.value = vol;
+  src.connect(g).connect(ctx.destination);
+  src.start(ctx.currentTime + at);
+}
+
+export type Cue = 'launch' | 'hit' | 'rare' | 'miss' | 'tier' | 'splash' | 'tick' | 'whoosh' | 'boom' | 'gain';
 
 /** Short synthesized cues. Safe to call anywhere: silently does nothing if muted or audio is unavailable. */
 export function play(cue: Cue): void {
@@ -38,6 +52,10 @@ export function play(cue: Cue): void {
       case 'rare': [523, 659, 784, 1047].forEach((f, i) => tone(f, i * 0.09, 0.25, 'triangle', 0.06)); break;
       case 'miss': tone(150, 0, 0.3, 'square', 0.03); tone(110, 0.12, 0.3, 'square', 0.03); break;
       case 'splash': tone(220, 0, 0.25, 'sawtooth', 0.03); tone(130, 0.05, 0.3, 'square', 0.025); tone(90, 0.12, 0.35, 'sine', 0.05); break;
+      case 'tick': tone(920, 0, 0.05, 'square', 0.025); break;
+      case 'whoosh': noise(0, 0.55, 0.05); tone(320, 0, 0.5, 'sawtooth', 0.012); break;
+      case 'boom': noise(0, 1.2, 0.2); tone(75, 0, 0.7, 'sawtooth', 0.09); tone(45, 0.05, 0.9, 'sine', 0.12); break;
+      case 'gain': [660, 880, 1320].forEach((f, i) => tone(f, i * 0.09, 0.22, 'triangle', 0.06)); break;
       case 'tier': [392, 523, 659, 784, 1047].forEach((f, i) => tone(f, i * 0.11, 0.35, 'triangle', 0.06)); break;
     }
   } catch { /* audio blocked or unsupported */ }

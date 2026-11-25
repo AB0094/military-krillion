@@ -99,3 +99,6 @@ const CLOUD = [
   '.llllllllllllllllllllll.',
 ];
 export const cloudSprite = (cls = ''): string => sprite(CLOUD, { w: '#ffffff', l: '#c3d9e6' }, cls);
+
+/** Enemy surface-to-air missile: the same airframe in hostile colours. */
+export const samSprite = (cls = ''): string => sprite(MISSILE, { g: '#9c3d2d', w: '#ffe0a8', k: '#d9603f', c: '#ffb347', d: '#3a1510', r: '#ffffff' }, cls);

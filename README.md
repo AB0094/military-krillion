@@ -55,6 +55,8 @@ Pushing to `main` runs `.github/workflows/deploy.yml`, which validates the data,
 - **Descent shaft** (superseded by the scene above; kept for the rules): on the Dive screen the missile sits in a vertical shaft with one airfield per depth. Each correct answer sends it down by the rarity it earned; crossing a tier threshold shows an "Arrived" banner for that airfield. A wrong answer cancels the launch: the answer is struck out, a stamp appears, and the missile aborts in place (the one-answer-per-prompt rule is unchanged).
 - **Mascot**: an anti-radiation missile (`src/ui/logo.ts`). It rides the progress track while you dive.
 - **Ranked rating**: starts at 1000, stored in its own field (`ratings.ranked`), updated once when a live Ranked day completes. `updateRating` in `src/logic/elo.ts` compares your depth to the day's median depth. Without shared player data the median is a reference value derived from the answer weights.
+- **20-second timer**: every question has a countdown bar. It turns red and ticks in the last 5 seconds. When it hits zero the question counts as a miss (no score, flagged "Time's up"). Turn it off in the Save data panel on Home for relaxed play (`timerEnabled` in `src/ui/prefs.ts`). Constants live in `src/logic/timer.ts`.
+- **Endless mode** ("Survive the sky"): random questions with no end, in Ground, Air or Mixed, played in an open-sky scene. You have 3 lives (HARMs). A wrong answer or timeout costs one: enemy missiles streak past for a near miss. Lose the last one and your HARM is intercepted mid-air (flash, fireball, debris, screen shake). Every 5 correct answers in a row resupplies one lost HARM. Depth is the sum of rarity; tiers use a 14-prompt scale (`ENDLESS_SCALE`). The game keeps your best depth, correct count and streak, and a run in progress survives a refresh. Rules and tests are in `src/logic/endless.ts`; the scene engine is `src/ui/dive.ts`.
 - **Unlimited**: endless play on top of the daily sets. Each run uses a new random seed (`newRunSeed`), so it is a fresh set of 7 in Ground, Air or Mixed, with "Dive again" on the results screen. Unlimited runs are archive-style: they never touch your streak, daily stats, player data or Ranked rating, and only the latest 40 are kept in the save.
 - **Archive**: replay any of the last 30 days. Archive plays never affect stats, player data or rating.
 - **v1 is local-only**: "players" means this browser's history. A backend would replace the `crowd` data and the median; none is included.
@@ -65,6 +67,11 @@ Pushing to `main` runs `.github/workflows/deploy.yml`, which validates the data,
 - **Rarity badges**: Common, Uncommon, Rare, Ultra rare (`rarityLabel`, same cut-offs as the share squares).
 - **Briefings**: each prompt has an optional `"fact"` shown after you answer.
 - **Sound**: small synthesized cues (no audio files), toggled by the speaker button; the choice is remembered.
+
+## Free dives vs Endless
+
+- **Free dives** (formerly "Unlimited"): relaxed 7-prompt runs, no lives, as many as you like.
+- **Endless**: the lives-and-timer survival mode above.
 
 ## Stability
 

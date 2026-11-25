@@ -4,10 +4,12 @@ import { getSession, summarize, summarizeUnlimited } from '../logic/progress';
 import { streaks } from '../logic/stats';
 import { MODES, type Mode } from '../logic/types';
 import { tierFor, tierIndex } from '../logic/scoring';
+import { QUESTION_SECONDS } from '../logic/timer';
 import { esc, fmt, header, on, type App } from './dom';
 import { ICONS } from './icons';
 import { ladderHtml } from './ladder';
 import { startRun } from './run';
+import { startEndlessRun } from './endless';
 import { bindSettings, settingsHtml } from './settings';
 
 const BLURB: Record<Mode, string> = {
@@ -28,6 +30,8 @@ export function renderHome(app: App): void {
   const stats = summarize(state);
   const unlimited = summarizeUnlimited(state);
   const streak = streaks(state, today);
+  const endless = state.endless;
+  const live = endless.run && !endless.run.over ? endless.run : null;
 
   const cards = MODES.map((mode) => {
     const prompts = dailySet(today, mode, PROMPTS);
@@ -60,9 +64,20 @@ export function renderHome(app: App): void {
       <span class="chip">Next set in <strong id="countdown">--:--:--</strong></span>
     </div>
     <section class="grid">${cards}</section>
+    <section class="card unlimited endless">
+      <div class="u-head"><span class="u-inf" aria-hidden="true">☠</span><div><span class="u-badge hot">Endless · 3 lives</span><h2>Survive the sky</h2></div></div>
+      <p class="muted">Random questions with no end and ${QUESTION_SECONDS} seconds each. A wrong answer or a timeout costs a HARM: enemy missiles streak past, and when the last one goes, yours is intercepted. Five right in a row resupplies one.</p>
+      ${live ? `<button class="btn primary wide" id="resume" data-resume="${live.mode}">Resume run · question ${live.answers.length + 1} · ${live.lives} HARM${live.lives === 1 ? '' : 's'} left</button>` : ''}
+      <div class="row u-buttons">
+        <button class="btn primary" data-endless="Ground">Ground</button>
+        <button class="btn primary" data-endless="Air">Air</button>
+        <button class="btn primary" data-endless="Ranked">Mixed</button>
+      </div>
+      <p class="muted small u-stats">${endless.runs ? `Records: depth ${fmt(endless.best.depth)} · ${endless.best.correct} correct · streak ${endless.best.streak} · ${endless.runs} run${endless.runs === 1 ? '' : 's'}` : 'No runs yet. How deep can you get?'}</p>
+    </section>
     <section class="card unlimited">
-      <div class="u-head">${ICONS.Unlimited}<div><span class="u-badge">Unlimited</span><h2>Endless dives</h2></div></div>
-      <p class="muted">No daily limit. Every run is a fresh random set of ${dailySet(today, 'Air', PROMPTS).length}. Play as many as you like; it never touches your streak, rating or daily stats.</p>
+      <div class="u-head">${ICONS.Unlimited}<div><span class="u-badge">Unlimited</span><h2>Free dives</h2></div></div>
+      <p class="muted">Relaxed 7-prompt runs, as many as you like. No lives, and nothing touches your streak, rating or daily stats.</p>
       <div class="row u-buttons">
         <button class="btn primary" data-run="Ground">Ground</button>
         <button class="btn primary" data-run="Air">Air</button>
@@ -85,6 +100,8 @@ export function renderHome(app: App): void {
     app.go({ name: el.dataset.done === '1' ? 'results' : 'dive', mode, date: today, archive: false });
   });
   on(app.root, '[data-run]', (el) => startRun(app, el.dataset.run as Mode));
+  on(app.root, '[data-endless]', (el) => startEndlessRun(app, el.dataset.endless as Mode));
+  on(app.root, '#resume', (el) => app.go({ name: 'endless', mode: el.dataset.resume as Mode }));
   on(app.root, '#archive', () => app.go({ name: 'archive' }));
   bindSettings(app);
 

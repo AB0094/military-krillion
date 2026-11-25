@@ -9,6 +9,7 @@ import { renderHome } from './ui/home';
 import { renderDive } from './ui/dive';
 import { renderResults } from './ui/results';
 import { renderArchive } from './ui/archive';
+import { renderEndless } from './ui/endless';
 import { mountBackdrop } from './ui/backdrop';
 import { isMuted, setMuted } from './ui/sound';
 
@@ -38,6 +39,7 @@ function draw(view: Route): void {
       case 'dive': return renderDive(app, view);
       case 'results': return renderResults(app, view);
       case 'archive': return renderArchive(app);
+      case 'endless': return renderEndless(app, view.mode);
     }
   } catch (e) {
     fatal(e);

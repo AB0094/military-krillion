@@ -5,27 +5,13 @@ import { tierFor, tierIndex } from '../logic/scoring';
 import { buildShareText, scoreSquare } from '../logic/share';
 import { isRunSeed } from '../logic/seed';
 import { esc, fmt, header, modeLabel, on, runTitle, type App, type View } from './dom';
+import { copyText } from './clipboard';
 import { startRun } from './run';
 import { burst, countUp } from './fx';
 import { ladderHtml } from './ladder';
 import { play } from './sound';
 
 type ResultsView = Extract<View, { name: 'results' }>;
-
-async function copy(text: string): Promise<boolean> {
-  try {
-    await navigator.clipboard.writeText(text);
-    return true;
-  } catch {
-    const ta = document.createElement('textarea');
-    ta.value = text;
-    document.body.appendChild(ta);
-    ta.select();
-    const ok = document.execCommand('copy');
-    ta.remove();
-    return ok;
-  }
-}
 
 export function renderResults(app: App, v: ResultsView): void {
   const state = app.getState();
@@ -75,7 +61,7 @@ export function renderResults(app: App, v: ResultsView): void {
   on(app.root, '#home', () => app.go({ name: 'home' }));
   on(app.root, '#again', () => startRun(app, v.mode));
   on(app.root, '#share', async () => {
-    const ok = await copy(text);
+    const ok = await copyText(text);
     app.root.querySelector('#copied')!.textContent = ok ? 'Copied to clipboard!' : 'Copy failed. Select the text above instead.';
   });
 }

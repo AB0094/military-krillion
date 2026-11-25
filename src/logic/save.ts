@@ -2,7 +2,8 @@ import { emptyState, sessionKey } from './progress';
 import { isValidDate } from './route';
 import { isRunSeed } from './seed';
 import { totalDepth } from './scoring';
-import { MODES, type AnswerRecord, type AnswerStats, type RatingEntry, type SaveState, type SessionRecord } from './types';
+import { START_LIVES } from './endless';
+import { MODES, type AnswerRecord, type AnswerStats, type EndlessRun, type EndlessState, type RatingEntry, type SaveState, type SessionRecord } from './types';
 
 const isObj = (x: unknown): x is Record<string, unknown> => typeof x === 'object' && x !== null && !Array.isArray(x);
 const isNum = (x: unknown): x is number => typeof x === 'number' && Number.isFinite(x);
@@ -10,7 +11,7 @@ const isStr = (x: unknown): x is string => typeof x === 'string';
 
 function cleanAnswer(x: unknown): AnswerRecord | null {
   if (!isObj(x) || !isStr(x.promptId) || !isStr(x.input) || !(x.matched === null || isStr(x.matched)) || !isNum(x.score)) return null;
-  return { promptId: x.promptId, input: x.input.slice(0, 200), matched: x.matched, score: Math.min(1, Math.max(0, x.score)), ...(x.corrected === true ? { corrected: true } : {}) };
+  return { promptId: x.promptId, input: x.input.slice(0, 200), matched: x.matched, score: Math.min(1, Math.max(0, x.score)), ...(x.corrected === true ? { corrected: true } : {}), ...(x.timedOut === true ? { timedOut: true } : {}) };
 }
 
 function cleanSession(x: unknown): SessionRecord | null {
@@ -39,6 +40,28 @@ function cleanCrowd(x: unknown): Record<string, AnswerStats> {
   return out;
 }
 
+function cleanRun(x: unknown): EndlessRun | null {
+  if (!isObj(x) || !isStr(x.seed) || !isRunSeed(x.seed) || !Array.isArray(x.answers)) return null;
+  const mode = MODES.find((m) => m === x.mode);
+  const answers = x.answers.map(cleanAnswer);
+  if (!mode || answers.some((a) => a === null)) return null;
+  const clean = answers as AnswerRecord[];
+  // streaks are derived from the answers rather than trusted
+  let streak = 0;
+  let bestStreak = 0;
+  for (const a of clean) { streak = a.matched ? streak + 1 : 0; bestStreak = Math.max(bestStreak, streak); }
+  const lives = isNum(x.lives) ? Math.min(START_LIVES, Math.max(0, Math.floor(x.lives))) : START_LIVES;
+  const nb = isObj(x.newBest) ? { depth: x.newBest.depth === true, correct: x.newBest.correct === true, streak: x.newBest.streak === true } : undefined;
+  return { seed: x.seed, mode, answers: clean, depth: totalDepth(clean.map((a) => a.score)), lives, streak, bestStreak, over: lives === 0 || x.over === true, ...(nb ? { newBest: nb } : {}) };
+}
+
+function cleanEndless(x: unknown, base: EndlessState): EndlessState {
+  if (!isObj(x)) return base;
+  const n = (v: unknown) => (isNum(v) && v >= 0 ? v : 0);
+  const best = isObj(x.best) ? { depth: n(x.best.depth), correct: Math.floor(n(x.best.correct)), streak: Math.floor(n(x.best.streak)) } : base.best;
+  return { run: cleanRun(x.run), best, runs: Math.floor(n(x.runs)) };
+}
+
 /** Turns anything (old versions, hand-edited JSON, corrupt data) into a safe SaveState; bad parts are dropped. */
 export function sanitizeState(raw: unknown): SaveState {
   const base = emptyState();
@@ -60,7 +83,7 @@ export function sanitizeState(raw: unknown): SaveState {
   }
 
   const rating = isObj(raw.ratings) && isNum(raw.ratings.ranked) ? Math.min(5000, Math.max(0, Math.round(raw.ratings.ranked))) : base.ratings.ranked;
-  return { version: 1, sessions, crowd: cleanCrowd(raw.crowd), ratings: { ranked: rating }, rankedHistory: history };
+  return { version: 1, sessions, crowd: cleanCrowd(raw.crowd), ratings: { ranked: rating }, rankedHistory: history, endless: cleanEndless(raw.endless, base.endless) };
 }
 
 export function serializeSave(state: SaveState): string {

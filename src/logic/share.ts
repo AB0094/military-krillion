@@ -1,4 +1,4 @@
-import type { AnswerRecord, Mode } from './types';
+import type { AnswerRecord, EndlessRun, Mode } from './types';
 import { tierFor } from './scoring';
 
 export function scoreSquare(a: AnswerRecord): string {
@@ -16,5 +16,18 @@ export function buildShareText(opts: { date: string; mode: Mode; archive: boolea
     `Military Krillion ${label ?? `${date} · ${mode}${archive ? ' (archive)' : ''}`}`,
     `Depth ${depth.toFixed(2)} — ${tier.name} · ${tier.airfield} ${tier.flag}`,
     answers.map(scoreSquare).join(''),
+  ].join('\n');
+}
+
+export function buildEndlessShare(run: EndlessRun): string {
+  const answers = run.answers;
+  const correct = answers.filter((a) => a.matched !== null).length;
+  const tier = tierFor(run.depth, 14);
+  const label = run.mode === 'Ranked' ? 'Mixed' : run.mode;
+  return [
+    `Military Krillion · Endless · ${label}`,
+    `Depth ${run.depth.toFixed(2)} · ${correct}/${answers.length} answered · best streak ${run.bestStreak}`,
+    `${tier.name} · ${tier.airfield} ${tier.flag}${run.over ? ' · intercepted' : ''}`,
+    answers.slice(-24).map(scoreSquare).join(''),
   ].join('\n');
 }

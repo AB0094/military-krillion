@@ -4,6 +4,7 @@ import { MODES, type Mode } from './types';
 export type Route =
   | { name: 'home' }
   | { name: 'archive' }
+  | { name: 'endless'; mode: Mode }
   | { name: 'dive'; mode: Mode; date: string; archive: boolean }
   | { name: 'results'; mode: Mode; date: string; archive: boolean };
 
@@ -16,6 +17,7 @@ export function isValidDate(s: string): boolean {
 export function toHash(r: Route): string {
   if (r.name === 'home') return '#/';
   if (r.name === 'archive') return '#/archive';
+  if (r.name === 'endless') return `#/endless/${r.mode}`;
   return `#/${r.name}/${r.mode}/${r.date}${r.archive ? '/archive' : ''}`;
 }
 
@@ -23,6 +25,10 @@ export function toHash(r: Route): string {
 export function parseRoute(hash: string): Route {
   const parts = hash.replace(/^#\/?/, '').split('/').filter(Boolean);
   if (parts[0] === 'archive' && parts.length === 1) return { name: 'archive' };
+  if (parts[0] === 'endless' && parts.length === 2) {
+    const mode = MODES.find((m) => m === parts[1]);
+    if (mode) return { name: 'endless', mode };
+  }
   if ((parts[0] === 'dive' || parts[0] === 'results') && parts.length >= 3 && parts.length <= 4) {
     const mode = MODES.find((m) => m === parts[1]);
     const archive = parts[3] === 'archive';

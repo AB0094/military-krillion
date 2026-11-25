@@ -270,3 +270,66 @@ thead th { color: var(--muted); font: .6rem var(--pf); letter-spacing: .1em; tex
 }
 .dv-mk .spr { --px: 5px; }
 @media (max-width: 700px) { .dv-mk .spr { --px: 4px; } }
+
+/* ===================== timer, lives, endless ===================== */
+.timer { display: flex; align-items: center; gap: 10px; margin: 0 0 12px; }
+.tbar { flex: 1; height: 12px; background: #050f1b; box-shadow: inset 0 0 0 2px var(--line); }
+.tbar i { display: block; height: 100%; width: 100%; background: var(--accent); transition: width .12s linear; }
+.timer b { font: 400 1.8rem/1 var(--bf); color: var(--accent); min-width: 1.6em; text-align: right; }
+.timer.low .tbar i { background: var(--bad); }
+.timer.low b { color: var(--bad); animation: blink .5s steps(2) infinite; }
+.lives { display: flex; gap: 6px; justify-content: center; }
+.life { position: relative; display: block; width: 44px; height: 22px; }
+.life .spr { --px: 2px; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%) rotate(-90deg); filter: drop-shadow(0 0 6px #4fe3ff99); }
+.life.lost .spr { filter: grayscale(1) brightness(.35); }
+.life.lost::after { content: '✕'; position: absolute; inset: 0; display: grid; place-items: center; color: var(--bad); font: 700 1rem var(--pf); }
+.lifeline { margin: 0 0 12px; } .lifeline.danger { color: var(--bad); } .lifeline.good { color: var(--good); }
+.check { display: flex; align-items: center; gap: 10px; margin: 10px 0; font-size: 1.2rem; cursor: pointer; }
+.check input { width: 20px; height: 20px; accent-color: var(--accent); }
+.u-badge.hot { background: var(--pink); color: #2a0510; }
+.unlimited.endless { background: linear-gradient(180deg, #0d2038f2, #091a2ff2) padding-box, conic-gradient(from var(--ang), #ff5c7a, #ffd166, #4fe3ff, #ff5c7a) border-box; }
+.unlimited.endless .u-inf { color: var(--pink); text-shadow: 3px 3px 0 #4a0a1a; font-size: 2.6rem; }
+.unlimited .wide { margin-bottom: 10px; }
+
+/* endless results */
+.stamp.big { font-size: 1rem; padding: 6px 18px; margin-bottom: 10px; }
+.stat-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin: 14px 0; }
+.stat { padding: 10px; background: #050f1b; box-shadow: inset 0 0 0 2px var(--line); }
+.stat b { display: block; font: 400 2.2rem/1 var(--bf); color: var(--accent); }
+.stat span { font: .55rem var(--pf); letter-spacing: .14em; text-transform: uppercase; color: var(--muted); }
+.newbest { display: inline-block; margin-left: 6px; padding: 1px 7px; background: var(--gold); color: #3a2400; font: .5rem var(--pf); letter-spacing: .12em; text-transform: uppercase; animation: blink 1s steps(2) infinite; }
+
+/* sky scene (Endless) */
+.dv.sky .dv-far { opacity: .45; }
+.sky-gauge::before { top: 0; }
+.w-plane .spr { --px: 2px; filter: brightness(.25) contrast(1.2); opacity: .55; }
+.bub.puffy { background: #fff; opacity: .85; width: 8px; height: 8px; }
+
+/* enemy fire, near misses and interception */
+.anchor { position: absolute; width: 1px; height: 1px; pointer-events: none; }
+.sam { position: absolute; left: 0; top: 0; z-index: 9; pointer-events: none; }
+.sam .spr { --px: 3px; }
+.sam::before { content: ''; position: absolute; left: 50%; bottom: 100%; width: 6px; height: 90px; transform: translateX(-50%); background: linear-gradient(0deg, #ffd166cc, #ff8a3d66, transparent); }
+.flak { position: absolute; z-index: 9; width: 16px; height: 16px; margin: -8px; background: #fff; box-shadow: 0 0 0 6px #ffd166, 0 0 0 14px #ff8a3d; pointer-events: none; animation: flakx .6s steps(6) forwards; }
+@keyframes flakx { to { transform: scale(3); opacity: 0; } }
+.fireball { position: absolute; z-index: 10; width: 20px; height: 20px; margin: -10px; background: #fff; box-shadow: 0 0 0 10px #ffe08a, 0 0 0 22px #ff9a3d, 0 0 0 36px #ff5c7a, 0 0 0 52px #7a1230; pointer-events: none; animation: firex 1s steps(10) forwards; }
+@keyframes firex { from { transform: scale(.2); } 40% { transform: scale(2.2); } to { transform: scale(3.4); opacity: 0; } }
+.deb { position: absolute; z-index: 10; width: 8px; height: 8px; margin: -4px; background: #b8c4d0; box-shadow: inset -2px -2px 0 #6f8196; pointer-events: none; }
+.flash { position: absolute; inset: 0; z-index: 20; background: #fff; pointer-events: none; animation: flashx .6s ease-out forwards; }
+@keyframes flashx { from { opacity: .95; } to { opacity: 0; } }
+.intercepted { position: absolute; left: 50%; top: 36%; transform: translate(-50%, -50%); z-index: 21; font: 700 2.4rem var(--pf); letter-spacing: .2em; text-transform: uppercase; color: #fff; white-space: nowrap; text-shadow: 4px 4px 0 var(--bad), -3px 0 #3a0710, 3px 0 #3a0710, 0 3px #3a0710; pointer-events: none; animation: bannerx 2.6s both; }
+@media (max-width: 700px) { .intercepted { font-size: 1.4rem; } }
+@keyframes bannerx { 0% { opacity: 0; transform: translate(-50%, -50%) scale(2.6); } 14% { opacity: 1; transform: translate(-50%, -50%) scale(1); } 80% { opacity: 1; } 100% { opacity: 0; } }
+.dv.shake .dv-view { animation: shk .5s linear; }
+.dv.shake-big .dv-view { animation: shk2 1s linear; }
+@keyframes shk { 10%, 50%, 90% { transform: translate(-4px, 2px); } 30%, 70% { transform: translate(4px, -2px); } }
+@keyframes shk2 { 8%, 40%, 72% { transform: translate(-12px, 6px); } 24%, 56%, 88% { transform: translate(12px, -6px); } 100% { transform: none; } }
+.dv-mk.wobble .mk-body { animation: wob .9s ease-out; }
+@keyframes wob { 0%, 100% { transform: none; } 15% { transform: rotate(-16deg) translateX(-8px); } 35% { transform: rotate(14deg) translateX(8px); } 60% { transform: rotate(-7deg); } }
+.dv-mk.gone { visibility: hidden; }
+.dv-vig { position: absolute; inset: 0; z-index: 6; pointer-events: none; opacity: 0; box-shadow: inset 0 0 150px 30px #ff2a4acc; }
+.dv.low .dv-vig { opacity: 1; animation: vig 1.1s ease-in-out infinite; }
+@keyframes vig { 50% { opacity: .3; } }
+.gauge .gl b, .gauge .gl small { text-shadow: 1px 1px 0 #061a30, -1px 0 #061a30, 1px 0 #061a30, 0 -1px #061a30; }
+.gauge .gl small { color: #e3effc; }
+.gauge li { opacity: .7; }

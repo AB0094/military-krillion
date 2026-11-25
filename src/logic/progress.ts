@@ -1,11 +1,11 @@
 import type { AnswerRecord, Mode, Prompt, SaveState, SessionRecord } from './types';
-import { findMatch, hintFor } from './normalize';
+import { findMatch, hintFor, timeoutHint } from './normalize';
 import { MIN_CROWD, rarity, totalDepth } from './scoring';
 import { dayMedianDepth, START_RATING, updateRating } from './elo';
 import { isRunSeed } from './seed';
 
 export function emptyState(): SaveState {
-  return { version: 1, sessions: {}, crowd: {}, ratings: { ranked: START_RATING }, rankedHistory: [] };
+  return { version: 1, sessions: {}, crowd: {}, ratings: { ranked: START_RATING }, rankedHistory: [], endless: { run: null, best: { depth: 0, correct: 0, streak: 0 }, runs: 0 } };
 }
 
 export function sessionKey(date: string, mode: Mode, archive: boolean): string {
@@ -43,7 +43,7 @@ export function getSession(state: SaveState, ctx: PlayContext): SessionRecord | 
 }
 
 /** Scores one typed answer for the next unanswered prompt and returns the updated state. Never mutates its input. */
-export function submitAnswer(state: SaveState, ctx: PlayContext, input: string): SubmitResult {
+export function submitAnswer(state: SaveState, ctx: PlayContext, input: string, opts: { timedOut?: boolean } = {}): SubmitResult {
   const key = sessionKey(ctx.date, ctx.mode, ctx.archive);
   const existing: SessionRecord = getSession(state, ctx) ?? {
     date: ctx.date, mode: ctx.mode, archive: ctx.archive,
@@ -52,11 +52,11 @@ export function submitAnswer(state: SaveState, ctx: PlayContext, input: string):
   if (existing.complete) throw new Error('Session already complete.');
 
   const prompt = ctx.prompts[existing.answers.length];
-  const found = findMatch(input, prompt.answers);
+  const found = opts.timedOut ? null : findMatch(input, prompt.answers);
   const match = found?.answer ?? null;
   const stats = state.crowd[prompt.id];
   const score = match ? rarity(match, stats, MIN_CROWD) : 0;
-  const record: AnswerRecord = { promptId: prompt.id, input: input.trim(), matched: match ? match.name : null, score, ...(found?.corrected ? { corrected: true } : {}) };
+  const record: AnswerRecord = { promptId: prompt.id, input: input.trim(), matched: match ? match.name : null, score, ...(found?.corrected ? { corrected: true } : {}), ...(opts.timedOut ? { timedOut: true } : {}) };
 
   const answers = [...existing.answers, record];
   const complete = answers.length >= ctx.prompts.length;
@@ -81,7 +81,7 @@ export function submitAnswer(state: SaveState, ctx: PlayContext, input: string):
     };
   }
 
-  return { state: next, record, hint: match ? null : hintFor(prompt.answers), session };
+  return { state: next, record, hint: match ? null : opts.timedOut ? timeoutHint(prompt.answers) : hintFor(prompt.answers), session };
 }
 
 export interface ModeSummary { played: number; best: number; average: number }

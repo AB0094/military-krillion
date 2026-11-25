@@ -75,3 +75,9 @@ export function hintFor(answers: readonly Answer[]): string {
   const letter = easiest.name.charAt(0).toUpperCase();
   return `No match. ${n} valid answer${n === 1 ? '' : 's'} exist; the most common starts with "${letter}". Try the exact designation.`;
 }
+
+/** Hint shown when the question timer ran out. */
+export function timeoutHint(answers: readonly Answer[]): string {
+  const n = answers.length;
+  return `Out of time. ${n} valid answer${n === 1 ? '' : 's'} existed; answer faster next time.`;
+}
