@@ -15,7 +15,7 @@ import { CRUISE, createHorizon, type Horizon } from './horizon';
 import { playExplosion, shockwave, smokeColumns, wreckage } from './explosion';
 import { RARITY_COLORS, showRarity } from './rarity';
 import { play } from './sound';
-import { jetSprite, samSprite } from './sprites';
+import { harmSprite, jetSprite, samSprite } from './sprites';
 
 type DiveView = Extract<View, { name: 'dive' }>;
 
@@ -106,11 +106,17 @@ export function runScene(app: App, game: Game, wantIntro: boolean): void {
   app.root.innerHTML = `<div class="dv env-${env}${intro ? ' intro' : ''}" id="dv">
     <div class="dv-stage" id="stage">
       <canvas class="dv-canvas" id="cv"></canvas>
-      <div class="dv-jet" id="jet">
+      <div class="dv-jet" id="carrier">
         <div class="jet-body">${jetSprite()}</div>
         <i class="gear g1"></i><i class="gear g2"></i><i class="jet-flame"></i><i class="jet-heat"></i>
       </div>
+      <div class="dv-harm" id="jet">
+        <div class="harm-body">${harmSprite()}</div><i class="harm-flame"></i>
+      </div>
     </div>
+    <div class="lbx t"></div><div class="lbx b"></div>
+    <div class="cockpit" id="cock"><span>KTS <b id="kts">0</b></span><span>RPM <b id="rpm">0</b>%</span><span id="arm">MASTER ARM · SAFE</span></div>
+    <div class="ignite" id="ignite"></div>
     <div class="scan"></div><div class="dv-vig"></div>
     <div class="hud">
       <button class="hud-btn" id="home" aria-label="Main menu">≡</button>
@@ -127,14 +133,15 @@ export function runScene(app: App, game: Game, wantIntro: boolean): void {
     </div>
     <div class="dv-panel px" id="panel"></div>
     <div class="dv-dock" id="dock"></div>
-    <div class="dv-intro-msg" id="intromsg">Take-off · tap to skip</div>
+    <div class="dv-intro-msg" id="intromsg">Take-off · HARM release · tap to skip</div>
     <div class="callout" id="callout"></div>
   </div>`;
 
   const $ = <T extends HTMLElement>(sel: string) => app.root.querySelector<T>(sel)!;
   const dv = $('#dv');
   const cv = $<HTMLCanvasElement>('#cv');
-  const jet = $('#jet');
+  const jet = $('#jet'); // the HARM: the craft the player flies in every mode
+  const carrier = $('#carrier'); // the aircraft that carries it off the runway and releases it
   const panel = $('#panel');
   const dock = $('#dock');
   const callout = $('#callout');
@@ -156,11 +163,13 @@ export function runScene(app: App, game: Game, wantIntro: boolean): void {
   let jw = 0;
   let jh = 0;
   const measure = () => { jw = jet.offsetWidth; jh = jet.offsetHeight; };
+  const cw = () => carrier.offsetWidth;
+  const ch = () => carrier.offsetHeight;
   const cruiseXY = () => ({ x: dv.clientWidth * 0.24 - jw / 2, y: dv.clientHeight * 0.58 - jh / 2 });
   let pose = { x: 0, y: 0, pitch: 0 };
-  function setPose(x: number, y: number, pitch = 0): void {
+  function setPose(x: number, y: number, pitch = 0, scale = 1): void {
     pose = { x, y, pitch };
-    jet.style.transform = `translate(${x}px,${y}px) rotate(${pitch}deg)`;
+    jet.style.transform = `translate(${x}px,${y}px) rotate(${pitch}deg) scale(${scale})`;
     horizon.setJet(x + jw / 2, y + jh, true);
   }
   const jetCenter = () => ({ x: pose.x + jw / 2, y: pose.y + jh / 2 });
@@ -184,7 +193,7 @@ export function runScene(app: App, game: Game, wantIntro: boolean): void {
     $('#hd').textContent = formatMeters(dist);
     $('#hs').textContent = String(depthPoints(depth));
     if (game.endless) {
-      $('#lives').innerHTML = Array.from({ length: START_LIVES }, (_, i) => `<i class="life${i < lives ? '' : ' lost'}">${jetSprite()}</i>`).join('');
+      $('#lives').innerHTML = Array.from({ length: START_LIVES }, (_, i) => `<i class="life${i < lives ? '' : ' lost'}">${harmSprite()}</i>`).join('');
       $('#hv').textContent = String(Math.round(speed));
       $('#plabel').textContent = `${game.title} · question ${index + 1} · streak ${streak}`;
       dv.classList.toggle('low', lives === 1);
@@ -344,7 +353,7 @@ export function runScene(app: App, game: Game, wantIntro: boolean): void {
       shockwave(dv, c.x, c.y, 50);
       burstAt(c.x, c.y, 28, 'var(--gold)');
       jet.classList.add('burning', 'jolt');
-      showCallout('Engine failure', 'Mayday', 'bad');
+      showCallout('Motor failure', 'Mayday', 'bad');
       showDrag(-190);
       const fire = window.setInterval(() => {
         if (!dv.isConnected) return window.clearInterval(fire);
@@ -600,24 +609,42 @@ export function runScene(app: App, game: Game, wantIntro: boolean): void {
     setTimeout(() => el.remove(), 3400);
   }
 
-  // ---------- opening: engine start, take-off roll, lift-off, level flight ----------
+  // ---------- opening: the carrier jet takes off with a HARM on its pylon, releases it, and the missile takes over ----------
   function takeoff(onDone: () => void): void {
     busy = true;
-    const rest = () => horizon.runwayYCss() - jh - 3;
     const cruise = cruiseXY();
     const VMAX = 620;
     const t0 = performance.now();
     let finished = false;
     const did: Record<string, boolean> = {};
-    jet.classList.add('grounded');
+    let from = { x: 0, y: 0 };
+    const kts = $('#kts'); const rpm = $('#rpm'); const arm = $('#arm');
+    const cx = dv.clientWidth * 0.24; // the pilot's world column (matches the scenery)
+    const rest = () => horizon.runwayYCss() - ch() - 3;
+    const airY = () => dv.clientHeight * 0.4; // carrier altitude at release (centre)
+    const setCarrier = (x: number, y: number, pitch: number) => {
+      carrier.style.transform = `translate(${x - cw() / 2}px,${y}px) rotate(${pitch}deg)`;
+      return { x, y, pitch };
+    };
+    // carried: the HARM hangs under the fuselage, small, and follows the jet
+    const hang = (x: number, y: number, pitch: number, drop = 0, scale = 0.7) => {
+      pose = { x: x - jw / 2, y: y + ch() * 1.0 - jh / 2 + drop, pitch };
+      jet.style.transform = `translate(${pose.x}px,${pose.y}px) rotate(${pitch}deg) scale(${scale})`;
+    };
+    jet.style.visibility = 'visible';
+    carrier.classList.add('grounded');
+    dv.classList.add('cine');
     horizon.setSpeed(0, true);
-    setPose(cruise.x, rest(), 0);
+    horizon.setJet(0, 0, false);
+    setCarrier(cx, rest(), 0);
+    hang(cx, rest(), 0);
 
     const finish = () => {
       if (finished) return;
       finished = true;
-      dv.classList.remove('intro');
-      jet.classList.remove('grounded', 'afterburner', 'shudder');
+      dv.classList.remove('intro', 'cine');
+      carrier.style.display = 'none';
+      jet.classList.remove('armed');
       jet.classList.add('engine', 'cruise');
       setPose(cruise.x, cruise.y, 0);
       horizon.setSpeed(cruiseSpeed(start.speed));
@@ -630,28 +657,74 @@ export function runScene(app: App, game: Game, wantIntro: boolean): void {
       const t = (now - t0) / 1000;
       const r = rest();
       if (t < 1.8) {
+        // engine start: spool-up, shudder, heat haze; weapons armed
         if (!did.eng) { did.eng = true; showCallout('Engine start', 'Pre-flight', 'info'); play('engine'); }
-        if (t > 0.4 && !did.fl) { did.fl = true; jet.classList.add('engine', 'shudder'); }
-        setPose(cruise.x, r + (Math.random() - 0.5) * (t > 0.4 ? 1.2 : 0), 0);
-        if (Math.random() < 0.5 && t > 0.5) horizon.emit(cruise.x, horizon.runwayYCss() + 2, { n: 1, color: ['#d8cfb8', '#b9b09a'], size: 3, vx: -60, vy: -10, spread: 20, life: 1.2, world: true });
+        if (t > 0.4 && !did.fl) { did.fl = true; carrier.classList.add('engine', 'shudder'); }
+        if (t > 1.0 && !did.arm) { did.arm = true; arm.textContent = 'MASTER ARM · HARM ARMED'; arm.classList.add('on'); showCallout('HARM armed', 'AGM-88 · anti-radiation', 'info'); play('ping'); }
+        rpm.textContent = String(Math.round(Math.min(100, (t / 1.6) * 100)));
+        const sh = (Math.random() - 0.5) * (t > 0.4 ? 1.2 : 0);
+        setCarrier(cx, r + sh, 0); hang(cx, r + sh, 0);
+        if (Math.random() < 0.5 && t > 0.5) horizon.emit(cx - cw() * 0.5, horizon.runwayYCss() + 2, { n: 1, color: ['#d8cfb8', '#b9b09a'], size: 3, vx: -60, vy: -10, spread: 20, life: 1.2, world: true });
       } else if (t < 4.7) {
+        // take-off roll: brakes off, afterburner, wheels spin, dust, speed climbs
         const u = (t - 1.8) / 2.9;
-        if (!did.roll) { did.roll = true; jet.classList.add('afterburner'); showCallout('Take-off roll', 'Full power', 'info'); play('roar'); }
+        if (!did.roll) { did.roll = true; carrier.classList.add('afterburner'); showCallout('Brakes release', 'Take-off roll', 'info'); play('roar'); rpm.textContent = '100'; }
+        if (u > 0.55 && !did.v1) { did.v1 = true; showCallout('Rotate', 'V1 · V-R', 'info'); }
         horizon.setSpeed(VMAX * u ** 2.2, true);
-        setPose(cruise.x, r + (Math.random() - 0.5) * 1.5 * (1 - u), -u * 1.5);
-        horizon.emit(cruise.x - jw * 0.4, horizon.runwayYCss() + 1, { n: 2, color: ['#d8cfb8', '#b9b09a', '#ffffff'], size: 4, vx: -90, vy: -14, spread: 26, life: 1.4, world: true });
+        kts.textContent = String(Math.round(170 * u ** 1.3));
+        const sh = (Math.random() - 0.5) * 1.5 * (1 - u);
+        setCarrier(cx, r + sh, -u * 1.5); hang(cx, r + sh, -u * 1.5);
+        horizon.emit(cx - cw() * 0.45, horizon.runwayYCss() + 1, { n: 2, color: ['#d8cfb8', '#b9b09a', '#ffffff'], size: 4, vx: -90, vy: -14, spread: 26, life: 1.4, world: true });
       } else if (t < 6.2) {
+        // rotation and climb, gear retracts
         const u = (t - 4.7) / 1.5;
         const e = easeInOut(u);
-        if (!did.lift) { did.lift = true; showCallout('Lift-off', 'Rotate', 'info'); }
-        if (u > 0.3 && !did.gear) { did.gear = true; jet.classList.remove('grounded'); }
-        if (u > 0.45 && dv.classList.contains('intro')) { dv.classList.remove('intro'); panel.classList.remove('swap'); void panel.offsetWidth; panel.classList.add('swap'); }
+        if (!did.lift) { did.lift = true; showCallout('Lift-off', 'Positive rate', 'info'); }
+        if (u > 0.3 && !did.gear) { did.gear = true; carrier.classList.add('retract'); later(() => carrier.classList.remove('grounded'), 450); showCallout('Gear up', 'Climbing', 'info'); }
+        kts.textContent = String(Math.round(lerp(170, 260, e)));
         horizon.setSpeed(lerp(VMAX, CRUISE * 1.3, e), true);
-        setPose(cruise.x, lerp(r, cruise.y, e), -14 * Math.sin(Math.PI * Math.min(1, u * 1.15)));
+        const y = lerp(r, airY(), e);
+        const p = -14 * Math.sin(Math.PI * Math.min(1, u * 1.15));
+        setCarrier(cx, y, p); hang(cx, y, p);
       } else if (t < 7.0) {
+        // level off, lining up the shot
         const u = (t - 6.2) / 0.8;
-        horizon.setSpeed(lerp(CRUISE * 1.3, CRUISE, u), true);
-        setPose(cruise.x, cruise.y, 0);
+        if (!did.lvl) { did.lvl = true; showCallout('Weapon release', 'Stand by', 'info'); }
+        kts.textContent = String(Math.round(lerp(260, 420, u)));
+        horizon.setSpeed(lerp(VMAX * 0.95, CRUISE, u), true);
+        const y = airY() + Math.sin(u * 6) * 1.2;
+        setCarrier(cx, y, 0); hang(cx, y, 0);
+      } else if (t < 7.45) {
+        // pylon release: the missile drops clear and noses over
+        const u = (t - 7.0) / 0.45;
+        if (!did.rel) { did.rel = true; play('release'); showCallout('HARM away', 'Released', 'good'); dv.classList.add('intro-end'); arm.textContent = 'HARM AWAY'; }
+        const y = airY();
+        setCarrier(cx, y, 0);
+        hang(cx, y, 4 * u, 8 + 70 * u * u, lerp(0.7, 0.78, u));
+      } else if (t < 8.6) {
+        // ignition: flash, shockwave, the HARM surges to its cruise position while the carrier banks away
+        const u = (t - 7.45) / 1.15;
+        const e = easeInOut(u);
+        if (!did.ign) {
+          did.ign = true; play('ignite'); jet.classList.add('engine', 'surge', 'cruise');
+          from = { x: pose.x + jw / 2, y: pose.y + jh / 2 };
+          const fl = $('#ignite'); fl.style.cssText = `left:${from.x}px;top:${from.y}px`; fl.classList.remove('go'); void fl.offsetWidth; fl.classList.add('go');
+          shockwave(dv, from.x, from.y, 56);
+          horizon.emit(from.x - jw * 0.4, from.y, { n: 18, color: ['#fff6d0', '#ffd84a', '#ff8a2a'], size: 3, vx: -120, vy: -6, spread: 40, life: 0.8 });
+          shake(260, false);
+          dv.classList.remove('intro'); panel.classList.remove('swap'); void panel.offsetWidth; panel.classList.add('swap');
+        }
+        const tx = cruise.x + jw / 2;
+        const ty = cruise.y + jh / 2;
+        const hx = lerp(from.x, tx, e);
+        const hy = lerp(from.y + 0, ty, e);
+        setPose(hx - jw / 2, hy - jh / 2, lerp(4, 0, e), lerp(0.75, 1, e));
+        horizon.setSpeed(lerp(CRUISE * 0.9, cruiseSpeed(start.speed), e), true);
+        kts.textContent = String(Math.round(lerp(420, 900, e)));
+        const jx = lerp(cx, dv.clientWidth + cw(), e * e);
+        const jy = lerp(airY(), -ch() * 2, e);
+        setCarrier(jx, jy, -18 * e);
+        horizon.setJet(hx, hy + jh / 2, true);
       } else { finish(); return; }
       requestAnimationFrame(step);
     };
@@ -682,6 +755,7 @@ export function runScene(app: App, game: Game, wantIntro: boolean): void {
     setPose(c.x, c.y, 0);
     jet.classList.add('engine', 'cruise');
     horizon.setSpeed(cruiseSpeed(start.speed), true);
+    carrier.style.display = 'none';
     dv.classList.remove('intro');
   }
 }

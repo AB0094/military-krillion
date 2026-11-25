@@ -95,6 +95,17 @@ function missileGrid(): Grid {
 const MISSILE_PAL: Palette = { w: '#f1f6fb', m: '#b9c8d8', d: '#7f93a8', n: '#2f3d52', r: '#ff5c7a', c: '#4fe3ff', k: '#101c2b' };
 export const missileSprite = (cls = ''): string => sprite(toRows(missileGrid()), MISSILE_PAL, cls);
 
+/** The HARM flying level, nose to the right: the missile airframe rotated a quarter turn. */
+function harmGrid(): Grid {
+  const g = missileGrid();
+  const h = g.length;
+  const w = g[0].length;
+  const out = make(h, w);
+  for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) out[w - 1 - x][y] = g[y][x];
+  return out;
+}
+export const harmSprite = (cls = ''): string => sprite(toRows(harmGrid()), MISSILE_PAL, cls);
+
 /** Enemy surface-to-air missile: the same airframe in hostile colours. */
 export const samSprite = (cls = ''): string =>
   sprite(toRows(missileGrid()), { w: '#ffe3b0', m: '#e8924f', d: '#a8472f', n: '#3a1510', r: '#ffffff', c: '#ffd24a', k: '#2a0c08' }, cls);

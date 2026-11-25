@@ -1,6 +1,6 @@
 # Military Krillion
 
-A daily military-trivia game. You type one answer per prompt and score by **how rare** your answer is. Rarer answers score more points, and points fly your jet further. Vite + vanilla TypeScript, Vitest, no backend; progress lives in `localStorage`.
+A daily military-trivia game. You type one answer per prompt and score by **how rare** your answer is. Rarer answers score more points, and points fly your HARM further. Vite + vanilla TypeScript, Vitest, no backend; progress lives in `localStorage`.
 
 **Live site:** https://ab0094.github.io/military-krillion/
 
@@ -50,8 +50,9 @@ The game has no score multipliers, so the ranks are presentation only. Data weig
 
 ## The flight
 
-- **Take-off.** Every run begins on a military airfield: the jet sits on the runway, the engine starts up, it accelerates down the runway past hangars and a control tower, lifts off and levels out into horizontal flight. The question timer starts when level flight begins. Tap to skip (it is skipped automatically under `prefers-reduced-motion`, and when resuming a run in progress).
-- **Horizontal flight.** The jet always flies left to right; the world scrolls past it with parallax layers. A rush of speed follows every correct answer.
+- **You fly a HARM.** In every mode (Limited, Unlimited, Endless) the craft you fly is an AGM-88 HARM anti-radiation missile, shown nose-right with a rocket flame, trail, surge and hit effects. Lives in Endless are HARM icons.
+- **Take-off and release.** Every run opens with a cinematic: letterbox bars, a cockpit read-out (KTS, RPM, master-arm), engine start with the HARM armed on the pylon, brakes release and a take-off roll with spinning wheels, dust and afterburner, rotation, gear retract, level-off, then **the HARM is released**, drops clear, ignites with a flash and shockwave and surges ahead while the carrier jet banks away. The question timer starts once the HARM is flying. Tap to skip (skipped automatically under `prefers-reduced-motion`, and when resuming a run in progress).
+- **Horizontal flight.** The HARM always flies left to right; the world scrolls past it with parallax layers. A rush of speed follows every correct answer.
 - **Environments.** Each run picks one at random, never the same as the previous run: Dense Forest, Open Ocean, Vast Plains, Sandy Beach, a Normandy-style Coastal Battlefield (beach obstacles, landing-craft wrecks, smoke and distant blasts, no houses or civilian buildings) and Open Training Grounds (targets, sandbags, watchtower, coloured smoke). All are drawn procedurally on a canvas (`src/ui/horizon.ts`) with smoke, clouds, dust, waves, rain and distant explosions. For testing, set `localStorage["military-krillion:env"]` to an environment id to force one.
 - **Distance milestones.** A fictional arcade set piece every 1,000m (decorative, unoccupied props only):
 
@@ -73,7 +74,7 @@ The game has no score multipliers, so the ranks are presentation only. Data weig
 - **Speed** starts at 600 km/h. A miss adds **DRAG** (a big DRAG banner, shaking, smoke, the world slows) and costs 110, then 150, then 190 km/h. A correct answer recovers 40 km/h, up to +80 on a streak, capped at 800.
 - **Distance** per correct answer is `points x 10 m` scaled by speed (1x at 600 km/h, down to 0.25x, up to 1.33x), so staying fast matters. The HUD shows distance, speed, score and lives.
 - **Difficulty ramps.** The pool is ordered easy to hard (by whether a common answer exists and how many answers there are) with seeded noise, so early questions are easy and later ones are not (`endlessPromptAt`).
-- **Losing.** The third miss triggers an enemy radar lock; a missile hits the jet, the engine fails, it pitches nose-down trailing smoke while the camera follows, then crashes in a large explosion with a dust cloud. The results screen shows score, distance, correct answers and accuracy, with **Retry** and **Main menu**.
+- **Losing.** The third miss triggers an enemy radar lock; a missile hits your HARM, its motor fails, it pitches nose-down trailing smoke while the camera follows, then crashes in a large explosion with a dust cloud. The results screen shows score, distance, correct answers and accuracy, with **Retry** and **Main menu**.
 
 ## Add prompts
 
