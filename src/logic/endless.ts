@@ -24,7 +24,8 @@ export const distanceGain = (points: number, speed: number): number => Math.roun
 /** How hard a prompt is: no easy (common) answer available, and few valid answers, means harder. 0..~1.35. */
 export function promptDifficulty(p: Prompt): number {
   const easiest = Math.min(...p.answers.map((a) => a.weight));
-  const breadth = 1 - Math.min(p.answers.length, 25) / 25;
+  // log scale: going from 10 to 40 valid answers matters more than going from 150 to 180
+  const breadth = 1 - Math.min(1, Math.log(Math.max(1, p.answers.length)) / Math.log(150));
   return easiest + 0.35 * breadth;
 }
 

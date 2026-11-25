@@ -85,7 +85,15 @@ The game has no score multipliers, so the ranks are presentation only. Data weig
 
 ## Data coverage and accuracy
 
-`data/prompts.json` has 210 prompts (105 Ground, 105 Air) and over 5,500 answers. Category prompts are broad on purpose: for example the WWII, WWI, Cold War, helicopter, bomber, drone, transport, flying-boat, tank, IFV and armoured-car prompts accept prop aircraft and early tanks, modern types, prototypes that flew, and designs that were never built (see the `*-prototypes`, `*-unbuilt-designs` and `gnd-never-built` prompts). The answers were compiled from general knowledge, not checked against a single authoritative source, so some are probably still wrong or missing. Entries I was unsure of were left out rather than guessed. If you spot a mistake, edit `data/prompts.json` and run `npm run validate`.
+`data/prompts.json` has 222 prompts (108 Air, 114 Ground) and over 9,000 answers. Category prompts are broad on purpose: WWI, WWII and Cold War aircraft, helicopters, bombers, drones, flying boats, tanks, IFVs, armoured cars, missiles, rifles, machine guns, artillery and more accept prop aircraft and early tanks, modern types, prototypes that flew, and designs that were never built (see the `*-prototypes`, `*-unbuilt-designs` and `gnd-never-built` prompts).
+
+How the data was built:
+
+- A first pass of well-known aircraft and vehicles was written by hand. About 90% of the hand-written aircraft names were then found in Wikidata; the unmatched ones were mostly spelling differences, and the few I could not support were removed.
+- About 2,000 more aircraft and vehicles and about 800 weapons were added from Wikidata (CC0), using each item's recorded first-flight or service date, country and role. The weapon-type prompts (missiles, rifles, machine guns, howitzers, self-propelled guns and so on) are mostly built this way.
+- For those, a rarity rank was estimated from how many Wikipedia language editions have an article on the item, so obscure types sit in the rarer ranks. This is a proxy, not player data.
+
+It is still not hand-verified end to end: Wikidata roles and dates are sometimes wrong or missing, names can be duplicated under different spellings, and some categories (especially unusual variants and minor national designs) are incomplete. If you spot a mistake, edit `data/prompts.json` and run `npm run validate`.
 
 ## Add prompts
 
