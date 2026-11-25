@@ -54,7 +54,7 @@ function noise(at: number, dur: number, vol = 0.08): void {
   src.start(ctx.currentTime + at);
 }
 
-export type Cue = 'launch' | 'hit' | 'rare' | 'miss' | 'tier' | 'splash' | 'tick' | 'whoosh' | 'boom' | 'alarm' | 'engine' | 'roar' | 'drag' | 'milestone' | 'ping' | 'crash' | 'release' | 'ignite';
+export type Cue = 'launch' | 'hit' | 'rare' | 'miss' | 'tier' | 'splash' | 'tick' | 'whoosh' | 'boom' | 'alarm' | 'engine' | 'roar' | 'drag' | 'milestone' | 'ping' | 'crash' | 'release' | 'ignite' | 'cannon';
 
 /** Short synthesized cues. Safe to call anywhere: silently does nothing if muted or audio is unavailable. */
 export function play(cue: Cue): void {
@@ -76,6 +76,7 @@ export function play(cue: Cue): void {
       case 'drag': sweep(300, 70, 0, 0.7, 'sawtooth', 0.07); noise(0, 0.4, 0.08); break;
       case 'release': tone(180, 0, 0.12, 'square', 0.06); noise(0.02, 0.2, 0.06); tone(90, 0.05, 0.25, 'sine', 0.08); break;
       case 'ignite': noise(0, 1.1, 0.14); sweep(160, 1100, 0, 0.9, 'sawtooth', 0.06); tone(60, 0, 0.5, 'sine', 0.1); break;
+      case 'cannon': noise(0, 1.4, 0.24); tone(48, 0, 0.9, 'sine', 0.16); sweep(900, 70, 0, 0.5, 'sawtooth', 0.09); tone(2200, 0, 0.05, 'square', 0.06); break;
       case 'ping': tone(1320, 0, 0.12, 'sine', 0.04); tone(1760, 0.14, 0.2, 'sine', 0.035); break;
       case 'milestone': [392, 523, 659, 784].forEach((f, i) => tone(f, i * 0.12, 0.3, 'triangle', 0.055)); tone(1047, 0.5, 0.6, 'sine', 0.05); break;
       case 'crash': noise(0, 1.8, 0.24); sweep(240, 40, 0, 1.4, 'sawtooth', 0.1); tone(48, 0.05, 1.1, 'sine', 0.14); break;

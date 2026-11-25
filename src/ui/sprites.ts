@@ -95,38 +95,155 @@ function missileGrid(): Grid {
 const MISSILE_PAL: Palette = { w: '#f1f6fb', m: '#b9c8d8', d: '#7f93a8', n: '#2f3d52', r: '#ff5c7a', c: '#4fe3ff', k: '#101c2b' };
 export const missileSprite = (cls = ''): string => sprite(toRows(missileGrid()), MISSILE_PAL, cls);
 
-/** The AGM-88 HARM flying level, nose to the right: dark radome, long body with cyan/yellow bands, mid-body wings, swept tail fins. */
+/** The AGM-88 HARM flying level, nose to the right: shaded body, long dark radome, cyan/yellow bands, wings and swept tail fins. */
 function harmGrid(): Grid {
-  const W = 46;
-  const H = 15;
-  const cy = 7;
+  const W = 60;
+  const H = 19;
+  const cy = 9;
   const g = make(W, H);
-  // tail fins (swept) and mid-body wings, drawn first so the body overlaps their roots
-  poly(g, [[0, cy - 7], [5, cy - 7], [10, cy - 2], [3, cy - 2]], 'm');
-  poly(g, [[0, cy + 7], [5, cy + 7], [10, cy + 2], [3, cy + 2]], 'd');
-  poly(g, [[19, cy - 2], [31, cy - 2], [27, cy - 6], [23, cy - 6]], 'm');
-  poly(g, [[19, cy + 2], [31, cy + 2], [27, cy + 6], [23, cy + 6]], 'd');
-  // body, shaded top to bottom
-  const rows = ['w', 'w', 'm', 'm', 'd'];
-  for (let x = 3; x <= 37; x++) rows.forEach((c, i) => put(g, x, cy - 2 + i, c));
-  // exhaust collar and nozzle
-  rect(g, 3, cy - 2, 5, cy + 2, 'd'); rect(g, 1, cy - 1, 2, cy + 1, 'k'); put(g, 3, cy, 'k');
-  // bands: cyan guidance section, yellow warning stripe, dark seeker panels
-  rect(g, 13, cy - 2, 14, cy + 2, 'c'); rect(g, 33, cy - 2, 34, cy + 2, 'c');
-  rect(g, 17, cy - 2, 17, cy + 2, 'y');
-  for (let x = 7; x <= 11; x += 2) put(g, x, cy - 1, 'd');
-  // ogive nose: dark radome with a red tip
-  for (let x = 38; x <= 45; x++) {
-    const t = (x - 38) / 8;
-    const hh = 2.4 * (1 - t ** 1.7);
+  // swept tail fins and mid-body wings first, so the body overlaps their roots
+  poly(g, [[0, cy - 8], [6, cy - 8], [12, cy - 3], [4, cy - 3]], 'm');
+  poly(g, [[0, cy + 8], [6, cy + 8], [12, cy + 3], [4, cy + 3]], 'd');
+  poly(g, [[2, cy - 8], [4, cy - 8], [8, cy - 3], [6, cy - 3]], 'w'); // fin leading highlight
+  poly(g, [[24, cy - 3], [39, cy - 3], [34, cy - 8], [29, cy - 8]], 'm');
+  poly(g, [[24, cy + 3], [39, cy + 3], [34, cy + 8], [29, cy + 8]], 'd');
+  rect(g, 29, cy - 8, 34, cy - 8, 'w'); // wing edge highlight
+  // body: seven shaded rows
+  const rows = ['w', 'w', 'l', 'm', 'm', 'd', 's'];
+  for (let x = 4; x <= 46; x++) rows.forEach((c, i) => put(g, x, cy - 3 + i, c));
+  // joints between motor, control and guidance sections
+  for (const x of [14, 24, 40]) rect(g, x, cy - 3, x, cy + 3, 'k');
+  // motor: exhaust collar and glowing nozzle
+  rect(g, 4, cy - 3, 6, cy + 3, 'd'); rect(g, 2, cy - 2, 3, cy + 2, 'k'); rect(g, 3, cy - 1, 3, cy + 1, 'o');
+  // bands: cyan guidance, yellow warning, red stripe
+  rect(g, 16, cy - 3, 17, cy + 3, 'c'); rect(g, 42, cy - 3, 43, cy + 3, 'c');
+  rect(g, 20, cy - 3, 20, cy + 3, 'y'); rect(g, 21, cy - 3, 21, cy + 3, 'y');
+  rect(g, 9, cy - 3, 9, cy + 3, 'r');
+  // rivets / panel detail
+  for (let x = 28; x <= 38; x += 3) put(g, x, cy - 1, 'd');
+  rect(g, 44, cy - 2, 46, cy - 1, 'n'); // antenna window
+  // long ogive nose: dark radome with a lit top edge and a red tip
+  for (let x = 47; x <= 59; x++) {
+    const t = (x - 47) / 13;
+    const hh = 3.2 * (1 - t ** 1.6);
     const y0 = Math.round(cy - hh);
     const y1 = Math.round(cy + hh);
-    for (let y = y0; y <= y1; y++) put(g, x, y, x >= 43 ? 'r' : y === y0 ? 'h' : 'n');
+    for (let y = y0; y <= y1; y++) put(g, x, y, x >= 57 ? 'r' : y === y0 ? 'h' : y === y1 ? 'k' : 'n');
   }
   return outline(g);
 }
-const HARM_PAL: Palette = { w: '#f4f8fc', m: '#bccbda', d: '#7a8fa6', n: '#2d3b50', r: '#ff4a6a', c: '#4fe3ff', y: '#ffd84a', h: '#6a7f99', k: '#101c2b' };
+const HARM_PAL: Palette = { w: '#ffffff', l: '#e4edf6', m: '#bccbda', d: '#8398ae', s: '#5f7289', n: '#2d3b50', h: '#6d86a4', r: '#ff4a6a', c: '#4fe3ff', y: '#ffd84a', o: '#ffb347', k: '#0e1826' };
 export const harmSprite = (cls = ''): string => sprite(toRows(harmGrid()), HARM_PAL, cls);
+
+// ---------------------------------------------------------------- the APFSDS dart, nose to the right
+function dartGrid(): Grid {
+  const W = 66;
+  const H = 13;
+  const cy = 6;
+  const g = make(W, H);
+  // stabiliser fins
+  poly(g, [[0, cy - 5], [5, cy - 5], [14, cy - 1], [6, cy - 1]], 'm');
+  poly(g, [[0, cy + 5], [5, cy + 5], [14, cy + 1], [6, cy + 1]], 'd');
+  poly(g, [[1, cy - 5], [3, cy - 5], [8, cy - 1], [6, cy - 1]], 'w');
+  // long tungsten rod, three shaded rows, then a ballistic-cap point
+  for (let x = 6; x <= 50; x++) { put(g, x, cy - 1, 'w'); put(g, x, cy, 'm'); put(g, x, cy + 1, 'd'); }
+  for (let x = 12; x <= 46; x += 11) { put(g, x, cy - 1, 'k'); put(g, x, cy, 'k'); put(g, x, cy + 1, 'k'); } // sabot-groove bands
+  rect(g, 15, cy - 1, 15, cy + 1, 'y');
+  for (let x = 51; x <= 63; x++) {
+    const t = (x - 51) / 13;
+    const hh = 1.6 * (1 - t ** 1.3);
+    const y0 = Math.round(cy - hh);
+    const y1 = Math.round(cy + hh);
+    for (let y = y0; y <= y1; y++) put(g, x, y, x >= 61 ? 'a' : y === y0 ? 'l' : 'n');
+  }
+  rect(g, 4, cy - 1, 6, cy + 1, 'k'); // tail base
+  put(g, 3, cy, 'o'); put(g, 2, cy, 'o');
+  return outline(g);
+}
+const DART_PAL: Palette = { w: '#f1f6fb', l: '#d6e0ea', m: '#aab7c6', d: '#6f7f92', n: '#3a4656', a: '#ff6a3a', y: '#ffd84a', o: '#ffb347', k: '#0e1826' };
+export const dartSprite = (cls = ''): string => sprite(toRows(dartGrid()), DART_PAL, cls);
+
+// ---------------------------------------------------------------- tanks (side view, facing right; enemies are mirrored)
+export interface TankSpec {
+  name: string;
+  country: string;
+  len: number;
+  turret: 'round' | 'angular' | 'flat' | 'rear';
+  gun: number;
+  skirt: boolean;
+  era: boolean;
+  scheme: 'sand' | 'olive' | 'green' | 'grey';
+}
+/** A different model per distance. The first seven are the first lap; the rest appear past 7,000 m. */
+export const TANK_MODELS: readonly TankSpec[] = [
+  { name: 'T-55', country: 'USSR', len: 40, turret: 'round', gun: 22, skirt: false, era: false, scheme: 'olive' },
+  { name: 'M60 Patton', country: 'USA', len: 44, turret: 'round', gun: 24, skirt: false, era: false, scheme: 'green' },
+  { name: 'T-72B3', country: 'Russia', len: 42, turret: 'round', gun: 24, skirt: false, era: true, scheme: 'green' },
+  { name: 'Leopard 2A6', country: 'Germany', len: 48, turret: 'angular', gun: 28, skirt: true, era: false, scheme: 'olive' },
+  { name: 'M1A2 Abrams', country: 'USA', len: 50, turret: 'flat', gun: 28, skirt: true, era: false, scheme: 'sand' },
+  { name: 'Challenger 2', country: 'UK', len: 50, turret: 'flat', gun: 28, skirt: true, era: true, scheme: 'olive' },
+  { name: 'K2 Black Panther', country: 'South Korea', len: 50, turret: 'angular', gun: 30, skirt: true, era: true, scheme: 'grey' },
+  { name: 'Merkava Mk.4', country: 'Israel', len: 48, turret: 'rear', gun: 26, skirt: true, era: false, scheme: 'sand' },
+  { name: 'T-90M', country: 'Russia', len: 44, turret: 'round', gun: 26, skirt: true, era: true, scheme: 'green' },
+  { name: 'Type 99A', country: 'China', len: 50, turret: 'angular', gun: 28, skirt: true, era: true, scheme: 'olive' },
+  { name: 'Leclerc', country: 'France', len: 48, turret: 'flat', gun: 28, skirt: false, era: false, scheme: 'sand' },
+];
+export const tankModel = (k: number): TankSpec => TANK_MODELS[(Math.max(1, k) - 1) % TANK_MODELS.length];
+/** The player's own tank: no gun in the sprite, because the barrel is a separate element that elevates and recoils. */
+export const PLAYER_TANK: TankSpec = { name: 'MBT', country: '', len: 54, turret: 'flat', gun: 0, skirt: true, era: false, scheme: 'olive' };
+const SCHEMES: Record<TankSpec['scheme'], Palette> = {
+  sand: { m: '#b9a46e', l: '#d8c791', d: '#8b7a4e', s: '#a18f5a' },
+  olive: { m: '#6e7d4c', l: '#8da066', d: '#4a5833', s: '#5d6c3f' },
+  green: { m: '#5a734b', l: '#78946a', d: '#3d5034', s: '#4b6140' },
+  grey: { m: '#7d8993', l: '#9fabb6', d: '#56616b', s: '#69747e' },
+};
+const TANK_BASE: Palette = { k: '#10171e', g: '#c8d0d8', e: '#a5584a', h: '#e8f0f5', o: '#ffb347' };
+
+const GY = 25; // ground row
+function tankGrid(t: TankSpec): Grid {
+  const { len, gun } = t;
+  const W = len + gun + 6;
+  const g = make(W, 27);
+  rect(g, 2, GY - 5, len - 1, GY - 1, 'k'); // track band
+  for (let x = 4; x < len - 3; x += 4) { rect(g, x, GY - 4, x + 2, GY - 2, 'd'); put(g, x + 1, GY - 3, 'g'); }
+  poly(g, [[1, GY - 6], [len, GY - 6], [len, GY - 9], [len - 8, GY - 13], [4, GY - 13], [1, GY - 10]], 'm'); // hull
+  rect(g, 4, GY - 13, len - 9, GY - 12, 'l');
+  rect(g, 1, GY - 7, len - 1, GY - 6, 's');
+  if (t.skirt) { rect(g, 5, GY - 10, len - 3, GY - 6, 's'); for (let x = 9; x < len - 3; x += 6) rect(g, x, GY - 10, x, GY - 6, 'd'); rect(g, 5, GY - 10, len - 3, GY - 10, 'l'); }
+  if (t.era) for (let x = len - 7; x < len - 1; x += 2) { put(g, x, GY - 10 - Math.floor((len - 1 - x) / 3), 'e'); put(g, x, GY - 9, 'e'); }
+  const rear = t.turret === 'rear';
+  const x0 = Math.round(len * (rear ? 0.12 : 0.3));
+  const x1 = Math.round(len * (rear ? 0.62 : 0.8));
+  if (rear) poly(g, [[len - 16, GY - 13], [len, GY - 9], [len, GY - 11], [len - 9, GY - 15]], 'm'); // sloped front engine deck
+  if (t.turret === 'round') poly(g, [[x0, GY - 13], [x1, GY - 13], [x1 - 2, GY - 18], [x1 - 6, GY - 20], [x0 + 6, GY - 20], [x0 + 2, GY - 17]], 'm');
+  else if (t.turret === 'angular') { poly(g, [[x0, GY - 13], [x1 + 3, GY - 13], [x1, GY - 18], [x1 - 3, GY - 20], [x0 + 1, GY - 20]], 'm'); rect(g, x0 - 3, GY - 19, x0 + 1, GY - 14, 's'); }
+  else if (t.turret === 'flat') { poly(g, [[x0, GY - 13], [x1, GY - 13], [x1 - 1, GY - 20], [x0 + 2, GY - 20], [x0 - 2, GY - 17]], 'm'); rect(g, x0 - 4, GY - 19, x0, GY - 14, 's'); }
+  else poly(g, [[x0, GY - 13], [x1, GY - 13], [x1 - 2, GY - 17], [x1 - 8, GY - 20], [x0, GY - 20]], 'm');
+  rect(g, x0 + 3, GY - 20, x1 - 5, GY - 19, 'l'); // lit roof
+  rect(g, x0, GY - 14, x1 - 1, GY - 13, 'd');
+  rect(g, x0 + 5, GY - 22, x0 + 8, GY - 21, 'k'); put(g, x0 + 6, GY - 22, 'h'); // commander hatch
+  rect(g, x0 + 2, GY - 25, x0 + 2, GY - 21, 'k'); // antenna
+  if (t.era && t.turret !== 'round') rect(g, x1 - 2, GY - 19, x1 + 2, GY - 15, 'e');
+  if (gun) {
+    const gy0 = GY - 16;
+    rect(g, x1 - 1, gy0 - 2, x1 + 1, gy0 + 3, 's'); // mantlet
+    rect(g, x1 + 2, gy0, x1 + gun, gy0 + 1, 'd'); rect(g, x1 + 2, gy0, x1 + gun, gy0, 'm');
+    rect(g, x1 + Math.round(gun * 0.55), gy0 - 1, x1 + Math.round(gun * 0.55) + 3, gy0 + 2, 'd'); // fume extractor
+    rect(g, x1 + gun - 2, gy0 - 1, x1 + gun, gy0 + 2, 'k'); // muzzle
+  }
+  return outline(g);
+}
+const mirror = (g: Grid): Grid => g.map((r) => [...r].reverse());
+const tankPal = (t: TankSpec): Palette => ({ ...TANK_BASE, ...SCHEMES[t.scheme] });
+/** An enemy range target: unoccupied, facing left towards the incoming round. */
+export const tankSprite = (t: TankSpec, cls = ''): string => sprite(toRows(mirror(tankGrid(t))), tankPal(t), cls);
+/** The firing tank's hull and turret (facing right) plus where the gun pivots, in sprite cells. */
+export function playerTank(): { svg: string; pivot: { x: number; y: number }; cells: { w: number; h: number } } {
+  const t = PLAYER_TANK;
+  const g = tankGrid(t);
+  const x1 = Math.round(t.len * 0.8);
+  return { svg: sprite(toRows(g), tankPal(t), ''), pivot: { x: x1 + 3, y: GY - 16 + 1 + 1 }, cells: { w: g[0].length, h: g.length } };
+}
 
 /** Enemy surface-to-air missile: the same airframe in hostile colours. */
 export const samSprite = (cls = ''): string =>

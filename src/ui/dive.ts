@@ -15,7 +15,7 @@ import { CRUISE, createHorizon, type Horizon } from './horizon';
 import { playExplosion, shockwave, smokeColumns, wreckage } from './explosion';
 import { RARITY_COLORS, showRarity } from './rarity';
 import { play } from './sound';
-import { harmSprite, jetSprite, samSprite } from './sprites';
+import { dartSprite, harmSprite, jetSprite, playerTank, samSprite, tankModel, tankSprite } from './sprites';
 
 type DiveView = Extract<View, { name: 'dive' }>;
 
@@ -52,6 +52,8 @@ export interface Outcome {
 export interface Game {
   seedKey: string;
   title: string;
+  /** 'air' flies a HARM released from a carrier aircraft; 'tank' flies an APFSDS dart fired from a tank. Default air. */
+  theme?: 'air' | 'tank';
   endless: boolean;
   /** Prompts per run (fixed) or the endless scale; distance/1000 over this picks the airfield. */
   scale: number;
@@ -71,7 +73,7 @@ export function renderDive(app: App, v: DiveView): void {
   if (s0?.complete) return app.go({ name: 'results', mode: v.mode, date: v.date, archive: v.archive }, true);
 
   const game: Game = {
-    seedKey: `${v.archive ? 'archive|' : ''}${v.date}|${v.mode}`, title: runTitle(v), endless: false, scale: total,
+    seedKey: `${v.archive ? 'archive|' : ''}${v.date}|${v.mode}`, title: runTitle(v), theme: v.mode === 'Ground' ? 'tank' : 'air', endless: false, scale: total,
     snapshot() {
       const s = session();
       const depth = s?.depth ?? 0;
@@ -101,17 +103,22 @@ export function runScene(app: App, game: Game, wantIntro: boolean): void {
   if (start.over) return game.finish();
   const intro = wantIntro && !reducedMotion();
   const env: EnvId = pickEnvironment(game.seedKey);
+  const tank = game.theme === 'tank';
+  const pt = playerTank();
+  const GUN = 30; // barrel length, sprite cells
+  const craftSprite = () => (tank ? dartSprite() : harmSprite());
   const envName = ENVIRONMENTS.find((e) => e.id === env)!.name;
 
-  app.root.innerHTML = `<div class="dv env-${env}${intro ? ' intro' : ''}" id="dv">
+  app.root.innerHTML = `<div class="dv env-${env}${tank ? ' tank' : ''}${intro ? ' intro' : ''}" id="dv">
     <div class="dv-stage" id="stage">
       <canvas class="dv-canvas" id="cv"></canvas>
-      <div class="dv-jet" id="carrier">
-        <div class="jet-body">${jetSprite()}</div>
-        <i class="gear g1"></i><i class="gear g2"></i><i class="jet-flame"></i><i class="jet-heat"></i>
+      <div class="dv-jet${tank ? ' tank-car' : ''}" id="carrier">
+        ${tank
+          ? `<div class="jet-body">${pt.svg}</div><i class="tank-gun" id="gun" style="left:calc(var(--px) * ${pt.pivot.x});top:calc(var(--px) * ${pt.pivot.y - 1})"></i><i class="tank-exh"></i>`
+          : `<div class="jet-body">${jetSprite()}</div><i class="gear g1"></i><i class="gear g2"></i><i class="jet-flame"></i><i class="jet-heat"></i>`}
       </div>
       <div class="dv-harm" id="jet">
-        <div class="harm-body">${harmSprite()}</div><i class="harm-flame"></i>
+        <div class="harm-body">${craftSprite()}</div><i class="harm-flame"></i>
       </div>
     </div>
     <div class="speedlines" id="sl"></div><div class="lbx t"></div><div class="lbx b"></div>
@@ -133,7 +140,7 @@ export function runScene(app: App, game: Game, wantIntro: boolean): void {
     </div>
     <div class="dv-panel px" id="panel"></div>
     <div class="dv-dock" id="dock"></div>
-    <div class="dv-intro-msg" id="intromsg">Take-off · HARM release · tap to skip</div>
+    <div class="dv-intro-msg" id="intromsg">${tank ? 'Armour advance · APFSDS fire · tap to skip' : 'Take-off · HARM release · tap to skip'}</div>
     <div class="callout" id="callout"></div>
   </div>`;
 
@@ -165,7 +172,12 @@ export function runScene(app: App, game: Game, wantIntro: boolean): void {
   const measure = () => { jw = jet.offsetWidth; jh = jet.offsetHeight; };
   const cw = () => carrier.offsetWidth;
   const ch = () => carrier.offsetHeight;
-  const cruiseXY = () => ({ x: dv.clientWidth * 0.24 - jw / 2, y: dv.clientHeight * 0.58 - jh / 2 });
+  const pxNow = () => parseFloat(getComputedStyle(carrier).getPropertyValue('--px')) || 3;
+  // the tank's muzzle sits this far (CSS px) right of the hull's left edge when the barrel is level
+  const muzzleReach = () => (pt.pivot.x + GUN + 1) * pxNow();
+  const cruiseXY = () => tank
+    ? { x: Math.max(dv.clientWidth * 0.24, muzzleReach() + 70) - jw / 2, y: horizon.groundYCss() - 12 - jh / 2 }
+    : { x: dv.clientWidth * 0.24 - jw / 2, y: dv.clientHeight * 0.58 - jh / 2 };
   let pose = { x: 0, y: 0, pitch: 0 };
   function setPose(x: number, y: number, pitch = 0, scale = 1): void {
     pose = { x, y, pitch };
@@ -193,7 +205,7 @@ export function runScene(app: App, game: Game, wantIntro: boolean): void {
     $('#hd').textContent = formatMeters(dist);
     $('#hs').textContent = String(depthPoints(depth));
     if (game.endless) {
-      $('#lives').innerHTML = Array.from({ length: START_LIVES }, (_, i) => `<i class="life${i < lives ? '' : ' lost'}">${harmSprite()}</i>`).join('');
+      $('#lives').innerHTML = Array.from({ length: START_LIVES }, (_, i) => `<i class="life${i < lives ? '' : ' lost'}">${craftSprite()}</i>`).join('');
       $('#hv').textContent = String(Math.round(speed));
       $('#plabel').textContent = `${game.title} · question ${index + 1} · streak ${streak}`;
       dv.classList.toggle('low', lives === 1);
@@ -353,7 +365,7 @@ export function runScene(app: App, game: Game, wantIntro: boolean): void {
       shockwave(dv, c.x, c.y, 50);
       burstAt(c.x, c.y, 28, 'var(--gold)');
       jet.classList.add('burning', 'jolt');
-      showCallout('Motor failure', 'Mayday', 'bad');
+      showCallout(tank ? 'Penetrator deflected' : 'Motor failure', tank ? 'Round lost' : 'Mayday', 'bad');
       showDrag(-190);
       const fire = window.setInterval(() => {
         if (!dv.isConnected) return window.clearInterval(fire);
@@ -567,7 +579,8 @@ export function runScene(app: App, game: Game, wantIntro: boolean): void {
       // distance milestones: an arcade set piece for every 1,000m passed
       milestonesCrossed(before.distance, out.distance).forEach((k, i) => later(() => {
         const m = milestone(k);
-        horizon.milestone(m);
+        if (!tank || !['vehicle', 'sam', 'radar'].includes(m.kind)) horizon.milestone(m);
+        if (tank) tankTarget(k);
         play('milestone');
         showCallout(m.name, `${formatMeters(m.meters)} · ${m.blurb}`, `ms-${m.kind}`);
       }, 700 + i * 2700));
@@ -800,6 +813,214 @@ export function runScene(app: App, game: Game, wantIntro: boolean): void {
     requestAnimationFrame(step);
   }
 
+  // ---------- tank theme: a different tank model is destroyed at every distance milestone ----------
+  function tankTarget(k: number): void {
+    const m = tankModel(k);
+    const el = document.createElement('div');
+    el.className = 'tgt';
+    el.innerHTML = tankSprite(m);
+    dv.appendChild(el);
+    const tw = el.offsetWidth;
+    const th = el.offsetHeight;
+    const W = dv.clientWidth;
+    const hitX = pose.x + jw * 0.98;
+    const top = pose.y + jh / 2 - th * 0.52;
+    el.style.top = `${top}px`;
+    const v = Math.max(300, W * 0.4); // px per second, close to the scenery's scroll
+    const total = W + tw;
+    const hitMs = ((W - hitX) / v) * 1000;
+    el.animate([{ transform: `translateX(${W}px)` }, { transform: `translateX(${-tw}px)` }], { duration: (total / v) * 1000, easing: 'linear', fill: 'forwards' }).onfinish = () => el.remove();
+    later(() => {
+      if (!dv.isConnected) return;
+      const cx = hitX;
+      const cy = top + th * 0.5;
+      play('boom');
+      flash();
+      shake(520, true);
+      jet.classList.add('surge');
+      later(() => jet.classList.remove('surge'), 700);
+      playExplosion(dv, cx + 10, cy, { px: 6, frames: 12, size: 25, seed: 5 + k });
+      shockwave(dv, cx, cy, 70);
+      smokeColumns(dv, cx, cy - 10, 8);
+      wreckage(dv, cx, cy - 10, top + th);
+      burstAt(cx, cy, 22, 'var(--gold)');
+      el.classList.add('dead');
+      pop(`${m.name} destroyed`);
+      horizon.emit(cx, cy, { n: 18, color: ['#ffd84a', '#ff8a2a', '#e0322f'], size: 3, vx: 0, vy: -40, spread: 120, life: 1, grav: 160 });
+      const fire = window.setInterval(() => {
+        if (!el.isConnected) return window.clearInterval(fire);
+        const r = el.getBoundingClientRect();
+        const d = dv.getBoundingClientRect();
+        horizon.emit(r.left - d.left + r.width * 0.45, r.top - d.top + th * 0.3, { n: 2, color: ['#2b2b2e', '#3c3c40', '#ff8a2a'], size: 4, vx: 0, vy: -26, spread: 14, life: 1.4 });
+      }, 90);
+    }, hitMs);
+  }
+
+  // ---------- opening (tank): advance, halt, lay the gun, FIRE the APFSDS round, and the dart takes over ----------
+  function fireTank(quick: boolean, onDone: () => void): void {
+    busy = true;
+    const gun = $('#gun');
+    const stage = $('#stage');
+    const kts = $('#kts'); const rpm = $('#rpm'); const arm = $('#arm');
+    $('#kts').parentElement!.firstChild!.textContent = 'KPH ';
+    $('#rpm').parentElement!.firstChild!.textContent = 'RNG ';
+    $('#rpm').nextSibling!.textContent = ' m';
+    arm.textContent = 'APFSDS · SAFE';
+    const px = pxNow();
+    const cruise = cruiseXY();
+    const dartTx = cruise.x + jw / 2;
+    const dartTy = cruise.y + jh / 2;
+    const tankCx = Math.max(8 + cw() / 2, dv.clientWidth * 0.2 - muzzleReach() + cw() / 2); // hull fully on screen, gun reaching right
+    const rest = () => horizon.runwayYCss() - ch() - 3;
+    const zoom = (z: number) => { stage.style.transform = z === 1 ? '' : `scale(${z})`; };
+    stage.style.transformOrigin = '24% 78%';
+    let gx = tankCx; // hull centre x
+    let gyp = rest();
+    let ang = 0;
+    let recoil = 0;
+    const setTank = (x: number, y: number, pitch: number) => {
+      gx = x; gyp = y;
+      carrier.style.transform = `translate(${x - cw() / 2}px,${y}px) rotate(${pitch}deg)`;
+    };
+    const setGun = (a: number, rc: number) => { ang = a; recoil = rc; gun.style.transform = `rotate(${-a}deg) translateX(${-rc * px}px)`; };
+    const muzzle = () => {
+      const a = (ang * Math.PI) / 180;
+      const len = (GUN + 1 - recoil) * px;
+      return { x: gx - cw() / 2 + pt.pivot.x * px + Math.cos(a) * len, y: gyp + pt.pivot.y * px - Math.sin(a) * len };
+    };
+    const t0 = performance.now() - (quick ? 5300 : 0);
+    let finished = false;
+    let from = { x: 0, y: 0 };
+    const did: Record<string, boolean> = {};
+    jet.style.visibility = 'hidden';
+    carrier.classList.add('grounded');
+    dv.classList.add('cine');
+    horizon.setSpeed(quick ? 0 : 0, true);
+    horizon.setJet(0, 0, false);
+    setTank(tankCx, rest(), 0);
+    setGun(0, 0);
+
+    const finish = () => {
+      if (finished) return;
+      finished = true;
+      dv.classList.remove('intro', 'cine', 'rolling');
+      zoom(1);
+      horizon.setTimeScale(1);
+      carrier.style.display = 'none';
+      jet.style.visibility = 'visible';
+      jet.classList.add('engine', 'cruise');
+      setPose(cruise.x, cruise.y, 0);
+      horizon.setSpeed(cruiseSpeed(start.speed));
+      busy = false;
+      onDone();
+    };
+    const exhaust = (n: number, dark = true) => horizon.emit(gx - cw() / 2 + 6 * px, gyp + 10 * px, { n, color: dark ? ['#2b2b2e', '#3c3c40', '#55555a'] : ['#d8cfb8', '#b9b09a'], size: 4, vx: -60, vy: -26, spread: 12, life: 1.3 });
+
+    const step = (now: number) => {
+      if (finished || !dv.isConnected) return;
+      const t = (now - t0) / 1000;
+      const r = rest();
+      if (t < 1.8) {
+        // engine start
+        if (!did.eng) { did.eng = true; showCallout('Engine start', 'Pre-flight', 'info'); play('engine'); }
+        if (t > 0.4) carrier.classList.add('shudder');
+        if (t > 1.0 && !did.ld) { did.ld = true; arm.textContent = 'APFSDS-T · LOADED'; arm.classList.add('on'); showCallout('Sabot loaded', 'APFSDS-T · tungsten penetrator', 'info'); play('ping'); }
+        rpm.textContent = String(Math.round(Math.min(100, (t / 1.6) * 100) * 0)); // RNG stays 0 until the target is lased
+        kts.textContent = '0';
+        setTank(tankCx, r + (Math.random() - 0.5) * 1.4, 0);
+        if (Math.random() < 0.6) exhaust(1);
+      } else if (t < 4.0) {
+        // advance: tracks bite, dust trails, the world rushes past
+        const u = (t - 1.8) / 2.2;
+        if (!did.adv) { did.adv = true; dv.classList.add('rolling'); play('roar'); showCallout('Advance', 'Full throttle', 'info'); }
+        zoom(1 + 0.08 * easeInOut(u));
+        horizon.setSpeed(380 * Math.min(1, u * 1.4) ** 1.6, true);
+        kts.textContent = String(Math.round(68 * Math.min(1, u * 1.4) ** 1.6));
+        setTank(tankCx, r + (Math.random() - 0.5) * 1.8, -0.6 * u);
+        exhaust(1);
+        horizon.emit(gx - cw() * 0.5, horizon.runwayYCss() + 1, { n: 3, color: ['#d8cfb8', '#b9b09a', '#ffffff'], size: 4, vx: -110, vy: -16, spread: 22, life: 1.5, world: true });
+      } else if (t < 5.2) {
+        // brake: the hull dips, dust surges forward, the world slows to a stop
+        const u = (t - 4.0) / 1.2;
+        if (!did.brk) { did.brk = true; dv.classList.remove('rolling'); showCallout('Halt', 'Brakes', 'info'); play('drag'); }
+        horizon.setSpeed(380 * (1 - easeInOut(u)) ** 1.6, true);
+        kts.textContent = String(Math.round(68 * (1 - u)));
+        zoom(1.08 + 0.1 * easeInOut(u));
+        const nod = 2.6 * Math.sin(Math.PI * Math.min(1, u * 1.3));
+        setTank(tankCx, r, nod);
+        if (u < 0.7) horizon.emit(gx + cw() * 0.4, horizon.runwayYCss() + 1, { n: 4, color: ['#d8cfb8', '#b9b09a', '#ffffff'], size: 4, vx: 80, vy: -18, spread: 20, life: 1.6, world: true });
+      } else if (t < 6.7) {
+        // lay the gun: servo whine, elevation, rangefinder, fire solution
+        const u = (t - 5.2) / 1.5;
+        horizon.setSpeed(0, true);
+        zoom(1.18);
+        kts.textContent = '0';
+        setTank(tankCx, r, 0);
+        setGun(3.5 * easeInOut(Math.min(1, u * 1.3)) + (u < 1 ? (Math.random() - 0.5) * 0.2 : 0), 0);
+        if (!did.acq) { did.acq = true; showCallout('Target acquired', 'Laser rangefinder', 'info'); play('ping'); }
+        rpm.textContent = String(Math.round(lerp(0, 1850, Math.min(1, u * 1.2))));
+        if (u > 0.7 && !did.sol) { did.sol = true; arm.textContent = 'FIRE SOLUTION · LOCKED'; showCallout('Fire solution', 'Stand by', 'info'); play('alarm'); }
+        if (Math.random() < 0.15) exhaust(1);
+      } else if (t < 6.9) {
+        // FIRE: flash, blast, recoil, sabot petals fly off, the dart leaves the muzzle
+        const u = (t - 6.7) / 0.2;
+        const m = muzzle();
+        if (!did.fire) {
+          did.fire = true;
+          play('cannon');
+          arm.textContent = 'ROUND AWAY';
+          showCallout('FIRE!', 'APFSDS away', 'good');
+          flash();
+          shake(520, true);
+          horizon.setTimeScale(0.4);
+          later(() => horizon.setTimeScale(1), 650);
+          const f = document.createElement('i');
+          f.className = 'muzzle';
+          f.style.cssText = `left:${m.x}px;top:${m.y}px`;
+          dv.appendChild(f);
+          setTimeout(() => f.remove(), 700);
+          shockwave(dv, m.x, m.y, 110);
+          setTimeout(() => shockwave(dv, m.x, m.y, 190), 90);
+          horizon.emit(m.x, m.y, { n: 40, color: ['#fff6d0', '#ffd84a', '#ff8a2a', '#8a8f96'], size: 4, vx: 60, vy: -4, spread: 90, life: 1.4 });
+          horizon.emit(m.x - 20, horizon.runwayYCss() + 2, { n: 36, color: ['#d8cfb8', '#b9b09a', '#ffffff'], size: 5, vx: 0, vy: -30, spread: 220, life: 1.8, world: true });
+          for (let i = 0; i < 3; i++) {
+            const sb = document.createElement('i');
+            sb.className = 'sabot';
+            sb.style.cssText = `left:${m.x + 40}px;top:${m.y}px`;
+            dv.appendChild(sb);
+            sb.animate([{ transform: 'translate(0,0) rotate(0)', opacity: 1 }, { transform: `translate(${160 + i * 40}px,${(i - 1) * 90 + 40}px) rotate(${(i + 1) * 420}deg)`, opacity: 0.1 }], { duration: 900, easing: 'ease-out' }).onfinish = () => sb.remove();
+          }
+          jet.style.visibility = 'visible';
+          jet.classList.add('engine', 'surge', 'cruise');
+          dv.classList.add('rolling');
+        }
+        setGun(3.5, 9 * Math.sin(Math.PI * Math.min(1, u)) + 4 * u);
+        setTank(tankCx - 16 * Math.sin(Math.PI * Math.min(1, u)), r, -2.4 * Math.sin(Math.PI * Math.min(1, u)));
+        from = { x: m.x + 30, y: m.y };
+        setPose(from.x - jw / 2, from.y - jh / 2, -1, 0.5);
+        dv.classList.remove('intro'); panel.classList.remove('swap');
+      } else if (t < 8.3) {
+        // the dart streaks away, the camera pulls back, the tank is left behind
+        const u = Math.min(1, (t - 6.9) / 1.2);
+        const e = 1 - (1 - u) ** 3;
+        if (!did.sw) { did.sw = true; void panel.offsetWidth; panel.classList.add('swap'); }
+        setGun(3.5, 4 * (1 - e));
+        zoom(1.18 - 0.18 * easeInOut(u));
+        const hx = lerp(from.x, dartTx, e);
+        const hy = lerp(from.y, dartTy, easeInOut(u));
+        setPose(hx - jw / 2, hy - jh / 2, 0, lerp(0.5, 1, e));
+        horizon.setSpeed(lerp(380, cruiseSpeed(start.speed), easeInOut(u)), true);
+        horizon.emit(hx - jw * 0.5, hy, { n: 3, color: ['#ffffff', '#dfe6ec', '#ffd9a0'], size: 3, vx: -110, vy: -4, spread: 8, life: 1.3 });
+        kts.textContent = String(Math.round(lerp(0, 1700, e)));
+        setTank(tankCx - 16 - 360 * e * e, r, 0);
+        if (Math.random() < 0.5) exhaust(1);
+      } else { finish(); return; }
+      requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+    dv.addEventListener('pointerdown', () => { if (!finished) { horizon.jump(1900); finish(); } }, { once: true });
+  }
+
   // ---------- wiring ----------
   const onResize = () => {
     if (!dv.isConnected) return window.removeEventListener('resize', onResize);
@@ -824,7 +1045,7 @@ export function runScene(app: App, game: Game, wantIntro: boolean): void {
   hud(start.depth, start.distance, start.answers, start.index, start.lives, start.streak, start.speed);
   ask();
   if (intro) {
-    takeoff(() => startQuestion?.());
+    (tank ? fireTank : (_q: boolean, d: () => void) => takeoff(d))(false, () => startQuestion?.());
   } else {
     horizon.jump(2600); // resuming mid-run: start already in flight, past the airfield
     if (reducedMotion()) {
@@ -837,7 +1058,8 @@ export function runScene(app: App, game: Game, wantIntro: boolean): void {
       jet.style.visibility = 'visible';
       measure();
       stopTimer();
-      airRelease(() => startQuestion?.());
+      if (tank) fireTank(true, () => startQuestion?.());
+      else airRelease(() => startQuestion?.());
     }
     dv.classList.remove('intro');
   }

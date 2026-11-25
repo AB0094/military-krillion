@@ -20,6 +20,7 @@ function endlessGame(app: App, run: EndlessRun): Game {
     seedKey: run.seed,
     title: `Endless · ${modeLabel(run.mode, run.seed)}`,
     endless: true,
+    theme: run.mode === 'Ground' ? 'tank' : 'air',
     scale: ENDLESS_SCALE,
     snapshot() {
       const r = app.getState().endless.run!;

@@ -506,3 +506,24 @@ thead th { color: var(--muted); font: .6rem var(--pf); letter-spacing: .1em; tex
 .dv.rolling .speedlines { opacity: 1; }
 @keyframes slines { to { background-position: -260px 0; } }
 .dv-stage { transition: transform .12s linear; }
+
+/* ---- v10: bigger carrier, tank + APFSDS theme ---- */
+.dv-jet { --px: 3.6px; }
+@media (max-width: 700px) { .dv-jet { --px: 2.4px; } }
+.dv-jet.tank-car { --px: 4px; }
+@media (max-width: 700px) { .dv-jet.tank-car { --px: 2.6px; } }
+.tank-gun { position: absolute; width: calc(var(--px) * 30); height: calc(var(--px) * 2); transform-origin: 0 50%; z-index: 1;
+  background: linear-gradient(180deg, #c4cdd6, #7a8794 45%, #3b4651); box-shadow: 0 0 0 calc(var(--px) * .6) #10171e; }
+.tank-gun::before { content: ''; position: absolute; left: 55%; top: calc(var(--px) * -1); width: calc(var(--px) * 4); height: calc(var(--px) * 4); background: #6b7885; box-shadow: 0 0 0 calc(var(--px) * .6) #10171e; }
+.tank-gun::after { content: ''; position: absolute; right: 0; top: calc(var(--px) * -1); width: calc(var(--px) * 3); height: calc(var(--px) * 4); background: #1b232b; }
+.dv-jet.tank-car .jet-body { filter: drop-shadow(0 4px 4px #0006); }
+.dv-jet.tank-car.shudder .jet-body { animation: shudder .07s steps(2) infinite; }
+.dv.tank .harm-flame { right: calc(100% - var(--px) * 3); top: calc(var(--px) * 4.9); width: calc(var(--px) * 12); height: calc(var(--px) * 3.2); background: linear-gradient(270deg, #fff, #ffe08a 25%, #ff7a2a 65%, transparent); }
+.dv.tank .dv-harm.surge .harm-flame { width: calc(var(--px) * 30); height: calc(var(--px) * 4); }
+.tgt { position: absolute; left: 0; z-index: 4; pointer-events: none; --px: 3.6px; filter: drop-shadow(0 4px 3px #0005); }
+@media (max-width: 700px) { .tgt { --px: 2.4px; } }
+.tgt.dead { filter: brightness(.3) sepia(.4) drop-shadow(0 4px 3px #0005); }
+.muzzle { position: absolute; width: 150px; height: 150px; margin: -75px 0 0 -40px; z-index: 9; pointer-events: none;
+  background: radial-gradient(circle at 30% 50%, #fff 0, #fff6d0 14%, #ffd84a 30%, #ff8a2a 52%, transparent 72%); animation: muz .55s ease-out forwards; clip-path: polygon(0 40%, 30% 30%, 50% 0, 60% 35%, 100% 45%, 62% 55%, 55% 100%, 30% 70%, 0 60%); }
+@keyframes muz { 0% { transform: scale(.3); opacity: 1; } 35% { transform: scale(1.4); opacity: 1; } 100% { transform: scale(2.2); opacity: 0; } }
+.sabot { position: absolute; width: 22px; height: 8px; margin: -4px; z-index: 6; pointer-events: none; background: linear-gradient(#c9d3de, #6e7b88); box-shadow: 0 0 0 2px #10171e; }
