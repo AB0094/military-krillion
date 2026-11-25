@@ -77,3 +77,11 @@ export function previousDates(today: string, count: number): string[] {
 export function msUntilNextDay(now: Date = new Date()): number {
   return new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1).getTime() - now.getTime();
 }
+
+/** Unlimited runs use a time-ordered seed instead of a date: "u" + base-36 timestamp + 2 random chars. */
+const RUN_SEED_RE = /^u[a-z0-9]{6,14}$/;
+export const isRunSeed = (s: string): boolean => RUN_SEED_RE.test(s);
+
+export function newRunSeed(now: number = Date.now(), rand: () => number = Math.random): string {
+  return `u${now.toString(36)}${Math.floor(rand() * 1296).toString(36).padStart(2, '0')}`;
+}

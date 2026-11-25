@@ -1,5 +1,7 @@
 import type { SaveState } from '../logic/types';
 import type { Route } from '../logic/route';
+import { isRunSeed } from '../logic/seed';
+import type { Mode } from '../logic/types';
 import { missileSvg } from './logo';
 
 export type View = Route;
@@ -22,8 +24,18 @@ export function fmt(n: number): string {
   return n.toFixed(2);
 }
 
-export function header(subtitle: string): string {
-  return `<header class="brand"><span class="logo-box">${missileSvg('missile logo')}</span><div><h1>Military Krillion</h1><p>${esc(subtitle)}</p></div></header>`;
+export function header(subtitle: string, big = false): string {
+  return `<header class="brand${big ? ' big' : ''}"><span class="logo-box">${missileSvg('missile logo')}</span><div><h1>Military Krillion</h1><p>${esc(subtitle)}</p></div></header>`;
+}
+
+/** Name of the mode as players see it: Unlimited's mixed runs read "Mixed", not "Ranked". */
+export function modeLabel(mode: Mode, date: string): string {
+  return isRunSeed(date) && mode === 'Ranked' ? 'Mixed' : mode;
+}
+
+export function runTitle(v: { mode: Mode; date: string; archive: boolean }): string {
+  if (isRunSeed(v.date)) return `Unlimited · ${modeLabel(v.mode, v.date)}`;
+  return `${v.mode}${v.archive ? ' · archive' : ''} · ${v.date}`;
 }
 
 export function on(root: ParentNode, selector: string, handler: (el: HTMLElement) => void): void {

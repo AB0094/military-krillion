@@ -31,3 +31,14 @@ describe('routes', () => {
     expect(normalizeRoute(arch('2026-11-26'), '2026-11-25').name).toBe('home');
   });
 });
+
+describe('unlimited routes', () => {
+  const seed = 'u1abc2def00';
+  it('round-trip, and only as archive-style plays', () => {
+    const r: Route = { name: 'dive', mode: 'Ranked', date: seed, archive: true };
+    expect(parseRoute(toHash(r))).toEqual(r);
+    expect(normalizeRoute(r, '2026-11-25')).toEqual(r);
+    expect(normalizeRoute({ ...r, archive: false }, '2026-11-25').name).toBe('home');
+    expect(parseRoute(`#/dive/Air/${seed}`)).toEqual({ name: 'dive', mode: 'Air', date: seed, archive: false });
+  });
+});

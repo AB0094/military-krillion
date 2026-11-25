@@ -52,6 +52,7 @@ Pushing to `main` runs `.github/workflows/deploy.yml`, which validates the data,
 - **Descent shaft**: on the Dive screen the missile sits in a vertical shaft with one airfield per depth. Each correct answer sends it down by the rarity it earned; crossing a tier threshold shows an "Arrived" banner for that airfield. A wrong answer cancels the launch: the answer is struck out, a stamp appears, and the missile aborts in place (the one-answer-per-prompt rule is unchanged).
 - **Mascot**: an anti-radiation missile (`src/ui/logo.ts`). It rides the progress track while you dive.
 - **Ranked rating**: starts at 1000, stored in its own field (`ratings.ranked`), updated once when a live Ranked day completes. `updateRating` in `src/logic/elo.ts` compares your depth to the day's median depth. Without shared player data the median is a reference value derived from the answer weights.
+- **Unlimited**: endless play on top of the daily sets. Each run uses a new random seed (`newRunSeed`), so it is a fresh set of 7 in Ground, Air or Mixed, with "Dive again" on the results screen. Unlimited runs are archive-style: they never touch your streak, daily stats, player data or Ranked rating, and only the latest 40 are kept in the save.
 - **Archive**: replay any of the last 30 days. Archive plays never affect stats, player data or rating.
 - **v1 is local-only**: "players" means this browser's history. A backend would replace the `crowd` data and the median; none is included.
 

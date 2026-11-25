@@ -9,11 +9,11 @@ export function scoreSquare(a: AnswerRecord): string {
   return '🟨';
 }
 
-export function buildShareText(opts: { date: string; mode: Mode; archive: boolean; depth: number; answers: readonly AnswerRecord[] }): string {
-  const { date, mode, archive, depth, answers } = opts;
+export function buildShareText(opts: { date: string; mode: Mode; archive: boolean; depth: number; answers: readonly AnswerRecord[]; label?: string }): string {
+  const { date, mode, archive, depth, answers, label } = opts;
   const tier = tierFor(depth, answers.length);
   return [
-    `Military Krillion ${date} · ${mode}${archive ? ' (archive)' : ''}`,
+    `Military Krillion ${label ?? `${date} · ${mode}${archive ? ' (archive)' : ''}`}`,
     `Depth ${depth.toFixed(2)} — ${tier.name} · ${tier.airfield} ${tier.flag}`,
     answers.map(scoreSquare).join(''),
   ].join('\n');

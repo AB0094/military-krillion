@@ -3,7 +3,9 @@ import { dailySet } from '../logic/seed';
 import { getSession } from '../logic/progress';
 import { tierFor, tierIndex } from '../logic/scoring';
 import { buildShareText, scoreSquare } from '../logic/share';
-import { esc, fmt, header, on, type App, type View } from './dom';
+import { isRunSeed } from '../logic/seed';
+import { esc, fmt, header, modeLabel, on, runTitle, type App, type View } from './dom';
+import { startRun } from './run';
 import { burst, countUp } from './fx';
 import { ladderHtml } from './ladder';
 import { play } from './sound';
@@ -44,9 +46,10 @@ export function renderResults(app: App, v: ResultsView): void {
 
   const entry = !v.archive && v.mode === 'Ranked' ? state.rankedHistory.find((h) => h.date === v.date) : undefined;
   const rating = entry ? `<p class="rating">Ranked rating ${entry.before} → <strong>${entry.after}</strong> (${entry.after - entry.before >= 0 ? '+' : ''}${entry.after - entry.before})</p>` : '';
-  const text = buildShareText({ date: v.date, mode: v.mode, archive: v.archive, depth: session.depth, answers: session.answers });
+  const run = isRunSeed(v.date);
+  const text = buildShareText({ date: v.date, mode: v.mode, archive: v.archive, depth: session.depth, answers: session.answers, ...(run ? { label: `Unlimited · ${modeLabel(v.mode, v.date)}` } : {}) });
 
-  app.root.innerHTML = `${header(`${v.mode}${v.archive ? ' · archive' : ''} · ${v.date}`)}
+  app.root.innerHTML = `${header(runTitle(v))}
     <section class="card result">
       <p class="muted">Final depth</p>
       <p class="depth" id="depth">0.00</p>
@@ -57,7 +60,7 @@ export function renderResults(app: App, v: ResultsView): void {
       ${ladderHtml(idx, idx)}
       <ol class="answers">${rows}</ol>
       <pre class="share" id="share-text">${esc(text)}</pre>
-      <div class="row"><button class="btn primary" id="share">Copy share text</button><button class="btn" id="home">Home</button></div>
+      <div class="row">${run ? `<button class="btn primary" id="again">Dive again ∞</button>` : ''}<button class="btn${run ? '' : ' primary'}" id="share">Copy share text</button><button class="btn" id="home">Home</button></div>
       <p class="muted small" id="copied" role="status"></p>
     </section>`;
 
@@ -70,6 +73,7 @@ export function renderResults(app: App, v: ResultsView): void {
   }, 1000);
 
   on(app.root, '#home', () => app.go({ name: 'home' }));
+  on(app.root, '#again', () => startRun(app, v.mode));
   on(app.root, '#share', async () => {
     const ok = await copy(text);
     app.root.querySelector('#copied')!.textContent = ok ? 'Copied to clipboard!' : 'Copy failed. Select the text above instead.';

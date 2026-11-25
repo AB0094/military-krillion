@@ -69,3 +69,27 @@ describe('dates', () => {
     expect(msUntilNextDay(new Date(2026, 5, 1, 0, 0, 0))).toBe(24 * 3600_000);
   });
 });
+
+import { isRunSeed, newRunSeed } from './seed';
+
+describe('unlimited run seeds', () => {
+  it('are recognisable, time-ordered and distinct', () => {
+    const a = newRunSeed(1_760_000_000_000, () => 0.1);
+    const b = newRunSeed(1_760_000_005_000, () => 0.1);
+    const c = newRunSeed(1_760_000_000_000, () => 0.9);
+    expect(isRunSeed(a)).toBe(true);
+    expect(a < b).toBe(true);
+    expect(a).not.toBe(c);
+    expect(isRunSeed('2026-11-25')).toBe(false);
+    expect(isRunSeed('nonsense')).toBe(false);
+  });
+  it('give a stable, full prompt set for any seed', () => {
+    const seed = newRunSeed(1_760_000_000_000, () => 0.5);
+    for (const mode of ['Ground', 'Air', 'Ranked'] as const) {
+      const set = dailySet(seed, mode, pool);
+      expect(set).toHaveLength(7);
+      expect(ids(set)).toEqual(ids(dailySet(seed, mode, pool)));
+    }
+    expect(ids(dailySet(newRunSeed(1, () => 0.2), 'Air', pool))).not.toEqual(ids(dailySet(newRunSeed(2, () => 0.7), 'Air', pool)));
+  });
+});

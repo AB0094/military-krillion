@@ -2,6 +2,7 @@ import type { AnswerRecord, Mode, Prompt, SaveState, SessionRecord } from './typ
 import { findMatch, hintFor } from './normalize';
 import { MIN_CROWD, rarity, totalDepth } from './scoring';
 import { dayMedianDepth, START_RATING, updateRating } from './elo';
+import { isRunSeed } from './seed';
 
 export function emptyState(): SaveState {
   return { version: 1, sessions: {}, crowd: {}, ratings: { ranked: START_RATING }, rankedHistory: [] };
@@ -100,4 +101,26 @@ export function summarize(state: SaveState): Record<Mode, ModeSummary> & { ranki
     m.best = Math.max(m.best, s.depth);
   }
   return { ...out, ranking: state.ratings.ranked };
+}
+
+/** Stats for completed Unlimited runs still kept in the save (see pruneRuns). */
+export function summarizeUnlimited(state: SaveState): ModeSummary {
+  const out: ModeSummary = { played: 0, best: 0, average: 0 };
+  for (const s of Object.values(state.sessions)) {
+    if (!s.archive || !isRunSeed(s.date) || !s.complete) continue;
+    out.average = (out.average * out.played + s.depth) / (out.played + 1);
+    out.played++;
+    out.best = Math.max(out.best, s.depth);
+  }
+  return out;
+}
+
+export const MAX_KEPT_RUNS = 40;
+
+/** Drops the oldest Unlimited runs so an endless game can't grow the save forever. Run seeds sort by time. */
+export function pruneRuns(state: SaveState, keep = MAX_KEPT_RUNS): SaveState {
+  const runs = Object.entries(state.sessions).filter(([, s]) => isRunSeed(s.date)).sort(([, a], [, b]) => b.date.localeCompare(a.date));
+  if (runs.length <= keep) return state;
+  const drop = new Set(runs.slice(keep).map(([k]) => k));
+  return { ...state, sessions: Object.fromEntries(Object.entries(state.sessions).filter(([k]) => !drop.has(k))) };
 }

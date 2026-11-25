@@ -2,7 +2,7 @@ import { PROMPTS } from '../data';
 import { dailySet } from '../logic/seed';
 import { getSession, submitAnswer, type PlayContext } from '../logic/progress';
 import { MIN_CROWD, TIERS, crossedTier, rarity, rarityLabel, shaftPosition, tierIndex } from '../logic/scoring';
-import { fmt, esc, header, on, type App, type View } from './dom';
+import { fmt, esc, header, on, runTitle, type App, type View } from './dom';
 import { burst, countUp } from './fx';
 import { play } from './sound';
 import { shaftHtml } from './shaft';
@@ -13,10 +13,11 @@ export function renderDive(app: App, v: DiveView): void {
   const ctx: PlayContext = { date: v.date, mode: v.mode, archive: v.archive, prompts: dailySet(v.date, v.mode, PROMPTS) };
   const total = ctx.prompts.length;
   const session = () => getSession(app.getState(), ctx);
-  const title = `${v.mode}${v.archive ? ' · archive' : ''} · ${v.date}`;
+  const title = runTitle(v);
 
-  const meta = (label: number, depth: number, mode: string) => `
-    <div class="meta"><span>Prompt ${Math.min(label, total)} / ${total}</span><span class="tag tag-${mode.toLowerCase()}">${mode}</span><span>Depth <strong>${fmt(depth)}</strong></span></div>`;
+  const meta = (label: number, depth: number, mode: string, answers: readonly { score: number; matched: string | null }[]) => `
+    <div class="meta"><span>Prompt ${Math.min(label, total)} / ${total}</span><span class="tag tag-${mode.toLowerCase()}">${mode}</span><span>Depth <strong>${fmt(depth)}</strong></span></div>
+    <div class="pips" aria-hidden="true">${Array.from({ length: total }, (_, i) => `<i class="pip ${i < answers.length ? (answers[i].matched ? 'hit' : 'miss') : i === answers.length ? 'now' : ''}"></i>`).join('')}</div>`;
 
   function ask(): void {
     const s = session();
@@ -26,7 +27,7 @@ export function renderDive(app: App, v: DiveView): void {
     const depth = s?.depth ?? 0;
     app.root.innerHTML = `${header(title)}
       <section class="card dive">
-        ${meta(index + 1, depth, prompt.mode)}
+        ${meta(index + 1, depth, prompt.mode, s?.answers ?? [])}
         <div class="dive-grid">
           ${shaftHtml(shaftPosition(depth, total), tierIndex(depth, total))}
           <div class="dive-main">
@@ -71,7 +72,7 @@ export function renderDive(app: App, v: DiveView): void {
       : `<p class="verdict bad"><s>“${esc(typed)}”</s></p><p class="stamp">Launch cancelled</p><p class="score">+0.00</p><p class="hint">${esc(hint ?? '')}</p>`;
     app.root.innerHTML = `${header(title)}
       <section class="card dive ${matched ? 'hit' : 'miss'}">
-        ${meta(index + 1, depthAfter, prompt.mode)}
+        ${meta(index + 1, depthAfter, prompt.mode, session()?.answers ?? [])}
         <div class="dive-grid">
           ${shaftHtml(shaftPosition(depthBefore, total), tierIndex(depthBefore, total))}
           <div class="dive-main">

@@ -83,3 +83,46 @@ describe('streaks', () => {
     expect(streaks(emptyState(), '2026-11-25')).toEqual({ current: 0, best: 0 });
   });
 });
+
+import { MAX_KEPT_RUNS, pruneRuns, summarize, summarizeUnlimited } from './progress';
+import { newRunSeed } from './seed';
+
+describe('unlimited runs', () => {
+  const runs = (n: number): { state: SaveState; seeds: string[] } => {
+    let state = emptyState();
+    const seeds: string[] = [];
+    for (let i = 0; i < n; i++) {
+      const seed = newRunSeed(1_760_000_000_000 + i * 1000, () => 0.3);
+      seeds.push(seed);
+      state = play(state, seed, 'Ground', true);
+    }
+    return { state, seeds };
+  };
+  it('never touch live stats, player data, rating or streaks', () => {
+    const { state } = runs(3);
+    const mixed = play(state, newRunSeed(1_770_000_000_000, () => 0.5), 'Ranked', true);
+    expect(mixed.crowd).toEqual({});
+    expect(mixed.ratings.ranked).toBe(1000);
+    expect(summarize(mixed).Ground.played).toBe(0);
+    expect(streaks(mixed, '2026-11-25')).toEqual({ current: 0, best: 0 });
+  });
+  it('are summarised on their own and survive a save round-trip', () => {
+    const { state } = runs(4);
+    const back = sanitizeState(JSON.parse(serializeSave(state)));
+    expect(Object.keys(back.sessions)).toHaveLength(4);
+    const sum = summarizeUnlimited(back);
+    expect(sum.played).toBe(4);
+    expect(sum.best).toBeGreaterThan(0);
+  });
+  it('are pruned oldest-first so the save cannot grow forever', () => {
+    const { state, seeds } = runs(MAX_KEPT_RUNS + 5);
+    const pruned = pruneRuns(state);
+    const kept = Object.values(pruned.sessions).map((s) => s.date).sort();
+    expect(kept).toHaveLength(MAX_KEPT_RUNS);
+    expect(kept[0]).toBe(seeds[5]);
+    expect(pruneRuns(pruned)).toBe(pruned); // nothing more to drop
+    // daily sessions are never pruned
+    const daily = play(pruned, '2026-11-25');
+    expect(Object.keys(pruneRuns(daily).sessions)).toContain('2026-11-25|Ground');
+  });
+});

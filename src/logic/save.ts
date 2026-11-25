@@ -1,5 +1,6 @@
 import { emptyState, sessionKey } from './progress';
 import { isValidDate } from './route';
+import { isRunSeed } from './seed';
 import { totalDepth } from './scoring';
 import { MODES, type AnswerRecord, type AnswerStats, type RatingEntry, type SaveState, type SessionRecord } from './types';
 
@@ -13,7 +14,7 @@ function cleanAnswer(x: unknown): AnswerRecord | null {
 }
 
 function cleanSession(x: unknown): SessionRecord | null {
-  if (!isObj(x) || !isStr(x.date) || !isValidDate(x.date)) return null;
+  if (!isObj(x) || !isStr(x.date) || !(isValidDate(x.date) || isRunSeed(x.date))) return null;
   const mode = MODES.find((m) => m === x.mode);
   if (!mode || !Array.isArray(x.promptIds) || !x.promptIds.every(isStr) || x.promptIds.length === 0 || !Array.isArray(x.answers)) return null;
   const answers = x.answers.map(cleanAnswer);
