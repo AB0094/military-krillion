@@ -744,6 +744,62 @@ export function runScene(app: App, game: Game, wantIntro: boolean): void {
     dv.addEventListener('pointerdown', () => { if (!finished) { horizon.jump(1900); finish(); } }, { once: true });
   }
 
+  /** Resumed run (already in flight): a carrier flies in, releases the HARM and leaves, so every mode shows the release. */
+  function airRelease(onDone: () => void): void {
+    busy = true;
+    const cruise = cruiseXY();
+    const cx = dv.clientWidth * 0.24;
+    const ay = dv.clientHeight * 0.4;
+    const t0 = performance.now();
+    let released = false;
+    let from = { x: 0, y: 0 };
+    let done = false;
+    const place = (x: number, y: number, pitch: number) => { carrier.style.transform = `translate(${x - carrier.offsetWidth / 2}px,${y}px) rotate(${pitch}deg)`; };
+    const finish = () => {
+      if (done) return;
+      done = true;
+      carrier.style.display = 'none';
+      jet.classList.remove('carried');
+      jet.classList.add('engine', 'cruise');
+      setPose(cruise.x, cruise.y, 0);
+      horizon.setSpeed(cruiseSpeed(start.speed));
+      busy = false;
+      onDone();
+    };
+    jet.classList.add('carried');
+    carrier.classList.add('engine', 'afterburner');
+    horizon.setSpeed(CRUISE, true);
+    const step = (now: number) => {
+      if (done || !dv.isConnected) return;
+      const t = (now - t0) / 1000;
+      const hang = (x: number, y: number, drop: number, pitch: number, sc: number) => {
+        pose = { x: x - jw / 2, y: y + carrier.offsetHeight * 0.84 - jh / 2 + drop, pitch };
+        jet.style.transform = `translate(${pose.x}px,${pose.y}px) rotate(${pitch}deg) scale(${sc})`;
+      };
+      if (t < 0.9) {
+        const u = easeInOut(t / 0.9);
+        const x = lerp(-carrier.offsetWidth, cx, u);
+        place(x, ay, 0); hang(x, ay, 0, 0, 0.7);
+      } else if (t < 1.35) {
+        const u = (t - 0.9) / 0.45;
+        if (!released) { released = true; play('release'); showCallout('HARM away', 'Released', 'good'); jet.classList.remove('carried'); }
+        place(cx, ay - 5 * Math.sin(Math.PI * Math.min(1, u * 1.6)), 0);
+        hang(cx, ay, 8 + 70 * u * u, 4 * u, lerp(0.7, 0.78, u));
+        from = { x: pose.x + jw / 2, y: pose.y + jh / 2 };
+      } else if (t < 2.4) {
+        const u = (t - 1.35) / 1.05;
+        const e = easeInOut(u);
+        if (u < 0.05) { play('ignite'); jet.classList.add('engine', 'surge', 'cruise'); shockwave(dv, from.x, from.y, 56); shake(220, false); }
+        const hx = lerp(from.x, cruise.x + jw / 2, e);
+        const hy = lerp(from.y, cruise.y + jh / 2, e);
+        setPose(hx - jw / 2, hy - jh / 2, lerp(4, 0, e), lerp(0.78, 1, e));
+        place(lerp(cx, dv.clientWidth + carrier.offsetWidth, e * e), lerp(ay, -carrier.offsetHeight * 2, e), -18 * e);
+      } else { finish(); return; }
+      requestAnimationFrame(step);
+    };
+    requestAnimationFrame(step);
+  }
+
   // ---------- wiring ----------
   const onResize = () => {
     if (!dv.isConnected) return window.removeEventListener('resize', onResize);
@@ -771,11 +827,18 @@ export function runScene(app: App, game: Game, wantIntro: boolean): void {
     takeoff(() => startQuestion?.());
   } else {
     horizon.jump(2600); // resuming mid-run: start already in flight, past the airfield
-    const c = cruiseXY();
-    setPose(c.x, c.y, 0);
-    jet.classList.add('engine', 'cruise');
-    horizon.setSpeed(cruiseSpeed(start.speed), true);
-    carrier.style.display = 'none';
+    if (reducedMotion()) {
+      const c = cruiseXY();
+      setPose(c.x, c.y, 0);
+      jet.classList.add('engine', 'cruise');
+      horizon.setSpeed(cruiseSpeed(start.speed), true);
+      carrier.style.display = 'none';
+    } else {
+      jet.style.visibility = 'visible';
+      measure();
+      stopTimer();
+      airRelease(() => startQuestion?.());
+    }
     dv.classList.remove('intro');
   }
 }
