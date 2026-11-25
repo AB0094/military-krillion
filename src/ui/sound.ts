@@ -24,7 +24,7 @@ function tone(freq: number, at: number, dur: number, type: OscillatorType = 'sin
   o.stop(t + dur + 0.02);
 }
 
-export type Cue = 'launch' | 'hit' | 'rare' | 'miss' | 'tier';
+export type Cue = 'launch' | 'hit' | 'rare' | 'miss' | 'tier' | 'splash';
 
 /** Short synthesized cues. Safe to call anywhere: silently does nothing if muted or audio is unavailable. */
 export function play(cue: Cue): void {
@@ -37,6 +37,7 @@ export function play(cue: Cue): void {
       case 'hit': tone(523, 0, 0.12); tone(659, 0.1, 0.2); break;
       case 'rare': [523, 659, 784, 1047].forEach((f, i) => tone(f, i * 0.09, 0.25, 'triangle', 0.06)); break;
       case 'miss': tone(150, 0, 0.3, 'square', 0.03); tone(110, 0.12, 0.3, 'square', 0.03); break;
+      case 'splash': tone(220, 0, 0.25, 'sawtooth', 0.03); tone(130, 0.05, 0.3, 'square', 0.025); tone(90, 0.12, 0.35, 'sine', 0.05); break;
       case 'tier': [392, 523, 659, 784, 1047].forEach((f, i) => tone(f, i * 0.11, 0.35, 'triangle', 0.06)); break;
     }
   } catch { /* audio blocked or unsupported */ }

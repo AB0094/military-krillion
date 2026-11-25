@@ -9,6 +9,7 @@ import { renderHome } from './ui/home';
 import { renderDive } from './ui/dive';
 import { renderResults } from './ui/results';
 import { renderArchive } from './ui/archive';
+import { mountBackdrop } from './ui/backdrop';
 import { isMuted, setMuted } from './ui/sound';
 
 const root = document.getElementById('app')!;
@@ -30,6 +31,7 @@ function fatal(err: unknown): void {
 function draw(view: Route): void {
   current = view;
   window.scrollTo(0, 0);
+  document.body.classList.toggle('in-dive', view.name === 'dive');
   try {
     switch (view.name) {
       case 'home': return renderHome(app);
@@ -77,4 +79,5 @@ soundBtn.addEventListener('click', () => { setMuted(!isMuted()); paintSound(); }
 paintSound();
 document.body.appendChild(soundBtn);
 
+mountBackdrop();
 draw(routeFromHash());
