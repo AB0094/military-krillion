@@ -489,3 +489,20 @@ thead th { color: var(--muted); font: .6rem var(--pf); letter-spacing: .1em; tex
 .ignite.go { animation: ign .55s ease-out; }
 @keyframes ign { 0% { opacity: 1; transform: scale(1); } 100% { opacity: 0; transform: scale(18); } }
 @media (max-width: 700px) { .cockpit { gap: 8px; font-size: .45rem; padding: 5px 8px; } }
+
+/* ---- v9: redesigned HARM and carrier ---- */
+.harm-flame { right: calc(100% - var(--px) * 3); top: calc(var(--px) * 6.2); width: calc(var(--px) * 14); height: calc(var(--px) * 4.6); background: linear-gradient(270deg, #fff 0, #bff3ff 14%, #ffd36a 40%, #ff7a2a 70%, transparent); filter: blur(.4px); }
+.dv-harm.surge .harm-flame { width: calc(var(--px) * 34); height: calc(var(--px) * 6); box-shadow: 0 0 18px 4px #ff9a3a77; }
+.dv-harm.carried { z-index: 7; }
+.jet-flame { right: calc(100% - var(--px) * 5); top: calc(var(--px) * 12.9); }
+.jet-heat { top: calc(var(--px) * 8); height: calc(var(--px) * 14); right: calc(100% - var(--px) * 5); }
+.gear { bottom: auto; top: calc(var(--px) * 17); height: calc(var(--px) * 8); }
+.gear.g1 { left: calc(var(--px) * 10); } .gear.g2 { left: calc(var(--px) * 40); }
+.life { width: 74px; height: 26px; }
+/* rolling: speed lines and a vignette pulse */
+.speedlines { position: absolute; inset: 0; z-index: 4; pointer-events: none; opacity: 0; transition: opacity .5s;
+  background: repeating-linear-gradient(0deg, transparent 0 22px, #ffffff22 22px 23px, transparent 23px 51px, #ffffff14 51px 52px, transparent 52px 83px);
+  background-size: 260px 100%; animation: slines .22s linear infinite; mask-image: linear-gradient(90deg, #000, transparent 45%, transparent 60%, #000); -webkit-mask-image: linear-gradient(90deg, #000, transparent 45%, transparent 60%, #000); }
+.dv.rolling .speedlines { opacity: 1; }
+@keyframes slines { to { background-position: -260px 0; } }
+.dv-stage { transition: transform .12s linear; }

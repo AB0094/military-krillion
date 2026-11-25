@@ -114,7 +114,7 @@ export function runScene(app: App, game: Game, wantIntro: boolean): void {
         <div class="harm-body">${harmSprite()}</div><i class="harm-flame"></i>
       </div>
     </div>
-    <div class="lbx t"></div><div class="lbx b"></div>
+    <div class="speedlines" id="sl"></div><div class="lbx t"></div><div class="lbx b"></div>
     <div class="cockpit" id="cock"><span>KTS <b id="kts">0</b></span><span>RPM <b id="rpm">0</b>%</span><span id="arm">MASTER ARM · SAFE</span></div>
     <div class="ignite" id="ignite"></div>
     <div class="scan"></div><div class="dv-vig"></div>
@@ -628,10 +628,14 @@ export function runScene(app: App, game: Game, wantIntro: boolean): void {
     };
     // carried: the HARM hangs under the fuselage, small, and follows the jet
     const hang = (x: number, y: number, pitch: number, drop = 0, scale = 0.7) => {
-      pose = { x: x - jw / 2, y: y + ch() * 1.0 - jh / 2 + drop, pitch };
+      pose = { x: x - jw / 2, y: y + ch() * 0.84 - jh / 2 + drop, pitch };
       jet.style.transform = `translate(${pose.x}px,${pose.y}px) rotate(${pitch}deg) scale(${scale})`;
     };
+    const stage = $('#stage');
+    const zoom = (z: number) => { stage.style.transform = z === 1 ? '' : `scale(${z})`; };
+    stage.style.transformOrigin = '24% 78%';
     jet.style.visibility = 'visible';
+    jet.classList.add('carried');
     carrier.classList.add('grounded');
     dv.classList.add('cine');
     horizon.setSpeed(0, true);
@@ -642,7 +646,9 @@ export function runScene(app: App, game: Game, wantIntro: boolean): void {
     const finish = () => {
       if (finished) return;
       finished = true;
-      dv.classList.remove('intro', 'cine');
+      dv.classList.remove('intro', 'cine', 'rolling');
+      zoom(1);
+      jet.classList.remove('carried');
       carrier.style.display = 'none';
       jet.classList.remove('armed');
       jet.classList.add('engine', 'cruise');
@@ -668,7 +674,8 @@ export function runScene(app: App, game: Game, wantIntro: boolean): void {
       } else if (t < 4.7) {
         // take-off roll: brakes off, afterburner, wheels spin, dust, speed climbs
         const u = (t - 1.8) / 2.9;
-        if (!did.roll) { did.roll = true; carrier.classList.add('afterburner'); showCallout('Brakes release', 'Take-off roll', 'info'); play('roar'); rpm.textContent = '100'; }
+        zoom(1 + 0.1 * easeInOut(u));
+        if (!did.roll) { did.roll = true; dv.classList.add('rolling'); carrier.classList.add('afterburner'); showCallout('Brakes release', 'Take-off roll', 'info'); play('roar'); rpm.textContent = '100'; }
         if (u > 0.55 && !did.v1) { did.v1 = true; showCallout('Rotate', 'V1 · V-R', 'info'); }
         horizon.setSpeed(VMAX * u ** 2.2, true);
         kts.textContent = String(Math.round(170 * u ** 1.3));
@@ -683,7 +690,9 @@ export function runScene(app: App, game: Game, wantIntro: boolean): void {
         if (u > 0.3 && !did.gear) { did.gear = true; carrier.classList.add('retract'); later(() => carrier.classList.remove('grounded'), 450); showCallout('Gear up', 'Climbing', 'info'); }
         kts.textContent = String(Math.round(lerp(170, 260, e)));
         horizon.setSpeed(lerp(VMAX, CRUISE * 1.3, e), true);
+        zoom(1.1 - 0.1 * e);
         const y = lerp(r, airY(), e);
+        if (u > 0.2) horizon.emit(cx - cw() * 0.1, y + ch() * 0.78, { n: 1, color: ['#ffffff', '#dfe6ec'], size: 2, vx: -140, vy: 4, spread: 6, life: 0.9 });
         const p = -14 * Math.sin(Math.PI * Math.min(1, u * 1.15));
         setCarrier(cx, y, p); hang(cx, y, p);
       } else if (t < 7.0) {
@@ -692,13 +701,15 @@ export function runScene(app: App, game: Game, wantIntro: boolean): void {
         if (!did.lvl) { did.lvl = true; showCallout('Weapon release', 'Stand by', 'info'); }
         kts.textContent = String(Math.round(lerp(260, 420, u)));
         horizon.setSpeed(lerp(VMAX * 0.95, CRUISE, u), true);
+        zoom(1);
+        dv.classList.remove('rolling');
         const y = airY() + Math.sin(u * 6) * 1.2;
         setCarrier(cx, y, 0); hang(cx, y, 0);
       } else if (t < 7.45) {
         // pylon release: the missile drops clear and noses over
         const u = (t - 7.0) / 0.45;
-        if (!did.rel) { did.rel = true; play('release'); showCallout('HARM away', 'Released', 'good'); dv.classList.add('intro-end'); arm.textContent = 'HARM AWAY'; }
-        const y = airY();
+        if (!did.rel) { did.rel = true; play('release'); showCallout('HARM away', 'Released', 'good'); dv.classList.add('intro-end'); arm.textContent = 'HARM AWAY'; jet.classList.remove('carried'); horizon.emit(cx, airY() + ch() * 0.8, { n: 8, color: ['#ffffff', '#cfd8e0'], size: 3, vx: -30, vy: -20, spread: 24, life: 0.8 }); }
+        const y = airY() - 5 * Math.sin(Math.PI * Math.min(1, u * 1.6));
         setCarrier(cx, y, 0);
         hang(cx, y, 4 * u, 8 + 70 * u * u, lerp(0.7, 0.78, u));
       } else if (t < 8.6) {
@@ -718,7 +729,8 @@ export function runScene(app: App, game: Game, wantIntro: boolean): void {
         const ty = cruise.y + jh / 2;
         const hx = lerp(from.x, tx, e);
         const hy = lerp(from.y + 0, ty, e);
-        setPose(hx - jw / 2, hy - jh / 2, lerp(4, 0, e), lerp(0.75, 1, e));
+        setPose(hx - jw / 2, hy - jh / 2, lerp(4, 0, e), lerp(0.78, 1, e));
+        horizon.emit(hx - jw * 0.5, hy, { n: 3, color: ['#ffffff', '#dfe6ec', '#ffd9a0'], size: 3, vx: -110, vy: -4, spread: 8, life: 1.3 });
         horizon.setSpeed(lerp(CRUISE * 0.9, cruiseSpeed(start.speed), e), true);
         kts.textContent = String(Math.round(lerp(420, 900, e)));
         const jx = lerp(cx, dv.clientWidth + cw(), e * e);
@@ -743,6 +755,14 @@ export function runScene(app: App, game: Game, wantIntro: boolean): void {
   on(app.root, '#home', () => { stopTimer(); horizon.stop(); app.go({ name: 'home' }); });
   // stop the render loop when the player leaves this screen by any route
   const watch = window.setInterval(() => { if (!dv.isConnected) { horizon.stop(); window.clearInterval(watch); timers.forEach(window.clearTimeout); } }, 500);
+
+  // motor trail: a thin ribbon of smoke behind the HARM in flight
+  const trail = window.setInterval(() => {
+    if (!dv.isConnected) return window.clearInterval(trail);
+    if (busy || document.hidden) return;
+    const t = jetCenter();
+    horizon.emit(t.x - jw * 0.5, t.y, { n: 1, color: ['#ffffff', '#dfe6ec'], size: 2, vx: -70, vy: -3, spread: 5, life: 1.1 });
+  }, 70);
 
   measure();
   hud(start.depth, start.distance, start.answers, start.index, start.lives, start.streak, start.speed);

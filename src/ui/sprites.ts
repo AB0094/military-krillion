@@ -95,51 +95,77 @@ function missileGrid(): Grid {
 const MISSILE_PAL: Palette = { w: '#f1f6fb', m: '#b9c8d8', d: '#7f93a8', n: '#2f3d52', r: '#ff5c7a', c: '#4fe3ff', k: '#101c2b' };
 export const missileSprite = (cls = ''): string => sprite(toRows(missileGrid()), MISSILE_PAL, cls);
 
-/** The HARM flying level, nose to the right: the missile airframe rotated a quarter turn. */
+/** The AGM-88 HARM flying level, nose to the right: dark radome, long body with cyan/yellow bands, mid-body wings, swept tail fins. */
 function harmGrid(): Grid {
-  const g = missileGrid();
-  const h = g.length;
-  const w = g[0].length;
-  const out = make(h, w);
-  for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) out[w - 1 - x][y] = g[y][x];
-  return out;
+  const W = 46;
+  const H = 15;
+  const cy = 7;
+  const g = make(W, H);
+  // tail fins (swept) and mid-body wings, drawn first so the body overlaps their roots
+  poly(g, [[0, cy - 7], [5, cy - 7], [10, cy - 2], [3, cy - 2]], 'm');
+  poly(g, [[0, cy + 7], [5, cy + 7], [10, cy + 2], [3, cy + 2]], 'd');
+  poly(g, [[19, cy - 2], [31, cy - 2], [27, cy - 6], [23, cy - 6]], 'm');
+  poly(g, [[19, cy + 2], [31, cy + 2], [27, cy + 6], [23, cy + 6]], 'd');
+  // body, shaded top to bottom
+  const rows = ['w', 'w', 'm', 'm', 'd'];
+  for (let x = 3; x <= 37; x++) rows.forEach((c, i) => put(g, x, cy - 2 + i, c));
+  // exhaust collar and nozzle
+  rect(g, 3, cy - 2, 5, cy + 2, 'd'); rect(g, 1, cy - 1, 2, cy + 1, 'k'); put(g, 3, cy, 'k');
+  // bands: cyan guidance section, yellow warning stripe, dark seeker panels
+  rect(g, 13, cy - 2, 14, cy + 2, 'c'); rect(g, 33, cy - 2, 34, cy + 2, 'c');
+  rect(g, 17, cy - 2, 17, cy + 2, 'y');
+  for (let x = 7; x <= 11; x += 2) put(g, x, cy - 1, 'd');
+  // ogive nose: dark radome with a red tip
+  for (let x = 38; x <= 45; x++) {
+    const t = (x - 38) / 8;
+    const hh = 2.4 * (1 - t ** 1.7);
+    const y0 = Math.round(cy - hh);
+    const y1 = Math.round(cy + hh);
+    for (let y = y0; y <= y1; y++) put(g, x, y, x >= 43 ? 'r' : y === y0 ? 'h' : 'n');
+  }
+  return outline(g);
 }
-export const harmSprite = (cls = ''): string => sprite(toRows(harmGrid()), MISSILE_PAL, cls);
+const HARM_PAL: Palette = { w: '#f4f8fc', m: '#bccbda', d: '#7a8fa6', n: '#2d3b50', r: '#ff4a6a', c: '#4fe3ff', y: '#ffd84a', h: '#6a7f99', k: '#101c2b' };
+export const harmSprite = (cls = ''): string => sprite(toRows(harmGrid()), HARM_PAL, cls);
 
 /** Enemy surface-to-air missile: the same airframe in hostile colours. */
 export const samSprite = (cls = ''): string =>
   sprite(toRows(missileGrid()), { w: '#ffe3b0', m: '#e8924f', d: '#a8472f', n: '#3a1510', r: '#ffffff', c: '#ffd24a', k: '#2a0c08' }, cls);
 
-// ---------------------------------------------------------------- fighter jet, side view facing right
+// ---------------------------------------------------------------- carrier aircraft: twin-tail heavy fighter, side view facing right
 function jetGrid(): Grid {
-  const W = 50;
-  const H = 21;
-  const cy = 12;
+  const W = 62;
+  const H = 25;
+  const cy = 13;
   const g = make(W, H);
-  poly(g, [[22, cy + 2], [40, cy + 2], [29, cy + 8], [21, cy + 8]], 'm'); // wing
-  poly(g, [[10, cy + 1], [19, cy + 1], [13, cy + 5], [8, cy + 5]], 'd'); // tailplane
-  poly(g, [[10, cy - 3], [24, cy - 3], [16, cy - 10], [12, cy - 10]], 'm'); // fin
-  poly(g, [[13, cy - 9], [16, cy - 9], [17, cy - 6], [12, cy - 6]], 'r');
-  // fuselage with a tapered nose
-  for (let x = 7; x <= 46; x++) {
-    const t = (x - 7) / 39;
-    const top = t < 0.58 ? 3.7 : 3.7 * (1 - ((t - 0.58) / 0.42) ** 1.5);
-    const bot = t < 0.58 ? 2.9 : 2.9 * (1 - ((t - 0.58) / 0.42) ** 1.5);
+  poly(g, [[14, cy - 3], [28, cy - 3], [24, cy - 11], [19, cy - 11]], 'd'); // far fin
+  poly(g, [[7, cy - 3], [22, cy - 3], [16, cy - 13], [10, cy - 13]], 'm'); // near fin
+  rect(g, 11, cy - 13, 14, cy - 11, 'r');
+  poly(g, [[5, cy + 1], [17, cy + 1], [11, cy + 6], [2, cy + 6]], 'd'); // stabilator
+  poly(g, [[25, cy + 2], [48, cy + 2], [37, cy + 10], [29, cy + 10]], 'm'); // swept wing
+  rect(g, 33, cy + 9, 37, cy + 10, 'r');
+  // fuselage with a long tapered nose
+  for (let x = 4; x <= 58; x++) {
+    const t = (x - 4) / 54;
+    const k = t < 0.62 ? 0 : ((t - 0.62) / 0.38) ** 1.4;
+    const top = 4 * (1 - k);
+    const bot = 3 * (1 - k);
     const y0 = Math.round(cy - top);
     const y1 = Math.round(cy + bot);
     for (let y = y0; y <= y1; y++) {
       const r = (y - y0) / Math.max(1, y1 - y0);
-      put(g, x, y, t > 0.9 ? 'n' : r < 0.34 ? 'g' : r < 0.72 ? 'm' : 'd');
+      put(g, x, y, t > 0.93 ? 'n' : r < 0.3 ? 'g' : r < 0.7 ? 'm' : 'd');
     }
   }
-  for (let x = 12; x < 44; x += 6) put(g, x, cy, 'd'); // panel lines
-  rect(g, 25, cy + 1, 31, cy + 2, 'k'); // intake shadow
-  for (let x = 30; x <= 37; x++) { const h = x < 32 || x > 35 ? 1 : 2; for (let k = 0; k < h; k++) put(g, x, cy - 4 - k, 'c'); }
-  put(g, 31, cy - 5, 'h'); put(g, 32, cy - 5, 'h');
-  rect(g, 5, cy - 2, 7, cy + 2, 'k'); // nozzle
+  for (let x = 10; x < 50; x += 7) put(g, x, cy, 'd'); // panel lines
+  rect(g, 28, cy, 36, cy + 3, 'k'); rect(g, 28, cy - 1, 36, cy - 1, 'd'); // intake
+  for (let x = 40; x <= 49; x++) { const hh = x < 42 || x > 47 ? 1 : 2; for (let k = 0; k < hh; k++) put(g, x, cy - 5 - k + (x > 47 ? 1 : 0), 'c'); } // canopy
+  put(g, 43, cy - 6, 'h'); put(g, 44, cy - 6, 'h');
+  rect(g, 3, cy - 3, 5, cy + 3, 'k'); rect(g, 3, cy, 4, cy, 'h'); // twin nozzles
+  rect(g, 27, cy + 4, 31, cy + 5, 'd'); // weapons pylon
   return outline(g);
 }
-const JET_PAL: Palette = { g: '#eef3f9', m: '#aebfd2', d: '#72879f', n: '#566a82', c: '#36cbea', h: '#cdf7ff', r: '#ff5c7a', k: '#101c2b' };
+const JET_PAL: Palette = { g: '#e6ecd9', m: '#9fae98', d: '#66775f', n: '#3d4d45', c: '#36cbea', h: '#cdf7ff', r: '#ff5c7a', k: '#101c2b' };
 export const jetSprite = (cls = ''): string => sprite(toRows(jetGrid()), JET_PAL, cls);
 
 // ---------------------------------------------------------------- aircraft carrier
