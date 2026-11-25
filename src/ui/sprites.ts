@@ -135,32 +135,36 @@ function harmGrid(): Grid {
 const HARM_PAL: Palette = { w: '#ffffff', l: '#e4edf6', m: '#bccbda', d: '#8398ae', s: '#5f7289', n: '#2d3b50', h: '#6d86a4', r: '#ff4a6a', c: '#4fe3ff', y: '#ffd84a', o: '#ffb347', k: '#0e1826' };
 export const harmSprite = (cls = ''): string => sprite(toRows(harmGrid()), HARM_PAL, cls);
 
-// ---------------------------------------------------------------- the APFSDS dart, nose to the right
+// ---------------------------------------------------------------- the APFSDS round, nose to the right
+// A real APFSDS dart is a very long, thin tungsten rod with a sharp point; its sabot petals fall away at the muzzle,
+// leaving the rod and a flared fin assembly at the tail. No motor, so no flame.
 function dartGrid(): Grid {
-  const W = 66;
-  const H = 13;
-  const cy = 6;
+  const W = 64;
+  const H = 11;
+  const cy = 5;
   const g = make(W, H);
-  // stabiliser fins
-  poly(g, [[0, cy - 5], [5, cy - 5], [14, cy - 1], [6, cy - 1]], 'm');
-  poly(g, [[0, cy + 5], [5, cy + 5], [14, cy + 1], [6, cy + 1]], 'd');
-  poly(g, [[1, cy - 5], [3, cy - 5], [8, cy - 1], [6, cy - 1]], 'w');
-  // long tungsten rod, three shaded rows, then a ballistic-cap point
-  for (let x = 6; x <= 50; x++) { put(g, x, cy - 1, 'w'); put(g, x, cy, 'm'); put(g, x, cy + 1, 'd'); }
-  for (let x = 12; x <= 46; x += 11) { put(g, x, cy - 1, 'k'); put(g, x, cy, 'k'); put(g, x, cy + 1, 'k'); } // sabot-groove bands
-  rect(g, 15, cy - 1, 15, cy + 1, 'y');
-  for (let x = 51; x <= 63; x++) {
-    const t = (x - 51) / 13;
-    const hh = 1.6 * (1 - t ** 1.3);
+  // flared tail stabiliser: a cone widening to the rear, with fin ribs
+  for (let x = 0; x <= 13; x++) {
+    const hh = 4 * (1 - x / 14) + 1; // 5 at the back, 1 where it meets the rod
     const y0 = Math.round(cy - hh);
     const y1 = Math.round(cy + hh);
-    for (let y = y0; y <= y1; y++) put(g, x, y, x >= 61 ? 'a' : y === y0 ? 'l' : 'n');
+    for (let y = y0; y <= y1; y++) put(g, x, y, y <= cy - hh + 1 ? 'f' : y >= cy + hh - 1 ? 'e' : x % 4 === 1 ? 'e' : 'a');
   }
-  rect(g, 4, cy - 1, 6, cy + 1, 'k'); // tail base
-  put(g, 3, cy, 'o'); put(g, 2, cy, 'o');
+  rect(g, 0, cy - 5, 0, cy + 5, 'e'); // rear rim
+  // long rod: three rows, lit on top
+  for (let x = 14; x <= 54; x++) { put(g, x, cy - 1, 'l'); put(g, x, cy, 'm'); put(g, x, cy + 1, 'd'); }
+  for (const x of [20, 31, 42]) { put(g, x, cy - 1, 'k'); put(g, x, cy, 'k'); put(g, x, cy + 1, 'k'); } // sabot seat grooves
+  // needle point
+  for (let x = 55; x <= 63; x++) {
+    const hh = 1.2 * (1 - (x - 55) / 9);
+    const y0 = Math.round(cy - hh);
+    const y1 = Math.round(cy + hh);
+    for (let y = y0; y <= y1; y++) put(g, x, y, y === y0 ? 'l' : 'm');
+  }
+  put(g, 62, cy, 'w'); put(g, 63, cy, 'w');
   return outline(g);
 }
-const DART_PAL: Palette = { w: '#f1f6fb', l: '#d6e0ea', m: '#aab7c6', d: '#6f7f92', n: '#3a4656', a: '#ff6a3a', y: '#ffd84a', o: '#ffb347', k: '#0e1826' };
+const DART_PAL: Palette = { w: '#ffffff', l: '#dfe7ef', m: '#a9b6c4', d: '#5f6f82', a: '#8c98a6', f: '#c8d2dc', e: '#5a6676', k: '#10171e' };
 export const dartSprite = (cls = ''): string => sprite(toRows(dartGrid()), DART_PAL, cls);
 
 // ---------------------------------------------------------------- tanks (side view, facing right; enemies are mirrored)

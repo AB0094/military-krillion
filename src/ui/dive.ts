@@ -743,7 +743,7 @@ export function runScene(app: App, game: Game, wantIntro: boolean): void {
         const hx = lerp(from.x, tx, e);
         const hy = lerp(from.y + 0, ty, e);
         setPose(hx - jw / 2, hy - jh / 2, lerp(4, 0, e), lerp(0.78, 1, e));
-        horizon.emit(hx - jw * 0.5, hy, { n: 3, color: ['#ffffff', '#dfe6ec', '#ffd9a0'], size: 3, vx: -110, vy: -4, spread: 8, life: 1.3 });
+        if (u < 0.12) shockwave(dv, hx, hy, 60 + u * 700); // the supersonic shockwave at the start, and nothing else
         horizon.setSpeed(lerp(CRUISE * 0.9, cruiseSpeed(start.speed), e), true);
         kts.textContent = String(Math.round(lerp(420, 900, e)));
         const jx = lerp(cx, dv.clientWidth + cw(), e * e);
@@ -1010,7 +1010,7 @@ export function runScene(app: App, game: Game, wantIntro: boolean): void {
         const hy = lerp(from.y, dartTy, easeInOut(u));
         setPose(hx - jw / 2, hy - jh / 2, 0, lerp(0.5, 1, e));
         horizon.setSpeed(lerp(380, cruiseSpeed(start.speed), easeInOut(u)), true);
-        horizon.emit(hx - jw * 0.5, hy, { n: 3, color: ['#ffffff', '#dfe6ec', '#ffd9a0'], size: 3, vx: -110, vy: -4, spread: 8, life: 1.3 });
+        if (u < 0.12) shockwave(dv, hx, hy, 60 + u * 700); // the supersonic shockwave at the start, and nothing else
         kts.textContent = String(Math.round(lerp(0, 1700, e)));
         setTank(tankCx - 16 - 360 * e * e, r, 0);
         if (Math.random() < 0.5) exhaust(1);
@@ -1036,7 +1036,7 @@ export function runScene(app: App, game: Game, wantIntro: boolean): void {
   // motor trail: a thin ribbon of smoke behind the HARM in flight
   const trail = window.setInterval(() => {
     if (!dv.isConnected) return window.clearInterval(trail);
-    if (busy || document.hidden) return;
+    if (busy || document.hidden || tank) return;
     const t = jetCenter();
     horizon.emit(t.x - jw * 0.5, t.y, { n: 1, color: ['#ffffff', '#dfe6ec'], size: 2, vx: -70, vy: -3, spread: 5, life: 1.1 });
   }, 70);

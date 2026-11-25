@@ -527,3 +527,8 @@ thead th { color: var(--muted); font: .6rem var(--pf); letter-spacing: .1em; tex
   background: radial-gradient(circle at 30% 50%, #fff 0, #fff6d0 14%, #ffd84a 30%, #ff8a2a 52%, transparent 72%); animation: muz .55s ease-out forwards; clip-path: polygon(0 40%, 30% 30%, 50% 0, 60% 35%, 100% 45%, 62% 55%, 55% 100%, 30% 70%, 0 60%); }
 @keyframes muz { 0% { transform: scale(.3); opacity: 1; } 35% { transform: scale(1.4); opacity: 1; } 100% { transform: scale(2.2); opacity: 0; } }
 .sabot { position: absolute; width: 22px; height: 8px; margin: -4px; z-index: 6; pointer-events: none; background: linear-gradient(#c9d3de, #6e7b88); box-shadow: 0 0 0 2px #10171e; }
+
+/* the APFSDS round has no motor: no flame, no glow, only the shockwave at the muzzle */
+.dv.tank .harm-flame { display: none !important; }
+.dv.tank .dv-harm.surge .harm-body, .dv.tank .dv-harm .harm-body { filter: drop-shadow(0 2px 3px #0005); }
+.dv.tank .dv-harm.cruise .harm-body { animation: none; }
